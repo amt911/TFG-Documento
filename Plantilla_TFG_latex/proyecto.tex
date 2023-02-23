@@ -1,3 +1,10 @@
+%PREGUNTAS
+%No se si poner ejemplos de software real
+%No se si con esto pueden preguntarme por las soluciones software mas avanzadas como F1 MANAGER
+%No se si es demasiado poco lo que he escrito
+%No se si he puesto demasiados requisitos.
+%Tengo la sensacion de que hablo mucho y no digo nada.
+
 \documentclass[a4paper,11pt]{book}
 %\documentclass[a4paper,twoside,11pt,titlepage]{book}
 \usepackage{listings}
@@ -31,16 +38,16 @@
 % Re-usable information
 % ********************************************************************
 \newcommand{\myTitle}{Título del proyecto\xspace}
-\newcommand{\myDegree}{Grado en ...\xspace}
-\newcommand{\myName}{Nombre Apllido1 Apellido2 (alumno)\xspace}
-\newcommand{\myProf}{Nombre Apllido1 Apellido2 (tutor1)\xspace}
-\newcommand{\myOtherProf}{Nombre Apllido1 Apellido2 (tutor2)\xspace}
-%\newcommand{\mySupervisor}{Put name here\xspace}
+\newcommand{\myDegree}{Grado en Ingeniería Informática\xspace}
+\newcommand{\myName}{Andrés Merlo Trujillo\xspace}
+\newcommand{\myProf}{Luis López Escudero\xspace}
+%\newcommand{\myOtherProf}{Nombre Apllido1 Apellido2 (tutor2)\xspace}
+%\newcommand{\mySupervisor}{Put name here\xspace}  NO USADO
 \newcommand{\myFaculty}{Escuela Técnica Superior de Ingenierías Informática y de
 Telecomunicación\xspace}
 \newcommand{\myFacultyShort}{E.T.S. de Ingenierías Informática y de
 Telecomunicación\xspace}
-\newcommand{\myDepartment}{Departamento de ...\xspace}
+\newcommand{\myDepartment}{Departamento de Lenguaje y Sistemas Informáticos\xspace}
 \newcommand{\myUni}{\protect{Universidad de Granada}\xspace}
 \newcommand{\myLocation}{Granada\xspace}
 \newcommand{\myTime}{\today\xspace}
@@ -48,10 +55,10 @@ Telecomunicación\xspace}
 
 
 \hypersetup{
-pdfauthor = {\myName (email (en) ugr (punto) es)},
+pdfauthor = {\myName (andresmerlo@correo.ugr.es)},
 pdftitle = {\myTitle},
 pdfsubject = {},
-pdfkeywords = {palabra_clave1, palabra_clave2, palabra_clave3, ...},
+pdfkeywords = {unreal, simulador, ia, },
 pdfcreator = {LaTeX con el paquete ....},
 pdfproducer = {pdflatex}
 }
@@ -174,13 +181,49 @@ pdfproducer = {pdflatex}
 \begin{document}
 \input{portada/portada}
 \input{prefacios/prefacio}
+
 %\frontmatter
-%\tableofcontents
+\tableofcontents
+\newpage
 %\listoffigures
 %\listoftables
 %
 %\mainmatter
-%\setlength{\parskip}{5pt}
+% \setlength{\parskip}{5pt}
+
+\section{Introducción y Motivación}
+
+El mundo del motor siempre ha sido un deporte que despierta la curiosidad en muchas personas a lo largo del mundo, ya sea por la innovación tecnológica continua que se produce cada año en los vehículos, por sentir la adrenalina de conducir un coche de carreras o incluso por la satisfacción personal de ser capaz de dar órdenes a un piloto para llevarlo a la victoria, seleccionando las mejores estrategias en cada momento. Este proyecto se centrará en esto último.
+
+\bigskip
+
+Gracias al avance de la informática, se puede obtener más información de diversos factores en tiempo real, tales como: estado general del vehículo, condiciones del piloto e incluso estado de la pista. Con todos estos datos, se puede tomar la mejor decisión para llevar el piloto y el equipo a la victoria. Además, son cada vez más los entusiastas que recurren al uso de simuladores para poder probar de primera mano estas experiencias.
+
+\bigskip
+
+No obstante, el número de simuladores de gestión de carreras es relativamente pequeño y poco variado, normalmente centrándose en ciertas disciplinas concretas, sin permitir la inclusión de más tipos. Aparte de esto, las aplicaciones existentes suelen ser relativamente caras. 
+
+\bigskip
+%No se si poner ejemplos de software real
+%No se si con esto pueden preguntarme por las soluciones software mas avanzadas como F1 MANAGER
+%No se si es demasiado poco lo que he escrito
+Un ejemplo de aplicaciones existentes es la de \textit{Gran Turismo B-Spec}, que permite dar órdenes a un piloto de la carrera y dependiendo de la frecuencia de dichas órdenes y la posición en la parrilla, pueden variar sus parámetros de aguante físico y mental.
+
+\bigskip
+
+En este proyecto se pretende ofrecer un simulador relativamente realista con diversos parámetros, incluyendo algunos similares a los mencionados anteriormente, y que además ofrece la posibilidad de modificar los parámetros de todos los pilotos en tiempo real, aparte de ser modificados por el entorno de la carrera.
+
+\bigskip
+
+Además, la aplicación permitirá ajustar las aptitudes, el número de pilotos, la velocidad máxima de los coches, el número de los mismos y el número de vueltas y la hora del día a la que se va a disputar la carrera.
+
+\bigskip
+
+Por último, cabe decir que el \textit{software} permitirá también modificar otros aspectos ajenos a los que puedan modificar el resultado de la carrera, tales como la velocidad de simulación.
+
+\section{otra}
+\subsection{title}
+\subsubsection{asd}
 
 %\input{capitulos/01_Introduccion}
 %
