@@ -5,7 +5,8 @@
 %No se si he puesto demasiados requisitos.
 %Tengo la sensacion de que hablo mucho y no digo nada.
 %no se si estoy poniendo mi software como el mejor del mundo
-
+% Quizas no he puesto las sificientes fuentes en la itnroudccion
+% Arreglar nombre que sale arriba de la linea, que pone indice general, cuando no lo es
 \documentclass[a4paper,11pt]{book}
 %\documentclass[a4paper,twoside,11pt,titlepage]{book}
 \usepackage{listings}
@@ -194,22 +195,31 @@ pdfproducer = {pdflatex}
 
 \section{Introducción y Motivación}
 
-El mundo del motor siempre ha sido un deporte que despierta la curiosidad en muchas personas a lo largo del mundo, ya sea por la innovación tecnológica continua que se produce cada año en los vehículos, por sentir la adrenalina de conducir un coche de carreras o incluso por la satisfacción personal de ser capaz de dar órdenes a un piloto para llevarlo a la victoria, seleccionando las mejores estrategias en cada momento. Este proyecto se centrará en esto último.
+El mundo del motor siempre ha sido un deporte que despierta la curiosidad en muchas personas alrededor del mundo, ya sea por la innovación tecnológica continua que se produce cada año en los vehículos, por sentir la adrenalina de conducir un coche de carreras o incluso por la satisfacción personal de ser capaz de dar órdenes a un piloto para llevarlo a la victoria, seleccionando las mejores estrategias en cada momento. Este proyecto se centrará en esto último.
 
 \bigskip
 
-Gracias al avance de la informática, se puede obtener más información de diversos factores en tiempo real, tales como: estado general del vehículo, condiciones del piloto e incluso estado de la pista. Con todos estos datos, se puede tomar la mejor decisión para llevar el piloto y el equipo a la victoria. Además, son cada vez más los entusiastas que recurren al uso de simuladores para poder probar de primera mano estas experiencias.
+Gracias al avance de la informática, se puede realizar simulaciones de las carreras y de los vehículos para saber cuál es la mejor estrategia a seguir para llevar al equipo y al piloto a la victoria. Además, no son solo los profesionales los que recurren a este tipo de aplicaciones para realizar sus estrategias, sino que hay entusiastas de este deporte que compran este tipo de \textit{software} para obtener la satisfacción personal de haber llevado un equipo virtual a la victoria y en el trayecto haber aprendido estrategias cada vez más complejas.
+
+
+%Gracias al avance de la informática, se puede obtener más información de diversos factores en tiempo real, tales como: estado general del vehículo, condiciones del piloto e incluso estado de la pista. Con todos estos datos, se puede tomar la mejor decisión para llevar el piloto y el equipo a la victoria. Además, son cada vez más los entusiastas que recurren al uso de simuladores para poder probar de primera mano estas experiencias.
 
 \bigskip
 
-No obstante, el número de simuladores de gestión de carreras es relativamente pequeño y poco variado, normalmente centrándose en ciertas disciplinas concretas, sin permitir la inclusión de más tipos. Aparte de esto, las aplicaciones existentes suelen ser relativamente caras. 
-
-\bigskip
-Un ejemplo de aplicaciones existentes es la de \textit{Gran Turismo B-Spec}, que permite dar órdenes a un piloto durante la carrera y dependiendo de la frecuencia de dichas órdenes y la posición en la parrilla, pueden variar sus parámetros de aguante físico y mental.
+No obstante, el número de simuladores de gestión de carreras es relativamente pequeño y poco variado, normalmente centrándose en ciertas disciplinas concretas y en un solo equipo de carreras, sin poder interaccionar con los demás en ningún momento. % Además, algo que todos estos simuladores no tienen, es la posibilidad de modificar dichos parámetros en tiempo real a todos los pilotos para ver como afecta a su rendimiento.
 
 \bigskip
 
-En este proyecto se pretende ofrecer un simulador relativamente realista y personalizable mediante el uso de parámetros, incluyendo algunos similares a los mencionados anteriormente, y que además ofrece la posibilidad de modificar dichos parámetros de todos los pilotos en tiempo real, aparte de ser modificados por las condiciones de la carrera.
+Los dos ejemplos más notables de este tipo de aplicación son:
+
+\begin{itemize}
+   \item \textit{Gran Turismo B-Spec: }Parte de la saga para consolas \textit{PlayStation} que se centra en dar órdenes a un piloto en la carrera. Dependiendo de estas decisiones y de otros factores tales como la posición en la que se encuentre, puede variar su aguante físico, mental y su agresividad, pudiendo así cometer errores. Permite correr en una gran variedad de vehículos.
+   %\item Un ejemplo de aplicaciones existentes es la de \textit{Gran Turismo B-Spec}, que permite dar órdenes a un piloto durante la carrera y dependiendo de la frecuencia de dichas órdenes y la posición en la parrilla, pueden variar sus parámetros de aguante físico y mental.
+   \item \textit{F1 Manager 22: }Simulador de gestión de carreras centrado exclusivamente en la \textit{Formula 1}, similar al anterior simulador. La desventaja que tiene es que se centra nada más que en una disciplina particular, pero consigue un nivel alto de profundidad en los sistemas.
+%   \item Otro ejemplo de este tipo de simuladores es el de \textit{F1 Manager 22}, que permite dar órdenes a los pilotos de un equipo de Formula 1. La desventaja es que solo se centra en una disciplina concreta, pero consigue un nivel alto de realismo.
+\end{itemize}
+
+En este proyecto se pretende desarrollar un simulador multidisciplinar, relativamente realista y personalizable mediante el uso de parámetros, incluyendo algunos similares a los mencionados anteriormente, y que además ofrece la posibilidad de modificar dichos parámetros de todos los pilotos en tiempo real, aparte de ser modificados por las condiciones de la carrera en la que se encuentre cada piloto.
 
 \bigskip
 
@@ -217,12 +227,65 @@ Además, la aplicación permitirá ajustar las aptitudes, el número de pilotos,
 
 \bigskip
 
-Todo lo mencionado permitirá a los entusiastas experimentar una simulación algo realista y sobre todo con el factor de la personalización, permitiendo que los usuarios comprendan como afectan dichas variables a los pilotos y su equipo.
+Todo lo mencionado permitirá a los entusiastas experimentar una simulación algo realista y sobre todo con el factor de la personalización superior a los ejemplos mencionados, al permitir simular condiciones muy específicas, y hacer que los usuarios comprendan como afectan dichas variables a los pilotos y su equipo, incluso en la vida real.
 
-\section{otra}
-\subsection{title}
-\subsubsection{asd}
+\section{Objetivos}
 
+Como se ha mencionado en el apartado anterior, el objetivo principal de este proyecto es de ofrecer un simulador de carreras multidisciplinar y con un grado alto de personalización en las variables de cada piloto.
+
+\bigskip
+
+Además, el proyecto debe cumplir los siguientes objetivos mínimos relativos a cambios antes de ejecutar la simulación:
+
+\begin{itemize}
+   \item Cambio de número de pilotos.
+   \item Cambio de número de vueltas.
+   \item Cambios de las aptitudes de los pilotos; es decir, el nivel máximo de cada condición que puede alcanzar.
+   \item Cambio de la velocidad máxima de los vehículos.
+   \item Permitir (opcionalmente) que haya variación de prestaciones entre vehículos.
+\end{itemize}
+
+\bigskip
+
+En cuanto a cambios durante la simulación, debe cumplir estos objetivos:
+
+\begin{itemize}
+   \item Seleccionar piloto de la lista de pilotos.
+   \item Obtener las condiciones actuales del piloto seleccionado.
+   \item Modificar las condiciones actuales del piloto seleccionado.
+\end{itemize}
+
+Cabe destacar que todos estos objetivos y algunos opcionales serán explicados en detalle en apartados siguientes.
+
+\section{Estado del arte}
+
+Como ya se ha descrito anteriormente, este proyecto hará uso de \textit{Unreal Engine} como motor gráfico y como \textit{framework} para la realización del simulador especificado. En cuanto a la forma en la que los pilotos se moverán por el circuito, he decidido usar el algoritmo de navegación \textbf{PONER AQUI EL ALGORITMO DE NAVEGAICION}.
+
+\bigskip
+
+A continuación, voy a explicar las distintas opciones que hay disponibles en motores gráficos y en algoritmos de navegación y explicar el motivo de la elección realizada. Separaré esto en dos subsecciones.
+
+\subsection{Motor gráfico}
+En el mercado hay gran variedad de motores gráficos de videojuegos, los más conocidos son los siguientes:
+
+\begin{itemize}
+   \item Unreal Engine: Es un conjunto de herramientas que permite, entre otras cosas, el desarrollo de videojuegos, creación de contenido para programas y películas, simulación, etc [https://www.unrealengine.com/es-ES/faq]. 
+   
+   Unreal además ofrece \textit{Blueprint Visual Scripting}, el cual es un sistema de \textit{scripting} visual que hace uso de nodos para programar las distintas partes del sistema. Permite programar de manera visual sin la necesidad de conocer la \textit{API} de C++ %[https://docs.unrealengine.com/5.1/en-US/introduction-to-blueprints-visual-scripting-in-unreal-engine/] 
+
+
+   Además, a partir de la versión 5.0, \textit{Unreal} incluye tecnologías de optimización de rendimiento tales como TSR \textit{(Temporal Super Resolution)}, haciendo que el juego se renderice a una resolución menor y luego se reescale, \textit{Nanite}, que permite tener objetos con una gran cantidad de polígonos en la pantalla, y Lumen, que permite tener una iluminación más realista. %[https://www.unrealengine.com/en-US/unreal-engine-5] 
+   Todo esto permite tener un resultado a nivel gráfico muy convincente.
+
+   Sin embargo, no tiene una licencia de código abierto, pero su código fuente es accesible a través de un repositorio de GitHub %[https://forums.unrealengine.com/t/is-unreal-open-source/473823]
+   
+   \item Unity:
+   \item Godot:
+   \item 
+\end{itemize}
+
+
+\subsection{Algoritmo de navegación}
 %\input{capitulos/01_Introduccion}
 %
 %\input{capitulos/02_EspecificacionRequisitos}
