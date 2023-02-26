@@ -268,21 +268,84 @@ A continuación, voy a explicar las distintas opciones que hay disponibles en mo
 \subsection{Motor gráfico}
 En el mercado hay gran variedad de motores gráficos de videojuegos, los más conocidos son los siguientes:
 
+\bigskip
+% \begin{itemize}
+\textbf{Unreal Engine} es una plataforma de desarrollo que permite, entre otras cosas: el desarrollo de videojuegos, creación de contenido para programas y películas, simulación, etc [https://www.unrealengine.com/es-ES/faq]. 
+
+\bigskip
+
+Unreal además ofrece \textit{Blueprint Visual Scripting}, el cual es un sistema de \textit{scripting} visual que hace uso de nodos para programar las distintas partes del sistema. Permite programar de manera visual sin la necesidad de conocer la \textit{API} de C++ %[https://docs.unrealengine.com/5.1/en-US/introduction-to-blueprints-visual-scripting-in-unreal-engine/] 
+
+
+   % Además, a partir de la versión 5.0, \textit{Unreal} incluye tecnologías de optimización de rendimiento tales como TSR \textit{(Temporal Super Resolution)}, haciendo que el juego se renderice a una resolución menor y luego se reescale, \textit{Nanite}, que permite tener objetos con una gran cantidad de polígonos en la pantalla, y Lumen, que permite tener una iluminación más realista. %[https://www.unrealengine.com/en-US/unreal-engine-5] 
+
+\bigskip
+
+Además, a partir de la versión 5.0, Unreal incluye diversas tecnologias como: 
+
 \begin{itemize}
-   \item Unreal Engine: Es un conjunto de herramientas que permite, entre otras cosas, el desarrollo de videojuegos, creación de contenido para programas y películas, simulación, etc [https://www.unrealengine.com/es-ES/faq]. 
-   
-   Unreal además ofrece \textit{Blueprint Visual Scripting}, el cual es un sistema de \textit{scripting} visual que hace uso de nodos para programar las distintas partes del sistema. Permite programar de manera visual sin la necesidad de conocer la \textit{API} de C++ %[https://docs.unrealengine.com/5.1/en-US/introduction-to-blueprints-visual-scripting-in-unreal-engine/] 
-
-
-   Además, a partir de la versión 5.0, \textit{Unreal} incluye tecnologías de optimización de rendimiento tales como TSR \textit{(Temporal Super Resolution)}, haciendo que el juego se renderice a una resolución menor y luego se reescale, \textit{Nanite}, que permite tener objetos con una gran cantidad de polígonos en la pantalla, y Lumen, que permite tener una iluminación más realista. %[https://www.unrealengine.com/en-US/unreal-engine-5] 
-   Todo esto permite tener un resultado a nivel gráfico muy convincente.
-
-   Sin embargo, no tiene una licencia de código abierto, pero su código fuente es accesible a través de un repositorio de GitHub %[https://forums.unrealengine.com/t/is-unreal-open-source/473823]
-   
-   \item Unity:
-   \item Godot:
-   \item 
+   \item TSR \textit{(Temporal Super Resolution)}, mejorando el rendimiento haciendo que el juego se renderice internamente a una resolución menor y luego sea reescalado al tamaño deseado.
+   \item Nanite, que permite tener objetos con una gran cantidad de polígonos en la pantalla, 
+   \item Lumen, que genera una iluminación más realista. %[https://www.unrealengine.com/en-US/unreal-engine-5]
 \end{itemize}
+
+   Todo esto permite tener un resultado a nivel gráfico muy convincente sin necesitar dedicar demasiado trabajo en este apartado y sin requerir un hardware demasiado potente.
+
+\bigskip
+
+Asimismo, Unreal incluye un bazar con una gran cantidad de recursos, permitiendo simplificar mucho el desarrollo de videojuegos.
+
+\bigskip
+
+Sin embargo, no tiene una licencia de código abierto, pero su código fuente es accesible a través de un repositorio de GitHub %[https://forums.unrealengine.com/t/is-unreal-open-source/473823]
+
+\bigskip
+
+\textbf{Unity} es una plataforma de desarrollo que permite: desarrollar videojuegos, visualizar construcciones en el ámbito de la arquitectura, para uso en la industria automotriz y para la creación de películas y series.
+
+\bigskip
+
+Entre sus características se encuentra:
+
+\begin{itemize}
+   \item Uso de C\# como lenguaje de programación.
+   \item Motor de físicas 2D separado del de físicas en 3D.
+   \item Posee un \textit{Scriptable Rendering Pipeline} altamente personalizable, permitiendo mediante el uso de scripts escritos en C\# personalizar sombras, iluminación, oclusión ambiental, entre otras.
+   \item Soporte para un gran número de plataformas, incluyendo consolas y móviles, aparte de Windows, macOS y Linux.
+   \item Incluye un lenguaje de programación visual, similar a \textit{Unreal} que permite programar sin necesitar conocer la \textit{API}.
+\end{itemize}
+% https://unity.com/es 
+   
+\bigskip
+
+Además, Unity tiene varias versiones del programa, incluyendo uno gratuito y los demás de pago, con prioridad en la asistencia y un mayor abanico de herramientas.
+
+\bigskip
+
+\textbf{Godot} es un motor gráfico gratuito y multiplataforma de código abierto que permite crear videojuegos en 2D y 3D. 
+   
+Entre las características más notables se encuentran las siguientes:
+
+\begin{itemize}
+   % \item Utilización de lenguaje visual, similar al usado en \textit{Unreal Engine}.
+   \item Motor gráfico 2D dedicado, 
+   % \item programación en diversos lenguajes de programación, con la opción de incluir nuevos lenguajes mediante plugins. 
+   \item Programación usando GDScript, C\# o C++ de manera oficial. No obstante, se puede programar usando otro lenguaje como Rust, Python o Javascript. 
+   \item soporte para un gran número de plataformas (macOS, Linux, Windows, Android, iOS, \dots), incluyendo plataformas móviles, al ser más ligero que otros motores. 
+   \item y un motor de físicas, aunque algo simple, incluido. 
+\end{itemize}
+
+\bigskip 
+
+A partir de la versión 4, Godot ha dejado de incluir el lenguaje visual, debido a su falta de uso, por lo que solo es posible utilizar lenguajes de programación convencionales. %[https://godotengine.org/article/godot-4-will-discontinue-visual-scripting/]
+
+\bigskip
+
+Además, Godot tiene una biblioteca con una gran cantidad de recursos para utilizar durante el desarrollo de un videojuego.
+   % [https://godotengine.org/asset-library/asset]
+   % [https://docs.godotengine.org/en/stable/tutorials/scripting/visual_script/getting_started.html]
+CryEngine: 
+
 
 
 \subsection{Algoritmo de navegación}
