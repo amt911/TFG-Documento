@@ -351,6 +351,20 @@ Además, Godot tiene una biblioteca con una gran cantidad de recursos para utili
 Al final he decidido usar Unreal Engine debido a que la versión gratuita incluye toda la funcionalidad, ofrece unos buenos resultados a nivel visual sin requerir demasiado esfuerzo, es el más potente en cuanto a programación visual y es con el que más familiarizado estoy de todas las opciones citadas anteriormente.
 
 \subsection{Algoritmo de navegación}
+En cuanto a algoritmos de navegación para los vehículos, los más destacados son:
+
+\begin{itemize}
+   \item Aprendizaje por refuerzo (Q-Learning): Es una técnica de aprendizaje automático en la que el agente aprende a tomar decisiones en un entorno mediante la interacción a través de acciones (en este caso es: acelerador, freno y volante) y recibiendo una recompensa en caso de acercarse al objetivo deseado o de hacerlo bien.
+   
+   Es importante obtener un equilibrio entre exploración y explitación, para que el agente sea capaz de actuar ante situaciones desconocidas de manera correcta. En caso de estar desequilibrado, puede darse la situación en el que se produzca un máximo local y no sea capaz de descubrir la mejor estrategia.
+
+   Para evitar esto, se suelen utilizar métodos de equilibrio. Uno de ellos es el denominado \textit{epsilon-greedy}, que permite controlar la cantidad de exploración mediante un parámetro \textit{epsilon}, que determina la aleatoriedad en la selección de acciones %[https://www.tokic.com/www/tokicm/publikationen/papers/KI2011.pdf]
+   permitiendo elegir en función de dicho parámetro una acción aleatoria o la mejor hasta el momento.
+
+   Una desventaja que tiene es la necesidad de entrenar el modelo, cosa que puede llevar demasiado tiempo, pero con el suficiente tiempo y con un conjunto de recompensas y castigos bien realizado, es uno de los mejores algoritmos para resolver este tipo de problema.
+
+   \item 
+\end{itemize}
 %\input{capitulos/01_Introduccion}
 %
 %\input{capitulos/02_EspecificacionRequisitos}
