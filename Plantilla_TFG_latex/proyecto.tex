@@ -363,7 +363,13 @@ En cuanto a algoritmos de navegación para los vehículos, los más destacados s
 
    Una desventaja que tiene es la necesidad de entrenar el modelo, cosa que puede llevar demasiado tiempo, pero con el suficiente tiempo y con un conjunto de recompensas y castigos bien realizado, es uno de los mejores algoritmos para resolver este tipo de problema.
 
-   \item 
+   \item Mediante reglas: Otra forma de resolver este problemas es mediante reglas, que como su nombre indican, son un conjunto de reglas que se accionarán cuando se dé la condición deseada y normalmente están priorizados. Suelen tener forma de árbol, al hacer preguntas en cadena hasta llegar con la solución.
+   
+   Esto tiene la ventaja de ser más sencillo de implementar que el de aprendizaje por refuerzo (sin usar ninguna biblioteca ya implementada), pero suele tener peores resultados, al poder darse el caso de no haber priorizado bien las reglas o no haber tenido en cuenta algún caso especial.
+
+   %\item Máquina de estados: Este algoritmo implementar una máquina de estados finito mediante una estructura de datos, donde cada nodo representa un estado en el que se encuentra el piloto y cada arco representa la transición a otro estado. 
+   
+   %Una de las ventajas que tiene es que suele ser más simple describir el comportamiento en agentes más complejos y además, suelen ser más fáciles de modificar que los basados en reglas.
 \end{itemize}
 %\input{capitulos/01_Introduccion}
 %
