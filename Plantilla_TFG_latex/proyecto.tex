@@ -265,7 +265,7 @@ En el mercado hay gran variedad de motores gráficos de videojuegos, los más co
 
 \bigskip
 % \begin{itemize}
-\textbf{Unreal Engine} es una plataforma de desarrollo que permite, entre otras cosas: el desarrollo de videojuegos, creación de contenido para programas y películas, simulación, etc [https://www.unrealengine.com/es-ES/faq]. Posee un soporte para un gran número de plataformas, tanto consolas como móviles.
+\textbf{Unreal Engine} \cite{unreal} es una plataforma de desarrollo que permite, entre otras cosas: el desarrollo de videojuegos, creación de contenido para programas y películas, simulación, etc [https://www.unrealengine.com/es-ES/faq]. Posee un soporte para un gran número de plataformas, tanto consolas como móviles.
 
 \bigskip
 
@@ -293,7 +293,7 @@ Sin embargo, no tiene una licencia de código abierto, pero su código fuente es
 
 \bigskip
 
-\textbf{Unity} es una plataforma de desarrollo que permite: desarrollar videojuegos, visualizar construcciones en el ámbito de la arquitectura, para uso en la industria automotriz y para la creación de películas y series.
+\textbf{Unity} \cite{unity} es una plataforma de desarrollo que permite: desarrollar videojuegos, visualizar construcciones en el ámbito de la arquitectura, para uso en la industria automotriz y para la creación de películas y series.
 
 \bigskip
 
@@ -306,7 +306,6 @@ Entre sus características se encuentra:
    \item Soporte para un gran número de plataformas, incluyendo consolas y móviles, aparte de Windows, macOS y Linux.
    \item Incluye un lenguaje de programación visual, similar a \textit{Unreal} que permite programar sin necesitar conocer la \textit{API}.
 \end{itemize}
-% https://unity.com/es 
    
 \bigskip
 
@@ -314,7 +313,7 @@ Además, Unity tiene varias versiones del programa, incluyendo uno gratuito y lo
 
 \bigskip
 
-\textbf{Godot} es un motor gráfico gratuito y multiplataforma de código abierto que permite crear videojuegos en 2D y 3D. 
+\textbf{Godot} \cite{godot} es un motor gráfico gratuito y multiplataforma de código abierto que permite crear videojuegos en 2D y 3D. 
    
 Entre las características más notables se encuentran las siguientes:
 
@@ -327,14 +326,13 @@ Entre las características más notables se encuentran las siguientes:
 
 \bigskip 
 
-A partir de la versión 4, Godot ha dejado de incluir el lenguaje visual, debido a su falta de uso, por lo que solo es posible utilizar lenguajes de programación convencionales. %[https://godotengine.org/article/godot-4-will-discontinue-visual-scripting/]
+A partir de la versión 4, Godot ha dejado de incluir el lenguaje visual, debido a su falta de uso, por lo que solo es posible utilizar lenguajes de programación convencionales \cite{godot-no-visual}.
 
 \bigskip
 
 Además, Godot tiene una biblioteca con una gran cantidad de recursos para utilizar durante el desarrollo de un videojuego.
-   % [https://godotengine.org/asset-library/asset]
-   % [https://docs.godotengine.org/en/stable/tutorials/scripting/visual_script/getting_started.html]
-% CryEngine: 
+
+% CryEngine:
 
 \bigskip
 
@@ -348,10 +346,11 @@ En cuanto a algoritmos de navegación para los vehículos, los más destacados s
    
    Es importante obtener un equilibrio entre exploración y explotación, para que el agente sea capaz de actuar ante situaciones desconocidas de manera correcta. En caso de estar desequilibrado, puede darse la situación en el que se produzca un máximo local y no sea capaz de descubrir la mejor estrategia.
 
-   Para evitar esto, se suelen utilizar métodos de equilibrio. Uno de ellos es el denominado \textit{epsilon-greedy}, que permite controlar la cantidad de exploración mediante un parámetro \textit{epsilon}, que determina la aleatoriedad en la selección de acciones %[https://www.tokic.com/www/tokicm/publikationen/papers/KI2011.pdf]
-   permitiendo elegir en función de dicho parámetro una acción aleatoria o la mejor hasta el momento.
+   Para evitar esto, se suelen utilizar métodos de equilibrio. Uno de ellos es el denominado \textit{epsilon-greedy}, que permite controlar la cantidad de exploración mediante un parámetro \textit{epsilon}, que determina la aleatoriedad en la selección de acciones \cite{10.1007/978-3-642-24455-1_33} permitiendo elegir en función de dicho parámetro una acción aleatoria o la mejor hasta el momento.
 
    Una desventaja que tiene es la necesidad de entrenar el modelo, cosa que puede llevar demasiado tiempo, pero con el suficiente tiempo y con un conjunto de recompensas y castigos bien realizado, es uno de los mejores algoritmos para resolver este tipo de problema.
+
+   Además, al trabajar en un espacio continuo, no se puede hacer una tabla de \textit{Q-Values} porque, aparte de haber infinitos valores, la tabla no cabría físicamente en memoria y sería computacionalmente muy costoso. En este caso, sería necesario usar alguna alternativa como puede ser una red neuronal, permitiendo así trabajar con este tipo de valores \cite{coulom:tel-00003985}.
 
    \item Mediante reglas: Otra forma de resolver este problema es mediante reglas, que como su nombre indican, son un conjunto de reglas que se accionarán cuando se dé la condición deseada y normalmente están priorizados. Suelen tener forma de árbol, al hacer preguntas en cadena hasta llegar con la solución.
    
@@ -381,8 +380,9 @@ En cuanto a algoritmos de navegación para los vehículos, los más destacados s
 %
 %
 %%\nocite{*}
-%\bibliography{bibliografia/bibliografia}\addcontentsline{toc}{chapter}{Bibliografía}
-%\bibliographystyle{miunsrturl}
+\bibliography{bibliografia/bibliografia}\addcontentsline{toc}{chapter}{Bibliografía}
+% \bibliographystyle{miunsrturl}
+\bibliographystyle{plainurl}
 %
 %\appendix
 %\input{apendices/manual_usuario/manual_usuario}
