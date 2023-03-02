@@ -192,7 +192,7 @@ pdfproducer = {pdflatex}
 %
 %\mainmatter
 % \setlength{\parskip}{5pt}
-
+\chapter{Introducción}
 \section{Introducción y Motivación}
 
 El mundo del motor siempre ha sido un deporte que despierta la curiosidad en muchas personas alrededor del mundo, ya sea por la innovación tecnológica continua que se produce cada año en los vehículos, por sentir la adrenalina de conducir un coche de carreras o incluso por la satisfacción personal de ser capaz de dar órdenes a un piloto para llevarlo a la victoria, seleccionando las mejores estrategias en cada momento. Este proyecto se centrará en esto último.
@@ -201,12 +201,9 @@ El mundo del motor siempre ha sido un deporte que despierta la curiosidad en muc
 
 Gracias al avance de la informática, se puede realizar simulaciones de las carreras y de los vehículos para saber cuál es la mejor estrategia a seguir para llevar al equipo y al piloto a la victoria. Además, no son solo los profesionales los que recurren a este tipo de aplicaciones para realizar sus estrategias, sino que hay entusiastas de este deporte que compran este tipo de \textit{software} para obtener la satisfacción personal de haber llevado un equipo virtual a la victoria y en el trayecto haber aprendido estrategias cada vez más complejas.
 
-
-%Gracias al avance de la informática, se puede obtener más información de diversos factores en tiempo real, tales como: estado general del vehículo, condiciones del piloto e incluso estado de la pista. Con todos estos datos, se puede tomar la mejor decisión para llevar el piloto y el equipo a la victoria. Además, son cada vez más los entusiastas que recurren al uso de simuladores para poder probar de primera mano estas experiencias.
-
 \bigskip
 
-No obstante, el número de simuladores de gestión de carreras es relativamente pequeño y poco variado, normalmente centrándose en ciertas disciplinas concretas y en un solo equipo de carreras, sin poder interaccionar con los demás en ningún momento. % Además, algo que todos estos simuladores no tienen, es la posibilidad de modificar dichos parámetros en tiempo real a todos los pilotos para ver como afecta a su rendimiento.
+No obstante, el número de simuladores de gestión de carreras es relativamente pequeño y poco variado, normalmente centrándose en ciertas disciplinas concretas y en un solo equipo de carreras, sin poder interaccionar con los demás en ningún momento. 
 
 \bigskip
 
@@ -214,12 +211,10 @@ Los dos ejemplos más notables de este tipo de aplicación son:
 
 \begin{itemize}
    \item \textit{Gran Turismo B-Spec: }Parte de la saga para consolas \textit{PlayStation} que se centra en dar órdenes a un piloto en la carrera. Dependiendo de estas decisiones y de otros factores tales como la posición en la que se encuentre, puede variar su aguante físico, mental y su agresividad, pudiendo así cometer errores. Permite correr en una gran variedad de vehículos.
-   %\item Un ejemplo de aplicaciones existentes es la de \textit{Gran Turismo B-Spec}, que permite dar órdenes a un piloto durante la carrera y dependiendo de la frecuencia de dichas órdenes y la posición en la parrilla, pueden variar sus parámetros de aguante físico y mental.
    \item \textit{F1 Manager 22: }Simulador de gestión de carreras centrado exclusivamente en la \textit{Formula 1}, similar al anterior simulador. La desventaja que tiene es que se centra nada más que en una disciplina particular, pero consigue un nivel alto de profundidad en los sistemas.
-%   \item Otro ejemplo de este tipo de simuladores es el de \textit{F1 Manager 22}, que permite dar órdenes a los pilotos de un equipo de Formula 1. La desventaja es que solo se centra en una disciplina concreta, pero consigue un nivel alto de realismo.
 \end{itemize}
 
-En este proyecto se pretende desarrollar un simulador multidisciplinar, relativamente realista y personalizable mediante el uso de parámetros, incluyendo algunos similares a los mencionados anteriormente, y que además ofrece la posibilidad de modificar dichos parámetros de todos los pilotos en tiempo real, aparte de ser modificados por las condiciones de la carrera en la que se encuentre cada piloto.
+En este proyecto se pretende desarrollar un simulador multidisciplinar y personalizable mediante el uso de parámetros, incluyendo algunos similares a los mencionados anteriormente, y que además ofrece la posibilidad de modificar dichos parámetros de todos los pilotos en tiempo real, aparte de ser modificados por las condiciones de la carrera en la que se encuentre cada piloto.
 
 \bigskip
 
@@ -227,7 +222,7 @@ Además, la aplicación permitirá ajustar las aptitudes, el número de pilotos,
 
 \bigskip
 
-Todo lo mencionado permitirá a los entusiastas experimentar una simulación algo realista y sobre todo con el factor de la personalización superior a los ejemplos mencionados, al permitir simular condiciones muy específicas, y hacer que los usuarios comprendan como afectan dichas variables a los pilotos y su equipo, incluso en la vida real.
+Todo lo mencionado permitirá a los entusiastas experimentar una simulación en tiempo real y sobre todo con el factor de la personalización superior a los ejemplos mencionados, al permitir simular condiciones muy específicas, y hacer que los usuarios comprendan como afectan dichas variables a los pilotos y su equipo, incluso en la vida real.
 
 \section{Objetivos}
 
@@ -259,7 +254,7 @@ Cabe destacar que todos estos objetivos y algunos opcionales serán explicados e
 
 \section{Estado del arte}
 
-Como ya se ha descrito anteriormente, este proyecto hará uso de \textit{Unreal Engine} como motor gráfico y como \textit{framework} para la realización del simulador especificado. En cuanto a la forma en la que los pilotos se moverán por el circuito, he decidido usar el algoritmo de navegación \textbf{PONER AQUI EL ALGORITMO DE NAVEGAICION}.
+Como ya se ha descrito anteriormente, este proyecto hará uso de \textit{Unreal Engine} como motor gráfico y como \textit{framework} para la realización del simulador especificado. En cuanto a la forma en la que los pilotos se moverán por el circuito, he decidido usar el algoritmo de navegación \textbf{PONER AQUÍ EL ALGORITMO DE NAVEGACIÓN}.
 
 \bigskip
 
@@ -276,12 +271,9 @@ En el mercado hay gran variedad de motores gráficos de videojuegos, los más co
 
 Unreal además ofrece \textit{Blueprint Visual Scripting}, el cual es un sistema de \textit{scripting} visual que hace uso de nodos para programar las distintas partes del sistema. Permite programar de manera visual sin la necesidad de conocer la \textit{API} de C++ %[https://docs.unrealengine.com/5.1/en-US/introduction-to-blueprints-visual-scripting-in-unreal-engine/] 
 
-
-   % Además, a partir de la versión 5.0, \textit{Unreal} incluye tecnologías de optimización de rendimiento tales como TSR \textit{(Temporal Super Resolution)}, haciendo que el juego se renderice a una resolución menor y luego se reescale, \textit{Nanite}, que permite tener objetos con una gran cantidad de polígonos en la pantalla, y Lumen, que permite tener una iluminación más realista. %[https://www.unrealengine.com/en-US/unreal-engine-5] 
-
 \bigskip
 
-Además, a partir de la versión 5.0, Unreal incluye diversas tecnologias como: 
+Además, a partir de la versión 5.0, Unreal incluye diversas tecnologías como: 
 
 \begin{itemize}
    \item TSR \textit{(Temporal Super Resolution)}, mejorando el rendimiento haciendo que el juego se renderice internamente a una resolución menor y luego sea reescalado al tamaño deseado.
@@ -327,9 +319,7 @@ Además, Unity tiene varias versiones del programa, incluyendo uno gratuito y lo
 Entre las características más notables se encuentran las siguientes:
 
 \begin{itemize}
-   % \item Utilización de lenguaje visual, similar al usado en \textit{Unreal Engine}.
    \item Motor gráfico 2D dedicado, 
-   % \item programación en diversos lenguajes de programación, con la opción de incluir nuevos lenguajes mediante plugins. 
    \item Programación usando GDScript, C\# o C++ de manera oficial. No obstante, se puede programar usando otro lenguaje como Rust, Python o JavaScript. 
    \item Soporte para un gran número de plataformas, incluyendo móviles y consolas.
    \item Incluye un motor de físicas (solo para el motor gráfico 3D), aunque es algo más simple que el de sus competidores.
@@ -356,20 +346,20 @@ En cuanto a algoritmos de navegación para los vehículos, los más destacados s
 \begin{itemize}
    \item Aprendizaje por refuerzo (Q-Learning): Es una técnica de aprendizaje automático en la que el agente aprende a tomar decisiones en un entorno mediante la interacción a través de acciones (en este caso es: acelerador, freno y volante) y recibiendo una recompensa en caso de acercarse al objetivo deseado o de hacerlo bien.
    
-   Es importante obtener un equilibrio entre exploración y explitación, para que el agente sea capaz de actuar ante situaciones desconocidas de manera correcta. En caso de estar desequilibrado, puede darse la situación en el que se produzca un máximo local y no sea capaz de descubrir la mejor estrategia.
+   Es importante obtener un equilibrio entre exploración y explotación, para que el agente sea capaz de actuar ante situaciones desconocidas de manera correcta. En caso de estar desequilibrado, puede darse la situación en el que se produzca un máximo local y no sea capaz de descubrir la mejor estrategia.
 
    Para evitar esto, se suelen utilizar métodos de equilibrio. Uno de ellos es el denominado \textit{epsilon-greedy}, que permite controlar la cantidad de exploración mediante un parámetro \textit{epsilon}, que determina la aleatoriedad en la selección de acciones %[https://www.tokic.com/www/tokicm/publikationen/papers/KI2011.pdf]
    permitiendo elegir en función de dicho parámetro una acción aleatoria o la mejor hasta el momento.
 
    Una desventaja que tiene es la necesidad de entrenar el modelo, cosa que puede llevar demasiado tiempo, pero con el suficiente tiempo y con un conjunto de recompensas y castigos bien realizado, es uno de los mejores algoritmos para resolver este tipo de problema.
 
-   \item Mediante reglas: Otra forma de resolver este problemas es mediante reglas, que como su nombre indican, son un conjunto de reglas que se accionarán cuando se dé la condición deseada y normalmente están priorizados. Suelen tener forma de árbol, al hacer preguntas en cadena hasta llegar con la solución.
+   \item Mediante reglas: Otra forma de resolver este problema es mediante reglas, que como su nombre indican, son un conjunto de reglas que se accionarán cuando se dé la condición deseada y normalmente están priorizados. Suelen tener forma de árbol, al hacer preguntas en cadena hasta llegar con la solución.
    
    Esto tiene la ventaja de ser más sencillo de implementar que el de aprendizaje por refuerzo (sin usar ninguna biblioteca ya implementada), pero suele tener peores resultados, al poder darse el caso de no haber priorizado bien las reglas o no haber tenido en cuenta algún caso especial.
 
-   %\item Máquina de estados: Este algoritmo implementar una máquina de estados finito mediante una estructura de datos, donde cada nodo representa un estado en el que se encuentra el piloto y cada arco representa la transición a otro estado. 
+   \item Máquina de estados: Este algoritmo implementar una máquina de estados finito mediante una estructura de datos, donde cada nodo representa un estado en el que se encuentra el piloto y cada arco representa la transición a otro estado. 
    
-   %Una de las ventajas que tiene es que suele ser más simple describir el comportamiento en agentes más complejos y además, suelen ser más fáciles de modificar que los basados en reglas.
+   Una de las ventajas que tiene es que suele ser más simple describir el comportamiento en agentes más complejos y además, suelen ser más fáciles de modificar que los basados en reglas.
 \end{itemize}
 %\input{capitulos/01_Introduccion}
 %
