@@ -60,7 +60,7 @@ Telecomunicación\xspace}
 pdfauthor = {\myName (andresmerlo@correo.ugr.es)},
 pdftitle = {\myTitle},
 pdfsubject = {},
-pdfkeywords = {unreal, simulador, ia, },
+pdfkeywords = {Unreal, Simulación, IA },
 pdfcreator = {LaTeX con el paquete ....},
 pdfproducer = {pdflatex}
 }
@@ -210,7 +210,7 @@ No obstante, el número de simuladores de gestión de carreras es relativamente 
 Los dos ejemplos más notables de este tipo de aplicación son:
 
 \begin{itemize}
-   \item \textit{Gran Turismo B-Spec: }Parte de la saga para consolas \textit{PlayStation} que se centra en dar órdenes a un piloto en la carrera. Dependiendo de estas decisiones y de otros factores tales como la posición en la que se encuentre, puede variar su aguante físico, mental y su agresividad, pudiendo así cometer errores. Permite correr en una gran variedad de vehículos.
+   \item \textit{Gran Turismo B-Spec: }Parte de la saga para consolas \textit{PlayStation} que se centra en dar órdenes a un piloto en la carrera. Dependiendo de estas decisiones y de otros factores tales como la posición en la que se encuentre, puede variar su aguante físico, mental y su agresividad, pudiendo así cometer errores. Permite utilizar una gran variedad de vehículos.
    \item \textit{F1 Manager 22: }Simulador de gestión de carreras centrado exclusivamente en la \textit{Formula 1}, similar al anterior simulador. La desventaja que tiene es que se centra nada más que en una disciplina particular, pero consigue un nivel alto de profundidad en los sistemas.
 \end{itemize}
 
@@ -265,7 +265,7 @@ En el mercado hay gran variedad de motores gráficos de videojuegos, los más co
 
 \bigskip
 % \begin{itemize}
-\textbf{Unreal Engine} \cite{unreal} es una plataforma de desarrollo que permite, entre otras cosas: el desarrollo de videojuegos, creación de contenido para programas y películas, simulación, etc [https://www.unrealengine.com/es-ES/faq]. Posee un soporte para un gran número de plataformas, tanto consolas como móviles.
+\textbf{Unreal Engine} \cite{unreal} es una plataforma de desarrollo que permite, entre otras cosas: el desarrollo de videojuegos, creación de contenido para programas y películas, simulación, etc. Posee un soporte para un gran número de plataformas, tanto consolas como móviles.
 
 \bigskip
 
@@ -285,7 +285,7 @@ Todo esto permite tener un resultado a nivel gráfico muy convincente sin necesi
 
 \bigskip
 
-Asimismo, Unreal incluye un bazar con una gran cantidad de recursos, permitiendo simplificar mucho el desarrollo de videojuegos.
+Asimismo, Unreal incluye una tienda con una gran cantidad de recursos, permitiendo simplificar mucho el desarrollo de videojuegos.
 
 \bigskip
 
@@ -307,8 +307,6 @@ Entre sus características se encuentra:
    \item Incluye un lenguaje de programación visual, similar a \textit{Unreal} que permite programar sin necesitar conocer la \textit{API}.
 \end{itemize}
    
-\bigskip
-
 Además, Unity tiene varias versiones del programa, incluyendo uno gratuito y los demás de pago, con prioridad en la asistencia y un mayor abanico de herramientas.
 
 \bigskip
@@ -318,7 +316,7 @@ Además, Unity tiene varias versiones del programa, incluyendo uno gratuito y lo
 Entre las características más notables se encuentran las siguientes:
 
 \begin{itemize}
-   \item Motor gráfico 2D dedicado, 
+   \item Motor gráfico 2D dedicado. 
    \item Programación usando GDScript, C\# o C++ de manera oficial. No obstante, se puede programar usando otro lenguaje como Rust, Python o JavaScript. 
    \item Soporte para un gran número de plataformas, incluyendo móviles y consolas.
    \item Incluye un motor de físicas (solo para el motor gráfico 3D), aunque es algo más simple que el de sus competidores.
@@ -346,17 +344,17 @@ En cuanto a algoritmos de navegación para los vehículos, los más destacados s
    
    Es importante obtener un equilibrio entre exploración y explotación, para que el agente sea capaz de actuar ante situaciones desconocidas de manera correcta. En caso de estar desequilibrado, puede darse la situación en el que se produzca un máximo local y no sea capaz de descubrir la mejor estrategia.
 
-   Para evitar esto, se suelen utilizar métodos de equilibrio. Uno de ellos es el denominado \textit{epsilon-greedy}, que permite controlar la cantidad de exploración mediante un parámetro \textit{epsilon}, que determina la aleatoriedad en la selección de acciones \cite{10.1007/978-3-642-24455-1_33} permitiendo elegir en función de dicho parámetro una acción aleatoria o la mejor hasta el momento.
+   Para evitar esto, se suelen utilizar métodos de equilibrio. Uno de ellos es el denominado \textit{epsilon-greedy}, que permite controlar la cantidad de exploración mediante un parámetro \textit{epsilon}, que determina la aleatoriedad en la selección de acciones \cite{10.1007/978-3-642-24455-1_33}, permitiendo elegir en función de dicho parámetro una acción aleatoria o la mejor hasta el momento.
 
    Una desventaja que tiene es la necesidad de entrenar el modelo, cosa que puede llevar demasiado tiempo, pero con el suficiente tiempo y con un conjunto de recompensas y castigos bien realizado, es uno de los mejores algoritmos para resolver este tipo de problema.
 
-   Además, al trabajar en un espacio continuo, no se puede hacer una tabla de \textit{Q-Values} porque, aparte de haber infinitos valores, la tabla no cabría físicamente en memoria y sería computacionalmente muy costoso. En este caso, sería necesario usar alguna alternativa como puede ser una red neuronal, permitiendo así trabajar con este tipo de valores \cite{coulom:tel-00003985}.
+   No obstante, al trabajar en un espacio continuo, no se puede hacer una tabla de \textit{Q-Values} porque, aparte de haber infinitos valores, la tabla no cabría físicamente en memoria y sería computacionalmente muy costoso. En este caso, sería necesario usar alguna alternativa como puede ser una red neuronal, permitiendo así trabajar con este tipo de valores \cite{coulom:tel-00003985}.
 
-   \item Mediante reglas: Otra forma de resolver este problema es mediante reglas, que como su nombre indican, son un conjunto de reglas que se accionarán cuando se dé la condición deseada y normalmente están priorizados. Suelen tener forma de árbol, al hacer preguntas en cadena hasta llegar con la solución.
+   \item Mediante reglas: Otra forma de resolver este problema es mediante reglas, que como su nombre indican, son un conjunto de reglas que se accionarán cuando se dé la condición deseada y normalmente están priorizadas. Suelen tener forma de árbol, al hacer preguntas en cadena hasta llegar con la solución.
    
    Esto tiene la ventaja de ser más sencillo de implementar que el de aprendizaje por refuerzo (sin usar ninguna biblioteca ya implementada), pero suele tener peores resultados, al poder darse el caso de no haber priorizado bien las reglas o no haber tenido en cuenta algún caso especial.
 
-   \item Máquina de estados: Este algoritmo implementar una máquina de estados finito mediante una estructura de datos, donde cada nodo representa un estado en el que se encuentra el piloto y cada arco representa la transición a otro estado. 
+   \item Máquina de estados: Este algoritmo implementa una máquina de estados finitos mediante una estructura de datos, donde cada nodo representa un estado en el que se encuentra el piloto y cada arco representa la transición a otro estado. 
    
    Una de las ventajas que tiene es que suele ser más simple describir el comportamiento en agentes más complejos y además, suelen ser más fáciles de modificar que los basados en reglas.
 \end{itemize}
