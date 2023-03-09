@@ -13,6 +13,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage[spanish]{babel}
 
+\usepackage{xcolor}
+
 % \usepackage[style=list, number=none]{glossary} %
 %\usepackage{titlesec}
 %\usepackage{pailatino}
@@ -194,25 +196,49 @@ pdfproducer = {pdflatex}
 % \setlength{\parskip}{5pt}
 \chapter{Introducción}
 \section{Introducción y Motivación}
+%PALABRAS REPETIDAS, REVISAR
+%gran cantidad
+%no se repite, pero "cosas" queda muy feo
 
-El mundo del motor siempre ha sido un deporte que despierta la curiosidad en muchas personas alrededor del mundo, ya sea por la innovación tecnológica continua que se produce cada año en los vehículos, por sentir la adrenalina de conducir un coche de carreras o incluso por la satisfacción personal de ser capaz de dar órdenes a un piloto para llevarlo a la victoria, seleccionando las mejores estrategias en cada momento. Este proyecto se centrará en esto último.
+% \textcolor{red}{El mundo del motor es un deporte con una gran cantidad de seguidores y en el que se invierte una gran cantidad de dinero en tecnologías de todo tipo para poder tener una ventaja competitiva, incluyendo simuladores. Estos simuladores permiten a los equipos de carreras realizar un amplio abanico de cosas: entrenar a los pilotos antes de la temporada, modificar parámetros para exprimir el máximo rendimiento del vehículo o simular carreras para analizar cuál será la estrategia que les pueda llevar a la victoria. }
 
-\bigskip
-
-Gracias al avance de la informática, se puede realizar simulaciones de las carreras y de los vehículos para saber cuál es la mejor estrategia a seguir para llevar al equipo y al piloto a la victoria. Además, no son solo los profesionales los que recurren a este tipo de aplicaciones para realizar sus estrategias, sino que hay entusiastas de este deporte que compran este tipo de \textit{software} para obtener la satisfacción personal de haber llevado un equipo virtual a la victoria y en el trayecto haber aprendido estrategias cada vez más complejas.
-
-\bigskip
-
-No obstante, el número de simuladores de gestión de carreras es relativamente pequeño y poco variado, normalmente centrándose en ciertas disciplinas concretas y en un solo equipo de carreras, sin poder interaccionar con los demás en ningún momento. 
+\textcolor{orange}{El mundo del motor es un deporte con una amplia base de seguidores y en el que se invierte una gran cantidad de dinero en tecnologías de todo tipo para poder tener una ventaja competitiva, incluyendo simuladores. Estos simuladores permiten a los equipos de carreras realizar una extensa variedad de actividades: entrenar a los pilotos antes y durante la temporada, modificar parámetros para lograr el máximo rendimiento del vehículo o simular carreras para analizar cuál será la estrategia más adecuada para alcanzar la victoria.}
 
 \bigskip
 
-Los dos ejemplos más notables de este tipo de aplicación son:
+%PALABRAS REPES
+%mucho poder
+%como
 
-\begin{itemize}
-   \item \textit{Gran Turismo B-Spec: }Parte de la saga para consolas \textit{PlayStation} que se centra en dar órdenes a un piloto en la carrera. Dependiendo de estas decisiones y de otros factores tales como la posición en la que se encuentre, puede variar su aguante físico, mental y su agresividad, pudiendo así cometer errores. Permite utilizar una gran variedad de vehículos.
-   \item \textit{F1 Manager 22: }Simulador de gestión de carreras centrado exclusivamente en la \textit{Formula 1}, similar al anterior simulador. La desventaja que tiene es que se centra nada más que en una disciplina particular, pero consigue un nivel alto de profundidad en los sistemas.
-\end{itemize}
+\textcolor{orange}{Este proyecto se centrará en la simulación de gestión de carreras, sector en el que existen pocas opciones para el público general y que es cada vez más demandado para aprender la manera en que las distintas estrategias pueden afectar al desenlace de una carrera y como diferentes situaciones influyen en la capacidad de los pilotos, lo cual a su vez puede afectar a la tasa de errores producidos durante la carrera.}
+
+\bigskip
+
+%mejorar wording eleccion de varios coches
+%mejorar el por ejemplo, que solo es uno y parece que puede haber mas
+\textcolor{orange}{Se añadirán ciertas características procedentes de videojuegos con elementos de simulación a la aplicación gráfica, como la posibilidad de elegir entre varios tipos de vehículos (\textit{Gran Turismo B-Spec}), por mencionar un ejemplo.}
+
+\bigskip
+
+%quizas no repetir lo de la api, se sobreentiende con lo otro
+\textcolor{orange}{La motivación detrás de realizar esta aplicación es profundizar en los conocimientos previamente adquiridos en otras asignaturas del manejo de \textit{Unreal Engine} y en el aprendizaje de su API, enfocándolo al ámbito de las carreras y de los vehículos autónomos, área que me resulta muy interesante. Asimismo, se busca profundizar en el estudio de los distintos algoritmos de navegación para los vehículos del simulador, intentando escoger el que mejor se adapte a las necesidades del proyecto y que ofrezca buenos resultados.}
+
+\bigskip
+
+% No obstante, el número de simuladores de gestión de carreras es relativamente pequeño y poco variado, normalmente centrándose en ciertas disciplinas concretas y en un solo equipo de carreras, sin poder interaccionar con los demás en ningún momento. 
+
+% \bigskip
+
+% Los dos ejemplos más notables de este tipo de aplicación son:
+
+% \begin{itemize}
+%    \item \textit{Gran Turismo B-Spec: }Parte de la saga para consolas \textit{PlayStation} que se centra en dar órdenes a un piloto en la carrera. Dependiendo de estas decisiones y de otros factores tales como la posición en la que se encuentre, puede variar su aguante físico, mental y su agresividad, pudiendo así cometer errores. Permite utilizar una gran variedad de vehículos.
+%    \item \textit{F1 Manager 22: }Simulador de gestión de carreras centrado exclusivamente en la \textit{Formula 1}, similar al anterior simulador. La desventaja que tiene es que se centra nada más que en una disciplina particular, pero consigue un nivel alto de profundidad en los sistemas.
+% \end{itemize}
+
+\section{Objetivos}
+
+\textbf{---------------------------------REVISAR---------------------------------}
 
 En este proyecto se pretende desarrollar un simulador multidisciplinar y personalizable mediante el uso de parámetros, incluyendo algunos similares a los mencionados anteriormente, y que además ofrece la posibilidad de modificar dichos parámetros de todos los pilotos en tiempo real, aparte de ser modificados por las condiciones de la carrera en la que se encuentre cada piloto.
 
@@ -224,7 +250,7 @@ Además, la aplicación permitirá ajustar las aptitudes, el número de pilotos,
 
 Todo lo mencionado permitirá a los entusiastas experimentar una simulación en tiempo real y sobre todo con el factor de la personalización superior a los ejemplos mencionados, al permitir simular condiciones muy específicas, y hacer que los usuarios comprendan como afectan dichas variables a los pilotos y su equipo, incluso en la vida real.
 
-\section{Objetivos}
+\textbf{-------------------------------FIN REVISAR------------------------------}
 
 Como se ha mencionado en el apartado anterior, el objetivo principal de este proyecto es de ofrecer un simulador de carreras multidisciplinar y con un grado alto de personalización en las variables de cada piloto.
 
