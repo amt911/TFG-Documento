@@ -14,7 +14,8 @@
 \usepackage[spanish]{babel}
 
 \usepackage{xcolor}
-
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
 % \usepackage[style=list, number=none]{glossary} %
 %\usepackage{titlesec}
 %\usepackage{pailatino}
@@ -223,40 +224,35 @@ pdfproducer = {pdflatex}
 %quizas no repetir lo de la api, se sobreentiende con lo otro
 \textcolor{orange}{La motivación detrás de realizar esta aplicación es profundizar en los conocimientos previamente adquiridos en otras asignaturas del manejo de \textit{Unreal Engine} y en el aprendizaje de su API, enfocándolo al ámbito de las carreras y de los vehículos autónomos, área que me resulta muy interesante. Asimismo, se busca profundizar en el estudio de los distintos algoritmos de navegación para los vehículos del simulador, intentando escoger el que mejor se adapte a las necesidades del proyecto y que ofrezca buenos resultados.}
 
-\bigskip
+\section{Objetivos}
 
-% No obstante, el número de simuladores de gestión de carreras es relativamente pequeño y poco variado, normalmente centrándose en ciertas disciplinas concretas y en un solo equipo de carreras, sin poder interaccionar con los demás en ningún momento. 
+% \textbf{---------------------------------REVISAR---------------------------------}
+
+% En este proyecto se pretende desarrollar un simulador multidisciplinar y personalizable mediante el uso de parámetros y que además ofrece la posibilidad de modificar dichos parámetros de todos los pilotos en tiempo real, aparte de ser modificados por las condiciones de la carrera en la que se encuentre cada piloto.
 
 % \bigskip
 
-% Los dos ejemplos más notables de este tipo de aplicación son:
+% Además, la aplicación permitirá ajustar las aptitudes, el número de pilotos, la velocidad máxima de los coches, el número de los mismos y el número de vueltas y la hora del día a la que se va a disputar la carrera. Cabe decir que el \textit{software} permitirá también modificar otros aspectos ajenos a los que puedan modificar el resultado de la carrera, tales como la velocidad de simulación.
 
-% \begin{itemize}
-%    \item \textit{Gran Turismo B-Spec: }Parte de la saga para consolas \textit{PlayStation} que se centra en dar órdenes a un piloto en la carrera. Dependiendo de estas decisiones y de otros factores tales como la posición en la que se encuentre, puede variar su aguante físico, mental y su agresividad, pudiendo así cometer errores. Permite utilizar una gran variedad de vehículos.
-%    \item \textit{F1 Manager 22: }Simulador de gestión de carreras centrado exclusivamente en la \textit{Formula 1}, similar al anterior simulador. La desventaja que tiene es que se centra nada más que en una disciplina particular, pero consigue un nivel alto de profundidad en los sistemas.
-% \end{itemize}
+% \bigskip
 
-\section{Objetivos}
+% Todo lo mencionado permitirá a los entusiastas experimentar una simulación en tiempo real y sobre todo con el factor de la personalización superior a los ejemplos mencionados, al permitir simular condiciones muy específicas, y hacer que los usuarios comprendan como afectan dichas variables a los pilotos y su equipo, incluso en la vida real.
 
-\textbf{---------------------------------REVISAR---------------------------------}
+% \textbf{-------------------------------FIN REVISAR------------------------------}
 
-En este proyecto se pretende desarrollar un simulador multidisciplinar y personalizable mediante el uso de parámetros, incluyendo algunos similares a los mencionados anteriormente, y que además ofrece la posibilidad de modificar dichos parámetros de todos los pilotos en tiempo real, aparte de ser modificados por las condiciones de la carrera en la que se encuentre cada piloto.
+\textcolor{red}{En este proyecto se pretende desarrollar un simulador de gestión de carreras multidisciplinar y personalizable, en el que los pilotos tendrán un conjunto de capacidades que serán modificados por las condiciones de la carrera o por el usuario en tiempo real, haciendo que el piloto pueda cometer más errores o menos si su estado mejora. También existirá la opción de poder modificar la velocidad de simulación, con el objetivo de obtener los resultados de manera más rápida.}
 
 \bigskip
 
-Además, la aplicación permitirá ajustar las aptitudes, el número de pilotos, la velocidad máxima de los coches, el número de los mismos y el número de vueltas y la hora del día a la que se va a disputar la carrera. Cabe decir que el \textit{software} permitirá también modificar otros aspectos ajenos a los que puedan modificar el resultado de la carrera, tales como la velocidad de simulación.
+\textcolor{red}{Además, la aplicación permitirá modificar diversos parámetros antes de la carrera, con el propósito de poder personalizar la simulación lo máximo posible. Cabe destacar que estos parámetros no podrán ser modificados de nuevo, debido a que no tendría demasiado sentido y podrían hacer que la simulación no sea del todo precisa.}
+
+% Como se ha mencionado en el apartado anterior, el objetivo principal de este proyecto es de ofrecer un simulador de carreras multidisciplinar y con un grado alto de personalización en las variables de cada piloto.
 
 \bigskip
 
-Todo lo mencionado permitirá a los entusiastas experimentar una simulación en tiempo real y sobre todo con el factor de la personalización superior a los ejemplos mencionados, al permitir simular condiciones muy específicas, y hacer que los usuarios comprendan como afectan dichas variables a los pilotos y su equipo, incluso en la vida real.
+% Además, el proyecto debe cumplir los siguientes objetivos mínimos relativos a cambios antes de ejecutar la simulación:
 
-\textbf{-------------------------------FIN REVISAR------------------------------}
-
-Como se ha mencionado en el apartado anterior, el objetivo principal de este proyecto es de ofrecer un simulador de carreras multidisciplinar y con un grado alto de personalización en las variables de cada piloto.
-
-\bigskip
-
-Además, el proyecto debe cumplir los siguientes objetivos mínimos relativos a cambios antes de ejecutar la simulación:
+\textcolor{red}{Siendo más específicos, los objetivos mínimos relativos a cambios antes de ejecutar la simulación son:}
 
 \begin{itemize}
    \item Cambio de número de pilotos.
@@ -264,21 +260,25 @@ Además, el proyecto debe cumplir los siguientes objetivos mínimos relativos a 
    \item Cambios de las aptitudes de los pilotos; es decir, el nivel máximo de cada condición que puede alcanzar.
    \item Cambio de la velocidad máxima de los vehículos.
    \item Permitir (opcionalmente) que haya variación de prestaciones entre vehículos.
+   \item Cambio del tipo de vehículo.
 \end{itemize}
 
 \bigskip
 
-En cuanto a cambios durante la simulación, debe cumplir estos objetivos:
+\textcolor{red}{En cuanto a cambios durante la simulación, debe cumplir estos objetivos:}
 
 \begin{itemize}
    \item Seleccionar piloto de la lista de pilotos.
    \item Obtener las condiciones actuales del piloto seleccionado.
    \item Modificar las condiciones actuales del piloto seleccionado.
+   \item Cambiar la velocidad de simulación.
 \end{itemize}
 
 Cabe destacar que todos estos objetivos y algunos opcionales serán explicados en detalle en apartados siguientes.
 
 \section{Estado del arte}
+\textbf{--------ARREGLAR LAS MULETILLAS DE ADEMAS--------} 
+\bigskip
 
 Como ya se ha descrito anteriormente, este proyecto hará uso de \textit{Unreal Engine} como motor gráfico y como \textit{framework} para la realización del simulador especificado. En cuanto a la forma en la que los pilotos se moverán por el circuito, he decidido usar el algoritmo de navegación \textbf{PONER AQUÍ EL ALGORITMO DE NAVEGACIÓN}.
 
@@ -289,13 +289,12 @@ A continuación, voy a explicar las distintas opciones que hay disponibles en mo
 \subsection{Motor gráfico}
 En el mercado hay gran variedad de motores gráficos de videojuegos, los más conocidos son los siguientes:
 
-\bigskip
-% \begin{itemize}
-\textbf{Unreal Engine} \cite{unreal} es una plataforma de desarrollo que permite, entre otras cosas: el desarrollo de videojuegos, creación de contenido para programas y películas, simulación, etc. Posee un soporte para un gran número de plataformas, tanto consolas como móviles.
+\subsubsection{Unreal Engine}
+Unreal Engine \cite{unreal} es una plataforma de desarrollo que permite, entre otras cosas: el desarrollo de videojuegos, creación de contenido para programas y películas, simulación, etc. Posee un soporte para un gran número de plataformas, tanto consolas como móviles.
 
 \bigskip
 
-Unreal además ofrece \textit{Blueprint Visual Scripting}, el cual es un sistema de \textit{scripting} visual que hace uso de nodos para programar las distintas partes del sistema. Permite programar de manera visual sin la necesidad de conocer la \textit{API} de C++ %[https://docs.unrealengine.com/5.1/en-US/introduction-to-blueprints-visual-scripting-in-unreal-engine/] 
+Unreal además ofrece \textit{Blueprint Visual Scripting}, el cual es un sistema de \textit{scripting} visual que hace uso de nodos para programar las distintas partes del sistema. Permite programar de manera visual sin la necesidad de conocer la \textit{API} de C++. %[https://docs.unrealengine.com/5.1/en-US/introduction-to-blueprints-visual-scripting-in-unreal-engine/] 
 
 \bigskip
 
@@ -315,11 +314,11 @@ Asimismo, Unreal incluye una tienda con una gran cantidad de recursos, permitien
 
 \bigskip
 
-Sin embargo, no tiene una licencia de código abierto, pero su código fuente es accesible a través de un repositorio de GitHub %[https://forums.unrealengine.com/t/is-unreal-open-source/473823]
+Sin embargo, no tiene una licencia de código abierto, pero su código fuente es accesible a través de un repositorio de GitHub. %[https://forums.unrealengine.com/t/is-unreal-open-source/473823]
 
-\bigskip
+\subsubsection{Unity}
 
-\textbf{Unity} \cite{unity} es una plataforma de desarrollo que permite: desarrollar videojuegos, visualizar construcciones en el ámbito de la arquitectura, para uso en la industria automotriz y para la creación de películas y series.
+Unity \cite{unity} es una plataforma de desarrollo que permite: desarrollar videojuegos, visualizar construcciones en el ámbito de la arquitectura, para uso en la industria automotriz y para la creación de películas y series.
 
 \bigskip
 
@@ -335,9 +334,9 @@ Entre sus características se encuentra:
    
 Además, Unity tiene varias versiones del programa, incluyendo uno gratuito y los demás de pago, con prioridad en la asistencia y un mayor abanico de herramientas.
 
-\bigskip
+\subsubsection{Godot}
 
-\textbf{Godot} \cite{godot} es un motor gráfico gratuito y multiplataforma de código abierto que permite crear videojuegos en 2D y 3D. 
+Godot \cite{godot} es un motor gráfico gratuito y multiplataforma de código abierto que permite crear videojuegos en 2D y 3D. 
    
 Entre las características más notables se encuentran las siguientes:
 
