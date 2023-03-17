@@ -226,7 +226,7 @@ En este proyecto se pretende desarrollar un simulador de gestión de carreras mu
 
 \bigskip
 
-Además, la aplicación permitirá modificar diversos parámetros antes de la carrera, con el propósito de personalizar la simulación lo máximo posible. Cabe destacar que estos parámetros no podrán ser cambiados de nuevo, debido a que no tendría demasiado sentido y podrían hacer que los resultados finales no sean del todo precisos.
+Además, la aplicación permitirá modificar diversos parámetros antes de la carrera, con el propósito de personalizar la simulación lo máximo posible. Cabe destacar que estos parámetros no podrán ser cambiados de nuevo, debido a que no tendría demasiado sentido y podrían hacer que los resultados finales no fueran del todo precisos.
 
 
 \bigskip
@@ -384,7 +384,7 @@ En cuanto a algoritmos de navegación para los vehículos, los más destacados s
 
    Para este proyecto, se podría implementar DQN. La red neuronal tendría como entrada varios sensores de colisión y de límites de pista, y como salida el nivel de aceleración, frenado y giro del volante.
 
-   \item \textbf{Mediante reglas:} Otra forma de resolver este problema es mediante reglas. Son un conjunto de acciones que se aplican cuando se cumple una determinada condición y suelen estar ordenadas por prioridad. Pueden ser representadas mediante un árbol, donde cada acción se encuentra en una hoja y las preguntas o condiciones que las activan son las ramas (aristas). La prioridad de las acciones se establece según su posición en el árbol, siendo las más importantes las de niveles superiores.
+   \item \textbf{Mediante reglas:} Conjunto de acciones que se aplican cuando se cumple una determinada condición y suelen estar ordenadas por prioridad. Pueden ser representadas mediante un árbol, donde cada acción se encuentra en una hoja y las preguntas o condiciones que las activan son las ramas (aristas). La prioridad de las acciones se establece según su posición en el árbol, siendo las más importantes las de niveles superiores.
    
    Esto tiene la ventaja de ser más sencillo de implementar que el de aprendizaje por refuerzo, pero suele tener peores resultados, al poder darse el caso de no haber priorizado bien las reglas o no haber tenido en cuenta algún caso especial.
 
