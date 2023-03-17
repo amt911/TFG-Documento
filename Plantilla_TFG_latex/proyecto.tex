@@ -245,7 +245,7 @@ Siendo más específicos, los objetivos mínimos relativos a alteraciones antes 
 
 \bigskip
 
-En cuanto a cambios durante la simulación, debe cumplir estos objetivos:
+En cuanto a cambios durante la carrera, debe cumplir estos objetivos:
 
 \begin{itemize}
    \item Seleccionar piloto de la lista de pilotos.
@@ -382,7 +382,7 @@ En cuanto a algoritmos de navegación para los vehículos, los más destacados s
 
    No obstante, si el entorno de aprendizaje es continuo, una tabla de \textit{Q-Values} no es adecuada debido a la gran cantidad de posibles valores y el alto costo computacional en procesamiento y memoria. En su lugar, se puede sustituir la tabla por una red neuronal, como el algoritmo \textit{Deep Q-Network} (DQN), para trabajar en este tipo de espacios \cite{coulom:tel-00003985}.
 
-   Para este proyecto, se podría implementar el algoritmo DQN. La red neuronal tendría como entrada varios sensores de colisión y de límites de pista, y como salida el nivel de aceleración, frenado y giro del volante.
+   Para este proyecto, se podría implementar DQN. La red neuronal tendría como entrada varios sensores de colisión y de límites de pista, y como salida el nivel de aceleración, frenado y giro del volante.
 
    \item \textbf{Mediante reglas:} Otra forma de resolver este problema es mediante reglas. Son un conjunto de acciones que se aplican cuando se cumple una determinada condición y suelen estar ordenadas por prioridad. Pueden ser representadas mediante un árbol, donde cada acción se encuentra en una hoja y las preguntas o condiciones que las activan son las ramas (aristas). La prioridad de las acciones se establece según su posición en el árbol, siendo las más importantes las de niveles superiores.
    
@@ -391,7 +391,7 @@ En cuanto a algoritmos de navegación para los vehículos, los más destacados s
 
    Aplicado a este proyecto, se podría diseñar como un conjunto de funciones que manejen cada posible control del vehículo y se ejecuten de manera periódica. De esta forma, dependiendo del entorno y del estado del piloto, se aplicarán distintas salidas para guiar el vehículo por el circuito.
 
-   \item \textbf{Máquina de estados:} Este algoritmo implementa una máquina de estados finitos mediante una estructura de datos, donde cada nodo representa un estado del piloto y cada arco representa la transición a otro estado. 
+   \item \textbf{Máquina de estados:} Este algoritmo implementa una máquina de estados finitos mediante una estructura de datos, donde cada nodo representa la estrategia seguida y cada arco representa la transición a otro estado. 
    
    Una de las ventajas que tiene es que suele ser más simple describir el comportamiento en agentes más complejos y además, suelen ser más fáciles de modificar que los basados en reglas.
 
@@ -401,7 +401,7 @@ En cuanto a algoritmos de navegación para los vehículos, los más destacados s
    
    Si se desea aplica este algoritmo al proyecto, es necesario discretizar el espacio, lo que puede provocar una pérdida de precisión. Además, se debería aplicar periódicamente en todos los vehículos de la simulación, lo que puede ser computacionalmente costoso.
 
-   No obstante, una ventaja significativa del algoritmo es que se puede incluir el estado del piloto en la función heurística, lo que facilita su integración en el simulador. También se puede aplicar una función de suavizado a la trayectoria resultante para mejorar su precisión. Dado que el proyecto no se centra en la eficiencia computacional, el algoritmo A* podría ser considerado como una opción viable para la navegación por el circuito.
+   No obstante, una ventaja significativa del algoritmo es que se puede incluir el estado del piloto en la función heurística, lo que facilita su integración en el simulador. También se puede aplicar una función de suavizado a la trayectoria resultante para mejorar su precisión. Dado que el proyecto no se centra en la eficiencia computacional, A* podría ser considerado como una opción viable para la navegación por el circuito.
 \end{itemize}
 %\input{capitulos/01_Introduccion}
 %
