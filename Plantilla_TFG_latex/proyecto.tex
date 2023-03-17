@@ -226,25 +226,11 @@ pdfproducer = {pdflatex}
 
 \section{Objetivos}
 
-% \textbf{---------------------------------REVISAR---------------------------------}
-
-% En este proyecto se pretende desarrollar un simulador multidisciplinar y personalizable mediante el uso de parámetros y que además ofrece la posibilidad de modificar dichos parámetros de todos los pilotos en tiempo real, aparte de ser modificados por las condiciones de la carrera en la que se encuentre cada piloto.
-
-% \bigskip
-
-% Además, la aplicación permitirá ajustar las aptitudes, el número de pilotos, la velocidad máxima de los coches, el número de los mismos y el número de vueltas y la hora del día a la que se va a disputar la carrera. Cabe decir que el \textit{software} permitirá también modificar otros aspectos ajenos a los que puedan modificar el resultado de la carrera, tales como la velocidad de simulación.
-
-% \bigskip
-
-% Todo lo mencionado permitirá a los entusiastas experimentar una simulación en tiempo real y sobre todo con el factor de la personalización superior a los ejemplos mencionados, al permitir simular condiciones muy específicas, y hacer que los usuarios comprendan como afectan dichas variables a los pilotos y su equipo, incluso en la vida real.
-
-% \textbf{-------------------------------FIN REVISAR------------------------------}
-
-\textcolor{red}{En este proyecto se pretende desarrollar un simulador de gestión de carreras multidisciplinar y personalizable, en el que los pilotos tendrán un conjunto de capacidades que serán modificados por las condiciones de la carrera o por el usuario en tiempo real, haciendo que el piloto pueda cometer más errores o menos si su estado mejora. También existirá la opción de poder modificar la velocidad de simulación, con el objetivo de obtener los resultados de manera más rápida.}
+\textcolor{red}{En este proyecto se pretende desarrollar un simulador de gestión de carreras multidisciplinar y personalizable, en el que los pilotos tendrán un conjunto de capacidades que serán modificadas por las condiciones de la carrera o por el usuario en tiempo real, haciendo que el piloto pueda cometer más errores o menos si su estado mejora. También existirá la opción de poder modificar la velocidad de simulación, con el objetivo de obtener los resultados de manera más rápida.}
 
 \bigskip
 
-\textcolor{red}{Además, la aplicación permitirá modificar diversos parámetros antes de la carrera, con el propósito de poder personalizar la simulación lo máximo posible. Cabe destacar que estos parámetros no podrán ser modificados de nuevo, debido a que no tendría demasiado sentido y podrían hacer que la simulación no sea del todo precisa.}
+\textcolor{red}{Además, la aplicación permitirá modificar diversos parámetros antes de la carrera, con el propósito de poder personalizar la simulación lo máximo posible. Cabe destacar que estos parámetros no podrán ser cambiados de nuevo, debido a que no tendría demasiado sentido y podrían hacer que los resultados de la simulación no sean del todo precisos.}
 
 % Como se ha mencionado en el apartado anterior, el objetivo principal de este proyecto es de ofrecer un simulador de carreras multidisciplinar y con un grado alto de personalización en las variables de cada piloto.
 
@@ -252,7 +238,7 @@ pdfproducer = {pdflatex}
 
 % Además, el proyecto debe cumplir los siguientes objetivos mínimos relativos a cambios antes de ejecutar la simulación:
 
-\textcolor{red}{Siendo más específicos, los objetivos mínimos relativos a cambios antes de ejecutar la simulación son:}
+\textcolor{red}{Siendo más específicos, los objetivos mínimos relativos a alteraciones antes de ejecutar la simulación son:}
 
 \begin{itemize}
    \item Cambio de número de pilotos.
@@ -274,7 +260,7 @@ pdfproducer = {pdflatex}
    \item Cambiar la velocidad de simulación.
 \end{itemize}
 
-Cabe destacar que todos estos objetivos y algunos opcionales serán explicados en detalle en apartados siguientes.
+Conviene resaltar que todos estos objetivos y algunos opcionales serán explicados en detalle en apartados siguientes.
 
 \section{Estado del arte}
 \textbf{--------ARREGLAR LAS MULETILLAS DE ADEMAS--------} 
@@ -294,7 +280,7 @@ Unreal Engine \cite{unreal} es una plataforma de desarrollo que permite, entre o
 
 \bigskip
 
-Unreal además ofrece \textit{Blueprint Visual Scripting}, el cual es un sistema de \textit{scripting} visual que hace uso de nodos para programar las distintas partes del sistema. Permite programar de manera visual sin la necesidad de conocer la \textit{API} de C++. %[https://docs.unrealengine.com/5.1/en-US/introduction-to-blueprints-visual-scripting-in-unreal-engine/] 
+Unreal incluye \textit{Blueprint Visual Scripting}, el cual es un sistema de \textit{scripting} visual que hace uso de nodos para programar las distintas partes del sistema. Permite programar de manera visual sin la necesidad de conocer la \textit{API} de C++.
 
 \bigskip
 
@@ -306,11 +292,12 @@ Además, a partir de la versión 5.0, Unreal incluye diversas tecnologías como:
    \item Lumen, que genera una iluminación más realista. %[https://www.unrealengine.com/en-US/unreal-engine-5]
 \end{itemize}
 
-Todo esto permite tener un resultado a nivel gráfico muy convincente sin necesitar dedicar demasiado trabajo en este apartado y sin requerir un hardware demasiado potente.
+% Todo esto permite tener un resultado a nivel gráfico muy convincente sin necesitar dedicar demasiado trabajo en este apartado y sin requerir un hardware demasiado potente.
+Estas tecnologías permiten obtener un resultado gráfico muy convincente, partiendo de un modelo correctamente modelado y texturizado. Asimismo, la inclusión de \textit{TSR} posibilita escalar la aplicación a resoluciones mayores de lo que el hardware es capaz de ejecutar.
 
 \bigskip
 
-Asimismo, Unreal incluye una tienda con una gran cantidad de recursos, permitiendo simplificar mucho el desarrollo de videojuegos.
+Unreal también incluye una tienda con una gran cantidad de recursos, permitiendo simplificar mucho el desarrollo de videojuegos.
 
 \bigskip
 
