@@ -205,7 +205,7 @@ pdfproducer = {pdflatex}
 
 % \textcolor{red}{El mundo del motor es un deporte con una gran cantidad de seguidores y en el que se invierte una gran cantidad de dinero en tecnologías de todo tipo para poder tener una ventaja competitiva, incluyendo simuladores. Estos simuladores permiten a los equipos de carreras realizar un amplio abanico de cosas: entrenar a los pilotos antes de la temporada, modificar parámetros para exprimir el máximo rendimiento del vehículo o simular carreras para analizar cuál será la estrategia que les pueda llevar a la victoria. }
 
-\textcolor{orange}{El mundo del motor es un deporte con una amplia base de seguidores y en el que se invierte una gran cantidad de dinero en tecnologías de todo tipo para poder tener una ventaja competitiva, incluyendo simuladores. Estos simuladores permiten a los equipos de carreras realizar una extensa variedad de actividades: entrenar a los pilotos antes y durante la temporada, modificar parámetros para lograr el máximo rendimiento del vehículo o simular carreras para analizar cuál será la estrategia más adecuada para alcanzar la victoria.}
+\textcolor{orange}{El mundo del motor es un deporte con una amplia base de seguidores y en el que se invierte una gran cantidad de dinero en simuladores de todo tipo para poder tener una ventaja competitiva. Estos simuladores permiten a los equipos de carreras realizar una extensa variedad de actividades: entrenar a los pilotos antes y durante la temporada, modificar parámetros para lograr el máximo rendimiento del vehículo o simular carreras para analizar cuál será la estrategia más adecuada para alcanzar la victoria.}
 
 \bigskip
 
@@ -213,7 +213,7 @@ pdfproducer = {pdflatex}
 %mucho poder
 %como
 
-\textcolor{orange}{Este proyecto se centrará en la simulación de gestión de carreras, sector en el que existen pocas opciones para el público general y que es cada vez más demandado para aprender la manera en que las distintas estrategias pueden afectar al desenlace de una carrera y como diferentes situaciones influyen en la capacidad de los pilotos, lo cual a su vez puede afectar a la tasa de errores producidos durante la carrera.}
+\textcolor{orange}{Este proyecto se centrará en la simulación de gestión de carreras, sector en el que existen pocas opciones para el público general y que es cada vez más demandado para aprender la manera en que las distintas estrategias pueden afectar al desenlace de una carrera y como diferentes situaciones influyen en la capacidad de los pilotos. Estos factores pueden afectar a la tasa de errores producidos durante la carrera.}
 
 \bigskip
 
@@ -232,7 +232,7 @@ pdfproducer = {pdflatex}
 
 \bigskip
 
-\textcolor{red}{Además, la aplicación permitirá modificar diversos parámetros antes de la carrera, con el propósito de poder personalizar la simulación lo máximo posible. Cabe destacar que estos parámetros no podrán ser cambiados de nuevo, debido a que no tendría demasiado sentido y podrían hacer que los resultados de la simulación no sean del todo precisos.}
+\textcolor{red}{Además, la aplicación permitirá modificar diversos parámetros antes de la carrera, con el propósito de personalizar la simulación lo máximo posible. Cabe destacar que estos parámetros no podrán ser cambiados de nuevo, debido a que no tendría demasiado sentido y podrían hacer que los resultados de la simulación no sean del todo precisos.}
 
 % Como se ha mencionado en el apartado anterior, el objetivo principal de este proyecto es de ofrecer un simulador de carreras multidisciplinar y con un grado alto de personalización en las variables de cada piloto.
 
@@ -265,10 +265,7 @@ pdfproducer = {pdflatex}
 Conviene resaltar que todos estos objetivos y algunos opcionales serán explicados en detalle en apartados siguientes.
 
 \section{Estado del arte}
-\textbf{--------ARREGLAR LAS MULETILLAS DE ADEMAS--------} 
-\bigskip
-
-Como ya se ha descrito anteriormente, este proyecto hará uso de \textit{Unreal Engine} como motor gráfico y como \textit{framework} para la realización del simulador especificado. En cuanto a la forma en la que los pilotos se moverán por el circuito, he decidido usar el algoritmo de navegación \textbf{PONER AQUÍ EL ALGORITMO DE NAVEGACIÓN}.
+Como ya se ha descrito anteriormente, este proyecto hará uso de \textit{Unreal Engine} como motor gráfico y \textit{framework} para la realización del simulador especificado. En cuanto a la forma en la que los pilotos se moverán por el circuito, he decidido usar el algoritmo de navegación \textbf{PONER AQUÍ EL ALGORITMO DE NAVEGACIÓN}.
 
 \bigskip
 
@@ -351,7 +348,9 @@ Además, Unity tiene varias versiones del programa, incluyendo uno gratuito y lo
 \end{figure}
 
 Godot \cite{godot} es un motor gráfico gratuito y multiplataforma de código abierto que permite crear videojuegos en 2D y 3D. 
-   
+
+\bigskip
+
 Entre las características más notables se encuentran las siguientes:
 
 \begin{itemize}
@@ -371,9 +370,9 @@ Además, Godot tiene una biblioteca con una gran cantidad de recursos para utili
 
 % CryEngine:
 
-\bigskip
+\subsubsection{Elección final}
 
-Al final he decidido usar Unreal Engine debido a que la versión gratuita incluye toda la funcionalidad, ofrece unos buenos resultados a nivel visual sin requerir demasiado esfuerzo, es el más potente en cuanto a programación visual y es con el que más familiarizado estoy de todas las opciones citadas anteriormente.
+Al final, he decidido utilizar Unreal Engine debido a que la versión gratuita incluye toda la funcionalidad, ofrece unos buenos resultados a nivel visual sin requerir demasiado esfuerzo, es el más potente en cuanto a programación visual y es con el que más familiarizado estoy de todas las opciones citadas anteriormente.
 
 \subsection{Algoritmo de navegación}
 En cuanto a algoritmos de navegación para los vehículos, los más destacados son:
@@ -387,41 +386,32 @@ En cuanto a algoritmos de navegación para los vehículos, los más destacados s
    
    Para evitar esto, se suelen utilizar métodos de equilibrio. Uno de ellos es el denominado \textit{epsilon-greedy}, que permite controlar la cantidad de exploración mediante un parámetro \textit{epsilon}, que determina la aleatoriedad en la selección de acciones \cite{10.1007/978-3-642-24455-1_33}, permitiendo elegir en función de dicho parámetro una acción aleatoria o la mejor hasta el momento.
 
-   Una desventaja que tiene es la necesidad de entrenar el modelo, lo cual puede ser un proceso largo, pero con el suficiente tiempo y con un conjunto de recompensas y castigos bien realizado, es una excelente técnica para resolver este tipo de problema.
+   Una desventaja que tiene es la necesidad de entrenar el modelo, lo cual puede ser un proceso largo y complicado, pero con el suficiente tiempo y con un conjunto de recompensas y castigos bien realizado, es una excelente técnica para resolver este tipo de problema.
 
    \textcolor{orange}{El algoritmo \textit{Q-Learning} es uno de los más utilizados para espacios discretos. Consiste en una función Q, que permite al agente estimar el valor esperado de una acción dado un estado. Dicha función se implementa mediante una tabla denominada \textit{Q-Values}, en la que se almacena el valor esperado de las recompensas para cada estado y acción posible. Para evitar problemas de equilibrio, se utilizan métodos como el \textit{epsilon-greedy}, ampliamente utilizado y que ofrece buenos resultados.}
 
    No obstante, si el entorno de aprendizaje es continuo, una tabla de \textit{Q-Values} no es adecuada debido a la gran cantidad de posibles valores y el alto costo computacional en procesamiento y memoria. En su lugar, se puede sustituir la tabla por una red neuronal, como el algoritmo \textit{Deep Q-Network} (DQN), para trabajar en este tipo de espacios \cite{coulom:tel-00003985}.
 
-   \textcolor{orange}{Para este proyecto, se podría implementar el algoritmo DQN. La red neuronal tendría como entrada varios sensores de colisión y de salida de pista, y como salida la cantidad de acelerador, freno y giro del volante.}
+   \textcolor{orange}{Para este proyecto, se podría implementar el algoritmo DQN. La red neuronal tendría como entrada varios sensores de colisión y de límites de pista, y como salida la cantidad de acelerador, freno y giro del volante.}
 
-   \item \textbf{Mediante reglas:} Otra forma de resolver este problema es mediante reglas, que como su nombre indican, son un conjunto de reglas que se aplicarán cuando se dé la condición deseada y normalmente están priorizadas. Puede tener forma de árbol, donde cada acción es una hoja y las respuestas a las preguntas son las ramas, lo que permite elegir la opción más adecuada a partir de dichas preguntas.
-   %Suelen tener forma de árbol, al hacer preguntas en cadena hasta llegar con la solución.
+   \item \textbf{Mediante reglas:} Otra forma de resolver este problema es mediante reglas. Son un conjunto de acciones que se aplican cuando se cumple una determinada condición y suelen estar ordenadas por prioridad. Pueden ser representadas mediante un árbol, donde cada acción se encuentra en una hoja y las preguntas o condiciones que las activan son las ramas (aristas). La prioridad de las acciones se establece según su posición en el árbol, siendo las más importantes las que se encuentran en niveles superiores.
    
-   Esto tiene la ventaja de ser más sencillo de implementar que el de aprendizaje por refuerzo (sin usar ninguna biblioteca ya implementada), pero suele tener peores resultados, al poder darse el caso de no haber priorizado bien las reglas o no haber tenido en cuenta algún caso especial.
+   Esto tiene la ventaja de ser más sencillo de implementar que el de aprendizaje por refuerzo, pero suele tener peores resultados, al poder darse el caso de no haber priorizado bien las reglas o no haber tenido en cuenta algún caso especial.
 
-   Aplicado a este proyecto, se podría implementar como varias acciones encadenadas que se ejecutan periódicamente. Dependiendo de las condiciones de su entorno y el estado del piloto, se realizarán distintas acciones.
+
+   Aplicado a este proyecto, se podría diseñar como un conjunto de funciones que manejen cada posible control del vehículo y se ejecuten de manera periódica. De esta forma, dependiendo del entorno y del estado del piloto, se aplicarán distintas salidas para guiar el vehículo por el circuito.
 
    \item \textbf{Máquina de estados:} Este algoritmo implementa una máquina de estados finitos mediante una estructura de datos, donde cada nodo representa un estado en el que se encuentra el piloto y cada arco representa la transición a otro estado. 
    
    Una de las ventajas que tiene es que suele ser más simple describir el comportamiento en agentes más complejos y además, suelen ser más fáciles de modificar que los basados en reglas.
 
-   En este proyecto se podrían implementar estados como: ``Seguir línea'', ``Adelantar'', ``Comienzo de carrera'' y ``Esquivar obstáculo''.
+   En este proyecto se podrían implementar estados como: ``Seguir línea'', ``Adelantar'', ``Comienzo de carrera'' y ``Esquivar obstáculo''. Dependiendo del entorno y del estado del piloto, el agente puede pasar a otro estado más adecuado.
 
-   \item \textbf{Algoritmo A* (A Estrella)}: Algoritmo de búsqueda de caminos en grafos que se utiliza para encontrar la ruta óptima en un grafo. Utiliza una función heurística para guiar la búsqueda hacia la ruta óptima y es más eficiente que otros algoritmos similares, como el de Dijkstra.
-   % Es muy similar a otros algoritmos como Dijkstra, pero con la peculiaridad de usar una función heurística, permitiendo así buscar caminos distintos al óptimo.
+   \item \textbf{Algoritmo A* (A Estrella)}: Algoritmo de búsqueda de caminos en grafos que se utiliza para encontrar la ruta óptima. Utiliza una función heurística para guiar la búsqueda hacia la ruta óptima y es más eficiente que otros algoritmos similares, como el de Dijkstra.
    
-   Si se desea aplica este algoritmo al proyecto, es necesario discretizar el espacio, lo que puede provocar una perdida de precisión. Además, se debería aplicar periódicamente en todos los vehículos de la simulación, lo que puede ser computacionalmente costoso.
+   Si se desea aplica este algoritmo al proyecto, es necesario discretizar el espacio, lo que puede provocar una pérdida de precisión. Además, se debería aplicar periódicamente en todos los vehículos de la simulación, lo que puede ser computacionalmente costoso.
 
-
-   % Si se deseara aplicar a este proyecto sería necesario discretizar el espacio, haciendo perder precisión. Otro problema es que sería necesario aplicarlo periódicamente y en todos los vehículos, cosa que puede resultar muy costosa computacionalmente.
-
-   % Sin embargo, una ventaja es que el estado de los piloto se puede incluir en la funcion heuristica, lo que facilita su integracion en la aplicacion. Tambien se puede aplicar una funcion de suavizado a la trayectoria resultante para mejorar el resultado. Y como el proyecto no se centra en la eficiencia, tambien podria ser un buen candidato como algoritmo de navegacion.
-
-   No obstante, una ventaja significativa del algoritmo es que se puede incluir el estado del piloto en la función heurística, lo que facilita su integración en la aplicación. También se puede aplicar una función de suavizado a la trayectoria resultante para mejorar su precisión. Dado que el proyecto no se centra en la eficiencia computacional, el algoritmo A* podría ser considerado como una opción viable para la navegación del mismo.
-
-   % La parte buena es que el estado de los pilotos se podría incluir en la función heurística, facilitando la integración a la aplicación. Y también se puede aplicar una función de suavizado a la trayectoria resultante, pudiendo así mejorar el resultado.
-
+   No obstante, una ventaja significativa del algoritmo es que se puede incluir el estado del piloto en la función heurística, lo que facilita su integración en la aplicación. También se puede aplicar una función de suavizado a la trayectoria resultante para mejorar su precisión. Dado que el proyecto no se centra en la eficiencia computacional, el algoritmo A* podría ser considerado como una opción viable para la navegación por el circuito.
 \end{itemize}
 %\input{capitulos/01_Introduccion}
 %
