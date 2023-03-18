@@ -218,7 +218,7 @@ Se añadirán ciertas características procedentes de videojuegos con elementos 
 \bigskip
 
 
-La motivación detrás de realizar esta aplicación es profundizar en los conocimientos previamente adquiridos en otras asignaturas del manejo de \textit{Unreal Engine} y en el aprendizaje de su API, enfocándolo al ámbito de las carreras y de los vehículos autónomos, área que me resulta muy interesante. Asimismo, se busca profundizar en el estudio de los distintos algoritmos de navegación para los vehículos del simulador, intentando escoger el que mejor se adapte a las necesidades del proyecto y que ofrezca buenos resultados.
+La motivación detrás de realizar este programa es profundizar en los conocimientos previamente adquiridos en otras asignaturas del manejo de \textit{Unreal Engine} y en el aprendizaje de su API, enfocándolo al ámbito de las carreras y de los vehículos autónomos, área que me resulta muy interesante. Asimismo, se busca profundizar en el estudio de los distintos algoritmos de navegación para los vehículos del simulador, intentando escoger el que mejor se adapte a las necesidades del proyecto y que ofrezca buenos resultados.
 
 \section{Objetivos}
 
@@ -287,7 +287,7 @@ Unreal incluye \textit{Blueprint Visual Scripting}, el cual es un sistema de \te
 Además, a partir de la versión 5.0, Unreal incluye diversas tecnologías como: 
 
 \begin{itemize}
-   \item TSR \textit{(Temporal Super Resolution)}, mejorando el rendimiento haciendo que el juego se renderice internamente a una resolución menor y luego sea reescalado al tamaño deseado.
+   \item TSR \textit{(Temporal Super Resolution)}, que mejora el rendimiento haciendo que el juego se renderice internamente a una resolución menor y luego sea reescalado al tamaño deseado.
    \item Nanite, que permite tener objetos con una gran cantidad de polígonos en la pantalla, 
    \item Lumen, que genera una iluminación más realista.
 \end{itemize}
@@ -362,7 +362,7 @@ Además, Godot tiene una biblioteca con una gran cantidad de recursos para utili
 
 \subsubsection{Elección final}
 
-Al final, he decidido utilizar Unreal Engine debido a que la versión gratuita incluye toda la funcionalidad, ofrece unos buenos resultados a nivel visual sin requerir demasiado esfuerzo, es el más potente en cuanto a programación visual y es con el que más familiarizado estoy de todas las opciones citadas anteriormente.
+Al final, he decidido utilizar Unreal Engine debido a que la versión gratuita incluye toda la funcionalidad, es el más potente en cuanto a programación visual y es con el que más familiarizado estoy de todas las opciones citadas anteriormente.
 
 \subsection{Algoritmo de navegación}
 En cuanto a algoritmos de navegación para los vehículos, los más destacados son:
@@ -397,7 +397,7 @@ En cuanto a algoritmos de navegación para los vehículos, los más destacados s
 
    En este proyecto se podrían implementar estados como: ``Seguir línea'', ``Adelantar'', ``Comienzo de carrera'' y ``Esquivar obstáculo''. Dependiendo del entorno y del estado del piloto, el agente puede pasar a otro estado más adecuado.
 
-   \item \textbf{Algoritmo A* (A Estrella)}: Algoritmo de búsqueda de caminos en grafos que se utiliza para encontrar la ruta óptima. Utiliza una función heurística para guiar la búsqueda hacia la ruta óptima y es más eficiente que otros algoritmos similares, como el de Dijkstra.
+   \item \textbf{Algoritmo A* (A Estrella)}: Algoritmo de búsqueda de caminos en grafos que se utiliza para encontrar la ruta óptima. Utiliza una función heurística para guiar la búsqueda hacia la solución más eficiente y es más rápido en tiempo de ejecución que otros algoritmos similares, como el de Dijkstra.
    
    Si se desea aplica este algoritmo al proyecto, es necesario discretizar el espacio, lo que puede provocar una pérdida de precisión. Además, se debería aplicar periódicamente en todos los vehículos de la simulación, lo que puede ser computacionalmente costoso.
 
