@@ -211,9 +211,9 @@ El mundo del motor es un deporte con una amplia base de seguidores y en el que s
 
 El proyecto se centrará en la simulación de gestión de carreras, sector donde existen pocas opciones para el público general y que es cada vez más demandado para aprender la manera en que las distintas estrategias pueden afectar al desenlace de una carrera y como diferentes situaciones influyen en la capacidad de los pilotos. Estos factores pueden afectar a la tasa de errores producidos durante la carrera.
 
-\bigskip
+% \bigskip
 
-Se añadirán ciertas características procedentes de videojuegos con elementos de simulación a la aplicación gráfica, como la posibilidad de elegir entre varios tipos de vehículos (\textit{Gran Turismo B-Spec}), por mencionar un ejemplo.
+% Se añadirán ciertas características procedentes de videojuegos con elementos de simulación a la aplicación gráfica, como la posibilidad de elegir entre varios tipos de vehículos y algunas de las aptitudes de los pilotos, ambas procedentes de \textit{Gran Turismo B-Spec}
 
 \bigskip
 
@@ -270,10 +270,10 @@ En el mercado hay gran variedad de motores gráficos de videojuegos, los más co
 
 \begin{figure}[H]
    \centering
-   \includegraphics[width=0.2\textwidth]{imagenes/UE_LOGO.png}
-   \caption{Logotipo de \textit{Unreal Engine}.}
-   \vspace{10pt}
-   \footnotesize{Fuente: \url{https://es.wikipedia.org/wiki/Unreal_Engine}}
+   \includegraphics[width=0.3\textwidth]{imagenes/UE_LOGO.png}
+   \caption{Logotipo de \textit{Unreal Engine}\cite{unreal-logo}.}
+   % \vspace{10pt}
+   % \footnotesize{Fuente: \url{https://es.wikipedia.org/wiki/Unreal_Engine}}
 \end{figure}
 
 Unreal Engine \cite{unreal} es una plataforma de desarrollo que permite, entre otras cosas: el desarrollo de videojuegos, creación de contenido para programas y películas, simulación, etc. Posee un soporte para un gran número de plataformas, tanto consolas como móviles.
@@ -292,7 +292,7 @@ Además, a partir de la versión 5.0, Unreal incluye diversas tecnologías como:
    \item Lumen, que genera una iluminación más realista.
 \end{itemize}
 
-Estas tecnologías permiten obtener un resultado gráfico muy convincente, partiendo de un modelo correctamente modelado y texturizado. Asimismo, la inclusión de \textit{TSR} posibilita escalar la aplicación a resoluciones mayores de lo que el hardware es capaz de ejecutar.
+Estas tecnologías permiten obtener un resultado gráfico muy convincente, partiendo de un modelo creado por profesionales. Asimismo, la inclusión de \textit{TSR} posibilita escalar la aplicación a resoluciones mayores de lo que el hardware es capaz de ejecutar.
 
 \bigskip
 
@@ -307,9 +307,9 @@ Sin embargo, no tiene una licencia de código abierto, pero su código fuente es
 \begin{figure}[H]
    \centering
    \includegraphics[width=0.4\textwidth]{imagenes/UNITY_LOGO.png}
-   \caption{Logotipo de \textit{Unity}.}
-   \vspace{10pt}
-   \footnotesize{Fuente: \url{https://es.wikipedia.org/wiki/Unity_(motor_de_videojuego)}}
+   \caption{Logotipo de \textit{Unity}\cite{unity}.}
+   % \vspace{10pt}
+   % \footnotesize{Fuente: \url{https://es.wikipedia.org/wiki/Unity_(motor_de_videojuego)}}
 \end{figure}
 
 Unity \cite{unity} es una plataforma de desarrollo que permite: desarrollar videojuegos, visualizar construcciones en el ámbito de la arquitectura, para uso en la industria automotriz y para la creación de películas y series.
@@ -333,7 +333,7 @@ Además, Unity tiene varias versiones del programa, incluyendo uno gratuito y lo
 \begin{figure}[H]
    \centering
    \includegraphics[width=0.4\textwidth]{imagenes/GODOT_LOGO.png}
-   \caption{Logotipo de \textit{Godot}.}
+   \caption{Logotipo de \textit{Godot}\cite{godot-logo}.}
    \vspace{10pt}
    \footnotesize{Fuente: \url{https://es.wikipedia.org/wiki/Godot}}
 \end{figure}
@@ -399,7 +399,8 @@ En cuanto a algoritmos de navegación para los vehículos, los más destacados s
 
    \item \textbf{Algoritmo A* (A Estrella)}: Algoritmo de búsqueda de caminos en grafos que se utiliza para encontrar la ruta óptima. Utiliza una función heurística para guiar la búsqueda hacia la solución más eficiente y es más rápido en tiempo de ejecución que otros algoritmos similares, como el de Dijkstra.
    
-   Si se desea aplica este algoritmo al proyecto, es necesario discretizar el espacio, lo que puede provocar una pérdida de precisión. Además, se debería aplicar periódicamente en todos los vehículos de la simulación, lo que puede ser computacionalmente costoso.
+   Si se desea aplicar este algoritmo al proyecto, es necesario discretizar el espacio, lo que puede provocar una pérdida de precisión. 
+   Además, se debería aplicar periódicamente en todos los vehículos de la simulación, lo que puede ser computacionalmente costoso. %arreglar esta argumentacion
 
    No obstante, una ventaja significativa del algoritmo es que se puede incluir el estado del piloto en la función heurística, lo que facilita su integración en el simulador. También se puede aplicar una función de suavizado a la trayectoria resultante para mejorar su precisión. Dado que el proyecto no se centra en la eficiencia computacional, A* podría ser considerado como una opción viable para la navegación por el circuito.
 \end{itemize}
