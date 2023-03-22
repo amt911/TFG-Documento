@@ -1,0 +1,205 @@
+\chapter{Introducción}
+\section{Introducción y Motivación}
+%PALABRAS REPETIDAS, REVISAR
+%gran cantidad
+%no se repite, pero "cosas" queda muy feo
+
+El mundo del motor es un deporte con una amplia base de seguidores y en el que se invierte una gran cantidad de dinero en simuladores de todo tipo para poder tener una ventaja competitiva. Estos simuladores permiten a los equipos de carreras realizar una extensa variedad de actividades: entrenar a los pilotos antes y durante la temporada, modificar parámetros para lograr el máximo rendimiento del vehículo o simular carreras para analizar cuál será la estrategia más adecuada para alcanzar la victoria.
+
+\bigskip
+
+El proyecto se centrará en la simulación de gestión de carreras, sector donde existen pocas opciones para el público general y que es cada vez más demandado para aprender la manera en que las distintas estrategias pueden afectar al desenlace de una carrera y como diferentes situaciones influyen en la capacidad de los pilotos. Estos factores pueden afectar a la tasa de errores producidos durante la carrera.
+
+% \bigskip
+
+% Se añadirán ciertas características procedentes de videojuegos con elementos de simulación a la aplicación gráfica, como la posibilidad de elegir entre varios tipos de vehículos y algunas de las aptitudes de los pilotos, ambas procedentes de \textit{Gran Turismo B-Spec}
+
+\bigskip
+
+
+La motivación detrás de realizar este programa es profundizar en los conocimientos previamente adquiridos en otras asignaturas del manejo de \textit{Unreal Engine} y en el aprendizaje de su API, enfocándolo al ámbito de las carreras y de los vehículos autónomos, área que me resulta muy interesante. Asimismo, se busca profundizar en el estudio de los distintos algoritmos de navegación para los vehículos del simulador, intentando escoger el que mejor se adapte a las necesidades del proyecto y que ofrezca buenos resultados.
+
+\section{Objetivos}
+
+En este proyecto se pretende desarrollar un simulador de gestión de carreras multidisciplinar y personalizable, cuyos pilotos tendrán un conjunto de capacidades que serán modificadas por las condiciones de la carrera o por el usuario en tiempo real, haciendo que el piloto pueda cometer más errores o menos si su estado mejora. También existirá la opción de poder modificar la velocidad de simulación, con el objetivo de obtener los resultados de manera más rápida.
+
+\bigskip
+
+Además, la aplicación permitirá modificar diversos parámetros antes de la carrera, con el propósito de personalizar la simulación lo máximo posible. Cabe destacar que estos parámetros no podrán ser cambiados de nuevo, debido a que no tendría demasiado sentido y podrían hacer que los resultados finales no fueran del todo precisos.
+
+
+\bigskip
+
+
+Siendo más específicos, los objetivos mínimos relativos a alteraciones antes de ejecutar la simulación son:
+
+\begin{itemize}
+   \item Cambio de número de pilotos.
+   \item Cambio de número de vueltas.
+   \item Cambios de las aptitudes de los pilotos; es decir, el nivel máximo de cada condición que puede alcanzar.
+   \item Cambio de la velocidad máxima de los vehículos.
+   \item Permitir (opcionalmente) que haya variación de prestaciones entre vehículos.
+   \item Cambio del tipo de vehículo.
+\end{itemize}
+
+\bigskip
+
+En cuanto a cambios durante la carrera, debe cumplir estos objetivos:
+
+\begin{itemize}
+   \item Seleccionar piloto de la lista de pilotos.
+   \item Obtener las condiciones actuales del piloto seleccionado.
+   \item Modificar las condiciones actuales del piloto seleccionado.
+   \item Cambiar la velocidad de simulación.
+\end{itemize}
+
+Conviene resaltar que todos estos objetivos y algunos opcionales serán explicados en detalle en apartados siguientes.
+
+\section{Estado del arte}
+Como ya se ha descrito anteriormente, este proyecto hará uso de \textit{Unreal Engine} como motor gráfico y \textit{framework} para la realización del simulador especificado. En cuanto a la forma en la que los pilotos se moverán por el circuito, he decidido usar el algoritmo de navegación \textbf{PONER AQUÍ EL ALGORITMO DE NAVEGACIÓN}.
+
+\bigskip
+
+A continuación, voy a explicar las distintas opciones que hay disponibles en motores gráficos y en algoritmos de navegación y explicar el motivo de la elección realizada. Separaré esto en dos subsecciones.
+
+\subsection{Motor gráfico}
+En el mercado hay gran variedad de motores gráficos de videojuegos, los más conocidos son los siguientes:
+
+\subsubsection{Unreal Engine}
+
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.3\textwidth]{imagenes/UE_LOGO.png}
+   \caption{Logotipo de \textit{Unreal Engine}\cite{unreal-logo}.}
+   % \vspace{10pt}
+   % \footnotesize{Fuente: \url{https://es.wikipedia.org/wiki/Unreal_Engine}}
+\end{figure}
+
+Unreal Engine \cite{unreal} es una plataforma de desarrollo que permite, entre otras cosas: el desarrollo de videojuegos, creación de contenido para programas y películas, simulación, etc. Posee un soporte para un gran número de plataformas, tanto consolas como móviles.
+
+\bigskip
+
+Unreal incluye \textit{Blueprint Visual Scripting}, el cual es un sistema de \textit{scripting} visual que hace uso de nodos para programar las distintas partes del sistema. Permite programar de manera visual sin la necesidad de conocer la \textit{API} de C++.
+
+\bigskip
+
+Además, a partir de la versión 5.0, Unreal incluye diversas tecnologías como: 
+
+\begin{itemize}
+   \item TSR \textit{(Temporal Super Resolution)}, que mejora el rendimiento haciendo que el juego se renderice internamente a una resolución menor y luego sea reescalado al tamaño deseado.
+   \item Nanite, que permite tener objetos con una gran cantidad de polígonos en la pantalla, 
+   \item Lumen, que genera una iluminación más realista.
+\end{itemize}
+
+Estas tecnologías permiten obtener un resultado gráfico muy convincente, partiendo de un modelo creado por profesionales. Asimismo, la inclusión de \textit{TSR} posibilita escalar la aplicación a resoluciones mayores de lo que el hardware es capaz de ejecutar.
+
+\bigskip
+
+Unreal también incluye una tienda con abundantes recursos, permitiendo simplificar mucho el desarrollo de videojuegos.
+
+\bigskip
+
+Sin embargo, no tiene una licencia de código abierto, pero su código fuente es accesible a través de un repositorio de GitHub.
+
+\subsubsection{Unity}
+
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.4\textwidth]{imagenes/UNITY_LOGO.png}
+   \caption{Logotipo de \textit{Unity}\cite{unity}.}
+   % \vspace{10pt}
+   % \footnotesize{Fuente: \url{https://es.wikipedia.org/wiki/Unity_(motor_de_videojuego)}}
+\end{figure}
+
+Unity \cite{unity} es una plataforma de desarrollo que permite: desarrollar videojuegos, visualizar construcciones en el ámbito de la arquitectura, para uso en la industria automotriz y para la creación de películas y series.
+
+\bigskip
+
+Entre sus características se encuentra:
+
+\begin{itemize}
+   \item Uso de C\# como lenguaje de programación.
+   \item Motor de físicas 2D separado del de físicas en 3D.
+   \item Posee un \textit{Scriptable Rendering Pipeline} altamente personalizable, permitiendo mediante el uso de scripts escritos en C\# personalizar sombras, iluminación, oclusión ambiental, entre otras.
+   \item Soporte para un gran número de plataformas, incluyendo consolas y móviles, aparte de Windows, macOS y Linux.
+   \item Incluye un lenguaje de programación visual, similar a \textit{Unreal} que permite programar sin necesitar conocer la \textit{API}.
+\end{itemize}
+   
+Además, Unity tiene varias versiones del programa, incluyendo uno gratuito y los demás de pago, con prioridad de asistencia y un mayor abanico de herramientas.
+
+\subsubsection{Godot}
+
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.4\textwidth]{imagenes/GODOT_LOGO.png}
+   \caption{Logotipo de \textit{Godot}\cite{godot-logo}.}
+   \vspace{10pt}
+   \footnotesize{Fuente: \url{https://es.wikipedia.org/wiki/Godot}}
+\end{figure}
+
+Godot \cite{godot} es un motor gráfico gratuito y multiplataforma de código abierto que permite crear videojuegos en 2D y 3D. 
+
+\bigskip
+
+Entre las características más notables se encuentran las siguientes:
+
+\begin{itemize}
+   \item Motor gráfico 2D dedicado. 
+   \item Programación usando GDScript, C\# o C++ de manera oficial. No obstante, se puede programar usando otro lenguaje como Rust, Python o JavaScript. 
+   \item Soporte para un gran número de plataformas, incluyendo móviles y consolas.
+   \item Incluye un motor de físicas (solo para el motor gráfico 3D), aunque es algo más simple que el de sus competidores.
+\end{itemize}
+
+\bigskip 
+
+A partir de la versión 4, Godot ha dejado de incluir el lenguaje visual, debido a su falta de uso, por lo que solo es posible utilizar lenguajes de programación convencionales \cite{godot-no-visual}.
+
+\bigskip
+
+Además, Godot tiene una biblioteca con una gran cantidad de recursos para utilizar durante el desarrollo de un videojuego.
+
+
+\subsubsection{Elección final}
+
+Al final, he decidido utilizar Unreal Engine debido a que la versión gratuita incluye toda la funcionalidad, es el más potente en cuanto a programación visual y es con el que más familiarizado estoy de todas las opciones citadas anteriormente.
+
+\subsection{Algoritmo de navegación}
+En cuanto a algoritmos de navegación para los vehículos, los más destacados son:
+
+\begin{itemize}
+   \item \textbf{Aprendizaje por refuerzo:} Es una técnica de aprendizaje automático en la que el agente aprende a tomar decisiones en un entorno mediante la interacción a través de acciones
+   y recibiendo una recompensa en caso de acercarse al objetivo deseado o de hacerlo bien. 
+   
+   Es importante obtener un equilibrio entre exploración y explotación, de forma que sea capaz de actuar ante situaciones desconocidas correctamente. En caso de estar desequilibrado, puede darse la situación en el que se produzca un máximo local y no sea capaz de descubrir la mejor estrategia.
+
+   
+   Para evitar esto, se suelen utilizar métodos de equilibrio. Uno de ellos es el denominado \textit{epsilon-greedy}, que permite controlar la cantidad de exploración mediante un parámetro \textit{epsilon}, que determina la aleatoriedad en la selección de acciones \cite{10.1007/978-3-642-24455-1_33}, permitiendo elegir en función de dicho parámetro una acción aleatoria o la mejor hasta el momento.
+
+   Una desventaja que tiene es la necesidad de entrenar el modelo, lo cual puede ser un proceso largo y complicado, pero con el suficiente tiempo y con un conjunto de recompensas y castigos bien realizado, es una excelente técnica para resolver este tipo de problema.
+
+   El algoritmo \textit{Q-Learning} es uno de los más utilizados para espacios discretos. Consiste en una función Q, la cual posibilita al agente estimar el valor esperado de una acción dado un estado. Dicha función se implementa mediante una tabla denominada \textit{Q-Values}, la cual almacena el valor esperado de las recompensas para cada estado y acción posible. Para evitar problemas de equilibrio, se utilizan métodos como el \textit{epsilon-greedy}, ampliamente utilizado y que ofrece buenos resultados.
+
+   No obstante, si el entorno de aprendizaje es continuo, una tabla de \textit{Q-Values} no es adecuada debido a la gran cantidad de posibles valores y el alto costo computacional en procesamiento y memoria. En su lugar, se puede sustituir la tabla por una red neuronal, como el algoritmo \textit{Deep Q-Network} (DQN), para trabajar en este tipo de espacios \cite{coulom:tel-00003985}.
+
+   Para este proyecto, se podría implementar DQN. La red neuronal tendría como entrada varios sensores de colisión y de límites de pista, y como salida el nivel de aceleración, frenado y giro del volante.
+
+   \item \textbf{Mediante reglas:} Conjunto de acciones que se aplican cuando se cumple una determinada condición y suelen estar ordenadas por prioridad. Pueden ser representadas mediante un árbol, donde cada acción se encuentra en una hoja y las preguntas o condiciones que las activan son las ramas (aristas). La prioridad de las acciones se establece según su posición en el árbol, siendo las más importantes las de niveles superiores.
+   
+   Esto tiene la ventaja de ser más sencillo de implementar que el de aprendizaje por refuerzo, pero suele tener peores resultados, al poder darse el caso de no haber priorizado bien las reglas o no haber tenido en cuenta algún caso especial.
+
+
+   Aplicado a este proyecto, se podría diseñar como un conjunto de funciones que manejen cada posible control del vehículo y se ejecuten de manera periódica. De esta forma, dependiendo del entorno y del estado del piloto, se aplicarán distintas salidas para guiar el vehículo por el circuito.
+
+   \item \textbf{Máquina de estados:} Este algoritmo implementa una máquina de estados finitos mediante una estructura de datos, donde cada nodo representa la estrategia seguida y cada arco representa la transición a otro estado. 
+   
+   Una de las ventajas que tiene es que suele ser más simple describir el comportamiento en agentes más complejos y además, suelen ser más fáciles de modificar que los basados en reglas.
+
+   En este proyecto se podrían implementar estados como: ``Seguir línea'', ``Adelantar'', ``Comienzo de carrera'' y ``Esquivar obstáculo''. Dependiendo del entorno y del estado del piloto, el agente puede pasar a otro estado más adecuado.
+
+   \item \textbf{Algoritmo A* (A Estrella)}: Algoritmo de búsqueda de caminos en grafos que se utiliza para encontrar la ruta óptima. Utiliza una función heurística para guiar la búsqueda hacia la solución más eficiente y es más rápido en tiempo de ejecución que otros algoritmos similares, como el de Dijkstra.
+   
+   Si se desea aplicar este algoritmo al proyecto, es necesario discretizar el espacio, lo que puede provocar una pérdida de precisión. 
+   Además, se debería aplicar periódicamente en todos los vehículos de la simulación, lo que puede ser computacionalmente costoso. %arreglar esta argumentacion
+
+   No obstante, una ventaja significativa del algoritmo es que se puede incluir el estado del piloto en la función heurística, lo que facilita su integración en el simulador. También se puede aplicar una función de suavizado a la trayectoria resultante para mejorar su precisión. Dado que el proyecto no se centra en la eficiencia computacional, A* podría ser considerado como una opción viable para la navegación por el circuito.
+\end{itemize}
