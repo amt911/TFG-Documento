@@ -11,7 +11,15 @@ El objetivo de esta especificación es definir de manera clara, concisa y precis
 
 %no se si poner aqui lo de la pagina web. tipo, que no hay suficientes opciones software para el publico general.
 
-Este sistema se encargará de simular carreras de coches, cuyos pilotos tendrán una serie de características que variarán dependiendo de las condiciones de la carrera. También mostrará las condiciones actuales de cada piloto y permitirá que el usuario pueda modificarlas en tiempo real, viendo como afecta a los movimientos del vehículo.
+
+% muletillas: parametros, ademas, tambien, las condiciones, de cada piloto
+% Este sistema se encargará de simular carreras de coches, cuyos pilotos tendrán una serie de características que variarán dependiendo de las condiciones de la carrera, influyendo así en su desempeño. También mostrará las condiciones actuales de cada piloto y permitirá que el usuario pueda modificarlas en tiempo real, viendo como afecta a los movimientos del vehículo. Además, permitirá modificar parámetros como: el número de vehículos, aptitudes de cada piloto, tipo de coche y velocidad máxima, por mencionar algunos.
+
+Este sistema se encargará de simular carreras de coches, donde los pilotos tendrán distintas características que variarán dependiendo de las condiciones de la carrera e influirán en su desempeño. El usuario podrá modificar estos parámetros de cada piloto en tiempo real, observando como estos afectan al comportamiento del vehículo.
+
+\bigskip
+
+Además, el software permitirá modificar una serie de ajustes antes de simular la carrera, de acuerdo a las preferencias del usuario. Algunos parámetros son: el número de vehículos, las aptitudes de cada piloto, el tipo de coche y la velocidad máxima. De esta manera, el usuario podrá crear carreras personalizadas de acuerdo a sus necesidades.
 
 \subsection{Definiciones, siglas y abreviaturas}
 
@@ -26,12 +34,69 @@ Este sistema se encargará de simular carreras de coches, cuyos pilotos tendrán
 
 \subsection{Visión general}
 % rescribir
-Este capítulo constará de tres secciones: Introducción, descripción global, y requisitos específicos. 
+Este capítulo constará de tres secciones: %Introducción, descripción global, y requisitos específicos. 
 
 \bigskip
 
 En esta primera sección se muestra la introducción y la visión general de la especificación de requisitos.
 
-En la siguiente sección se proporcionará una descripción general del sistema a construir, con el fin de conocer las funciones principales, datos requeridos y restricciones, entre otras cosas. 
+\bigskip
 
-En la última sección se definen detalladamente los requisitos que debe cumplir el sistema para ser considerado como terminado.
+En la sección 2 se proporcionará una descripción general del sistema a construir, con el fin de conocer las funciones principales, datos requeridos, restricciones y otros aspectos relevantes. 
+
+\bigskip
+
+En la sección 3 se definen detalladamente los requisitos que debe cumplir el sistema en el momento de su desarrollo.
+
+\section{Descripción general}
+\subsection{Perspectiva del producto}
+La aplicación se diseñará como una aplicación gráfica que permitirá a los usuarios simular carreras de coches, permitiendo configurar parámetros antes de la simulación y durante la carrera. El sistema recopilará información sobre la situación de carrera de cada piloto, y utilizará estos datos para simular el desempeño de cada uno en tiempo real.
+
+\bigskip
+
+Los usuarios interactuarán con el sistema a través de una interfaz gráfica con la que podrán modificar todos los ajustes que estimen convenientes.
+
+\subsection{Funciones del producto}
+
+Las funciones principales de la aplicación son las siguientes:
+
+\begin{itemize}
+    \item Configuración de los parámetros antes de la carrera: Otorgará la posibilidad de configurar distintas opciones antes de la carrera como: número de pilotos, aptitudes de cada uno, tipo de vehículo y velocidad máxima. 
+    
+    \item Calcular la condición del piloto en base a las condiciones actuales de la carrera, haciendo que si empeora su estado cometa más errores en tiempo real y si mejora que cometa menos errores.
+    
+    \item Modificar la condición de los pilotos durante la carrera, con independencia de las condiciones de la misma, pudiendo ver en tiempo real como afecta el cambio producido.
+\end{itemize}
+
+Y tendrá otras funciones como:
+
+\begin{itemize}
+    \item Pausar la simulación.
+    \item Acelerar la velocidad de simulación.
+    \item Cambiar la hora del día.
+\end{itemize}
+
+\subsection{Características de los usuarios}
+
+Es recomendable que los usuarios tengan conocimientos básicos de informática, pero no es necesario que sepan como funcionan las carreras, ya que está todo automatizado. 
+
+\subsection{Restricciones}
+
+Las restricciones que tendrá la aplicación son las siguientes:
+
+\begin{itemize}
+    \item Una vez pausada la simulación, no se podrá modificar su velocidad.
+    \item El número de pilotos en la carrera no puede ser menor o igual a 1.
+    \item Las aptitudes de cada piloto antes de la carrera tienen que ser mayores que 0.
+    \item La velocidad máxima no podrá ser menor de 150 km/h.
+\end{itemize}
+
+\subsection{Suposiciones y dependencias}
+
+Los requisitos descritos pueden estar sujetos a cambio en función de la evolución del proyecto y la posible adición de nuevas funcionalidades. 
+
+Este sistema funciona de forma independiente, por lo que no es necesario comunicarse con otros sistemas externos o instalar ningún programa adicional, excepto el propio simulador.
+
+\subsection{Requerimientos específicos}
+
+\subsubsection{Requisitos funcionales}
