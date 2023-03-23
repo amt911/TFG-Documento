@@ -1,3 +1,14 @@
+% DUDAS
+% LAS REFERENCIAS DEBERIAN IR EN LAS REFERENCIAS DEL DOCUMENTO EN GENERAL
+% LA CALIDAD DEL DOCUMENTO ES PESIMA
+% LOS REQUISITOS DE INFORMACION SON NO FUNCIONALES
+% HE REPETIDO DEMASIADAS VECES LO QUE HACE MI SIMULADOR
+% EN LA MAYORIA DE LAS SECCIONES HE RELLENADO MAS BIEN POCO
+% ME PARECEN POCOS REQUISITOS EN GENERAL, PERO NO SE ME OCURREN MAS
+
+% DUDAS TUTORIA
+%no se si poner aqui lo de la pagina web. tipo, que no hay suficientes opciones software para el publico general.
+
 \chapter{Especificación de requisitos}
 
 \section{Introducción}
@@ -9,12 +20,7 @@ El objetivo de esta especificación es definir de manera clara, concisa y precis
 \subsection{Alcance}
 %rescribir subsection entera
 
-%no se si poner aqui lo de la pagina web. tipo, que no hay suficientes opciones software para el publico general.
-
-
-% muletillas: parametros, ademas, tambien, las condiciones, de cada piloto
-% Este sistema se encargará de simular carreras de coches, cuyos pilotos tendrán una serie de características que variarán dependiendo de las condiciones de la carrera, influyendo así en su desempeño. También mostrará las condiciones actuales de cada piloto y permitirá que el usuario pueda modificarlas en tiempo real, viendo como afecta a los movimientos del vehículo. Además, permitirá modificar parámetros como: el número de vehículos, aptitudes de cada piloto, tipo de coche y velocidad máxima, por mencionar algunos.
-
+% repes: carrera
 Este sistema se encargará de simular carreras de coches, donde los pilotos tendrán distintas características que variarán dependiendo de las condiciones de la carrera e influirán en su desempeño. El usuario podrá modificar estos parámetros de cada piloto en tiempo real, observando como estos afectan al comportamiento del vehículo.
 
 \bigskip
@@ -30,7 +36,14 @@ Además, el software permitirá modificar una serie de ajustes antes de simular 
         \end{itemize}
 \end{itemize}
 
-% \subsection{Referencias} ???
+\subsection{Referencias}
+
+Los siguientes documentos y enlaces se han consultado para crear este capítulo:
+
+\begin{itemize}
+    \item Ingeniería del Software. Ejercicio en clase, unidad 3: Requerimientos del Software. LSI (UGR). \url{https://lsi2.ugr.es/~mvega/docis/aluwork/colectivo/Ejercicio%20en%20clase%20version%202}
+    \item fusm calidad del software. \url{https://sites.google.com/site/fusmcalidaddelsoftware/proyecto/g-informe-de-especificacion-de-requerimientos/3-requisitos-especificos/3-5-atributos-del-sistema}
+\end{itemize}
 
 \subsection{Visión general}
 % rescribir
@@ -61,7 +74,7 @@ Los usuarios interactuarán con el sistema a través de una interfaz gráfica co
 Las funciones principales de la aplicación son las siguientes:
 
 \begin{itemize}
-    \item Configuración de los parámetros antes de la carrera: Otorgará la posibilidad de configurar distintas opciones antes de la carrera como: número de pilotos, aptitudes de cada uno, tipo de vehículo y velocidad máxima. 
+    \item Configuración de los parámetros antes de la carrera: Otorgará la posibilidad de configurar distintas opciones antes de la carrera como: número de pilotos, aptitudes de cada uno, tipo de vehículo, velocidad máxima y número de vueltas. 
     
     \item Calcular la condición del piloto en base a las condiciones actuales de la carrera, haciendo que si empeora su estado cometa más errores en tiempo real y si mejora que cometa menos errores.
     
@@ -112,7 +125,8 @@ Este sistema funciona de forma independiente, por lo que no es necesario comunic
 \subsubsection{Requisitos de soporte}
 
 \begin{itemize}
-    \item RNF1.- El sistema debe ser ejecutado en un entorno Windows 10 o Windows 11.
+    % \item RNF1.- El sistema debe ser ejecutado en un entorno Windows 10 o Windows 11.
+    \item RNF1.- El sistema se ejecutará en los sistemas operativos Windows 10 y Windows 11.
 \end{itemize}
 
 \subsubsection{Requisitos de usabilidad}
@@ -120,4 +134,19 @@ Este sistema funciona de forma independiente, por lo que no es necesario comunic
 \begin{itemize}
     \item RNF2.- La interfaz deberá ser fácil de usar e intuitiva para los usuarios, de manera que puedan navegar por la misma sin demasiada dificultad.
     \item RNF3.- El tamaño del texto y el estilo de fuente deben ser adecuados para facilitar su lectura.
+\end{itemize}
+
+\subsubsection{Requisitos de información}
+
+\begin{itemize}
+    \item RI1.- Datos de los pilotos: Nombre, nacionalidad, aguante mental y físico, agresividad y experiencia.
+    % \begin{itemize}
+    %     \item Nombre
+    %     \item Nacionalidad
+    %     \item Aguante mental
+    %     \item Aguante físico
+    %     \item Agresividad
+    %     \item Experiencia
+    % \end{itemize}
+    \item RI2.- Datos del simulador: Velocidad de simulación, hora actual, número de vueltas, vuelta actual y número de vehículos.
 \end{itemize}
