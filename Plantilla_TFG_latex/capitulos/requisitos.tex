@@ -32,7 +32,7 @@ Además, el software permitirá modificar una serie de ajustes antes de simular 
 \begin{itemize}
     \item \textbf{Definiciones: }
         \begin{itemize}
-            \item \textbf{Usuario: }Persona que utiliza el sistema para poder obtener los resultados de la carrera personalizada.
+            \item \textbf{Usuario: }Persona que utiliza el sistema con el objetivo de obtener los resultados de la carrera personalizada.
         \end{itemize}
 \end{itemize}
 
@@ -69,6 +69,10 @@ La aplicación se diseñará como una aplicación gráfica que permitirá a los 
 
 Los usuarios interactuarán con el sistema a través de una interfaz gráfica con la que podrán modificar todos los ajustes que estimen convenientes.
 
+\bigskip
+
+Además, será un sistema independiente, al no necesitar interactuar con otros sistemas externos.
+
 \subsection{Funciones del producto}
 
 Las funciones principales de la aplicación son las siguientes:
@@ -78,7 +82,7 @@ Las funciones principales de la aplicación son las siguientes:
     %Configuración de los parámetros antes de la carrera: 
     Otorgará la posibilidad de configurar distintas opciones antes de la carrera como: número de pilotos, aptitudes de cada uno, tipo de vehículo, velocidad máxima y número de vueltas. 
     
-    \item Calcular la condición del piloto según las condiciones actuales de la carrera, haciendo que si empeora su estado cometa más errores y si mejora que cometa menos errores, todo en tiempo real.
+    \item Calcular el estado del piloto según las condiciones actuales de la carrera, de manera que si su estado empeora, cometerá más errores y si mejora, cometerá menos errores, todo en tiempo real.
     
     \item Modificar la condición de los pilotos durante la carrera, con independencia de las condiciones de la misma, pudiendo ver en tiempo real como afecta el cambio producido.
 \end{itemize}
@@ -100,17 +104,24 @@ Es recomendable que los usuarios tengan conocimientos básicos de informática, 
 Las restricciones que tendrá la aplicación son las siguientes:
 
 \begin{itemize}
-    \item Una vez pausada la simulación, no se podrá modificar su velocidad.
-    \item El número de pilotos en la carrera no puede ser menor o igual a 1.
-    \item Las aptitudes de cada piloto antes de la carrera tienen que ser mayores que 0.
-    \item La velocidad máxima no podrá ser menor de 150 km/h.
+    \item RES1.- Una vez pausada la simulación, no se podrá modificar su velocidad.
+    \item RES2.- El número de pilotos en la carrera no puede ser menor o igual a 1.
+    \item RES3.- Las aptitudes de cada piloto antes de la carrera tienen que ser mayores que 0.
+    \item RES4.- La velocidad máxima no podrá ser menor de 150 km/h.
+    \item RES5.- Para el apartado gráfico y la interfaz, se utilizará el motor gráfico \textit{Unreal Engine}.
 \end{itemize}
 
 \subsection{Suposiciones y dependencias}
 
 Los requisitos descritos pueden estar sujetos a cambio en función de la evolución del proyecto y la posible adición de nuevas funcionalidades. 
 
+\bigskip
+
 Este sistema funciona de forma independiente, por lo que no es necesario comunicarse con otros sistemas externos o instalar ningún programa adicional, excepto el propio simulador.
+
+\bigskip
+
+También se asume que el sistema operativo instalado es Windows en sus versiones 10 u 11.
 
 \subsection{Requerimientos específicos}
 
