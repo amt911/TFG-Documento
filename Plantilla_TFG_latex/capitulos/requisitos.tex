@@ -39,17 +39,26 @@ Además, el software permitirá modificar una serie de ajustes antes de simular 
     \item \textbf{Definiciones: }
         \begin{itemize}
             \item \textbf{Usuario: }Persona que utiliza el sistema con el objetivo de obtener los resultados de la carrera personalizada.
+            \item \textbf{Simulación: }Se refiere a la ejecución de una carrera en la aplicación.
+            \item \textbf{Piloto: }Conductor de un vehículo en la simulación. Será 
+            \item \textbf{Aguante mental y físico: }Condiciones que tiene un piloto durante la carrera y que son modificadas durante la simulación, pudiendo afectar a su conducción.
+            \item \textbf{Agresividad: }Factor que afectará al piloto durante la carrera, haciendo que si sube cometa más errores.
+            \item \textbf{Experiencia: }Parámetro del piloto que no varía durante la carrera y que indica la habilidad que tiene para tomar decisiones.
         \end{itemize}
+    \item \textbf{Siglas: }
+    \begin{itemize}
+        \item \textbf{FPS: }\textit{Frames Per Second}. Son los fotogramas (imágenes) que muestra el sistema cada segundo. Si son lo suficientemente altos, se genera la ilusión de movimiento.
+    \end{itemize}
 \end{itemize}
 
-\subsection{Referencias}
+% \subsection{Referencias}
 
-Los siguientes documentos y enlaces se han consultado para crear este capítulo:
+% Los siguientes documentos y enlaces se han consultado para crear este capítulo:
 
-\begin{itemize}
-    \item Ingeniería del Software. Ejercicio en clase, unidad 3: Requerimientos del Software. LSI (UGR). \url{https://lsi2.ugr.es/~mvega/docis/aluwork/colectivo/Ejercicio%20en%20clase%20version%202}
-    \item fusm calidad del software. \url{https://sites.google.com/site/fusmcalidaddelsoftware/proyecto/g-informe-de-especificacion-de-requerimientos/3-requisitos-especificos/3-5-atributos-del-sistema}
-\end{itemize}
+% \begin{itemize}
+%     \item Ingeniería del Software. Ejercicio en clase, unidad 3: Requerimientos del Software. LSI (UGR). \url{https://lsi2.ugr.es/~mvega/docis/aluwork/colectivo/Ejercicio%20en%20clase%20version%202}
+%     \item fusm calidad del software. \url{https://sites.google.com/site/fusmcalidaddelsoftware/proyecto/g-informe-de-especificacion-de-requerimientos/3-requisitos-especificos/3-5-atributos-del-sistema}
+% \end{itemize}
 
 \subsection{Visión general}
 % rescribir
@@ -111,18 +120,18 @@ Es recomendable que los usuarios tengan conocimientos básicos de informática, 
 Las restricciones que tendrá la aplicación son las siguientes:
 
 \begin{itemize}
-    \item RES1.- Una vez pausada la simulación, no se podrá modificar su velocidad.
-    \item RES2.- El número de pilotos en la carrera no puede ser menor o igual a 1.
-    \item RES3.- Las aptitudes de cada piloto antes de la carrera tienen que ser mayores que 0.
-    \item RES4.- La velocidad máxima no podrá ser menor de 150 km/h.
-    \item RES5.- Para el apartado gráfico y la interfaz, se utilizará el motor gráfico \textit{Unreal Engine}.
+    \item RES1.- Para el apartado gráfico y la interfaz, se utilizará el motor gráfico \textit{Unreal Engine}.
+    \item RES2.- Una vez pausada la simulación, no se podrá modificar su velocidad.
+    \item RES3.- El número de pilotos en la carrera no puede ser menor o igual a 1.
+    \item RES4.- Las aptitudes de cada piloto antes de la carrera tienen que ser mayores que 0.
+    \item RES5.- La velocidad máxima no podrá ser menor de 150 km/h.
 \end{itemize}
 
 \subsection{Suposiciones y dependencias}
 
-Los requisitos descritos pueden estar sujetos a cambios en función de la evolución del proyecto y la posible adición de nuevas funcionalidades. 
+% Los requisitos descritos pueden estar sujetos a cambios en función de la evolución del proyecto y la posible adición de nuevas funcionalidades. 
 
-\bigskip
+% \bigskip
 
 Este sistema funciona de forma independiente, por lo que no es necesario comunicarse con otros sistemas externos o instalar ningún programa adicional, excepto el propio simulador.
 
@@ -130,7 +139,7 @@ Este sistema funciona de forma independiente, por lo que no es necesario comunic
 
 También se asume que el sistema operativo instalado es Windows en sus versiones 10 u 11.
 
-\subsection{Requerimientos específicos}
+\subsection{Requisitos específicos}
 
 \subsubsection{Requisitos funcionales}
 
@@ -140,7 +149,11 @@ También se asume que el sistema operativo instalado es Windows en sus versiones
     \item RF3.- Modificación del estado de los pilotos durante la carrera: El sistema permitirá modificar el estado de los pilotos en tiempo real.
     \item RF4.- Actualización de la velocidad de simulación: El sistema permitirá actualizar la velocidad entre varias opciones predefinidas.
     \item RF5.- Pausado de la simulación: El sistema permitirá pausar y reanudar la simulación que está en curso.
+    \item RF6.- El sistema debe simular la conducción de varios pilotos en una carrera de coches, como adelantamientos y evitación de obstáculos, entre otros. Los pilotos tendrán un conjunto de condiciones que variarán durante la carrera y que afectarán a su rendimiento.
+    \item RF7.- Exportación de la configuración de la simulación: El sistema permitirá almacenar la configuración de la carrera en un fichero para su posterior importación.
+    \item RF8.- Importación de la configuración de la simulación: El sistema permitirá importar la configuración de la simulación.
 \end{itemize}
+
 
 \subsubsection{Requisitos de soporte}
 
@@ -156,7 +169,14 @@ También se asume que el sistema operativo instalado es Windows en sus versiones
     \item RNF3.- El tamaño del texto y el estilo de fuente deben ser adecuados para facilitar su lectura.
 \end{itemize}
 
-\subsubsection{Requisitos de información}
+\subsubsection{Requisitos de rendimiento}
+
+\begin{itemize}
+    \item RNF4.- El sistema deberá tardar, como máximo, 50 milisegundos (unos 20 FPS) en ejecutar cada paso de la simulación.
+    \item RNF5.- El cambio manual del estado de un piloto debe ser reflejado en la simulación en menos de 10 segundos.
+\end{itemize}
+
+\subsubsection{Requisitos de información del sistema}
 
 \begin{itemize}
     \item RI1.- Datos de los pilotos: Nombre, nacionalidad, aguante mental y físico, agresividad y experiencia.
@@ -170,3 +190,7 @@ También se asume que el sistema operativo instalado es Windows en sus versiones
     % \end{itemize}
     \item RI2.- Datos del simulador: Velocidad de simulación, hora actual, número de vueltas, vuelta actual y número de vehículos.
 \end{itemize}
+
+\subsubsection{Aspectos legales}
+
+La simulación no va a guardar ningún tipo de dato privado ni asociable a un individuo, haciendo que todos los datos sean anónimos. Por tanto, no es necesario seguir ningún tipo de tratamiento especial con la información insertada en la aplicación.
