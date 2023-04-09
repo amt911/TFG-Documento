@@ -1,8 +1,12 @@
+% DUDAS
+% PUSE EXPLICACION GENERAL, PERO NO SE EXACTAMENTE QUE ES
+% esto son datos cambiantes, puedo poner algo inicial, pero seguramente haya que modificarlo al final
+% no se ni siquiera el numero de sprints que va a haber!! (tendria que tener una velocidad de equipo)
 \chapter{Planificación}
 
 \section{Introducción}
 
-Se pretende utilizar una metodología ágil para el desarrollo del proyecto, más concretamente una adaptación de Scrum a las condiciones del mismo.
+Se pretende utilizar una metodología ágil para el desarrollo del proyecto, más concretamente una adaptación de Scrum a las condiciones del mismo, junto a otras herramientas.
 
 \bigskip
 % El principal motivo de adaptar Scrum es que
@@ -11,7 +15,7 @@ Al ser solo una persona desarrollando el proyecto, es imposible seguir algunas f
 
 \bigskip
 
-Otros aspectos de Scrum que se van a aplicar son la utilización de sprints para desarrollar el proyecto, su enfoque iterativo e incremental y las Historias de Usuario.
+Otros aspectos de Scrum que se van a aplicar son: la utilización de sprints para desarrollar el proyecto, su enfoque iterativo e incremental y las Historias de Usuario.
 
 \bigskip
 
@@ -19,5 +23,70 @@ Además, se van a utilizar herramientas que no son estrictamente de metodología
 
 \bigskip
 
-Por último, cabe recordar que no se pretende seguir Scrum de manera precisa, sino que se piensa utilizar algunos aspectos interesantes del marco, junto a otras herramientas que no son de metodologías ágiles.
-% Scrum es un marco de trabajo iterativo e incremental, basado en un conjunto de sprints
+Por último, cabe recordar que no se pretende seguir Scrum de manera precisa, al no cumplir todos los requisitos para poder usarlo. Solo que se piensa usar algunos aspectos aplicables del marco, junto a otras herramientas que no son exactamente de metodologías ágiles.
+
+
+\section{Product Backlog}
+
+El \textit{Product Backlog} con las Historias de Usuario, ordenadas por prioridad y con sus Puntos de Historia (PH), son:
+
+\begin{table}[H]
+    \centering
+    \begin{tabularx}{\textwidth}{| >{\centering\arraybackslash}X | >{\centering\arraybackslash}m{5.5cm} | >{\centering\arraybackslash}X | >{\centering\arraybackslash}X |}
+        \hline
+        \textbf{Código} & \textbf{Descripción} & \textbf{Prioridad} & \textbf{PH} \\
+        \hline
+        HU1 & Como usuario, quiero que el sistema simula la conducción de varios pilotos en una carrera de coches, simulando adelantamientos y sorteo de obstáculos. & 1 & 5 \\
+        \hline
+        HU2 & Como usuario, quiero modificar los ajustes de la simulación antes de comenzar la carrera. & 2 & 3 \\
+        \hline
+        HU3 & Como usuario, quiero modificar el estado de los pilotos durante la carrera. & 2 & 2 \\
+        \hline
+        HU4 & Como usuario, quiero ver la posición actual de los pilotos de la carrera en curso. & 3 & 3 \\
+        \hline
+        HU5 & Como usuario, quiero ver el número de vueltas de la carrera en curso. & 3 & 2 \\ 
+        \hline
+        HU6 & Como usuario, quiero guardar la configuración de una carrera para su posterior uso. & 4 & 2\\
+        \hline
+        HU7 & Como usuario, quiero cargar la configuración de una carrera almacenada en un archivo. & 4 & 2 \\
+        \hline
+        HU8 & Como usuario, quiero pausar y reanudar la simulación en curso. & 5 & 0,5 \\
+        \hline
+        HU9 & Como usuario, quiero modificar la velocidad de la simulación. & 5 & 0,5 \\
+        \hline
+    \end{tabularx}
+\end{table}
+    
+\section{Velocidad del equipo}
+
+Esto solo es una estimación de la velocidad que se puede alcanzar para el primer Sprint, en función de los puntos de historia realizados al final del mismo se actualizará la velocidad del equipo.
+
+\bigskip
+
+Algunos aspectos a tener en cuenta son:
+
+\begin{itemize}
+    \item Duración de los sprints de \sprintLength, que equivalen a \actualSprintLength, quitando fines de semana.
+    \item 1 PH representa un día de trabajo ideal a jornada completa (8 horas), pero suponiendo factores externos serán 5 
+    horas reales. Usando las horas reales, 1 PH se completaría en 1,6 días.
+    % \item Trabajaré 24 horas semanales.
+    \item Hay un total de \projectph en el proyecto.
+\end{itemize}
+
+\bigskip
+
+Sabiendo esto, la estimación de la velocidad del equipo para la primera iteración es: $\frac{10 \text{ días/sprint}}{1.6 \text{ días/PH}} = 6.25 \text{ PH/sprint} \simeq \mathbf{7\,PH/sprint}$
+% $2 \text{ semanas/sprint} \times 20 \text{ horas/semana} \times 8 \text{ horas/PH} = $
+
+\section{Diseño del Sprint}
+
+Este proyecto se dividirá en \sprintNro sprints, cuya duración será de \sprintLength. A continuación se desglosará qué se realizará en cada uno de ellos.
+
+\subsection{Sprint 1}
+\begin{itemize}
+    \item Explicación: En este sprint se pretende tener la base de la aplicación en funcionamiento. Como base se entiende a que los coches puedan moverse por el mapa mediante el algoritmo de navegación, pudiendo esquivar obstáculos y adelantarse.
+    \item Temporización:
+    \item Historias de Usuario abordadas: HU1
+\end{itemize}
+
+\section{Diagrama de Gantt}
