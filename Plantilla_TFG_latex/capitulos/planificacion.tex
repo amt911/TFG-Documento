@@ -2,16 +2,17 @@
 % PUSE EXPLICACION GENERAL, PERO NO SE EXACTAMENTE QUE ES
 % esto son datos cambiantes, puedo poner algo inicial, pero seguramente haya que modificarlo al final
 % no se ni siquiera el numero de sprints que va a haber!! (tendria que tener una velocidad de equipo)
+% En el siguiente capitulo es cuando se hace la division en tareas, no entiendo si hayq ue poner otro diagrama de gantt especifico en el capitulo anterior
 \chapter{Planificación}
 
 \section{Introducción}
 
-Se pretende utilizar una metodología ágil para el desarrollo del proyecto, más concretamente una adaptación de Scrum a las condiciones del mismo, junto a otras herramientas.
+Se pretende utilizar una metodología ágil para el desarrollo del proyecto, más concretamente una adaptación de Scrum que se ajuste a las condiciones del proyecto, y se complementará con otras herramientas de planificación.
 
 \bigskip
-% El principal motivo de adaptar Scrum es que
-% rescribir
-Al ser solo una persona desarrollando el proyecto, es imposible seguir algunas fases del marco de trabajo como \textit{Daily Meetings}, entre otros. Las fases que son aplicables son: \textit{Sprint Planning}. No obstante, todos los artefactos se pueden generar.
+
+Al ser solo una persona desarrollando el proyecto, es imposible seguir algunas fases del marco de trabajo como los \textit{Daily Meetings}. No obstante, todos los artefactos se pueden generar.
+%  y el proyecto puede ser dividido en Sprints.
 
 \bigskip
 
@@ -23,7 +24,7 @@ Además, se van a utilizar herramientas que no son estrictamente de metodología
 
 \bigskip
 
-Por último, cabe recordar que no se pretende seguir Scrum de manera precisa, al no cumplir todos los requisitos para poder usarlo. Solo que se piensa usar algunos aspectos aplicables del marco, junto a otras herramientas que no son exactamente de metodologías ágiles.
+Por último, cabe recordar que no se pretende seguir Scrum o una metodología ágil de manera precisa, al no cumplir todos los requisitos para poder usarlo. Solo se usarán algunos aspectos aplicables del marco, junto a otras herramientas que no son exactamente de metodologías ágiles.
 
 
 \section{Product Backlog}
@@ -38,11 +39,11 @@ El \textit{Product Backlog} con las Historias de Usuario, ordenadas por priorida
         \hline
         HU1 & Como usuario, quiero que el sistema simula la conducción de varios pilotos en una carrera de coches, simulando adelantamientos y sorteo de obstáculos. & 1 & 5 \\
         \hline
-        HU2 & Como usuario, quiero modificar los ajustes de la simulación antes de comenzar la carrera. & 2 & 3 \\
+        HU2 & Como usuario, quiero modificar los ajustes de la simulación antes de comenzar la carrera. & 2 & 2 \\
         \hline
         HU3 & Como usuario, quiero modificar el estado de los pilotos durante la carrera. & 2 & 2 \\
         \hline
-        HU4 & Como usuario, quiero ver la posición actual de los pilotos de la carrera en curso. & 3 & 3 \\
+        HU4 & Como usuario, quiero ver la posición actual y el estado de los pilotos de la carrera en curso. & 3 & 3 \\
         \hline
         HU5 & Como usuario, quiero ver el número de vueltas de la carrera en curso. & 3 & 2 \\ 
         \hline
@@ -84,9 +85,115 @@ Este proyecto se dividirá en \sprintNro sprints, cuya duración será de \sprin
 
 \subsection{Sprint 1}
 \begin{itemize}
-    \item Explicación: En este sprint se pretende tener la base de la aplicación en funcionamiento. Como base se entiende a que los coches puedan moverse por el mapa mediante el algoritmo de navegación, pudiendo esquivar obstáculos y adelantarse.
-    \item Temporización:
-    \item Historias de Usuario abordadas: HU1
+    \item Explicación: En este sprint se pretende tener la lógica de navegación de los vehículos en funcionamiento. Por ahora, todos conducirán de igual manera, ya que el estado de los pilotos se implementará en iteraciones posteriores.
+    
+    Además, se creará el configurador de las carreras, que no tendrá toda la funcionalidad en este sprint, ya que es necesario tener el desgaste de los pilotos en funcionamiento para hacerlo.
+
+    \item Temporización: Del 24 de abril hasta el 7 de mayo.
+    \item Historias de Usuario abordadas: HU1, HU2.
+\end{itemize}
+
+\subsection{Sprint 2}
+
+\begin{itemize}
+    \item Explicación: En este sprint se pretende implementar la visualización y modificación del estado de los pilotos, junto a la posición en la carrera. 
+    
+    Asimismo, se implementará el contador de vueltas de la carrera, con el objetivo de ver cuantas vueltas quedan.
+    \item Temporización: Del 8 de mayo hasta el 21 de mayo.
+    \item Historias de Usuario abordadas: HU3, HU4, HU5.
+\end{itemize}
+
+\subsection{Sprint 3}
+
+\begin{itemize}
+    \item Explicación: En este último sprint, se pretende implementar la importación y exportación de la configuración de una carrera y el botón de pausa y de velocidad de simulación.
+    \item Temporización: Del 22 de mayo hasta el 4 de junio.
+    \item Historias de Usuario abordadas: HU6, HU7, HU8, HU9.
 \end{itemize}
 
 \section{Diagrama de Gantt}
+
+El diagrama de Gantt general de todos los Sprints es:
+
+
+% diagrama de Gantt general
+\begin{center}
+    \resizebox{\textwidth}{!}{
+        \begin{ganttchart}[
+                hgrid,
+                vgrid,
+                x unit=5mm,
+                time slot format=isodate,
+            ]{2023-04-24}{2023-06-04}
+            % \gantttitle{Diagrama de Gantt general}{1}
+            \gantttitlecalendar{month=name, day, week, weekday=letter} \\
+            \ganttbar{Sprint 1}{2023-04-24}{2023-05-07} \\
+            \ganttbar{Sprint 2}{2023-05-08}{2023-05-21} \\
+            \ganttbar{Sprint 3}{2023-05-22}{2023-06-04}
+        \end{ganttchart}
+    }
+\end{center}
+
+
+Los diagramas de Gantt de cada Sprint los voy a dividir en distintas subsecciones a continuación:
+
+\subsection{Sprint 1}
+
+\begin{center}
+    \resizebox{0.6\textwidth}{!}{
+        \begin{ganttchart}[
+                hgrid,
+                vgrid,
+                x unit=6mm,
+                time slot format=isodate,
+            ]{2023-04-24}{2023-05-07}
+            % \gantttitle{Diagrama de Gantt general}{1}
+            \gantttitlecalendar{month=name, day, week, weekday=letter} \\
+            \ganttbar{HU1}{2023-04-24}{2023-04-28}
+            \ganttbar{}{2023-05-01}{2023-05-03} \\
+            \ganttbar{HU2}{2023-05-04}{2023-05-05}
+        \end{ganttchart}
+    }
+\end{center}
+
+\subsection{Sprint 2}
+
+\begin{center}
+    \resizebox{0.6\textwidth}{!}{
+        \begin{ganttchart}[
+                hgrid,
+                vgrid,
+                x unit=6mm,
+                time slot format=isodate,
+            ]{2023-05-08}{2023-05-21}
+            % \gantttitle{Diagrama de Gantt general}{1}
+            \gantttitlecalendar{month=name, day, week, weekday=letter} \\
+            \ganttbar{HU3}{2023-05-08}{2023-05-11} \\
+            \ganttbar{HU4}{2023-05-12}{2023-05-12}
+            \ganttbar{}{2023-05-15}{2023-05-17} \\
+            \ganttbar{HU5}{2023-05-18}{2023-05-19}
+        \end{ganttchart}
+    }
+\end{center}
+
+\subsection{Sprint 3}
+
+\begin{center}
+    \resizebox{0.6\textwidth}{!}{
+        \begin{ganttchart}[
+                hgrid,
+                vgrid,
+                x unit=6mm,
+                time slot format=isodate,
+            ]{2023-05-22}{2023-06-04}
+            % \gantttitle{Diagrama de Gantt general}{1}
+            \gantttitlecalendar{month=name, day, week, weekday=letter} \\
+            \ganttbar{HU6}{2023-05-22}{2023-05-25} \\
+            \ganttbar{HU7}{2023-05-29}{2023-06-01} \\
+            \ganttbar{HU8}{2023-05-26}{2023-05-26} \\
+            \ganttbar{HU9}{2023-06-02}{2023-06-02}
+        \end{ganttchart}
+    }
+\end{center}
+
+% diagrama de gantt
