@@ -13,19 +13,29 @@ Cada Historia de Usuario se desarrollará a continuación en una tabla:
         \hline
         \multicolumn{1}{|l|}{\textbf{Identificador:} HU1} & \multicolumn{2}{l|}{Algoritmo de navegación}
         \\ \hline
-        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{\textbf{Descripción:} Como usuario, quiero que el sistema simula la conducción de varios pilotos en una carrera de coches, simulando adelantamientos y sorteo de obstáculos.}
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{\textbf{Descripción:} Como usuario, quiero que el sistema simule la conducción de varios pilotos en una carrera de coches, simulando adelantamientos y sorteo de obstáculos.}
         \\ \hline
         \textbf{Estimación:} 5 & \textbf{Prioridad:} 1 & \textbf{Entrega:} 1
         \\ \hline
         \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{\textbf{Pruebas de aceptación:}}
         \\
-        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{\tabitem \textbf{Pruebas de aceptación:} esto es una prueba}
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{\tabitem Se debe poder diferenciar la conducción entre pilotos con estados distintos.}
         \\
-        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{\tabitem \textbf{Pruebas de aceptación:} y esto es otra prueba.}        
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{\tabitem Los pilotos deben ser capaces de esquivar obstáculos en la pista.}        
+        \\
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{\tabitem La simulación debe poder ejecutarse en un tiempo razonable, de manera que se pueda seguir la carrera en tiempo real.}
+        \\
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{\tabitem Los pilotos deben ser capaces de adelantar a otros que sean más lentos sin provocar accidentes.}
         \\ \hline
-        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{\textbf{Requisitos relacionados:}}
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{\textbf{Requisitos relacionados:} RF6, RNF4}
         \\ \hline
         \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{\textbf{Tareas:}}
+        \\
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{\tabitem Implementar la malla de navegación.}
+        \\
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{\tabitem Implementar el algoritmo a partir de la malla.}
+        \\
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{\tabitem Implementar la lógica de los vehículos, de forma que sean capaces usar esta malla para tomar decisiones.}                
         \\ \hline
         \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{\textbf{Observaciones:}}
         \\ \hline
