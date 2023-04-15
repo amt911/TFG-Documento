@@ -127,11 +127,11 @@ Es recomendable que los usuarios tengan conocimientos básicos de informática, 
 Las restricciones que tendrá la aplicación son las siguientes:
 
 \begin{itemize}
-    \item RES1.- Para el apartado gráfico y la interfaz, se utilizará el motor gráfico \textit{Unreal Engine}.
-    \item RES2.- Una vez pausada la simulación, no se podrá modificar su velocidad.
-    \item RES3.- El número de pilotos en la carrera no puede ser menor o igual a 1.
-    \item RES4.- Las aptitudes de cada piloto antes de la carrera tienen que ser mayores que 0.
-    \item RES5.- La velocidad máxima no podrá ser menor de 150 km/h.
+    \item \textbf{RES1.-} Para el apartado gráfico y la interfaz, se utilizará el motor gráfico \textit{Unreal Engine}.
+    \item \textbf{RES2.-} Una vez pausada la simulación, no se podrá modificar su velocidad.
+    \item \textbf{RES3.-} El número de pilotos en la carrera no puede ser menor o igual a 1.
+    \item \textbf{RES4.-} Las aptitudes de cada piloto antes de la carrera tienen que ser mayores que 0.
+    \item \textbf{RES5.-} La velocidad máxima no podrá ser menor de 150 km/h.
 \end{itemize}
 
 \subsection{Suposiciones y dependencias}
@@ -151,15 +151,15 @@ También se asume que el sistema operativo instalado es Windows en sus versiones
 \subsubsection{Requisitos funcionales}
 
 \begin{itemize}
-    \item RF1.- Modificación de parámetros antes de la carrera: El sistema debe permitir modificar los parámetros antes de ejecutar la simulación.
-    \item RF2.- Visualización del estado de los pilotos: El usuario podrá ver el estado de cada piloto durante la carrera, para poder realizar operaciones sobre el mismo, si lo ve necesario.
-    \item RF3.- Modificación del estado de los pilotos durante la carrera: El sistema permitirá modificar el estado de los pilotos en tiempo real.
-    \item RF4.- Actualización de la velocidad de simulación: El sistema permitirá actualizar la velocidad entre varias opciones predefinidas.
-    \item RF5.- Pausado y reanudado de la simulación: El sistema permitirá pausar y reanudar la simulación que está en curso.
-    \item RF6.- El sistema debe simular la conducción de varios pilotos en una carrera de coches, como adelantamientos y sorteo de obstáculos, entre otros. Los pilotos tendrán un conjunto de condiciones que variarán durante la carrera y que afectarán a su rendimiento.
-    \item RF7.- Exportación de la configuración de la simulación: El sistema permitirá almacenar la configuración de la carrera en un fichero para su posterior importación.
-    \item RF8.- Importación de la configuración de la simulación: El sistema permitirá importar la configuración de la simulación.
-    \item RF9.- Visualización de la vuelta actual: El sistema deberá realizar el cálculo y la visualización de la vuelta actual.
+    \item \textbf{RF1.- Modificación de parámetros antes de la carrera:} El sistema debe permitir modificar los parámetros antes de ejecutar la simulación.
+    \item \textbf{RF2.- Visualización del estado de los pilotos:} El usuario podrá ver el estado de cada piloto durante la carrera, para poder realizar operaciones sobre el mismo, si lo ve necesario.
+    \item \textbf{RF3.- Modificación del estado de los pilotos durante la carrera:} El sistema permitirá modificar el estado de los pilotos en tiempo real.
+    \item \textbf{RF4.- Actualización de la velocidad de simulación:} El sistema permitirá actualizar la velocidad entre varias opciones predefinidas.
+    \item \textbf{RF5.- Pausado y reanudado de la simulación:} El sistema permitirá pausar y reanudar la simulación que está en curso.
+    \item \textbf{RF6.- Características del simulador:} El sistema debe simular la conducción de varios pilotos en una carrera de coches, como adelantamientos y sorteo de obstáculos, entre otros. Los pilotos tendrán un conjunto de condiciones que variarán durante la carrera y que afectarán a su rendimiento.
+    \item \textbf{RF7.- Exportación de la configuración de la simulación:} El sistema permitirá almacenar la configuración de la carrera en un fichero para su posterior importación.
+    \item \textbf{RF8.- Importación de la configuración de la simulación:} El sistema permitirá importar la configuración de la simulación.
+    \item \textbf{RF9.- Visualización de la vuelta actual:} El sistema deberá realizar el cálculo y la visualización de la vuelta actual.
 \end{itemize}
 
 
@@ -167,27 +167,27 @@ También se asume que el sistema operativo instalado es Windows en sus versiones
 
 \begin{itemize}
     % \item RNF1.- El sistema debe ser ejecutado en un entorno Windows 10 o Windows 11.
-    \item RNF1.- El sistema se ejecutará en los sistemas operativos Windows 10 y Windows 11.
+    \item \textbf{RNF1.-} El sistema se ejecutará en los sistemas operativos Windows 10 y Windows 11.
 \end{itemize}
 
 \subsubsection{Requisitos de usabilidad}
 
 \begin{itemize}
-    \item RNF2.- La interfaz deberá ser fácil de usar e intuitiva para los usuarios, de manera que puedan navegar por la misma sin demasiada dificultad.
-    \item RNF3.- El tamaño del texto y el estilo de fuente deben ser adecuados para facilitar su lectura.
+    \item \textbf{RNF2.-} La interfaz deberá ser fácil de usar e intuitiva para los usuarios, de manera que puedan navegar por la misma sin demasiada dificultad.
+    \item \textbf{RNF3.-} El tamaño del texto y el estilo de fuente deben ser adecuados para facilitar su lectura.
 \end{itemize}
 
 \subsubsection{Requisitos de rendimiento}
 
 \begin{itemize}
-    \item RNF4.- El sistema deberá tardar, como máximo, 50 milisegundos (unos 20 FPS) en ejecutar cada paso de la simulación.
-    \item RNF5.- El cambio manual del estado de un piloto debe ser reflejado en la simulación en menos de 10 segundos.
+    \item \textbf{RNF4.-} El sistema deberá tardar, como máximo, 50 milisegundos (unos 20 FPS) en ejecutar cada paso de la simulación.
+    \item \textbf{RNF5.-} El cambio manual del estado de un piloto debe ser reflejado en la simulación en menos de 10 segundos.
 \end{itemize}
 
 \subsubsection{Requisitos de información del sistema}
 
 \begin{itemize}
-    \item RI1.- Datos de los pilotos: Nombre, nacionalidad, aguante mental y físico, agresividad y experiencia.
+    \item \textbf{RI1.- Datos de los pilotos:} Nombre, nacionalidad, aguante mental y físico, agresividad y experiencia.
     % \begin{itemize}
     %     \item Nombre
     %     \item Nacionalidad
@@ -196,7 +196,7 @@ También se asume que el sistema operativo instalado es Windows en sus versiones
     %     \item Agresividad
     %     \item Experiencia
     % \end{itemize}
-    \item RI2.- Datos del simulador: Velocidad de simulación, hora actual, número de vueltas, vuelta actual y número de vehículos.
+    \item \textbf{RI2.- Datos del simulador:} Velocidad de simulación, hora actual, número de vueltas, vuelta actual y número de vehículos.
 \end{itemize}
 
 \subsubsection{Aspectos legales}
