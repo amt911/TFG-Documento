@@ -7,7 +7,7 @@
 
 \section{Introducción}
 
-Se pretende utilizar una metodología ágil para el desarrollo del proyecto, más concretamente una adaptación de Scrum que se ajuste a las condiciones del proyecto, y se complementará con otras herramientas de planificación.
+Se pretende adaptar una metodología ágil para el desarrollo del proyecto, más concretamente el marco de trabajo Scrum para que se ajuste a las condiciones del proyecto, y se complementará con otras herramientas de planificación.
 
 \bigskip
 
@@ -20,11 +20,12 @@ Otros aspectos de Scrum que se van a aplicar son: la utilización de sprints par
 
 \bigskip
 
-Además, se van a utilizar herramientas que no son estrictamente de metodologías ágiles, como el diagrama de Gantt, para planificar la cantidad de tiempo que se piensa dedicar a cada sprint o Historia de Usuario, dependiendo del nivel de detalle. 
+Además, se van a utilizar herramientas que no son estrictamente de metodologías ágiles, como el diagrama de Gantt, para mostrar de una manera más visual la temporización de las distintas tareas a realizar.
+% para planificar la cantidad de tiempo que se piensa dedicar a cada sprint o Historia de Usuario, dependiendo del nivel de detalle. 
 
 \bigskip
 
-Por último, cabe recordar que no se pretende seguir Scrum o una metodología ágil de manera precisa, al no cumplir todos los requisitos para poder usarlo. Solo se usarán algunos aspectos aplicables del marco, junto a otras herramientas que no son exactamente de metodologías ágiles.
+Por último, cabe recalcar que no se pretende seguir Scrum o una metodología ágil de manera precisa, al no cumplir todos los requisitos para poder usarlo. Solo se usarán algunos aspectos aplicables del marco, junto a otras herramientas que no son exactamente de metodologías ágiles.
 
 
 \newpage
@@ -39,7 +40,7 @@ El \textit{Product Backlog} con las Historias de Usuario, ordenadas por priorida
         \hline
         \textbf{Código} & \textbf{Descripción} & \textbf{Prioridad} & \textbf{PH} \\
         \hline
-        HU1 & Como usuario, quiero que el sistema simule la conducción de varios pilotos en una carrera de coches, simulando adelantamientos y sorteo de obstáculos. & 1 & 5 \\
+        HU1 & Como usuario, quiero que el sistema simule la conducción de varios pilotos en una carrera de coches, incluyendo adelantamientos y sorteo de obstáculos. & 1 & 5 \\
         \hline
         HU2 & Como usuario, quiero modificar los ajustes de la simulación antes de comenzar la carrera. & 2 & 2 \\
         \hline
@@ -83,15 +84,50 @@ Algunos aspectos a tener en cuenta son:
 Entonces, la estimación de la velocidad del equipo para la primera iteración es: $\frac{10 \text{ días/sprint}}{1.6 \text{ días/PH}} = 6.25 \text{ PH/sprint} \simeq \mathbf{7\,PH/sprint}$
 % $2 \text{ semanas/sprint} \times 20 \text{ horas/semana} \times 8 \text{ horas/PH} = $
 
-\section{Diseño del Sprint}
+\section{\textcolor{red}{Diseño del Sprint}}
 
-Este proyecto se dividirá en \sprintNro sprints, cuya duración será de \sprintLength. A continuación se desglosará qué se realizará en cada uno de ellos.
+% INCLUIR LOS SPRINTS REFERENTES A LA DOCUMENTACION
+% Este proyecto se dividirá en \sprintNro sprints, cuya duración será de \sprintLength. A continuación se desglosará qué se realizará en cada uno de ellos.
+
+La implementación de la aplicación final se dividirá en \sprintNro sprints, cuya duración será de \sprintLength. A esta cifra hay que sumarle los 4 sprints anteriores en los que se ha realizado la documentación y prototipos para encontrar el algoritmo que más se ajuste a las necesidades del proyecto. Entonces, hay un total de 7 sprints.
 
 \subsection{Sprint 1}
+\begin{itemize}
+    \item Explicación: En este sprint se ha creado la versión inicial de la introducción de la documentación, incluyendo las distintas opciones en motores gráficos y algoritmos de navegación.
+
+    \item Temporización: Del 20 de febrero hasta el 8 de marzo.
+\end{itemize}
+
+\subsection{Sprint 2}
+\begin{itemize}
+    \item Explicación: En este sprint se han corregido todos los errores producidos en el capítulo de introducción de la documentación. Además, se incluyeron nuevos algoritmos de navegación y se detallaron algunos otros en la sección de estado del arte.
+    \item Temporización: Del 8 de marzo hasta el 22 de marzo. 
+\end{itemize}
+
+\subsection{Sprint 3}
+\begin{itemize}
+    \item Explicación: En este sprint se han arreglado más fallos en el capítulo de introducción y se ha creado la especificación de requisitos del proyecto.
+    
+    Además, se ha comenzado con los primeros prototipos del proyecto para probar distintos algoritmos de navegación y se ha programado una versión inicial del algoritmo de seguimiento de líneas de los coches.
+    \item Temporización: Del 22 de marzo hasta el 29 de marzo.
+\end{itemize}
+
+
+\subsection{Sprint 4}
+\begin{itemize}
+    \item Explicación: En este sprint se han añadido más detalles a la especificación de requisitos, incluyendo algunos requisitos que faltaban, y se han redactado los capítulos de planificación y análisis.
+    
+    Asimismo, se han corregido los fallos del controlador del volante y se ha mejorado su desempeño mediante la implementación de un algoritmo genético. También se ha probado otro algoritmo de navegación para medir su eficacia.
+    \item Temporización: Del 29 de marzo hasta el 18 de abril.
+\end{itemize}
+
+\subsection{Sprint 5}
 \begin{itemize}
     \item Explicación: En este sprint se pretende tener la lógica de navegación de los vehículos en funcionamiento. Por ahora, todos conducirán de igual manera, ya que el estado de los pilotos se implementará en iteraciones posteriores.
     
     Además, se creará el configurador de las carreras, que no tendrá toda la funcionalidad en este sprint, ya que es necesario tener el desgaste de los pilotos en funcionamiento para hacerlo.
+
+    En cuanto a la documentación, se arreglarán los fallos encontrados del sprint anterior y se redactarán los capítulos de diseño e implementación.
 
     \item Temporización: Del 24 de abril hasta el 7 de mayo.
     \item Historias de Usuario abordadas: HU1, HU2.
@@ -99,7 +135,7 @@ Este proyecto se dividirá en \sprintNro sprints, cuya duración será de \sprin
 
 \newpage
 
-\subsection{Sprint 2}
+\subsection{Sprint 6}
 
 \begin{itemize}
     \item Explicación: En este sprint se pretende implementar la visualización y modificación del estado de los pilotos, junto a la posición en la carrera. Asimismo, se implementará el contador de vueltas de la carrera.
@@ -107,7 +143,7 @@ Este proyecto se dividirá en \sprintNro sprints, cuya duración será de \sprin
     \item Historias de Usuario abordadas: HU3, HU4, HU5.
 \end{itemize}
 
-\subsection{Sprint 3}
+\subsection{Sprint 7}
 
 \begin{itemize}
     \item Explicación: En este último sprint, se pretende implementar la importación y exportación de la configuración de una carrera y el botón de pausa y de velocidad de simulación.
