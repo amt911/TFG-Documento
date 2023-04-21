@@ -104,13 +104,13 @@ La implementación de la aplicación final se dividirá en \sprintNro sprints, c
 \begin{itemize}
     \item Explicación: En este sprint se ha creado la versión inicial de la introducción de la documentación, incluyendo las distintas opciones en motores gráficos y algoritmos de navegación.
 
-    \item Temporización: Del 20 de febrero hasta el 8 de marzo.
+    \item Temporización: Del 20 de febrero hasta el 5 de marzo.
 \end{itemize}
 
 \subsection{Sprint 2}
 \begin{itemize}
     \item Explicación: En este sprint se han corregido todos los errores producidos en el capítulo de introducción de la documentación. Además, se incluyeron nuevos algoritmos de navegación y se detallaron algunos otros en la sección de estado del arte.
-    \item Temporización: Del 8 de marzo hasta el 22 de marzo. 
+    \item Temporización: Del 6 de marzo hasta el 19 de marzo. 
 \end{itemize}
 
 \subsection{Sprint 3}
@@ -118,7 +118,7 @@ La implementación de la aplicación final se dividirá en \sprintNro sprints, c
     \item Explicación: En este sprint se han arreglado más fallos en el capítulo de introducción y se ha creado la especificación de requisitos del proyecto.
     
     Además, se ha realizado un prototipo del proyecto para probar distintos algoritmos de navegación y se ha programado una versión inicial del algoritmo de seguimiento de líneas de los coches.
-    \item Temporización: Del 22 de marzo hasta el 29 de marzo.
+    \item Temporización: Del 20 de marzo hasta el 2 de abril.
 \end{itemize}
 
 
@@ -129,7 +129,7 @@ La implementación de la aplicación final se dividirá en \sprintNro sprints, c
     % Asimismo, se ha comenzado la implementación del proyecto, implementando el algoritmo de navegación inicial y la versión final del controlador del volante utilizando un algoritmo genético para su refinamiento.
     Asimismo, se ha comenzado con la aplicación final, creando la trazada del circuito y el modelado de los coches, con el objetivo de tener una base para los siguientes sprints. También se ha implementado el controlador para que los coches puedan girar de manera suave y correcta por el circuito. Para ello, se ha empleado un algoritmo genético con el objetivo de obtener los mejores valores para el controlador.
 
-    \item Temporización: Del 29 de marzo hasta el 18 de abril.
+    \item Temporización: Del 3 de abril hasta el 16 de abril.
     \item Historias de Usuario abordadas: HU1, HU3.
 \end{itemize}
 
@@ -141,7 +141,7 @@ La implementación de la aplicación final se dividirá en \sprintNro sprints, c
 
     En cuanto a la documentación, se arreglarán los fallos encontrados del sprint anterior y se redactarán los capítulos de diseño e implementación.
 
-    \item Temporización: Del 24 de abril hasta el 7 de mayo.
+    \item Temporización: Del 17 de abril hasta el 1 de mayo.
     \item Historias de Usuario abordadas: HU2.
 \end{itemize}
 
@@ -154,7 +154,7 @@ La implementación de la aplicación final se dividirá en \sprintNro sprints, c
     
     % En este sprint se pretende implementar la pantalla de configuración de la simulación, junto a la visualización de la lista de posiciones de los pilotos y el contador de vueltas. Asimismo, se implementará la modificación manual de estado de los pilotos durante la carrera.
 
-    \item Temporización: Del 8 de mayo hasta el 21 de mayo.
+    \item Temporización: Del 1 de mayo hasta el 15 de mayo.
     \item Historias de Usuario abordadas: HU4, HU5.
 \end{itemize}
 
@@ -167,7 +167,7 @@ La implementación de la aplicación final se dividirá en \sprintNro sprints, c
     
     % Además, se implementará el botón de pausa y el botón de velocidad de la simulación.
     
-    \item Temporización: Del 22 de mayo hasta el 4 de junio.
+    \item Temporización: Del 15 de mayo hasta el 29 de mayo.
     \item Historias de Usuario abordadas: HU6, HU7, HU8.
 \end{itemize}
 
@@ -175,7 +175,7 @@ La implementación de la aplicación final se dividirá en \sprintNro sprints, c
 
 \begin{itemize}
     \item Explicación: En este último sprint se pretende implementar el contador de vueltas de la carrera, la lógica para la exportación e importación de ficheros de configuración al simulador, el botón de pausa y el botón de velocidad de simulación.
-    \item Temporización: Del 4 de junio hasta el 18 de junio.
+    \item Temporización: Del 29 de mayo hasta el 12 de junio.
     \item Historias de Usuario abordadas: HU9, HU10, HU11, HU12, HU13.
 \end{itemize}
 
@@ -196,18 +196,50 @@ El diagrama de Gantt general de todos los Sprints es:
 % diagrama de Gantt general
 % \begin{center}
 \begin{adjustbox}{angle=90}
-    \resizebox{0.9\textheight}{!}{
+    \resizebox{0.93\textheight}{!}{
         \begin{ganttchart}[
                 hgrid,
                 vgrid,
                 x unit=5mm,
                 time slot format=isodate,
-            ]{2023-04-24}{2023-06-04}
+            ]{2023-02-20}{2023-04-16}
             % \gantttitle{Diagrama de Gantt general}{1}
             \gantttitlecalendar{month=name, day, week, weekday=letter} \\
-            \ganttbar{Sprint 1}{2023-04-24}{2023-05-07} \\
-            \ganttbar{Sprint 1}{2023-04-24}{2023-05-07} \\
-            \ganttbar{Sprint 1}{2023-04-24}{2023-05-07} \\
+            \ganttbar{Documentación}{2023-02-20}{2023-04-16}
+            \ganttnewline[thick, black]
+            \ganttbar{Sprint 1}{2023-02-20}{2023-03-05} \\
+            \ganttbar{Sprint 2}{2023-03-06}{2023-03-19} \\
+            \ganttbar{Sprint 3}{2023-03-20}{2023-04-02} 
+            \ganttnewline[thick, black]
+            \ganttgroup{Sprint 4}{2023-04-03}{2023-04-16} \\
+            \ganttbar{HU1}{2023-04-03}{2023-04-06} \\ % 4 dias
+            \ganttbar{HU3}{2023-04-07}{2023-04-07}
+            \ganttbar{}{2023-04-10}{2023-04-14}
+        \end{ganttchart}
+    }
+\end{adjustbox}
+% \end{center}
+
+\begin{adjustbox}{angle=90}
+    \resizebox{\textheight}{!}{
+        \begin{ganttchart}[
+                hgrid,
+                vgrid,
+                x unit=5mm,
+                time slot format=isodate,
+            ]{2023-04-19}{2023-06-18}
+            % \gantttitle{Diagrama de Gantt general}{1}
+            \gantttitlecalendar{month=name, day, week, weekday=letter} \\
+            \ganttbar{Documentación}{2023-04-19}{2023-06-18}
+            \ganttnewline[thick, red]
+            \ganttgroup{Sprint 5}{2023-04-19}{2023-05-03} \\
+            \ganttbar{HU2}{2023-04-19}{2023-04-28}
+            \ganttbar{}{2023-05-01}{2023-05-03} \\
+            \ganttnewline[thick, red]
+            \ganttgroup{Sprint 6}{2023-05-03}{2023-05-17} \\
+            \ganttbar{HU4}{2023-05-03}{2023-05-03} \\
+            \ganttbar{HU5}{2023-05-03}{2023-05-03} \\
+            \ganttnewline[thick, red]
             \ganttbar{Sprint 1}{2023-04-24}{2023-05-07} \\
             \ganttbar{Sprint 1}{2023-04-24}{2023-05-07} \\
             \ganttbar{Sprint 1}{2023-04-24}{2023-05-07} \\
@@ -222,7 +254,6 @@ El diagrama de Gantt general de todos los Sprints es:
         \end{ganttchart}
     }
 \end{adjustbox}
-% \end{center}
 
 \newpage
 
