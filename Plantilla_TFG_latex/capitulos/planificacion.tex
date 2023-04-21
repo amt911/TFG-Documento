@@ -202,6 +202,9 @@ El diagrama de Gantt general de todos los Sprints es:
                 vgrid,
                 x unit=5mm,
                 time slot format=isodate,
+                bar/.append style={fill=orange!25},
+                group/.append style={fill=teal, draw=black},
+                title/.style={fill=teal!15, draw=black},
             ]{2023-02-20}{2023-04-16}
             % \gantttitle{Diagrama de Gantt general}{1}
             \gantttitlecalendar{month=name, day, week, weekday=letter} \\
@@ -231,6 +234,9 @@ El diagrama de Gantt general de todos los Sprints es:
                 vgrid,
                 x unit=5mm,
                 time slot format=isodate,
+                bar/.append style={fill=orange!25},
+                group/.append style={fill=teal, draw=black},
+                title/.style={fill=teal!15, draw=black},
             ]{2023-04-17}{2023-06-11}
             % \gantttitle{Diagrama de Gantt general}{1}
             \gantttitlecalendar{month=name, day, week, weekday=letter} \\
@@ -271,67 +277,65 @@ El diagrama de Gantt general de todos los Sprints es:
     }
 \end{adjustbox}
 
-\newpage
+% \newpage
 
-Los diagramas de Gantt de cada Sprint los voy a dividir en distintas subsecciones a continuación:
+% Los diagramas de Gantt de cada Sprint los voy a dividir en distintas subsecciones a continuación:
 
-\subsection{Sprint 1}
+% \subsection{Sprint 1}
 
-\begin{center}
-    \resizebox{0.6\textwidth}{!}{
-        \begin{ganttchart}[
-                hgrid,
-                vgrid,
-                x unit=6mm,
-                time slot format=isodate,
-            ]{2023-04-24}{2023-05-07}
-            % \gantttitle{Diagrama de Gantt general}{1}
-            \gantttitlecalendar{month=name, day, week, weekday=letter} \\
-            \ganttbar{HU1}{2023-04-24}{2023-04-28}
-            \ganttbar{}{2023-05-01}{2023-05-03} \\
-            \ganttbar{HU2}{2023-05-04}{2023-05-05}
-        \end{ganttchart}
-    }
-\end{center}
+% \begin{center}
+%     \resizebox{0.6\textwidth}{!}{
+%         \begin{ganttchart}[
+%                 hgrid,
+%                 vgrid,
+%                 x unit=6mm,
+%                 time slot format=isodate,
+%             ]{2023-04-24}{2023-05-07}
+%             % \gantttitle{Diagrama de Gantt general}{1}
+%             \gantttitlecalendar{month=name, day, week, weekday=letter} \\
+%             \ganttbar{HU1}{2023-04-24}{2023-04-28}
+%             \ganttbar{}{2023-05-01}{2023-05-03} \\
+%             \ganttbar{HU2}{2023-05-04}{2023-05-05}
+%         \end{ganttchart}
+%     }
+% \end{center}
 
-\subsection{Sprint 2}
+% \subsection{Sprint 2}
 
-\begin{center}
-    \resizebox{0.6\textwidth}{!}{
-        \begin{ganttchart}[
-                hgrid,
-                vgrid,
-                x unit=6mm,
-                time slot format=isodate,
-            ]{2023-05-08}{2023-05-21}
-            % \gantttitle{Diagrama de Gantt general}{1}
-            \gantttitlecalendar{month=name, day, week, weekday=letter} \\
-            \ganttbar{HU3}{2023-05-08}{2023-05-11} \\
-            \ganttbar{HU4}{2023-05-12}{2023-05-12}
-            \ganttbar{}{2023-05-15}{2023-05-17} \\
-            \ganttbar{HU5}{2023-05-18}{2023-05-19}
-        \end{ganttchart}
-    }
-\end{center}
+% \begin{center}
+%     \resizebox{0.6\textwidth}{!}{
+%         \begin{ganttchart}[
+%                 hgrid,
+%                 vgrid,
+%                 x unit=6mm,
+%                 time slot format=isodate,
+%             ]{2023-05-08}{2023-05-21}
+%             % \gantttitle{Diagrama de Gantt general}{1}
+%             \gantttitlecalendar{month=name, day, week, weekday=letter} \\
+%             \ganttbar{HU3}{2023-05-08}{2023-05-11} \\
+%             \ganttbar{HU4}{2023-05-12}{2023-05-12}
+%             \ganttbar{}{2023-05-15}{2023-05-17} \\
+%             \ganttbar{HU5}{2023-05-18}{2023-05-19}
+%         \end{ganttchart}
+%     }
+% \end{center}
 
-\subsection{Sprint 3}
+% \subsection{Sprint 3}
 
-\begin{center}
-    \resizebox{0.6\textwidth}{!}{
-        \begin{ganttchart}[
-                hgrid,
-                vgrid,
-                x unit=6mm,
-                time slot format=isodate,
-            ]{2023-05-22}{2023-06-04}
-            % \gantttitle{Diagrama de Gantt general}{1}
-            \gantttitlecalendar{month=name, day, week, weekday=letter} \\
-            \ganttbar{HU6}{2023-05-22}{2023-05-25} \\
-            \ganttbar{HU7}{2023-05-29}{2023-06-01} \\
-            \ganttbar{HU8}{2023-05-26}{2023-05-26} \\
-            \ganttbar{HU9}{2023-06-02}{2023-06-02}
-        \end{ganttchart}
-    }
-\end{center}
-
-% diagrama de gantt
+% \begin{center}
+%     \resizebox{0.6\textwidth}{!}{
+%         \begin{ganttchart}[
+%                 hgrid,
+%                 vgrid,
+%                 x unit=6mm,
+%                 time slot format=isodate,
+%             ]{2023-05-22}{2023-06-04}
+%             % \gantttitle{Diagrama de Gantt general}{1}
+%             \gantttitlecalendar{month=name, day, week, weekday=letter} \\
+%             \ganttbar{HU6}{2023-05-22}{2023-05-25} \\
+%             \ganttbar{HU7}{2023-05-29}{2023-06-01} \\
+%             \ganttbar{HU8}{2023-05-26}{2023-05-26} \\
+%             \ganttbar{HU9}{2023-06-02}{2023-06-02}
+%         \end{ganttchart}
+%     }
+% \end{center}
