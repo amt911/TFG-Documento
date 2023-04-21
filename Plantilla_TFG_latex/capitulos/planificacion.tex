@@ -41,33 +41,36 @@ El \textit{Product Backlog} con las Historias de Usuario, ordenadas por priorida
         \textbf{Código} & \textbf{Descripción} & \textbf{Prioridad} & \textbf{PH} \\
         \hline
         % HU1 & Como usuario, quiero que el sistema simule la conducción de varios pilotos en una carrera de coches, incluyendo adelantamientos y sorteo de obstáculos. & 1 & 5 \\
-        HU1 & Como usuario, quiero que los pilotos calculen la ruta más óptima en el circuito. & 1 & 5 \\
+        HU1 & Como usuario, quiero tener una representación en 3D de los coches y el circuito. & 1 & 3 \\
         \hline
-        HU2 & Como usuario, quiero que los pilotos sean capaces de seguir una ruta de manera suave. & 1 & 3 \\
+        HU2 & Como usuario, quiero que los pilotos calculen la ruta más óptima en el circuito. & 1 & 8 \\
         \hline
-        HU3 & Como usuario, quiero que los pilotos sean capaces de adelantarse entre ellos. & 1 & 5 \\
+        HU3 & Como usuario, quiero que los pilotos sean capaces de seguir una ruta de manera suave. & 1 & 5 \\
         \hline
-        HU4 & Como usuario, quiero que los pilotos sean capaces de recuperarse después de un accidente. & 1 & 3 \\
+        HU4 & Como usuario, quiero que los pilotos sean capaces de adelantarse entre ellos. & 1 & 5 \\
         \hline
-        HU5 & Como usuario, quiero modificar los ajustes de la simulación antes de comenzar la carrera. & 2 & 2 \\
+        HU5 & Como usuario, quiero que los pilotos sean capaces de recuperarse después de un accidente. & 1 & 3 \\
         \hline
-        HU6 & Como usuario, quiero modificar el estado de los pilotos durante la carrera. & 2 & 2 \\
+        HU6 & Como usuario, quiero modificar los ajustes de la simulación antes de comenzar la carrera. & 2 & 2 \\
         \hline
-        HU7 & Como usuario, quiero ver la posición actual y el estado de los pilotos de la carrera en curso. & 3 & 3 \\
+        HU7 & Como usuario, quiero modificar el estado de los pilotos durante la carrera. & 2 & 2 \\
         \hline
-        HU8 & Como usuario, quiero ver el número de vueltas de la carrera en curso. & 3 & 2 \\ 
+        HU8 & Como usuario, quiero ver la posición actual y el estado de los pilotos de la carrera en curso. & 3 & 3 \\
         \hline
-        HU9 & Como usuario, quiero guardar la configuración de una carrera para su posterior uso. & 4 & 2\\
+        HU9 & Como usuario, quiero ver el número de vueltas de la carrera en curso. & 3 & 2 \\ 
         \hline
-        HU10 & Como usuario, quiero cargar la configuración de una carrera almacenada en un archivo. & 4 & 2 \\
+        HU10 & Como usuario, quiero guardar la configuración de una carrera para su posterior uso. & 4 & 2\\
         \hline
-        HU11 & Como usuario, quiero pausar y reanudar la simulación en curso. & 5 & 0,5 \\
+        HU11 & Como usuario, quiero cargar la configuración de una carrera almacenada en un archivo. & 4 & 2 \\
         \hline
-        HU12 & Como usuario, quiero modificar la velocidad de la simulación. & 5 & 0,5 \\
+        HU12 & Como usuario, quiero pausar y reanudar la simulación en curso. & 5 & 0,5 \\
+        \hline
+        HU13 & Como usuario, quiero modificar la velocidad de la simulación. & 5 & 0,5 \\
         \hline
     \end{tabularx}
 \end{table}
-    
+
+
 \newpage
 
 \section{Velocidad del equipo}
@@ -114,7 +117,7 @@ La implementación de la aplicación final se dividirá en \sprintNro sprints, c
 \begin{itemize}
     \item Explicación: En este sprint se han arreglado más fallos en el capítulo de introducción y se ha creado la especificación de requisitos del proyecto.
     
-    Además, se ha comenzado con los primeros prototipos del proyecto para probar distintos algoritmos de navegación y se ha programado una versión inicial del algoritmo de seguimiento de líneas de los coches.
+    Además, se ha realizado un prototipo del proyecto para probar distintos algoritmos de navegación y se ha programado una versión inicial del algoritmo de seguimiento de líneas de los coches.
     \item Temporización: Del 22 de marzo hasta el 29 de marzo.
 \end{itemize}
 
@@ -123,25 +126,23 @@ La implementación de la aplicación final se dividirá en \sprintNro sprints, c
 \begin{itemize}
     \item Explicación: En este sprint se han añadido más detalles a la especificación de requisitos, incluyendo algunos requisitos que faltaban, y se han redactado los capítulos de planificación y análisis.
     
-    % Asimismo, se han corregido los fallos del controlador del volante y se ha mejorado su desempeño mediante la implementación de un algoritmo genético. También se ha probado otro algoritmo de navegación para medir su eficacia.
-    Asimismo, se ha comenzado la implementación del proyecto, implementando el algoritmo de navegación inicial y la versión final del controlador del volante utilizando un algoritmo genético para su refinamiento.
+    % Asimismo, se ha comenzado la implementación del proyecto, implementando el algoritmo de navegación inicial y la versión final del controlador del volante utilizando un algoritmo genético para su refinamiento.
+    Asimismo, se ha comenzado con la aplicación final, creando la trazada del circuito y el modelado de los coches, con el objetivo de tener una base para los siguientes sprints. También se ha implementado el controlador para que los coches puedan girar de manera suave y correcta por el circuito. Para ello, se ha empleado un algoritmo genético con el objetivo de obtener los mejores valores para el controlador.
+
     \item Temporización: Del 29 de marzo hasta el 18 de abril.
-    \item Historias de Usuario abordadas: HU1, HU2.
+    \item Historias de Usuario abordadas: HU1, HU3.
 \end{itemize}
 
 \subsection{Sprint 5}
 \begin{itemize}
-    \item Explicación: 
-    % En este sprint se pretende tener la lógica de navegación de los vehículos en funcionamiento. Por ahora, todos conducirán de igual manera, ya que el estado de los pilotos se implementará en iteraciones posteriores.
-    
-    % Además, se creará el configurador de las carreras, que no tendrá toda la funcionalidad en este sprint, ya que es necesario tener el desgaste de los pilotos en funcionamiento para hacerlo.
+    \item Explicación: En este sprint se pretende implementar el algoritmo de navegación base para que los pilotos puedan saber la ruta más eficiente por el circuito.
 
-    En este sprint se pretende refinar el algoritmo de navegación para que sean capaces de realizar adelantamientos. Además, se implementará la lógica necesaria para que los pilotos que se han salido de pista, puedan recuperarse y volver, calculando una nueva ruta.
+    % En este sprint se pretende refinar el algoritmo de navegación para que sean capaces de realizar adelantamientos. Además, se implementará la lógica necesaria para que los pilotos que se han salido de pista, puedan recuperarse y volver, calculando una nueva ruta.
 
     En cuanto a la documentación, se arreglarán los fallos encontrados del sprint anterior y se redactarán los capítulos de diseño e implementación.
 
     \item Temporización: Del 24 de abril hasta el 7 de mayo.
-    \item Historias de Usuario abordadas: HU3, HU4.
+    \item Historias de Usuario abordadas: HU2.
 \end{itemize}
 
 \newpage
@@ -149,23 +150,33 @@ La implementación de la aplicación final se dividirá en \sprintNro sprints, c
 \subsection{Sprint 6}
 
 \begin{itemize}
-    \item Explicación: En este sprint se pretende implementar la pantalla de configuración de la simulación, junto a la visualización de la lista de posiciones de los pilotos y el contador de vueltas. Asimismo, se implementará la modificación manual de estado de los pilotos durante la carrera.
+    \item Explicación: En este sprint se pretende incluir la lógica adicional referente a los adelantamientos y recuperaciones en accidentes, para que los pilotos realicen acciones más acordes a la realidad.
     
-    % En este sprint se pretende implementar la visualización y modificación del estado de los pilotos, junto a la posición en la carrera. Asimismo, se implementará el contador de vueltas de la carrera.
+    % En este sprint se pretende implementar la pantalla de configuración de la simulación, junto a la visualización de la lista de posiciones de los pilotos y el contador de vueltas. Asimismo, se implementará la modificación manual de estado de los pilotos durante la carrera.
+
     \item Temporización: Del 8 de mayo hasta el 21 de mayo.
-    \item Historias de Usuario abordadas: HU5, HU6, HU7.
+    \item Historias de Usuario abordadas: HU4, HU5.
 \end{itemize}
 
 \subsection{Sprint 7}
 
 \begin{itemize}
-    \item Explicación: En este último sprint se pretende implementar las opciones de importación y exportación de la configuración a un fichero externo, con el objetivo de tener una forma rápida y sencilla de almacenar la configuración.
+    \item Explicación: En este sprint se pretende implementar el configurador de la simulación, junto al listado de posiciones de los pilotos. Además, se implementará la lógica para poder modificar el estado de los pilotos en tiempo real.
     
-    Además, se implementará el botón de pausa y el botón de velocidad de la simulación.
+    % En este último sprint se pretende implementar las opciones de importación y exportación de la configuración a un fichero externo, con el objetivo de tener una forma rápida y sencilla de almacenar la configuración.
     
-    % En este último sprint, se pretende implementar la importación y exportación de la configuración de una carrera y el botón de pausa y de velocidad de simulación.
+    % Además, se implementará el botón de pausa y el botón de velocidad de la simulación.
+    
     \item Temporización: Del 22 de mayo hasta el 4 de junio.
-    \item Historias de Usuario abordadas: HU8, HU9, HU10, HU11, HU12.
+    \item Historias de Usuario abordadas: HU6, HU7, HU8.
+\end{itemize}
+
+\subsection{Sprint 8}
+
+\begin{itemize}
+    \item Explicación: En este último sprint se pretende implementar el contador de vueltas de la carrera, la lógica para la exportación e importación de ficheros de configuración al simulador, el botón de pausa y el botón de velocidad de simulación.
+    \item Temporización: Del 4 de junio hasta el 18 de junio.
+    \item Historias de Usuario abordadas: HU9, HU10, HU11, HU12, HU13.
 \end{itemize}
 
 % \subsection{Sprint 8}
@@ -176,14 +187,16 @@ La implementación de la aplicación final se dividirá en \sprintNro sprints, c
 %     \item Historias de Usuario abordadas: 
 % \end{itemize}
 
+\newpage
 \section{Diagrama de Gantt}
 
 El diagrama de Gantt general de todos los Sprints es:
 
 
 % diagrama de Gantt general
-\begin{center}
-    \resizebox{\textwidth}{!}{
+% \begin{center}
+\begin{adjustbox}{angle=90}
+    \resizebox{0.9\textheight}{!}{
         \begin{ganttchart}[
                 hgrid,
                 vgrid,
@@ -193,12 +206,25 @@ El diagrama de Gantt general de todos los Sprints es:
             % \gantttitle{Diagrama de Gantt general}{1}
             \gantttitlecalendar{month=name, day, week, weekday=letter} \\
             \ganttbar{Sprint 1}{2023-04-24}{2023-05-07} \\
+            \ganttbar{Sprint 1}{2023-04-24}{2023-05-07} \\
+            \ganttbar{Sprint 1}{2023-04-24}{2023-05-07} \\
+            \ganttbar{Sprint 1}{2023-04-24}{2023-05-07} \\
+            \ganttbar{Sprint 1}{2023-04-24}{2023-05-07} \\
+            \ganttbar{Sprint 1}{2023-04-24}{2023-05-07} \\
+            \ganttbar{Sprint 1}{2023-04-24}{2023-05-07} \\
+            \ganttbar{Sprint 1}{2023-04-24}{2023-05-07} \\
+            \ganttbar{Sprint 1}{2023-04-24}{2023-05-07} \\
+            \ganttbar{Sprint 1}{2023-04-24}{2023-05-07} \\
+            \ganttbar{Sprint 1}{2023-04-24}{2023-05-07} \\
+            \ganttbar{Sprint 1}{2023-04-24}{2023-05-07} \\
             \ganttbar{Sprint 2}{2023-05-08}{2023-05-21} \\
             \ganttbar{Sprint 3}{2023-05-22}{2023-06-04}
         \end{ganttchart}
     }
-\end{center}
+\end{adjustbox}
+% \end{center}
 
+\newpage
 
 Los diagramas de Gantt de cada Sprint los voy a dividir en distintas subsecciones a continuación:
 
