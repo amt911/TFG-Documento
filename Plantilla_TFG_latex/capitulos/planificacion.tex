@@ -80,14 +80,14 @@ Algunos aspectos a tener en cuenta son:
 
 \begin{itemize}
     \item Duración de los sprints de \sprintLength, que equivalen a \actualSprintLength, quitando fines de semana.
-    \item Se trabajará 5 horas al día en el proyecto.
-    \item 1 PH representa un día de trabajo ideal a jornada completa (8 horas). Por tanto, usando las horas reales, 1 PH se completaría en 1,6 días.
+    \item Se trabajará 6 horas al día en el proyecto.
+    \item 1 PH representa un día de trabajo ideal a jornada completa (8 horas). Por tanto, usando las horas reales, 1 PH se completaría en 1,33 días.
     \item Hay un total de \projectph en el proyecto.
 \end{itemize}
 
 \bigskip
 
-Entonces, la estimación de la velocidad del equipo para la primera iteración es: $\frac{10 \text{ días/sprint}}{1.6 \text{ días/PH}} = 6.25 \text{ PH/sprint} \simeq \mathbf{7\,PH/sprint}$
+Entonces, la estimación de la velocidad del equipo para la primera iteración es: $\frac{10 \text{ días/sprint}}{1.33 \text{ días/PH}} = 7.5 \text{ PH/sprint} \simeq \mathbf{8\,PH/sprint}$
 % $2 \text{ semanas/sprint} \times 20 \text{ horas/semana} \times 8 \text{ horas/PH} = $
 
 \section{\textcolor{red}{Diseño del Sprint}}
@@ -126,19 +126,22 @@ La implementación de la aplicación final se dividirá en \sprintNro sprints, c
     % Asimismo, se han corregido los fallos del controlador del volante y se ha mejorado su desempeño mediante la implementación de un algoritmo genético. También se ha probado otro algoritmo de navegación para medir su eficacia.
     Asimismo, se ha comenzado la implementación del proyecto, implementando el algoritmo de navegación inicial y la versión final del controlador del volante utilizando un algoritmo genético para su refinamiento.
     \item Temporización: Del 29 de marzo hasta el 18 de abril.
-    \item Historias de Usuario abordadas: 
+    \item Historias de Usuario abordadas: HU1, HU2.
 \end{itemize}
 
 \subsection{Sprint 5}
 \begin{itemize}
-    \item Explicación: En este sprint se pretende tener la lógica de navegación de los vehículos en funcionamiento. Por ahora, todos conducirán de igual manera, ya que el estado de los pilotos se implementará en iteraciones posteriores.
+    \item Explicación: 
+    % En este sprint se pretende tener la lógica de navegación de los vehículos en funcionamiento. Por ahora, todos conducirán de igual manera, ya que el estado de los pilotos se implementará en iteraciones posteriores.
     
-    Además, se creará el configurador de las carreras, que no tendrá toda la funcionalidad en este sprint, ya que es necesario tener el desgaste de los pilotos en funcionamiento para hacerlo.
+    % Además, se creará el configurador de las carreras, que no tendrá toda la funcionalidad en este sprint, ya que es necesario tener el desgaste de los pilotos en funcionamiento para hacerlo.
+
+    En este sprint se pretende refinar el algoritmo de navegación para que sean capaces de realizar adelantamientos. Además, se implementará la lógica necesaria para que los pilotos que se han salido de pista, puedan recuperarse y volver, calculando una nueva ruta.
 
     En cuanto a la documentación, se arreglarán los fallos encontrados del sprint anterior y se redactarán los capítulos de diseño e implementación.
 
     \item Temporización: Del 24 de abril hasta el 7 de mayo.
-    \item Historias de Usuario abordadas: HU1, HU2.
+    \item Historias de Usuario abordadas: HU3, HU4.
 \end{itemize}
 
 \newpage
@@ -146,26 +149,32 @@ La implementación de la aplicación final se dividirá en \sprintNro sprints, c
 \subsection{Sprint 6}
 
 \begin{itemize}
-    \item Explicación: En este sprint se pretende implementar la visualización y modificación del estado de los pilotos, junto a la posición en la carrera. Asimismo, se implementará el contador de vueltas de la carrera.
+    \item Explicación: En este sprint se pretende implementar la pantalla de configuración de la simulación, junto a la visualización de la lista de posiciones de los pilotos y el contador de vueltas. Asimismo, se implementará la modificación manual de estado de los pilotos durante la carrera.
+    
+    % En este sprint se pretende implementar la visualización y modificación del estado de los pilotos, junto a la posición en la carrera. Asimismo, se implementará el contador de vueltas de la carrera.
     \item Temporización: Del 8 de mayo hasta el 21 de mayo.
-    \item Historias de Usuario abordadas: HU3, HU4, HU5.
+    \item Historias de Usuario abordadas: HU5, HU6, HU7.
 \end{itemize}
 
 \subsection{Sprint 7}
 
 \begin{itemize}
-    \item Explicación: En este último sprint, se pretende implementar la importación y exportación de la configuración de una carrera y el botón de pausa y de velocidad de simulación.
+    \item Explicación: En este último sprint se pretende implementar las opciones de importación y exportación de la configuración a un fichero externo, con el objetivo de tener una forma rápida y sencilla de almacenar la configuración.
+    
+    Además, se implementará el botón de pausa y el botón de velocidad de la simulación.
+    
+    % En este último sprint, se pretende implementar la importación y exportación de la configuración de una carrera y el botón de pausa y de velocidad de simulación.
     \item Temporización: Del 22 de mayo hasta el 4 de junio.
-    \item Historias de Usuario abordadas: HU6, HU7, HU8, HU9.
+    \item Historias de Usuario abordadas: HU8, HU9, HU10, HU11, HU12.
 \end{itemize}
 
-\subsection{Sprint 8}
+% \subsection{Sprint 8}
 
-\begin{itemize}
-    \item Explicación: 
-    \item Temporización: Del 4 de junio hasta el 18 de junio.
-    \item Historias de Usuario abordadas: 
-\end{itemize}
+% \begin{itemize}
+%     \item Explicación: 
+%     \item Temporización: Del 4 de junio hasta el 18 de junio.
+%     \item Historias de Usuario abordadas: 
+% \end{itemize}
 
 \section{Diagrama de Gantt}
 
