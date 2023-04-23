@@ -3,39 +3,47 @@
 \section{Introducción}
 
 % rescribir: hablara
-En este capítulo se hablará de las distintas herramientas a utilizar para implementar y planificar el proyecto. Además, se hablará de los distintos algoritmos utilizados para realizar la simulación.
+% En este capítulo se hablará de las distintas herramientas a utilizar para implementar y planificar el proyecto. Además, se hablará de los distintos algoritmos utilizados para realizar la simulación.
+Este capítulo tratará sobre las herramientas utilizadas para la planificación e implementación, así como sobre los diferrentes algoritmos utilizados para llevar a cabo la simulación.
 
 \section{Herramientas utilizadas}
 % mucho en cuanto
 % rescribir
-En el desarrollo del proyecto se utiliza \verb|git| para el control de versiones, subiendolo a un repositorio de Github. Además, se hará uso de ramas y de \textit{Pull Requests} para implementar cada una de las historias de usuario, con el objetivo de asemejarse a como se trabaja en la vida real.
+% En el desarrollo del proyecto se utiliza \verb|git| para el control de versiones, subiéndolo a un repositorio de GitHub. Además, se hará uso de ramas y de \textit{Pull Requests} para implementar cada una de las historias de usuario, con el objetivo de asemejarse a como se trabaja en la vida real.
+En el desarrollo del proyecto se utilizará \verb|git| para el control de versiones del proyecto y se almacenará en un repositorio de GitHub. Se hará uso de ramas y \textit{Pull Requests} para implementar cada una de las historias de usuario, con el objetivo de seguir una metodología de trabajo similar a la de otras asignaturas cursadas.
+
 
 \bigskip
 
 % rescribir y quizas quitar esta parte si no se llega a programar en c++
-En cuanto a la implementación de la aplicación, en las partes más críticas se utilizará C++, por lo que se utilizará Visual Studio como entorno de desarrollo.
+% En cuanto a la implementación de la aplicación, en las partes más críticas se utilizará C++, en lugar de \textit{blueprints}, por lo que se utilizará Visual Studio como entorno de desarrollo.
+En cuanto a la implementación de la aplicación, se utilizará C++ en las partes más críticas, en lugar de \textit{blueprints}. Parra ello, se empleará Visual Studio como entorno de desarrollo.
 
 \bigskip
 
 % rescribir
-En cuanto a herramientas para la planificación, se hará uso de la herramienta \planApp para llevar un control de las Historias de Usuario que se realizan y pendientes en cada Sprint.
+% En cuanto a herramientas para la planificación, se hará uso de la herramienta \planApp para llevar un control de las Historias de Usuario que se realizan y pendientes en cada Sprint.
+En lo que respecta a herramientas de planificación, se utilizará \planApp para llevar un control de las historias de usuario realizadas y pendientes en cada sprint.
 
 % foto de \planApp
 
 \section{Algoritmos utilizados}
 % rescribir
-En el control del volante de los vehículos, correspondiente a HU3, se ha utilizado un controlador PID, que consiste en tres componentes: Proporcional, Integral y Derivativa. La ventaja de utilizar un controlador de este tipo frente a decidir el movimiento del volante directamente, es que permite, si está bien calibrado, tener un control más suave y unas correcciones más realistas y con menos oscilaciones.
+En el control del volante de los vehículos, correspondiente a HU3, se ha utilizado un controlador PID, que consta de tres componentes: Proporcional, Integral y Derivativa. Utilizar un controlador de este tipo, en lugar de decidir el movimiento del volante directamente, presenta la ventaja de permitir un control más suave y correcciones más realistas y con menos oscilaciones, siempre y cuando esté bien calibrado.
+% La ventaja de utilizar un controlador de este tipo frente a decidir el movimiento del volante directamente, es que permite, si está bien calibrado, tener un control más suave y unas correcciones más realistas y con menos oscilaciones.
 
 \bigskip
 % consta de ... constantes xdd
-El controlador PID consta de 3 constantes que son necesarias de ajustar para que funcione de manera correcta. Existen diversos métodos como el de Ziegler-Nichols\cite{enwiki:1140258750}, consiste en modificar solo la componente proporcional hasta que el coche comience a oscilar de manera continuada, en ese momento se debe calcular la frecuencia a la que oscila para obtener las constantes finales. 
+% El controlador PID consta de 3 constantes que son necesarias de ajustar para que funcione de manera correcta. 
+La calibración del PID se realiza modificando las constantes asociadas a cada componente. Existen diversos métodos como el de Ziegler-Nichols\cite{enwiki:1140258750}, que consiste en modificar solo la parte proporcional hasta que el coche comience a oscilar de manera estable, en ese momento se debe calcular la frecuencia a la que oscila para obtener las constantes finales. 
 
 \bigskip
 
 % rescribir
-Este método no me dio los resultados deseados, por lo que decidí implementar un algoritmo genético. Consiste en lanzar un conjunto de coches con valores aleatorios al principio que deben intentar llegar a la meta con el menor error posible. Aquellos que consiguen llegar con menos error, tienen más probabilidades de ser elegidos para generaciones futuras. La selección se realiza usando una ruleta\cite{enwiki:1141636554}, que consiste en lanzar una ruleta dividida según las probabilidades de cada coche. Una vez elegidos los coches, se juntan en parejas y mezclan sus constantes para obtener dos hijos cada uno. A continuación se mutan algunos hijos y finalmente se sustituyen los coches no elegidos por los hijos, dejando a los padres también. 
+% Este método no me dio los resultados deseados, por lo que decidí implementar un algoritmo genético. Consiste en lanzar un conjunto de coches con valores aleatorios al principio que deben intentar llegar a la meta con el menor error posible. Aquellos que consiguen llegar con menos error, tienen más probabilidades de ser elegidos para generaciones futuras. La selección se realiza usando una ruleta\cite{enwiki:1141636554}, que consiste en lanzar una ruleta dividida según las probabilidades de cada coche. Una vez elegidos los coches, se juntan en parejas y mezclan sus constantes para obtener dos hijos cada uno. A continuación se mutan algunos hijos y finalmente se sustituyen los coches no elegidos por los hijos, dejando a los padres también. 
+Dado que el método que estaba utilizando no me dio los resultados deseados, decidí implementar un algoritmo genético. Este consiste en lanzar un conjunto de coches con valores aleatorios al principio, con el objetivo de que intenten llegar a la meta con el menor error posible. Aquellos con menos error, tienen más posibilidades de ser seleccionados para generaciones futuras. La selección se realiza lanzando una ruleta\cite{enwiki:1141636554}, la cual se divide según las probabilidades de cada coche. Una vez que se han elegido los coches que van a ser padres, se emparejan y se mezclan sus constantes para obtener dos hijos de cada pareja. Después, una de las componentes de algunos de los hijos se mutan y finalmente se sustituyen los coches no elegidos por los hijos, manteniendo también a los padres.
 % Todo lo mencionado anteriormente tiene que ver con HU3.
 
 \bigskip
 
-En cuanto al algoritmo de navegación utilizado, he utilizado \finalAlg para obtener la ruta más óptima. Este algoritmo debe ejecutarse en determinados momentos, ya que está pensado principalmente para entornos estáticos.
+En cuanto al algoritmo de navegación, correspondiente a HU2, HU4 y HU5, utilizado, he utilizado \finalAlg para obtener la ruta más óptima. Este algoritmo debe ejecutarse en determinados momentos, ya que está pensado principalmente para entornos estáticos.
