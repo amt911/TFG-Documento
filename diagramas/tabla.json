@@ -1,0 +1,268 @@
+{
+    "options": {
+        "gen-comma": false,
+        "gen-surround": false,
+        "latex-whitespace": false,
+        "latex-border": true,
+        "latex-command": false,
+        "latex-split": false,
+        "latex-landscape": false,
+        "latex-float": true,
+        "fit-table": "none",
+        "latex-hhline": true,
+        "latex-hhline-hash": false,
+        "latex-tabu": false,
+        "latex-color": false,
+        "latex-microfix-alignment": true,
+        "tex-escape": true,
+        "tex-macro": true,
+        "html-indent": "tab",
+        "html-tbody": false,
+        "html-remove-tag": false,
+        "csv-separator": ",",
+        "bbcode-header": "1",
+        "pretext-indent": "two",
+        "context-split": false,
+        "context-landscape": false,
+        "context-float": true,
+        "context-indent": "two",
+        "wml-indent": "four",
+        "latexEnv": "Auto"
+    },
+    "autoBooktabs": false,
+    "caption": {
+        "caption": "",
+        "numbered": false,
+        "label": ""
+    },
+    "cells": [
+        [
+            {
+                "dataset": {
+                    "borderTop": "normal",
+                    "borderBottom": "normal",
+                    "borderRight": "normal",
+                    "borderLeft": "normal",
+                    "align": "c"
+                },
+                "html": "<b>Clave (vuelta actual)</b><br>",
+                "css": "border-color: rgb(0, 0, 0); border-style: solid; border-width: 1px; background-color: rgb(192, 192, 192);"
+            },
+            {
+                "dataset": {
+                    "borderTop": "normal",
+                    "borderRight": "normal",
+                    "borderLeft": "normal",
+                    "align": "c",
+                    "borderBottom": "double"
+                },
+                "html": "<b>Valor</b> ",
+                "css": "border-color: rgb(0, 0, 0); border-style: solid solid double; border-width: 1px 1px 2px; background-color: rgb(192, 192, 192);",
+                "colSpan": 2
+            }
+        ],
+        [
+            {
+                "dataset": {
+                    "borderTop": "normal",
+                    "borderRight": "double",
+                    "borderLeft": "normal",
+                    "borderBottom": "normal",
+                    "align": "c"
+                },
+                "html": "0",
+                "css": "border-color: rgb(0, 0, 0); border-style: solid double solid solid; border-width: 1px 2px 1px 1px;",
+                "rowSpan": 4
+            },
+            {
+                "dataset": {
+                    "borderLeft": "double",
+                    "borderBottom": "normal",
+                    "borderRight": "normal",
+                    "align": "c",
+                    "borderTop": "double"
+                },
+                "html": "<b>Clave (checkpoint actual)</b><br>",
+                "css": "border-color: rgb(0, 0, 0); border-style: double solid solid double; border-width: 2px 1px 1px 2px; background-color: rgb(223, 223, 223);"
+            },
+            {
+                "dataset": {
+                    "borderRight": "double",
+                    "borderLeft": "normal",
+                    "borderBottom": "normal",
+                    "align": "c",
+                    "borderTop": "double"
+                },
+                "html": "<b>Valor</b>",
+                "css": "border-color: rgb(0, 0, 0); border-style: double double solid solid; border-width: 2px 2px 1px 1px; background-color: rgb(223, 223, 223);"
+            }
+        ],
+        [
+            {
+                "dataset": {
+                    "borderLeft": "double",
+                    "borderBottom": "normal",
+                    "borderTop": "normal",
+                    "borderRight": "normal",
+                    "align": "c"
+                },
+                "html": "0",
+                "css": "border-color: rgb(0, 0, 0); border-style: solid solid solid double; border-width: 1px 1px 1px 2px;"
+            },
+            {
+                "dataset": {
+                    "borderRight": "double",
+                    "borderLeft": "normal",
+                    "borderBottom": "normal",
+                    "borderTop": "normal",
+                    "align": "c"
+                },
+                "html": "[c1]",
+                "css": "border-color: rgb(0, 0, 0); border-style: solid double solid solid; border-width: 1px 2px 1px 1px;"
+            }
+        ],
+        [
+            {
+                "dataset": {
+                    "borderLeft": "double",
+                    "borderBottom": "normal",
+                    "borderTop": "normal",
+                    "borderRight": "normal",
+                    "align": "c"
+                },
+                "html": "...",
+                "css": "border-color: rgb(0, 0, 0); border-style: solid solid solid double; border-width: 1px 1px 1px 2px;"
+            },
+            {
+                "dataset": {
+                    "borderRight": "double",
+                    "borderLeft": "normal",
+                    "borderBottom": "normal",
+                    "borderTop": "normal",
+                    "align": "c"
+                },
+                "css": "border-color: rgb(0, 0, 0); border-style: solid double solid solid; border-width: 1px 2px 1px 1px;"
+            }
+        ],
+        [
+            {
+                "dataset": {
+                    "borderLeft": "double",
+                    "borderBottom": "double",
+                    "borderTop": "normal",
+                    "borderRight": "normal",
+                    "align": "c"
+                },
+                "html": "i",
+                "css": "border-color: rgb(0, 0, 0); border-style: solid solid double double; border-width: 1px 1px 2px 2px;"
+            },
+            {
+                "dataset": {
+                    "borderRight": "double",
+                    "borderLeft": "normal",
+                    "borderBottom": "double",
+                    "borderTop": "normal",
+                    "align": "c"
+                },
+                "html": "[c2, c3]<br>",
+                "css": "border-color: rgb(0, 0, 0); border-style: solid double double solid; border-width: 1px 2px 2px 1px;"
+            }
+        ],
+        [
+            {
+                "dataset": {
+                    "borderRight": "normal",
+                    "borderLeft": "normal",
+                    "borderTop": "normal",
+                    "borderBottom": "normal",
+                    "align": "c"
+                },
+                "html": "...",
+                "css": "border-color: rgb(0, 0, 0); border-style: solid; border-width: 1px;"
+            },
+            {
+                "dataset": {
+                    "borderLeft": "normal",
+                    "borderBottom": "double",
+                    "borderTop": "double",
+                    "borderRight": "normal",
+                    "align": "c"
+                },
+                "html": "...",
+                "css": "border-color: rgb(0, 0, 0); border-style: double solid; border-width: 2px 1px;"
+            },
+            {
+                "dataset": {
+                    "borderRight": "normal",
+                    "borderLeft": "normal",
+                    "borderBottom": "double",
+                    "borderTop": "double",
+                    "align": "c"
+                },
+                "html": "...",
+                "css": "border-color: rgb(0, 0, 0); border-style: double solid; border-width: 2px 1px;"
+            }
+        ],
+        [
+            {
+                "dataset": {
+                    "borderBottom": "normal",
+                    "borderLeft": "normal",
+                    "borderRight": "double",
+                    "borderTop": "normal",
+                    "align": "c"
+                },
+                "html": "i",
+                "css": "border-color: rgb(0, 0, 0); border-style: solid double solid solid; border-width: 1px 2px 1px 1px;",
+                "rowSpan": 2
+            },
+            {
+                "dataset": {
+                    "borderLeft": "double",
+                    "borderTop": "double",
+                    "borderBottom": "normal",
+                    "borderRight": "normal",
+                    "align": "c"
+                },
+                "html": "<b>Clave (checkpoint actual)</b><br>",
+                "css": "border-color: rgb(0, 0, 0); border-style: double solid solid double; border-width: 2px 1px 1px 2px; background-color: rgb(223, 223, 223);"
+            },
+            {
+                "dataset": {
+                    "borderRight": "double",
+                    "borderLeft": "normal",
+                    "borderBottom": "normal",
+                    "borderTop": "double",
+                    "align": "c"
+                },
+                "html": "<b>Valor</b>",
+                "css": "border-color: rgb(0, 0, 0); border-style: double double solid solid; border-width: 2px 2px 1px 1px; background-color: rgb(223, 223, 223);"
+            }
+        ],
+        [
+            {
+                "dataset": {
+                    "borderBottom": "double",
+                    "borderLeft": "double",
+                    "borderTop": "normal",
+                    "borderRight": "normal",
+                    "align": "c"
+                },
+                "html": "3<br>",
+                "css": "border-color: rgb(0, 0, 0); border-style: solid solid double double; border-width: 1px 1px 2px 2px;"
+            },
+            {
+                "dataset": {
+                    "borderRight": "double",
+                    "borderBottom": "double",
+                    "borderLeft": "normal",
+                    "borderTop": "normal",
+                    "align": "c"
+                },
+                "html": "[c4]",
+                "css": "border-color: rgb(0, 0, 0); border-style: solid double double solid; border-width: 1px 2px 2px 1px;"
+            }
+        ]
+    ],
+    "version": "3.0.1"
+}
