@@ -1,8 +1,7 @@
 \chapter{Implementación}
 
-\section{Introducción}
+% \section{Introducción}
 
-% En este capítulo se hablará de las distintas herramientas a utilizar para implementar y planificar el proyecto. Además, se hablará de los distintos algoritmos utilizados para realizar la simulación.
 Este capítulo tratará sobre las herramientas utilizadas para la implementación y planificación, así como sobre los diferentes algoritmos utilizados para llevar a cabo la simulación.
 
 \section{Herramientas utilizadas}
@@ -23,6 +22,11 @@ En cuanto a la implementación de la aplicación, se utilizará C++ en las parte
 En lo que respecta a herramientas de planificación, se utilizará \planApp para llevar un control de las historias de usuario realizadas y pendientes en cada sprint.
 
 % foto de \planApp
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{imagenes/trello.png}
+    \caption{Tablero de ejemplo de Trello\cite{tablero-trello}.}
+\end{figure}
 
 \section{Algoritmos utilizados}
 En el control del volante de los vehículos, correspondiente a HU3 y realizada en el sprint 4, se ha utilizado un controlador PID, que consta de tres componentes: Proporcional, Integral y Derivativa. Utilizar un controlador de este tipo, en lugar de decidir el movimiento del volante directamente, presenta la ventaja de permitir un control más suave, con correcciones más realistas y con menos oscilaciones, siempre y cuando esté bien calibrado.
@@ -50,29 +54,30 @@ En lo que se refiere al cálculo de las posiciones de cada piloto, correspondien
 \begin{table}[H]
     \centering
     \begin{tblr}{
-      cells = {c},
-      row{1} = {Silver},
-      cell{1}{2} = {c=2}{},
-      cell{2}{1} = {r=4}{},
-      cell{2}{2} = {Alto},
-      cell{2}{3} = {Alto},
-      cell{7}{1} = {r=2}{},
-      cell{7}{2} = {Alto},
-      cell{7}{3} = {Alto},
-      vlines,
-      hline{1-2,6-7,9} = {-}{},
-      hline{3-5,8} = {2-3}{},
-    }
-    \textbf{Clave (vuelta actual)} & \textbf{Valor }                    &                \\
-    0                              & \textbf{Clave (checkpoint actual)} & \textbf{Valor} \\
-                                   & 0                                  & {[}c1]         \\
-                                   & ...                                &                \\
-                                   & i                                  & {[}c2, c3]     \\
-    ...                            & ...                                & ...            \\
-    i                              & \textbf{Clave (checkpoint actual)} & \textbf{Valor} \\
-                                   & 3                                  & {[}c4]         
+        cells = {c},
+        row{1} = {Silver},
+        cell{1}{2} = {c=2}{},
+        cell{2}{1} = {r=4}{},
+        cell{2}{2} = {Alto},
+        cell{2}{3} = {Alto},
+        cell{7}{1} = {r=2}{},
+        cell{7}{2} = {Alto},
+        cell{7}{3} = {Alto},
+        vlines,
+        hline{1-2,6-7,9} = {-}{},
+        hline{3-5,8} = {2-3}{},
+            }
+        \textbf{Clave (vuelta actual)} & \textbf{Valor }                    &                \\
+        0                              & \textbf{Clave (checkpoint actual)} & \textbf{Valor} \\
+                                       & 0                                  & {[}c1]         \\
+                                       & ...                                &                \\
+                                       & i                                  & {[}c2, c3]     \\
+        ...                            & ...                                & ...            \\
+        i                              & \textbf{Clave (checkpoint actual)} & \textbf{Valor} \\
+                                       & 3                                  & {[}c4]
     \end{tblr}
-    \end{table}
+    \caption{Representación de la estructura de datos que almacena las posiciones de los pilotos.}
+\end{table}
 
 Para saber cuando lanzar la actualización de la lista de posiciones, cada coche calcula continuamente si el que está por delante de él sigue así, en caso contrario lanza el evento de actualización.
 
