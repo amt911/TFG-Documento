@@ -5,16 +5,15 @@
 Este capítulo tratará sobre las herramientas utilizadas para la implementación y planificación, así como sobre los diferentes algoritmos utilizados para llevar a cabo la simulación.
 
 \section{Herramientas utilizadas}
-% En el desarrollo del proyecto se utiliza \verb|git| para el control de versiones, subiéndolo a un repositorio de GitHub. Además, se hará uso de ramas y de \textit{Pull Requests} para implementar cada una de las historias de usuario, con el objetivo de asemejarse a como se trabaja en la vida real.
-En el desarrollo del proyecto se utilizará \verb|git| para el control de versiones del proyecto y se almacenará en un repositorio de GitHub. Se hará uso de ramas y \textit{Pull Requests} para implementar cada una de las historias de usuario, con el objetivo de seguir una metodología de trabajo similar a las que se realizan en metodologías ágiles.
-% a la de otras asignaturas cursadas.
+
+En el desarrollo del proyecto se utilizará \verb|git| para el control de versiones del proyecto y se almacenará en un repositorio de GitHub. Se hará uso de ramas 
+% y \textit{Pull Requests} 
+para implementar cada una de las historias de usuario, con el objetivo de seguir una metodología de trabajo similar a las que se realizan en metodologías ágiles.
 
 
-\bigskip
+% \bigskip
 
-% rescribir y quizas quitar esta parte si no se llega a programar en c++
-% En cuanto a la implementación de la aplicación, en las partes más críticas se utilizará C++, en lugar de \textit{blueprints}, por lo que se utilizará Visual Studio como entorno de desarrollo.
-En cuanto a la implementación de la aplicación, se utilizará C++ en las partes más críticas, en lugar de \textit{blueprints}. Para ello, se empleará Visual Studio como entorno de desarrollo.
+% En cuanto a la implementación de la aplicación, se utilizará C++ en las partes más críticas, en lugar de \textit{blueprints}. Para ello, se empleará Visual Studio como entorno de desarrollo.
 
 \bigskip
 
@@ -24,13 +23,12 @@ En lo que respecta a herramientas de planificación, se utilizará \planApp para
 % foto de \planApp
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{imagenes/trello.png}
+    \includegraphics[width=0.75\textwidth]{imagenes/trello.png}
     \caption{Tablero de ejemplo de Trello\cite{tablero-trello}.}
 \end{figure}
 
 \section{Algoritmos utilizados}
 En el control del volante de los vehículos, correspondiente a HU3 y realizada en el sprint 4, se ha utilizado un controlador PID, que consta de tres componentes: Proporcional, Integral y Derivativa. Utilizar un controlador de este tipo, en lugar de decidir el movimiento del volante directamente, presenta la ventaja de permitir un control más suave, con correcciones más realistas y con menos oscilaciones, siempre y cuando esté bien calibrado.
-% La ventaja de utilizar un controlador de este tipo frente a decidir el movimiento del volante directamente, es que permite, si está bien calibrado, tener un control más suave y unas correcciones más realistas y con menos oscilaciones.
 
 \bigskip
 
@@ -76,7 +74,7 @@ En lo que se refiere al cálculo de las posiciones de cada piloto, correspondien
         i                              & \textbf{Clave (checkpoint actual)} & \textbf{Valor} \\
                                        & 3                                  & {[}c4]
     \end{tblr}
-    \caption{Representación de la estructura de datos que almacena las posiciones de los pilotos.}
+    \caption{Representación de la estructura de datos que almacena las posiciones de los pilotos durante la carrera.}
 \end{table}
 
 Para saber cuando lanzar la actualización de la lista de posiciones, cada coche calcula continuamente si el que está por delante de él sigue así, en caso contrario lanza el evento de actualización.
