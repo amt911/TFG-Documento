@@ -4,34 +4,96 @@ En este capítulo se abordará en más detalle cada Historia de Usuario, indican
 
 \bigskip
 
+Cabe destacar que el campo de ``Entrega'' indica en qué sprint se va a realizar, mientras que el campo de ``Estimación'' indica cuanto Puntos de Historia (PH) se le han asignado.
+
+\bigskip
+
 Cada Historia de Usuario se desarrollará en una tabla a continuación:
 
 % \section{Historias de Usuario divididas en subtareas}
 
+
+
+% \begin{table}[H]
+%     \begin{tabularx}{\textwidth}{| X | X | X |}
+%         \hline
+%         \multicolumn{1}{|l|}{\textbf{Identificador:} HU1} & \multicolumn{2}{l|}{Algoritmo de navegación.}
+%         \\ \hline
+%         \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Descripción:} Como usuario, quiero que el sistema simule la conducción de varios pilotos en una carrera de coches, incluyendo adelantamientos y sorteo de obstáculos.}
+%         \\ \hline
+%         \textbf{Estimación:} 5 & \textbf{Prioridad:} 1 & \textbf{Entrega:} 1
+%         \\ \hline
+%         \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Tareas:}
+%         \begin{itemize}
+%             \item Implementar el controlador del volante de los vehículos, de manera que sean capaces de seguir una ruta de forma suave.
+%             \item Implementar la malla de navegación.
+%             \item Implementar el algoritmo a partir de la malla.
+%             \item Implementar la lógica de los vehículos, de forma que sean capaces usar esta malla para tomar decisiones.
+%         \end{itemize}
+%         }
+%         \\ \hline
+%         \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Requisitos relacionados:} RF6, RNF4.}
+%         \\ \hline
+%         \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Pruebas de aceptación:}
+%         \begin{itemize}
+%             \item Los pilotos deben ser capaces de esquivar obstáculos en la pista.
+%             \item La simulación debe poder ejecutarse en un tiempo razonable, de manera que se pueda seguir la carrera en tiempo real.
+%             \item Los pilotos deben ser capaces de adelantar a otros que sean más lentos sin provocar accidentes.
+%         \end{itemize}
+%         }
+%         \\ \hline
+%         \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Observaciones:}}
+%         \\ \hline
+%     \end{tabularx}
+% \end{table}
+
+% \begin{table}[H]
+%     \begin{tabularx}{\textwidth}{| X | X | X |}
+%         \hline
+%         \multicolumn{1}{|l|}{\textbf{Identificador:} HU1} & \multicolumn{2}{l|}{lorem ipsum dolor sit amet.}
+%         \\ \hline
+%         \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Descripción:} lorem ipsum dolor sit amet.}
+%         \\ \hline
+%         \textbf{Estimación:} X & \textbf{Prioridad:} X & \textbf{Entrega:} X
+%         \\ \hline
+%         \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Tareas:}
+%         \begin{itemize}
+%             \item Roma no se hizo en un día.
+%         \end{itemize}
+%         }
+%         \\ \hline
+%         \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Requisitos relacionados:} RF6, RNF4.}
+%         \\ \hline
+%         \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Pruebas de aceptación:}
+%         \begin{itemize}
+%             \item Algo tangible.
+%         \end{itemize}
+%         }
+%         \\ \hline
+%         \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Observaciones:}}
+%         \\ \hline
+%     \end{tabularx}
+% \end{table}
+
 \begin{table}[H]
     \begin{tabularx}{\textwidth}{| X | X | X |}
         \hline
-        \multicolumn{1}{|l|}{\textbf{Identificador:} HU3} & \multicolumn{2}{l|}{Modificación del estado de los pilotos.}
+        \multicolumn{1}{|l|}{\textbf{Identificador:} HU1} & \multicolumn{2}{l|}{Modelado de los coches y circuito.}
         \\ \hline
-        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Descripción:} Como usuario, quiero modificar el estado de los pilotos durante la carrera.}
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Descripción:} Como usuario, quiero tener una representación en 3D de los coches y el circuito.}
         \\ \hline
-        \textbf{Estimación:} 2 & \textbf{Prioridad:} 2 & \textbf{Entrega:} 2
-        \\ \hline
-        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Pruebas de aceptación:}
-        \begin{itemize}
-            \item No se podrá elegir un valor fuera del rango del deslizador.
-            \item Los cambios en el estado deberán verse reflejados en el comportamiento durante la carrera.
-        \end{itemize}
-        }
-        \\ \hline
-        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Requisitos relacionados:} RF3, RNF5.}
-        \\ \hline
-        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Dependencias:} HU4.}        
+        \textbf{Estimación:} 3 & \textbf{Prioridad:} 1 & \textbf{Entrega:} 4
         \\ \hline
         \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Tareas:}
         \begin{itemize}
-            \item Implementar los deslizadores referentes al aguante físico y mental y la agresividad.
+            \item Modelar el trazado del circuito.
+            \item Modelar los vehículos, o en su defecto, obtener modelos ya hechos.
         \end{itemize}
+        }
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Requisitos relacionados:}}
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Pruebas de aceptación:}
         }
         \\ \hline
         \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Observaciones:}}
@@ -39,34 +101,29 @@ Cada Historia de Usuario se desarrollará en una tabla a continuación:
     \end{tabularx}
 \end{table}
 
-\newpage
-
-
 \begin{table}[H]
     \begin{tabularx}{\textwidth}{| X | X | X |}
         \hline
-        \multicolumn{1}{|l|}{\textbf{Identificador:} HU1} & \multicolumn{2}{l|}{Algoritmo de navegación.}
+        \multicolumn{1}{|l|}{\textbf{Identificador:} HU2} & \multicolumn{2}{l|}{Cálculo de ruta óptima en el circuito.}
         \\ \hline
-        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Descripción:} Como usuario, quiero que el sistema simule la conducción de varios pilotos en una carrera de coches, simulando adelantamientos y sorteo de obstáculos.}
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Descripción:} Como usuario, quiero que los pilotos calculen la ruta más óptima en el circuito.}
         \\ \hline
-        \textbf{Estimación:} 5 & \textbf{Prioridad:} 1 & \textbf{Entrega:} 1
+        \textbf{Estimación:} 8 & \textbf{Prioridad:} 1 & \textbf{Entrega:} 5
         \\ \hline
-        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Pruebas de aceptación:}
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Tareas:}
         \begin{itemize}
-            \item Se debe poder diferenciar la conducción entre pilotos con estados distintos.
-            \item Los pilotos deben ser capaces de esquivar obstáculos en la pista.
-            \item La simulación debe poder ejecutarse en un tiempo razonable, de manera que se pueda seguir la carrera en tiempo real.
-            \item Los pilotos deben ser capaces de adelantar a otros que sean más lentos sin provocar accidentes.
+            \item Implementar la malla de navegación, para que los coches puedan calcular rutas.
+            \item Implementar el algoritmo de navegación, que haga uso de la malla.
+            \item Crear los objetos auxiliares, para indicar a la malla la ruta más rápida.
         \end{itemize}
         }
         \\ \hline
         \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Requisitos relacionados:} RF6, RNF4.}
         \\ \hline
-        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Tareas:}
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Pruebas de aceptación:}
         \begin{itemize}
-            \item Implementar la malla de navegación.
-            \item Implementar el algoritmo a partir de la malla.
-            \item Implementar la lógica de los vehículos, de forma que sean capaces usar esta malla para tomar decisiones.
+            \item El algoritmo debe calcular una ruta que no dé la vuelta en sentido contrario en el circuito.
+            \item El algoritmo debe obtener un resultado en un tiempo razonable.
         \end{itemize}
         }
         \\ \hline
@@ -78,21 +135,107 @@ Cada Historia de Usuario se desarrollará en una tabla a continuación:
 \begin{table}[H]
     \begin{tabularx}{\textwidth}{| X | X | X |}
         \hline
-        \multicolumn{1}{|l|}{\textbf{Identificador:} HU2} & \multicolumn{2}{l|}{Modificación de ajustes antes de la carrera.}
+        \multicolumn{1}{|l|}{\textbf{Identificador:} HU3} & \multicolumn{2}{l|}{Seguimiento de una ruta con el volante.}
         \\ \hline
-        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Descripción:} Como usuario, quiero modificar los ajustes de la simulación antes de comenzar la carrera.}
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Descripción:} Como usuario, quiero que los pilotos sean capaces de seguir una ruta de manera suave.}
         \\ \hline
-        \textbf{Estimación:} 2 & \textbf{Prioridad:} 2 & \textbf{Entrega:} 1
+        \textbf{Estimación:} 5 & \textbf{Prioridad:} 1 & \textbf{Entrega:} 4
         \\ \hline
-        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Pruebas de aceptación:}
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Tareas:}
         \begin{itemize}
-            \item No se podrá elegir un número menor de 1 para la cantidad de vueltas.
-            \item No se podrá elegir un número menor de 2 coches.
-            \item No se podrá dejar el campo del nombre y los apellidos vacíos.
+            \item Implementar el controlador PID para usarlo en el volante.
+            \item Implementar un algoritmo para obtener el mejor valor de las constantes.
         \end{itemize}
         }
         \\ \hline
-        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Requisitos relacionados:} RF1, RNF2, RNF3.}
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Requisitos relacionados:} RF6, RNF4.}
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Dependencias:}}
+        \\ \hline   
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Pruebas de aceptación:}
+        \begin{itemize}
+            \item La amplitud máxima de las oscilaciones del vehículo en línea recta deben tener un tamaño menor a la anchura del coche.
+            \item La amplitud de las oscilaciones debe reducirse con el tiempo.
+            \item El coche debe tomar la curvas de manera suave.
+        \end{itemize}
+        }
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Observaciones:} El algoritmo utilizado para ajustar los valores del PID ha sido un algoritmo genético.}
+        \\ \hline
+    \end{tabularx}
+\end{table}
+
+\begin{table}[H]
+    \begin{tabularx}{\textwidth}{| X | X | X |}
+        \hline
+        \multicolumn{1}{|l|}{\textbf{Identificador:} HU4} & \multicolumn{2}{l|}{Adelantamiento entre vehículos.}
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Descripción:} Como usuario, quiero que los pilotos sean capaces de adelantarse entre ellos.}
+        \\ \hline
+        \textbf{Estimación:} 5 & \textbf{Prioridad:} 1 & \textbf{Entrega:} 6
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Tareas:}
+        \begin{itemize}
+            \item Haciendo uso del algoritmo de HU2, implementar la lógica necesaria para saber cuando recalcular la ruta.
+            \item Ajustar las colisiones de los vehículos, de forma que tengan espacio para adelantar.
+        \end{itemize}
+        }
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Requisitos relacionados:} RF6, RNF4.}
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Dependencias:} HU2.}
+        \\ \hline   
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Pruebas de aceptación:}
+        \begin{itemize}
+            \item El adelantamiento de un coche a otro no debe provocar el accidente de ninguno de los dos.
+        \end{itemize}
+        }
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Observaciones:}}
+        \\ \hline
+    \end{tabularx}
+\end{table}
+
+\begin{table}[H]
+    \begin{tabularx}{\textwidth}{| X | X | X |}
+        \hline
+        \multicolumn{1}{|l|}{\textbf{Identificador:} HU5} & \multicolumn{2}{l|}{Maniobra de recuperación en accidentes.}
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Descripción:} Como usuario, quiero que los pilotos sean capaces de recuperarse después de un accidente.}
+        \\ \hline
+        \textbf{Estimación:} 3 & \textbf{Prioridad:} 1 & \textbf{Entrega:} 6
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Tareas:}
+        \begin{itemize}
+            \item Implementar la lógica para que los pilotos recalculen una ruta que les devuelva a la pista utilizando el algoritmo de navegación.
+        \end{itemize}
+        }
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Requisitos relacionados:} RF6, RNF4.}
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Dependencias:} HU2.}
+        \\ \hline        
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Pruebas de aceptación:}
+        \begin{itemize}
+            \item La nueva ruta debe calcularse en un tiempo razonable, de manera que pueda hacerse en tiempo real.
+        \end{itemize}
+        }
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Observaciones:}}
+        \\ \hline
+    \end{tabularx}
+\end{table}
+
+% ANTIGUOS DEL SPRINT 4
+
+\begin{table}[H]
+    \begin{tabularx}{\textwidth}{| X | X | X |}
+        \hline
+        \multicolumn{1}{|l|}{\textbf{Identificador:} HU6} & \multicolumn{2}{l|}{Modificación de ajustes antes de la carrera.}
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Descripción:} Como usuario, quiero modificar los ajustes de la simulación antes de comenzar la carrera.}
+        \\ \hline
+        \textbf{Estimación:} 2 & \textbf{Prioridad:} 2 & \textbf{Entrega:} 7
         \\ \hline
         \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Tareas:}
         \begin{itemize}
@@ -103,6 +246,46 @@ Cada Historia de Usuario se desarrollará en una tabla a continuación:
         \end{itemize}
         }
         \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Requisitos relacionados:} RF1, RNF2, RNF3.}
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Pruebas de aceptación:}
+        \begin{itemize}
+            % \item No se podrá elegir un número menor de 1 para la cantidad de vueltas.
+            % \item No se podrá elegir un número menor de 2 coches.
+            \item No se podrá dejar el campo del nombre y los apellidos vacíos.
+        \end{itemize}
+        }
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Observaciones:}}
+        \\ \hline
+    \end{tabularx}
+\end{table}
+
+\begin{table}[H]
+    \begin{tabularx}{\textwidth}{| X | X | X |}
+        \hline
+        \multicolumn{1}{|l|}{\textbf{Identificador:} HU7} & \multicolumn{2}{l|}{Modificación del estado de los pilotos.}
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Descripción:} Como usuario, quiero modificar el estado de los pilotos durante la carrera.}
+        \\ \hline
+        \textbf{Estimación:} 2 & \textbf{Prioridad:} 2 & \textbf{Entrega:} 7
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Tareas:}
+        \begin{itemize}
+            \item Implementar los deslizadores referentes al aguante físico y mental y la agresividad.
+        \end{itemize}
+        }
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Requisitos relacionados:} RF3, RNF5.}
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Dependencias:} HU4.}        
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Pruebas de aceptación:}
+        \begin{itemize}
+            \item Los cambios en el estado deberán verse reflejados en el comportamiento del piloto seleccionado durante la carrera.
+        \end{itemize}
+        }
+        \\ \hline
         \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Observaciones:}}
         \\ \hline
     \end{tabularx}
@@ -112,20 +295,11 @@ Cada Historia de Usuario se desarrollará en una tabla a continuación:
 \begin{table}[H]
     \begin{tabularx}{\textwidth}{| X | X | X |}
         \hline
-        \multicolumn{1}{|l|}{\textbf{Identificador:} HU4} & \multicolumn{2}{l|}{Visualización de la información de los pilotos.}
+        \multicolumn{1}{|l|}{\textbf{Identificador:} HU8} & \multicolumn{2}{l|}{Visualización de la información de los pilotos.}
         \\ \hline
         \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Descripción:} Como usuario, quiero ver la posición actual y el estado de los pilotos de la carrera en curso.}
         \\ \hline
-        \textbf{Estimación:} 3 & \textbf{Prioridad:} 3 & \textbf{Entrega:} 2
-        \\ \hline
-        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Pruebas de aceptación:}
-        \begin{itemize}
-            \item Cuando un piloto cambie posiciones con otro, el marcador debe cambiar.
-            \item El cambio del estado del piloto producido por la carrera será reflejado en el deslizador.
-        \end{itemize}
-        }
-        \\ \hline
-        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Requisitos relacionados:} RF2, RNF3.}
+        \textbf{Estimación:} 3 & \textbf{Prioridad:} 3 & \textbf{Entrega:} 7
         \\ \hline
         \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Tareas:}
         \begin{itemize}
@@ -135,6 +309,15 @@ Cada Historia de Usuario se desarrollará en una tabla a continuación:
         \end{itemize}
         }
         \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Requisitos relacionados:} RF2, RNF3.}
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Pruebas de aceptación:}
+        \begin{itemize}
+            \item Cuando un piloto cambie posiciones con otro, la lista de posiciones de los pilotos debe cambiar.
+            \item El cambio del estado del piloto producido por la carrera será reflejado en el deslizador.
+        \end{itemize}
+        }
+        \\ \hline
         \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Observaciones:}}
         \\ \hline
     \end{tabularx}
@@ -143,19 +326,11 @@ Cada Historia de Usuario se desarrollará en una tabla a continuación:
 \begin{table}[H]
     \begin{tabularx}{\textwidth}{| X | X | X |}
         \hline
-        \multicolumn{1}{|l|}{\textbf{Identificador:} HU5} & \multicolumn{2}{l|}{Visualización de las vueltas restantes.}
+        \multicolumn{1}{|l|}{\textbf{Identificador:} HU9} & \multicolumn{2}{l|}{Visualización de las vueltas restantes.}
         \\ \hline
         \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Descripción:} Como usuario, quiero ver el número de vueltas de la carrera en curso.}
         \\ \hline
-        \textbf{Estimación:} 2 & \textbf{Prioridad:} 3 & \textbf{Entrega:} 1
-        \\ \hline
-        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Pruebas de aceptación:}
-        \begin{itemize}
-            \item El marcador no deberá mostrar como vuelta actual el número 0 ni un número superior al número máximo.
-        \end{itemize}
-        }
-        \\ \hline
-        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Requisitos relacionados:} RF9, RNF3.}
+        \textbf{Estimación:} 2 & \textbf{Prioridad:} 3 & \textbf{Entrega:} 8
         \\ \hline
         \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Tareas:}
         \begin{itemize}
@@ -164,6 +339,14 @@ Cada Historia de Usuario se desarrollará en una tabla a continuación:
         \end{itemize}
         }
         \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Requisitos relacionados:} RF9, RNF3.}
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Pruebas de aceptación:}
+        \begin{itemize}
+            \item El marcador no deberá mostrar como vuelta actual el número 0 ni un número superior al número máximo.
+        \end{itemize}
+        }
+        \\ \hline
         \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Observaciones:}}
         \\ \hline
     \end{tabularx}
@@ -173,15 +356,11 @@ Cada Historia de Usuario se desarrollará en una tabla a continuación:
 \begin{table}[H]
     \begin{tabularx}{\textwidth}{| X | X | X |}
         \hline
-        \multicolumn{1}{|l|}{\textbf{Identificador:} HU6} & \multicolumn{2}{l|}{Exportación de la configuración.}
+        \multicolumn{1}{|l|}{\textbf{Identificador:} HU10} & \multicolumn{2}{l|}{Exportación de la configuración.}
         \\ \hline
         \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Descripción:} Como usuario, quiero guardar la configuración de una carrera para su posterior uso.}
         \\ \hline
-        \textbf{Estimación:} 2 & \textbf{Prioridad:} 4 & \textbf{Entrega:} 3
-        \\ \hline
-        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Pruebas de aceptación:}}
-        \\ \hline
-        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Requisitos relacionados:} RF7.}
+        \textbf{Estimación:} 2 & \textbf{Prioridad:} 4 & \textbf{Entrega:} 8
         \\ \hline
         \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Tareas:}
         \begin{itemize}
@@ -189,6 +368,14 @@ Cada Historia de Usuario se desarrollará en una tabla a continuación:
         \end{itemize}
         }
         \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Requisitos relacionados:} RF7.}
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Pruebas de aceptación:}
+        \begin{itemize}
+            \item Al pulsar el botón se debe producir un fichero externo con la configuración exacta que había en el configurador.
+        \end{itemize}
+        }
+        \\ \hline
         \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Observaciones:}}
         \\ \hline
     \end{tabularx}
@@ -197,19 +384,11 @@ Cada Historia de Usuario se desarrollará en una tabla a continuación:
 \begin{table}[H]
     \begin{tabularx}{\textwidth}{| X | X | X |}
         \hline
-        \multicolumn{1}{|l|}{\textbf{Identificador:} HU7} & \multicolumn{2}{l|}{Importación de la configuración.}
+        \multicolumn{1}{|l|}{\textbf{Identificador:} HU11} & \multicolumn{2}{l|}{Importación de la configuración.}
         \\ \hline
         \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Descripción:} Como usuario, quiero cargar la configuración de una carrera almacenada en un archivo.}
         \\ \hline
-        \textbf{Estimación:} 2 & \textbf{Prioridad:} 4 & \textbf{Entrega:} 3
-        \\ \hline
-        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Pruebas de aceptación:}
-        \begin{itemize}
-            \item El fichero generado en la fase de exportación debe ser legible por la aplicación.
-        \end{itemize}
-        }
-        \\ \hline
-        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Requisitos relacionados:} RF8.}
+        \textbf{Estimación:} 2 & \textbf{Prioridad:} 4 & \textbf{Entrega:} 8
         \\ \hline
         \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Tareas:}
         \begin{itemize}
@@ -217,30 +396,29 @@ Cada Historia de Usuario se desarrollará en una tabla a continuación:
         \end{itemize}
         }
         \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Requisitos relacionados:} RF8.}
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Pruebas de aceptación:}
+        \begin{itemize}
+            % \item El fichero generado en la fase de exportación debe ser legible por la aplicación.
+            \item Ante un fichero válido de configuración, la aplicación lo leerá correctamente y modificará los parámetros de forma adecuada.
+        \end{itemize}
+        }
+        \\ \hline
         \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Observaciones:}}
         \\ \hline
     \end{tabularx}
 \end{table}
 
-\newpage
 
 \begin{table}[H]
     \begin{tabularx}{\textwidth}{| X | X | X |}
         \hline
-        \multicolumn{1}{|l|}{\textbf{Identificador:} HU8} & \multicolumn{2}{l|}{Pausado y reanudación de la simulación.}
+        \multicolumn{1}{|l|}{\textbf{Identificador:} HU12} & \multicolumn{2}{l|}{Pausado y reanudación de la simulación.}
         \\ \hline
         \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Descripción:} Como usuario, quiero pausar y reanudar la simulación en curso.}
         \\ \hline
-        \textbf{Estimación:} 0,5 & \textbf{Prioridad:} 5 & \textbf{Entrega:} 3
-        \\ \hline
-        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Pruebas de aceptación:}
-        \begin{itemize}
-            \item Al pulsar el botón, debe alternar entre pausado y reanudado.
-            \item Al encontrarse la simulación pausada, no se podrá modificar su velocidad.
-        \end{itemize}
-        }
-        \\ \hline
-        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Requisitos relacionados:} RF5, RNF2.}
+        \textbf{Estimación:} 0,5 & \textbf{Prioridad:} 5 & \textbf{Entrega:} 8
         \\ \hline
         \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Tareas:}
         \begin{itemize}
@@ -249,6 +427,15 @@ Cada Historia de Usuario se desarrollará en una tabla a continuación:
         \end{itemize}
         }
         \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Requisitos relacionados:} RF5, RNF2.}
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Pruebas de aceptación:}
+        \begin{itemize}
+            \item Al pulsar el botón, debe alternar entre pausado y reanudado.
+            \item Al encontrarse la simulación pausada, no se podrá modificar su velocidad.
+        \end{itemize}
+        }
+        \\ \hline
         \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Observaciones:}}
         \\ \hline
     \end{tabularx}
@@ -257,25 +444,25 @@ Cada Historia de Usuario se desarrollará en una tabla a continuación:
 \begin{table}[H]
     \begin{tabularx}{\textwidth}{| X | X | X |}
         \hline
-        \multicolumn{1}{|l|}{\textbf{Identificador:} HU9} & \multicolumn{2}{l|}{Modificación de la velocidad de la simulación.}
+        \multicolumn{1}{|l|}{\textbf{Identificador:} HU13} & \multicolumn{2}{l|}{Modificación de la velocidad de la simulación.}
         \\ \hline
         \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Descripción:} Como usuario, quiero modificar la velocidad de la simulación.}
         \\ \hline
-        \textbf{Estimación:} 0,5 & \textbf{Prioridad:} 5 & \textbf{Entrega:} 3
-        \\ \hline
-        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Pruebas de aceptación:}
-        \begin{itemize}
-            \item Al pulsar el botón, debe alternar entre distintas velocidades de simulación.
-            \item Este botón no deberá funcionar si la simulación se encuentra pausada.
-        \end{itemize}
-        }
-        \\ \hline
-        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Requisitos relacionados:} RF4, RNF2.}
+        \textbf{Estimación:} 0,5 & \textbf{Prioridad:} 5 & \textbf{Entrega:} 8
         \\ \hline
         \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Tareas:}
         \begin{itemize}
             \item Incluir el botón en la interfaz.
             \item Implementar la lógica relacionada con el botón y la modificación de la velocidad de simulación.
+        \end{itemize}
+        }
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Requisitos relacionados:} RF4, RNF2.}
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Pruebas de aceptación:}
+        \begin{itemize}
+            \item Al pulsar el botón, debe alternar entre el conjunto de velocidades de simulación existentes.
+            \item Este botón no deberá funcionar si la simulación se encuentra pausada.
         \end{itemize}
         }
         \\ \hline

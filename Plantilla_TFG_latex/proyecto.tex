@@ -8,11 +8,16 @@
 \renewcommand\tabularxcolumn[1]{m{#1}}
 \usepackage{amsmath}
 
+
+% Parte de las tablas
+\usepackage{tabularray}
+
 \newcommand{\tabitem}{~~\llap{\textbullet}~~}
 
 % GANTT
 \usepackage[spanish]{translator}
 
+\usepackage{adjustbox}
 \usepackage{pgfgantt}
 \def\pgfcalendarweekdayletter#1{%
 \ifcase#1L\or M\or X\or J\or V\or S\or D\fi%
@@ -20,7 +25,10 @@
 
 % FIN GANTT
 
-% \usepackage{xcolor}      % PARA PONER COLOR AL TEXTO
+\usepackage{xcolor}      % PARA PONER COLOR AL TEXTO
+\definecolor{Silver}{rgb}{0.752,0.752,0.752}
+\definecolor{Alto}{rgb}{0.874,0.874,0.874}
+
 \usepackage{xspace}
 
 \setcounter{secnumdepth}{3}
@@ -67,10 +75,16 @@ Telecomunicación\xspace}
 \newcommand{\myLocation}{Granada\xspace}
 \newcommand{\myTime}{\today\xspace}
 \newcommand{\myVersion}{Version 0.1\xspace}
-\newcommand{\sprintNro}{3\xspace}
+\newcommand{\sprintNro}{5\xspace}
+\newcommand{\docSprints}{3\xspace}
+\newcommand{\totalSprints}{8\xspace}
 \newcommand{\sprintLength}{2 semanas\xspace}
 \newcommand{\actualSprintLength}{10 días\xspace}
-\newcommand{\projectph}{20 PH\xspace}
+\newcommand{\projectph}{38 PH\xspace}
+% \newcommand{\finalAlg}{\textbf{PONER AQUÍ EL ALGORITMO DE NAVEGACIÓN}\xspace}
+\newcommand{\finalAlg}{A*\xspace}
+\newcommand{\planApp}{Trello\cite{trello}\xspace}
+
 
 \hypersetup{
 pdfauthor = {\myName (andresmerlo@correo.ugr.es)},
@@ -216,6 +230,10 @@ pdfproducer = {pdflatex}
 \input{capitulos/planificacion}
 
 \input{capitulos/analisis}
+
+\input{capitulos/diseno}
+
+\input{capitulos/implementacion}
 %\input{capitulos/01_Introduccion}
 %
 %\input{capitulos/02_EspecificacionRequisitos}
