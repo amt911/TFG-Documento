@@ -1,8 +1,6 @@
 \chapter{Implementación}
 
-% \section{Introducción}
-
-Este capítulo tratará sobre las herramientas utilizadas para la implementación y planificación, así como sobre los diferentes algoritmos utilizados para llevar a cabo la simulación.
+Este capítulo tratará sobre las herramientas utilizadas para la implementación y planificación, así como los distintos algoritmos que se emplearán para realizar la simulación. Además, se detallará el diseño de los \textit{blueprints} y se describirán las reglas que seguirá el algoritmo de navegación.
 
 \section{Herramientas utilizadas}
 
@@ -28,21 +26,90 @@ En lo que respecta a herramientas de planificación, se utilizará \planApp para
 \end{figure}
 
 \section{Algoritmos utilizados}
-En el control del volante de los vehículos, correspondiente a HU3 y realizada en el sprint 4, se ha utilizado un controlador PID, que consta de tres componentes: Proporcional, Integral y Derivativa. Utilizar un controlador de este tipo, en lugar de decidir el movimiento del volante directamente, presenta la ventaja de permitir un control más suave, con correcciones más realistas y con menos oscilaciones, siempre y cuando esté bien calibrado.
+
+Voy a dividir en subsecciones los diversos algoritmos que componen la simulación:
+
+\subsection{\textcolor{red}{Algoritmo para el giro del volante del coche}}
+
+En el control del volante de los vehículos, correspondiente a HU3 y realizada en el sprint 4, se ha utilizado un controlador PID (\textit{Proportional, Integral} y \textit{Derivative}). Este controlador se utiliza para regular el error de un sistema de manera suave y evitando producir muchas desviaciones mediante el ajuste de tres constantes para la componente proporcional, integral y derivativa. Cabe destacar que la variable a la que el sistema debe llegar se llama SP (\textit{Set Point}) y el valor actual del sistema se denomina PV (\textit{Process Variable}). 
+
+% foto de una grafica de esas, quitar el bigskip si se encuentra alguna
+% \caption{Diferencias de respuestas de un control estandar frente al controlador PID.}
+\bigskip
+
+% esta parte mejor en una lista
+Para que el controlador funcione bien, es necesario modificar sus tres constantes: 
+% Proporcional, Integral y Derivativa. 
+
+\begin{itemize}
+    \item \textbf{Proporcional: }Actuará de manera proporcional al error actual, multiplicada por la constante asociada. Si solo se utiliza este componente, el sistema se pasará del SP, haciendo que tenga que volver a corregir, produciendo así demasiadas oscilaciones para llegar al SP. 
+    
+    Esta constante la he implementado de la siguiente forma en \textit{Unreal}:
+
+    % foto de la constante
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{example-image-a}
+    \caption{Implementación usando \textit{blueprints} de la componente Proporcional.}
+\end{figure}
+
+    \item \textbf{Integral: }Se encarga de derivar el error con respecto al tiempo, con el objetivo de anular errores residuales e incluso del propio sensor. Por normal general, seguirá pasándose del SP, ya que de esto se encarga la componente derivativa.
+    
+    En la aplicación, la constante se ha implementado de la siguiente forma: 
+
+    % foto de la constante
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\textwidth]{example-image-b}
+        \caption{Implementación usando \textit{blueprints} de la componente Integral.}
+    \end{figure}
+
+    \item \textbf{Derivativa: }Se utiliza para estimar como evolucionará la curva con el tiempo, basándose en su pendiente. Esta componente es la que se encarga de minimizar las oscilaciones, al reducir el efecto del actuador si se acerca demasiado rápido al SP.
+    
+    La constante se ha programado de la siguiente forma:
+
+    % foto de la constante
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\textwidth]{example-image-c}
+        \caption{Implementación usando \textit{blueprints} de la componente Derivativa.}
+    \end{figure}    
+\end{itemize}
 
 \bigskip
 
-La calibración del PID se realiza modificando las constantes asociadas a cada componente. Existen diversos métodos como el de Ziegler-Nichols \cite{enwiki:1140258750}, que consiste en modificar solo la parte proporcional hasta que el coche comience a oscilar de manera estable, en ese momento se debe calcular la frecuencia a la que oscila para obtener las constantes finales mediante una fórmula. 
+El rango de valores que pueden tener las variables dependen del sistema al que se aplique. No obstante, todos los valores son números reales positivos, incluyendo el 0, que deshabilita la componente.
 
 \bigskip
 
-Dado que este método no me dio los resultados deseados, decidí implementar un algoritmo genético. Consiste en lanzar un conjunto de coches con valores aleatorios al principio, con el objetivo de que intenten llegar a la meta con el menor error posible. Aquellos con menos error, tienen más posibilidades de ser seleccionados para generaciones futuras. La selección se realiza lanzando una ruleta \cite{enwiki:1141636554}, la cual se divide según las probabilidades de cada coche. Una vez que se han elegido los coches que van a ser padres, se emparejan y se mezclan sus constantes para obtener dos hijos de cada pareja. Después, una de las componentes de algunos de los hijos se mutan y finalmente se sustituyen los coches no elegidos por los hijos, manteniendo también a los padres.
+Cabe destacar que, en mi caso, el SP el punto más cercano a la ruta generada, y el error es la distancia del coche a dicho punto.
 
 \bigskip
+
+% rescribir la ultima parte ... y utilizando tambien el valor...
+La calibración del PID se realiza modificando las constantes asociadas a cada componente. Existen diversos métodos como el de Ziegler-Nichols \cite{enwiki:1140258750}, que consiste en modificar solo la parte proporcional, dejando las demás a 0, hasta que el sistema comience a oscilar de manera estable, en ese momento se debe calcular la frecuencia a la que oscila y utilizando también el valor de la constante proporcional, se pueden obtener las demás mediante un cálculo matemático.
+
+\bigskip
+
+Dado que este método no me dio los resultados deseados, decidí implementar un algoritmo genético para obtener las constantes del controlador PID. Consiste en lanzar un conjunto de coches con valores de las constantes del PID aleatorios positivos al principio, con el objetivo de que intenten llegar a la meta con el menor error posible (por error se sigue entendiendo como la distancia del punto más cercano a la ruta con el coche). Aquellos con menos error, tienen más posibilidades de ser seleccionados para generaciones futuras. Una vez obtenido el error, se calcula su inversa y se obtiene la probabilidad de ser elegido mediante el nuevo valor entre la suma de todos. Esto dará como resultado unas probabilidades que al ser sumadas darán 1 (100\%). 
+
+\bigskip
+
+La selección se realiza lanzando una ruleta \cite{enwiki:1141636554}, cuyos sectores son divididos en función de la probabilidad calculada anteriormente.
+% la cual se divide según las probabilidades de cada coche. 
+Una vez que se han elegido los coches que van a ser padres, se emparejan y se mezclan sus constantes para obtener dos hijos de cada pareja. Después, una de las tres constantes del PID en algunos de los hijos es mutada con un valor aleatorio de rango [-0.1,0.1] que se le añade al valor exsitente. Finalmente se sustituyen los coches no elegidos para la siguiente generación por los hijos con las constantes mezcladas y mutadas, manteniendo a los padres, y se vuelve a ejecutar de nuevo el algoritmo.
+% no elegidos por los hijos, manteniendo también a los padres.
+
+\bigskip
+
+Utilizando este algoritmo, obtuve unos valores que funcionaban bien para el circuito. No obstante, tras ejecutar varias veces el algoritmo, me he dado cuenta de que la constante integral siempre tiende a 0. Para solucionarlo, he decidido obligarle a que tenga un valor mínimo de 0,01.
+
+\subsection{Algoritmo de navegación}
 
 En cuanto al algoritmo de navegación, correspondiente a HU2, HU4 y HU5 e implementadas en los sprints 5 y 6, he utilizado \finalAlg para obtener la ruta más óptima. Este algoritmo debe ejecutarse en determinados momentos, ya que está pensado principalmente para entornos estáticos.
 
-\bigskip
+
+\subsection{Algoritmo para las posiciones de los pilotos}
 
 En lo que se refiere al cálculo de las posiciones de cada piloto, correspondientes a HU7 y HU8 e implementadas en el sprint 7, he utilizado una estructura de datos algo más compleja. Los vehículos almacenan la vuelta en la que están y el checkpoint; es decir, el sector del circuito en el que se encuentran. Con la información anterior, he creado un map que almacene como clave la vuelta y como valor otro map, que a su vez tiene como clave el checkpoint y como valor un array con todos los vehículos que se encuentran en ese estado. Para mostrarlo, solo hace falta iterar primero por aquellas claves mayores, ya que son los que más vueltas y más lejos del circuito están.
 
@@ -79,6 +146,7 @@ En lo que se refiere al cálculo de las posiciones de cada piloto, correspondien
 
 Para saber cuando lanzar la actualización de la lista de posiciones, cada coche calcula continuamente si el que está por delante de él sigue así, en caso contrario lanza el evento de actualización.
 
-\bigskip
+
+\subsection{Contador de vueltas}
 
 En cuanto a la actualización del contador de vueltas, correspondiente a HU9 y realizado en el sprint 8, he hecho que todos los coches cuando acaben una vuelta intenten actualizarlo, en caso de que la vuelta actual sea mayor o igual, no se actualiza. De esta forma, es más fácil llevar un control más preciso de las vueltas.
