@@ -4,9 +4,8 @@ Este capítulo tratará sobre las herramientas utilizadas para la implementació
 
 \section{Herramientas utilizadas}
 
-En el desarrollo del proyecto se utilizará \verb|git| para el control de versiones del proyecto y se almacenará en un repositorio de GitHub. Se hará uso de ramas 
-% y \textit{Pull Requests} 
-para implementar cada una de las historias de usuario, con el objetivo de seguir una metodología de trabajo similar a las que se realizan en metodologías ágiles.
+En el desarrollo del proyecto se utilizará \verb|git| para el control de versiones del proyecto y se almacenará en un repositorio de GitHub. 
+% Se hará uso de ramas para implementar cada una de las historias de usuario, con el objetivo de seguir una metodología de trabajo similar a las que se realizan en metodologías ágiles.
 
 
 % \bigskip
@@ -97,7 +96,7 @@ Dado que este método no me dio los resultados deseados, decidí implementar un 
 
 La selección se realiza lanzando una ruleta \cite{enwiki:1141636554}, cuyos sectores son divididos en función de la probabilidad calculada anteriormente.
 % la cual se divide según las probabilidades de cada coche. 
-Una vez que se han elegido los coches que van a ser padres, se emparejan y se mezclan sus constantes para obtener dos hijos de cada pareja. Después, una de las tres constantes del PID en algunos de los hijos es mutada con un valor aleatorio de rango [-0.1,0.1] que se le añade al valor existente. Finalmente se sustituyen los coches no elegidos para la siguiente generación por los hijos con las constantes mezcladas y mutadas, manteniendo a los padres, y se vuelve a ejecutar de nuevo el algoritmo.
+Una vez que se han elegido los coches que van a ser padres, se emparejan y se mezclan sus constantes para obtener dos hijos de cada pareja. Después, una de las tres constantes del PID en algunos de los hijos puede ser mutada, con una probabilidad del 33\%, con un valor aleatorio de rango [-0.1,0.1] que se le añade al valor existente. Finalmente se sustituyen los coches no elegidos para la siguiente generación por los hijos con las constantes mezcladas y mutadas, manteniendo a los padres, y se vuelve a ejecutar de nuevo el algoritmo.
 % no elegidos por los hijos, manteniendo también a los padres.
 
 \bigskip
@@ -105,7 +104,7 @@ Una vez que se han elegido los coches que van a ser padres, se emparejan y se me
 Utilizando este algoritmo, obtuve unos valores que funcionaban bien para el circuito. No obstante, tras ejecutar varias veces el algoritmo, me he dado cuenta de que la constante integral siempre tiende a 0. Para solucionarlo, he decidido obligarle a que tenga un valor mínimo de 0,01.
 
 % Queda por hablar de: adelantamientos, recuperacion despues de accidente, sistema de checkpoints, recuperacion de vuelco
-\subsection{Algoritmo de navegación}
+\subsection{Algoritmos de navegación}
 
 En cuanto al algoritmo de navegación, correspondiente a HU2, HU4 y HU5 e implementadas en los sprints 5 y 6, he utilizado A*\cite{enwiki:1152315016}, que es lanzado utilizando diversas reglas, y una componente reactiva. Dividiré cada parte del algoritmo de navegación en subsecciones a continuación:
 
@@ -115,9 +114,10 @@ Para que el algoritmo A* pueda funcionar, es necesario discretizar el espacio de
 
 \bigskip
 
-Voy a dividir cada una de las partes que conforman el mapa en subsecciones:
+% Voy a dividir cada una de las partes que conforman el mapa en subsecciones:
+En las siguientes subsecciones se explicará en detalle cada componente que forma la malla:
 
-\subsection{Nodo}
+\subsubsection{Nodo}
 
 Para implementarlo, he creado un actor que representa un nodo. Además, posee las variables necesarias para saber si se encuentra un vehículo dentro de él, si es un delimitador de límites de pista, si es un checkpoint o si es una guía de ruta óptima. De esta forma se puede tener un control muy alto sobre los pesos de cada estado.
 

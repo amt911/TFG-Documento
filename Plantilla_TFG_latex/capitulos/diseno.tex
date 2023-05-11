@@ -149,6 +149,94 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
 \subsection{SportsCarPawn\_AI}
 \textbf{Descripción: }Representa a los coches que compiten por el circuito.
 
+\bigskip
+
+\textbf{Atributos: }
+
+\begin{itemize}
+    % id no va aqui por el modo entrenamiento
+    \item \textbf{PID} : PID
+    \item \textbf{Kp} : Float
+    \item \textbf{Ki} : Float
+    \item \textbf{Kd} : Float
+    \item \textbf{nombre} : String
+    \item \textbf{apellidos} : String
+    \item \textbf{agresividad} : Float
+    \item \textbf{aguante} : Float
+    \item \textbf{position} : Integer
+    \item \textbf{currentCheckpoint} : Integer
+    \item \textbf{currentLap} : Integer
+    \item \textbf{AGRESIVIDAD\_MAX\_BRAKING\_DISTANCE} : Float
+    \begin{itemize}
+        \item Indica la distancia máxima de frenada que se le puede substraer debido a la agresividad.
+    \end{itemize}
+    \item \textbf{AGRESIVIDAD\_MAX\_SPEED} : Float
+    \begin{itemize}
+        \item Indica la velocidad extra que se le puede añadir debido a la agresividad.
+    \end{itemize}
+    \item \textbf{AGUANTE\_MIN\_SPEED} : Float
+    \begin{itemize}
+        \item Indica el decremento en la velocidad que sufre el piloto por el desgaste.
+    \end{itemize}
+    \item \textbf{REVERSE\_TIME} : Float
+    \begin{itemize}
+        \item Tiempo máximo en segundos que el vehículo da marcha atrás para recuperarse de un accidente.
+    \end{itemize}
+    \item \textbf{stuckTime} : Float
+    \begin{itemize}
+        \item Tiempo que permanece atascado el vehículo (en segundos).
+    \end{itemize}
+    \item \textbf{isReversing} : boolean
+    \begin{itemize}
+        \item Indica si el vehículo está dando marcha atrás.
+    \end{itemize}
+    \item \textbf{goSlowTimer} : Float
+    \begin{itemize}
+        \item Indica la cantidad de segundo que el vehículo está yendo lento para volver a la pista después de un accidente.
+    \end{itemize}
+    \item \textbf{MAX\_GO\_SLOW\_TIME} : Float       % AQUI DEBERIA IR TAMBIEN SLOW_TIMER, QUE ESTA REPETIDO
+    \begin{itemize}
+        \item Indica el número de segundos que debe ir lento para volver a pista
+    \end{itemize}
+    \item \textbf{goSlowAfterCrash} : boolean
+    \begin{itemize}
+        \item Indica si el coche debe ir lento para volver a pista después de un accidente.
+    \end{itemize}
+    \item \textbf{reverseTime} : Float
+    \begin{itemize}
+        \item Cantidad de segundos que lleva el coche dando marcha atrás.
+    \end{itemize}
+    \item \textbf{currentOvertakeTime} : Float
+    \begin{itemize}
+        \item Cantidad de segundos que el vehículo lleva intentando un adelantamiento.
+    \end{itemize}
+    \item \textbf{isOvertaking} : boolean
+    \begin{itemize}
+        \item Indica si el vehículo está intentando adelantar en el momento.
+    \end{itemize}
+    \item \textbf{OVERTAKE\_TIME} : Float
+    \begin{itemize}
+        \item Tiempo máximo que debe intentar un adelantamiento.
+    \end{itemize}
+    \item \textbf{Spline} : SplinePath
+    \begin{itemize}
+        \item Almacena la ruta actual calculada por el algoritmo de navegación.
+    \end{itemize}
+    \item \textbf{brakingG} : Float
+    \item \textbf{checkpoints} : Checkpoint\verb|[]|
+    \item \textbf{AStarGridRef} : AStarGrid
+    \item \textbf{currentPath} : Vector\verb|[]|
+    \begin{itemize}
+        \item Puntos en coordenadas del mundo obtenidos del algoritmo de navegación.
+    \end{itemize}
+    \item \textbf{marcadorRef} : Marcador
+    \item \textbf{pathfinderRef} : AStarPathfinder
+    \item \textbf{color} : Linear Color
+    \begin{itemize}
+        \item Representa el color del vehículo.
+    \end{itemize}
+\end{itemize}
+
 \subsection{Marcador}
 \textbf{Descripción: }Entidad utilizada para generar la lista de posiciones y el contador de vueltas, así como la actualización de ambos.
 
@@ -241,7 +329,7 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
 
 \textbf{Atributos: }
 \begin{itemize}
-    \item \textbf{laps} : Map<Integer, ArrayOfCars>
+    \item \textbf{laps} : Map$<$Integer, ArrayOfCars$>$
     \begin{itemize}
         \item \textbf{Descripción: }Almacena todos los coches y sus checkpoints que se encuentran en una vuelta dada.
     \end{itemize}
