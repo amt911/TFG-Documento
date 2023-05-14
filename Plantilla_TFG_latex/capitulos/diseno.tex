@@ -79,32 +79,6 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
 
     isCheckpoint      & boolean              & Indica si la celda forma parte de un checkpoint. Esta celda estará siempre libre, con independencia de si hay un coche o no.
 \end{longtblr}
-% \begin{itemize}
-%     \item \textbf{neighbors} : AStarNode\verb|[]|
-%     \begin{itemize}
-%         \item \textbf{Descripción: }Almacena las celdas con las que colinda.
-%     \end{itemize}
-
-%     \item \textbf{hasObstacle} : boolean
-%     \begin{itemize}
-%         \item \textbf{Descripción: }Almacena si la celda actual está ocupada por un coche.
-%     \end{itemize}
-
-%     \item \textbf{isOptimal} : boolean
-%     \begin{itemize}
-%         \item \textbf{Descripción: }Indica si la celda forma parte de la ruta óptima del circuito. Puede estar ocupada.
-%     \end{itemize}
-
-%     \item \textbf{isDelimiter} : boolean
-%     \begin{itemize}
-%         \item \textbf{Descripción: }Indica si la celda forma parte de los límites de pista. Esta celda estará siempre ocupada y tendrá prioridad frente a las demás.
-%     \end{itemize}
-
-%     \item \textbf{isCheckpoint} : boolean
-%     \begin{itemize}
-%         \item \textbf{Descripción: }Indica si la celda forma parte de un checkpoint. Esta celda estará siempre libre, con independencia de si hay un coche o no.
-%     \end{itemize}
-% \end{itemize}
 
 \newpage
 \subsection{AStarGrid}
@@ -156,8 +130,6 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
 \subsection{QueueElement}
 \textbf{Descripción: }Estructura de datos que es utilizada por PriorityQueue para realizar los cálculos.
 
-
-
 \begin{longtblr}[
     label = none,
     entry = none,
@@ -183,8 +155,6 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
 
 \subsection{SportsCarPawn\_AI}
 \textbf{Descripción: }Representa a los coches que compiten por el circuito.
-
-
 
 \begin{longtblr}[
     label = none,
@@ -291,37 +261,9 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
 \end{longtblr}
 
 
-% \begin{itemize}
-%     \item \textbf{uiRef} : Panel
-%     \begin{itemize}
-%         \item \textbf{Descripción: }Referencia al panel con el contador de vueltas y el ranking.
-%     \end{itemize}
-
-%     \item \textbf{cars} : SportsCarPawn\_AI\verb|[]|
-%     \begin{itemize}
-%         \item \textbf{Descripción: }Almacena una referencia de todos los coches de la carrera. Se encuentran siempre ordenados, estando en posiciones menores los vehículos que mejor van.
-%     \end{itemize}
-
-%     \item \textbf{checkpoints} : Checkpoint\verb|[]|
-%     \begin{itemize}
-%         \item \textbf{Descripción: }Almacena todos los checkpoints que hay en la escena. Están ordenados de manera ascendente, de forma que los índices superiores indican checkpoints posteriores del circuito.
-%     \end{itemize}
-
-%     \item \textbf{currentLap} : Integer
-%     \begin{itemize}
-%         \item \textbf{Descripción: }Almacena la vuelta actual de la carrera.
-%     \end{itemize}
-
-%     \item \textbf{MAX\_LAPS} : Integer 
-%     \begin{itemize}
-%         \item \textbf{Descripción: }Indica el número de vueltas que tiene la carrera.
-%     \end{itemize}
-% \end{itemize}
-
+\newpage
 \subsection{Panel}
 \textbf{Descripción: }Interfaz de usuario en la que se muestra el contador de vueltas y el ranking.
-
-
 
 \begin{longtblr}[
     label = none,
@@ -382,6 +324,8 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
     cars              & SportsCarPawn\_AI\texttt{[]} & Almacena todos los coches para un checkpoint dado.
 \end{longtblr}
 
+
+\newpage
 \subsection{ArrayOfArrayOfCars}
 \textbf{Descripción: }Estructura que almacena en que vuelta y en que checkpoint se encuentra cada vehículo.
 

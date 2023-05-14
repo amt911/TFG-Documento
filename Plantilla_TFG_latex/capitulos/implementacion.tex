@@ -18,7 +18,7 @@ En lo que respecta a herramientas de planificación, se utilizará \planApp para
 % foto de \planApp
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{imagenes/trello.png}
+    \includegraphics[width=\textwidth]{imagenes/trello.png}
     \caption{Tablero de ejemplo de Trello\cite{tablero-trello}.}
 \end{figure}
 
@@ -26,7 +26,7 @@ En lo que respecta a herramientas de planificación, se utilizará \planApp para
 
 Voy a dividir en subsecciones los diversos algoritmos que componen la simulación:
 
-\subsection{\textcolor{red}{Algoritmo para el giro del volante del coche}}
+\subsection{Algoritmo para el giro del volante del coche}
 
 En el control del volante de los vehículos, correspondiente a HU3 y realizada en el sprint 4, se ha utilizado un controlador PID (\textit{Proportional, Integral} y \textit{Derivative}). Este controlador se utiliza para regular el error de un sistema de manera suave y evitando producir muchas desviaciones mediante el ajuste de tres constantes para la componente proporcional, integral y derivativa. Cabe destacar que la variable a la que el sistema debe llegar se llama SP (\textit{Set Point}) y el valor actual del sistema se denomina PV (\textit{Process Variable}). 
 
@@ -34,52 +34,31 @@ En el control del volante de los vehículos, correspondiente a HU3 y realizada e
 % \caption{Diferencias de respuestas de un control estandar frente al controlador PID.}
 \bigskip
 
-% esta parte mejor en una lista
 Para que el controlador funcione bien, es necesario modificar sus tres constantes: 
 % Proporcional, Integral y Derivativa. 
 
 \begin{itemize}
     \item \textbf{Proporcional: }Actuará de manera proporcional al error actual, multiplicada por la constante asociada. Si solo se utiliza este componente, el sistema se pasará del SP, haciendo que tenga que volver a corregir, produciendo así demasiadas oscilaciones para llegar al SP. 
-    
-    Esta constante la he implementado de la siguiente forma en \textit{Unreal}:
-
-    % foto de la constante
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{example-image-a}
-    \caption{Implementación usando \textit{blueprints} de la componente Proporcional.}
-\end{figure}
 
     \item \textbf{Integral: }Se encarga de derivar el error con respecto al tiempo, con el objetivo de anular errores residuales e incluso del propio sensor. Por normal general, seguirá pasándose del SP, ya que de esto se encarga la componente derivativa.
-    
-    En la aplicación, la constante se ha implementado de la siguiente forma: 
-
-    % foto de la constante
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=\textwidth]{example-image-b}
-        \caption{Implementación usando \textit{blueprints} de la componente Integral.}
-    \end{figure}
 
     \item \textbf{Derivativa: }Se utiliza para estimar como evolucionará la curva con el tiempo, basándose en su pendiente. Esta componente es la que se encarga de minimizar las oscilaciones, al reducir el efecto del actuador si se acerca demasiado rápido al SP.
-    
-    La constante se ha programado de la siguiente forma:
-
-    % foto de la constante
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=\textwidth]{example-image-c}
-        \caption{Implementación usando \textit{blueprints} de la componente Derivativa.}
-    \end{figure}    
 \end{itemize}
 
 \bigskip
+
+% foto de la constante
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{imagenes/PID-BP.png}
+\caption{Implementación usando \textit{blueprints} del controlador PID.}
+\end{figure}
 
 El rango de valores que pueden tener las variables dependen del sistema al que se aplique. No obstante, todos los valores son números reales positivos, incluyendo el 0, que deshabilita la componente.
 
 \bigskip
 
-Cabe destacar que, en mi caso, el SP el punto más cercano a la ruta generada, y el error es la distancia del coche a dicho punto.
+Cabe destacar que, en mi caso, el SP es el punto más cercano del coche a la ruta generada, y el error es la distancia del coche a dicho punto.
 
 \bigskip
 
@@ -92,10 +71,7 @@ Dado que este método no me dio los resultados deseados, decidí implementar un 
 
 \bigskip
 
-La selección se realiza lanzando una ruleta \cite{enwiki:1141636554}, cuyos sectores son divididos en función de la probabilidad calculada anteriormente.
-% la cual se divide según las probabilidades de cada coche. 
-Una vez que se han elegido los coches que van a ser padres, se emparejan y se mezclan sus constantes para obtener dos hijos de cada pareja. Después, una de las tres constantes del PID en algunos de los hijos puede ser mutada, con una probabilidad del 33\%, con un valor aleatorio de rango [-0.1,0.1] que se le añade al valor existente. Finalmente se sustituyen los coches no elegidos para la siguiente generación por los hijos con las constantes mezcladas y mutadas, manteniendo a los padres, y se vuelve a ejecutar de nuevo el algoritmo.
-% no elegidos por los hijos, manteniendo también a los padres.
+La selección se realiza lanzando una ruleta\cite{enwiki:1141636554}, cuyos sectores son divididos en función de la probabilidad calculada anteriormente. La ruleta se debe lanzar tantas veces como padres se desea tener. Una vez que se han elegido los coches que van a ser padres, se emparejan y se mezclan sus constantes para obtener dos hijos de cada pareja. Después, una de las tres constantes del PID en algunos de los hijos puede ser mutada, con una probabilidad del 33\%, con un valor aleatorio de rango [-0.1,0.1] que se le añade al valor existente. Finalmente se sustituyen los coches no elegidos para la siguiente generación por los hijos con las constantes mezcladas y mutadas, manteniendo a los padres, y se vuelve a ejecutar de nuevo el algoritmo.
 
 \bigskip
 
@@ -104,9 +80,9 @@ Utilizando este algoritmo, obtuve unos valores que funcionaban bien para el circ
 % Queda por hablar de: adelantamientos, recuperacion despues de accidente, sistema de checkpoints, recuperacion de vuelco
 \subsection{Algoritmos de navegación}
 
-En cuanto al algoritmo de navegación, correspondiente a HU2, HU4 y HU5 e implementadas en los sprints 5 y 6, he utilizado A*\cite{enwiki:1152315016}, que es lanzado utilizando diversas reglas, y una componente reactiva. Dividiré cada parte del algoritmo de navegación en subsecciones a continuación:
+En cuanto al algoritmo de navegación, correspondiente a HU2, HU4 y HU5 e implementadas en los sprints 5 y 6, he utilizado A*\cite{enwiki:1152315016}, que es lanzado utilizando diversas reglas, y una componente reactiva. 
 
-\subsubsection{Discretización del espacio}
+\bigskip
 
 Para que el algoritmo A* pueda funcionar, es necesario discretizar el espacio de alguna forma, para que pueda ser ejecutado. Para ello, he decidido dividir el circuito en una malla de cubos de \cubeSize y con una cantidad de \gridSize cubos. Estos parámetros pueden ser modificados fácilmente, permitiendo albergar circuitos de mayor tamaño.
 
@@ -169,9 +145,9 @@ Otra mejora ha sido la de utilizar una cola con prioridad para la lista de abier
 Gracias a la cola con prioridad, la desventaja de la nueva versión de A* puede ser solucionada, al priorizarse la ruta más eficiente.
 
 
-\subsubsection{\textcolor{red}{Heurística}}
+\subsubsection{Heurística}
 
-Debido a que un nodo puede moverse en 8 direcciones distintas, es necesario utilizar una heurística acorde. Por tanto, he decidido utilizar la distancia Chebyshev\cite{enwiki:1149051498}, cuyos movimientos diagonales tienen el mismo coste que los demás. 
+Debido a que un nodo puede moverse en 8 direcciones distintas, incluyendo las diagonales, es necesario utilizar una heurística acorde. Por tanto, he decidido utilizar la distancia Chebyshev\cite{enwiki:1149051498}, cuyos movimientos diagonales tienen el mismo coste que los demás. 
 
 \bigskip
 
@@ -258,7 +234,7 @@ Para saber cuando lanzar la actualización de la lista de posiciones, cada coche
 En cuanto a la actualización del contador de vueltas, correspondiente a HU9 y realizado en el sprint 8, he hecho que todos los coches cuando acaben una vuelta intenten actualizarlo, en caso de que la vuelta actual sea mayor o igual, no se actualiza. De esta forma, es más fácil llevar un control más preciso de las vueltas.
 
 % ver si es a partir del tercer piloto la agresividad
-\subsection{\textcolor{red}{Estado de los pilotos}}
+\subsection{Estado de los pilotos}
 
 El estado de los pilotos está compuesto por tres parámetros: experiencia, agresividad y estado físico y mental.
 
