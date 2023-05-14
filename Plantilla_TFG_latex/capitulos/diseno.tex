@@ -43,7 +43,7 @@ El diagrama de navegación de la aplicación se encuentra a continuación:
     \centering
     \includegraphics[width=0.9\textwidth]{imagenes/nav.png}
     \caption{Diagrama de navegación de la interfaz de usuario de la aplicación.}
- \end{figure}
+\end{figure}
 
 Como se puede observar en el diagrama de navegación, al pulsar el botón de ejecutar aparecerá la nueva pantalla para ejecutar la simulación y dar comienzo a la carrera.
 
@@ -56,92 +56,127 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
 \subsection{AStarNode}
 \textbf{Descripción: }Representa una celda de la matriz utilizada para ejecutar el algoritmo A*.
 
-\bigskip
+\begin{longtblr}[
+    label = none,
+    entry = none,
+    ]{
+    width = \linewidth,
+    colspec = {Q[14,m]Q[14,m]Q[28,m]},
+    row{1} = {Silver,c},
+    cell{2-6}{1,2} = {c},
+    hlines,
+    vlines,
+    }
+    \textbf{Variable} & \textbf{Tipo}        & \textbf{Anotaciones}                                                                                                             \\
 
-\textbf{Atributos: }
-\begin{itemize}
-    \item \textbf{neighbors} : AStarNode\verb|[]|
-    \begin{itemize}
-        \item \textbf{Descripción: }Almacena las celdas con las que colinda.
-    \end{itemize}
+    neighbors         & AStarNode\texttt{[]} & Almacena las celdas con las que colinda.                                                                                         \\
 
-    \item \textbf{hasObstacle} : boolean
-    \begin{itemize}
-        \item \textbf{Descripción: }Almacena si la celda actual está ocupada por un coche.
-    \end{itemize}
+    hasObstacle       & boolean              & Almacena si la celda actual está ocupada por un coche.                                                                           \\
 
-    \item \textbf{isOptimal} : boolean
-    \begin{itemize}
-        \item \textbf{Descripción: }Indica si la celda forma parte de la ruta óptima del circuito. Puede estar ocupada.
-    \end{itemize}
+    isOptimal         & boolean              & Indica si la celda forma parte de la ruta óptima del circuito. Puede estar ocupada.                                              \\
 
-    \item \textbf{isDelimiter} : boolean
-    \begin{itemize}
-        \item \textbf{Descripción: }Indica si la celda forma parte de los límites de pista. Esta celda estará siempre ocupada y tendrá prioridad frente a las demás.
-    \end{itemize}
+    isDelimiter       & boolean              & Indica si la celda forma parte de los límites de pista. Esta celda estará siempre ocupada y tendrá prioridad frente a las demás. \\
 
-    \item \textbf{isCheckpoint} : boolean
-    \begin{itemize}
-        \item \textbf{Descripción: }Indica si la celda forma parte de un checkpoint. Esta celda estará siempre libre, con independencia de si hay un coche o no.
-    \end{itemize}
-\end{itemize}
+    isCheckpoint      & boolean              & Indica si la celda forma parte de un checkpoint. Esta celda estará siempre libre, con independencia de si hay un coche o no.
+\end{longtblr}
+% \begin{itemize}
+%     \item \textbf{neighbors} : AStarNode\verb|[]|
+%     \begin{itemize}
+%         \item \textbf{Descripción: }Almacena las celdas con las que colinda.
+%     \end{itemize}
+
+%     \item \textbf{hasObstacle} : boolean
+%     \begin{itemize}
+%         \item \textbf{Descripción: }Almacena si la celda actual está ocupada por un coche.
+%     \end{itemize}
+
+%     \item \textbf{isOptimal} : boolean
+%     \begin{itemize}
+%         \item \textbf{Descripción: }Indica si la celda forma parte de la ruta óptima del circuito. Puede estar ocupada.
+%     \end{itemize}
+
+%     \item \textbf{isDelimiter} : boolean
+%     \begin{itemize}
+%         \item \textbf{Descripción: }Indica si la celda forma parte de los límites de pista. Esta celda estará siempre ocupada y tendrá prioridad frente a las demás.
+%     \end{itemize}
+
+%     \item \textbf{isCheckpoint} : boolean
+%     \begin{itemize}
+%         \item \textbf{Descripción: }Indica si la celda forma parte de un checkpoint. Esta celda estará siempre libre, con independencia de si hay un coche o no.
+%     \end{itemize}
+% \end{itemize}
+
+\newpage
 \subsection{AStarGrid}
 \textbf{Descripción: }Representa la matriz navegación utilizada para ejecutar A*.
 
-\bigskip
+\begin{longtblr}[
+    label = none,
+    entry = none,
+    ]{
+    width = \linewidth,
+    colspec = {Q[18,m]Q[18,m]Q[40,m]},
+    row{1} = {Silver,c},
+    cell{2-5}{1,2} = {c},
+    hlines,
+    vlines,
+    }
+    \textbf{Variable} & \textbf{Tipo}        & \textbf{Anotaciones}                                                                                                                                   \\
 
-\textbf{Atributos: }
-\begin{itemize}
-    \item \textbf{nodes} : AStarNode\verb|[]|
-    \begin{itemize}
-        \item \textbf{Descripción: }Almacena todos los nodos que forman la malla de navegación. El primero es el de más arriba a la izquierda y el último es el de más abajo a la derecha.
-    \end{itemize}
-    \item \textbf{gridSize} : Integer
-    \begin{itemize}
-        \item \textbf{Descripción: }Cantidad de cubos que va a haber a lo largo y a lo ancho.
-    \end{itemize}
-    \item \textbf{nodeSize} : Integer
-    \begin{itemize}
-        \item \textbf{Descripción: }Tamaño que tendrá la celda. Por defecto es 100.
-    \end{itemize}
-    \item \textbf{startingPosition} : Vector
-    \begin{itemize}
-        \item \textbf{Descripción: }Posición por la que se debe comenzar a generar la malla. Esta coordenada representa la posición más a la izquierda y arriba de la malla.
-    \end{itemize}
-    % \item \textbf{openList} : PriorityQueue
-\end{itemize}
+    nodes             & AStarNode\texttt{[]} & Almacena todos los nodos que forman la malla de navegación. El primero es el de más arriba a la izquierda y el último es el de más abajo a la derecha. \\
+
+    gridSize          & Integer              & Cantidad de cubos que va a haber a lo largo y a lo ancho.                                                                                              \\
+
+    nodeSize          & Integer              & Tamaño que tendrá la celda. Por defecto es 100.                                                                                                        \\
+
+    startingPosition  & Vector               & Posición por la que se debe comenzar a generar la malla. Esta coordenada representa la posición más a la izquierda y arriba de la malla.
+\end{longtblr}
 
 \subsection{PriorityQueue}
 \textbf{Descripción: }Representa una cola con prioridad ascendente, utilizada para A*.
 
-\bigskip
 
-\textbf{Atributos: }
-\begin{itemize}
-    \item \textbf{queue} : QueueElement\verb|[]|
-    \begin{itemize}
-        \item \textbf{Descripción: }Lista con todos los nodos visitados y sus costes. Se encuentran ordenados.
-    \end{itemize}
-\end{itemize}
+
+\begin{longtblr}[
+    label = none,
+    entry = none,
+    ]{
+    width = \linewidth,
+    colspec = {Q[12,m]Q[18,m]Q[35,m]},
+    row{1} = {Silver,c},
+    cell{2}{1,2} = {c},
+    hlines,
+    vlines,
+    }
+    \textbf{Variable} & \textbf{Tipo}           & \textbf{Anotaciones}                                                       \\
+    queue             & QueueElement\texttt{[]} & Lista con todos los nodos visitados y sus costes. Se encuentran ordenados.
+\end{longtblr}
 
 
 \subsection{QueueElement}
 \textbf{Descripción: }Estructura de datos que es utilizada por PriorityQueue para realizar los cálculos.
 
-\bigskip
 
-\textbf{Atributos: }
-\begin{itemize}
-    \item \textbf{node} : AStarNode
-    \begin{itemize}
-        \item \textbf{Descripción: }Representa el nodo que se va a insertar en la cola.
-    \end{itemize}
 
-    \item \textbf{cost} : Float
-    \begin{itemize}
-        \item \textbf{Descripción: }Representa el coste total del nodo, incluyendo la heurística.
-    \end{itemize}
-\end{itemize}
+\begin{longtblr}[
+    label = none,
+    entry = none,
+    ]{
+    width = \linewidth,
+    colspec = {Q[18,m]Q[18,m]Q[50,m]},
+    row{1} = {Silver,c},
+    cell{2,3}{1,2} = {c},
+    hlines,
+    vlines,
+    }
+    \textbf{Variable} & \textbf{Tipo} & \textbf{Anotaciones}                                          \\
+
+    node              & AStarNode     & Representa el nodo que se va a insertar en la cola.           \\
+
+    cost              & Float         & Representa el coste total del nodo, incluyendo la heurística.
+\end{longtblr}
+
+
 \subsection{AStarPathfinder}
 \textbf{Descripción: }Implementa el algoritmo A* para ser utilizado por los coches.
 
@@ -149,247 +184,274 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
 \subsection{SportsCarPawn\_AI}
 \textbf{Descripción: }Representa a los coches que compiten por el circuito.
 
-\bigskip
 
-\textbf{Atributos: }
 
-\begin{itemize}
-    % id no va aqui por el modo entrenamiento
-    \item \textbf{PID} : PID
-    \item \textbf{Kp} : Float
-    \item \textbf{Ki} : Float
-    \item \textbf{Kd} : Float
-    \item \textbf{nombre} : String
-    \item \textbf{apellidos} : String
-    \item \textbf{agresividad} : Float
-    \item \textbf{aguante} : Float
-    \item \textbf{position} : Integer
-    \item \textbf{currentCheckpoint} : Integer
-    \item \textbf{currentLap} : Integer
-    \item \textbf{AGRESIVIDAD\_MAX\_BRAKING\_DISTANCE} : Float
-    \begin{itemize}
-        \item Indica la distancia máxima de frenada que se le puede substraer debido a la agresividad.
-    \end{itemize}
-    \item \textbf{AGRESIVIDAD\_MAX\_SPEED} : Float
-    \begin{itemize}
-        \item Indica la velocidad extra que se le puede añadir debido a la agresividad.
-    \end{itemize}
-    \item \textbf{AGUANTE\_MIN\_SPEED} : Float
-    \begin{itemize}
-        \item Indica el decremento en la velocidad que sufre el piloto por el desgaste.
-    \end{itemize}
-    \item \textbf{REVERSE\_TIME} : Float
-    \begin{itemize}
-        \item Tiempo máximo en segundos que el vehículo da marcha atrás para recuperarse de un accidente.
-    \end{itemize}
-    \item \textbf{stuckTime} : Float
-    \begin{itemize}
-        \item Tiempo que permanece atascado el vehículo (en segundos).
-    \end{itemize}
-    \item \textbf{isReversing} : boolean
-    \begin{itemize}
-        \item Indica si el vehículo está dando marcha atrás.
-    \end{itemize}
-    \item \textbf{goSlowTimer} : Float
-    \begin{itemize}
-        \item Indica la cantidad de segundo que el vehículo está yendo lento para volver a la pista después de un accidente.
-    \end{itemize}
-    \item \textbf{MAX\_GO\_SLOW\_TIME} : Float       % AQUI DEBERIA IR TAMBIEN SLOW_TIMER, QUE ESTA REPETIDO
-    \begin{itemize}
-        \item Indica el número de segundos que debe ir lento para volver a pista
-    \end{itemize}
-    \item \textbf{goSlowAfterCrash} : boolean
-    \begin{itemize}
-        \item Indica si el coche debe ir lento para volver a pista después de un accidente.
-    \end{itemize}
-    \item \textbf{reverseTime} : Float
-    \begin{itemize}
-        \item Cantidad de segundos que lleva el coche dando marcha atrás.
-    \end{itemize}
-    \item \textbf{currentOvertakeTime} : Float
-    \begin{itemize}
-        \item Cantidad de segundos que el vehículo lleva intentando un adelantamiento.
-    \end{itemize}
-    \item \textbf{isOvertaking} : boolean
-    \begin{itemize}
-        \item Indica si el vehículo está intentando adelantar en el momento.
-    \end{itemize}
-    \item \textbf{OVERTAKE\_TIME} : Float
-    \begin{itemize}
-        \item Tiempo máximo que debe intentar un adelantamiento.
-    \end{itemize}
-    \item \textbf{Spline} : SplinePath
-    \begin{itemize}
-        \item Almacena la ruta actual calculada por el algoritmo de navegación.
-    \end{itemize}
-    \item \textbf{brakingG} : Float
-    \item \textbf{checkpoints} : Checkpoint\verb|[]|
-    \item \textbf{AStarGridRef} : AStarGrid
-    \item \textbf{currentPath} : Vector\verb|[]|
-    \begin{itemize}
-        \item Puntos en coordenadas del mundo obtenidos del algoritmo de navegación.
-    \end{itemize}
-    \item \textbf{marcadorRef} : Marcador
-    \item \textbf{pathfinderRef} : AStarPathfinder
-    \item \textbf{color} : Linear Color
-    \begin{itemize}
-        \item Representa el color del vehículo.
-    \end{itemize}
-\end{itemize}
+\begin{longtblr}[
+    label = none,
+    entry = none,
+    ]{
+    width = \linewidth,
+    colspec = {Q[20,m]Q[14,m]Q[20,m]},
+    row{1} = {Silver,c},
+    cell{2-33}{1} = {c},
+    cell{2-33}{2} = {c},
+    hlines,
+    vlines,
+    }
+    \textbf{Variable}   & \textbf{Tipo}         & \textbf{Anotaciones}                                                                                           \\
+    PID                 & PID                   &                                                                                                                \\
+
+    Kp                  & Float                 & Constante proporcional del PID.                                                                                \\
+
+    Ki                  & Float                 & Constante integral del PID.                                                                                    \\
+
+    Kd                  & Float                 & Constante derivativa del PID.                                                                                  \\
+
+    nombre              & String                &                                                                                                                \\
+
+    apellidos           & String                &                                                                                                                \\
+
+    agresividad         & Float                 &                                                                                                                \\
+
+    aguante             & Float                 &                                                                                                                \\
+
+    position            & Integer               &                                                                                                                \\
+
+    currentCheckpoint   & Integer               &                                                                                                                \\
+
+    currentLap          & Integer               &                                                                                                                \\
+
+    AGR\_MAX\_BR\_DIST  & Float                 & Indica la distancia máxima de frenada que se le puede substraer debido a la agresividad.                       \\
+
+    AGR\_MAX\_SPD       & Float                 & Indica la velocidad extra que se le puede añadir debido a la agresividad.                                      \\
+
+    A\_MIN\_SPEED       & Float                 & Indica el decremento en la velocidad que sufre el piloto por el desgaste.                                      \\
+
+    REVERSE\_TIME       & Float                 & Tiempo máximo en segundos que el vehículo da marcha atrás para recuperarse de un accidente.                    \\
+
+    stuckTime           & Float                 & Tiempo que permanece atascado el vehículo (en segundos).                                                       \\
+
+    isReversing         & boolean               & Indica si el vehículo está dando marcha atrás.                                                                 \\
+
+    goSlowTimer         & Float                 & Indica la cantidad de segundo que el vehículo está yendo lento para volver a la pista después de un accidente. \\
+
+    GO\_SLOW\_TIME      & Float                 & Indica el número de segundos que debe ir lento para volver a pista.                                            \\
+
+    goSlowAfterCrash    & boolean               & Indica si el coche debe ir lento para volver a pista después de un accidente.                                  \\
+
+    reverseTime         & Float                 & Cantidad de segundos que lleva el coche dando marcha atrás.                                                    \\
+
+    currentOvertakeTime & Float                 & Cantidad de segundos que el vehículo lleva intentando un adelantamiento.                                       \\
+
+    isOvertaking        & boolean               & Indica si el vehículo está intentando adelantar en el momento.                                                 \\
+
+    OVERTAKE\_TIME      & Float                 & Tiempo máximo que debe intentar un adelantamiento.                                                             \\
+
+    Spline              & SplinePath            & Almacena la ruta actual calculada por el algoritmo de navegación.                                              \\
+
+    brakingG            & Float                 &                                                                                                                \\
+
+    checkpoints         & Checkpoint\texttt{[]} &                                                                                                                \\
+
+    AStarGridRef        & AStarGrid             &                                                                                                                \\
+
+    currentPath         & Vector\texttt{[]}     & Puntos en coordenadas del mundo obtenidos del algoritmo de navegación.                                         \\
+
+    marcadorRef         & Marcador              &                                                                                                                \\
+
+    pathfinderRef       & AStarPathfinder       &                                                                                                                \\
+
+    color               & Linear Color          & Representa el color del vehículo.
+\end{longtblr}
 
 \subsection{Marcador}
 \textbf{Descripción: }Entidad utilizada para generar la lista de posiciones y el contador de vueltas, así como la actualización de ambos.
 
-\bigskip
+\begin{longtblr}[
+    label = none,
+    entry = none,
+    ]{
+    width = \linewidth,
+    colspec = {Q[10,m]Q[14,m]Q[20,m]},
+    row{1} = {Silver,c},
+    cell{2-6}{1,2} = {c},
+            hlines,
+            vlines,
+        }
+    \textbf{Variable} & \textbf{Tipo}                & \textbf{Anotaciones}                                                                                                                                                         \\
+    uiRef             & Panel                        & Referencia al panel con el contador de vueltas y el ranking.                                                                                                                 \\
 
-\textbf{Atributos: }
-\begin{itemize}
-    \item \textbf{uiRef} : Panel
-    \begin{itemize}
-        \item \textbf{Descripción: }Referencia al panel con el contador de vueltas y el ranking.
-    \end{itemize}
-    
-    \item \textbf{cars} : SportsCarPawn\_AI\verb|[]|
-    \begin{itemize}
-        \item \textbf{Descripción: }Almacena una referencia de todos los coches de la carrera. Se encuentran siempre ordenados, estando en posiciones menores los vehículos que mejor van.
-    \end{itemize}
+    cars              & SportsCarPawn\_AI\texttt{[]} & Almacena una referencia de todos los coches de la carrera. Se encuentran siempre ordenados.                                                                                  \\
 
-    \item \textbf{checkpoints} : Checkpoint\verb|[]|
-    \begin{itemize}
-        \item \textbf{Descripción: }Almacena todos los checkpoints que hay en la escena. Están ordenados de manera ascendente, de forma que los índices superiores indican checkpoints posteriores del circuito.
-    \end{itemize}
+    checkpoints       & Checkpoint\texttt{[]}        & Almacena todos los checkpoints que hay en la escena. Están ordenados de manera ascendente, de forma que los índices superiores indican checkpoints posteriores del circuito. \\
 
-    \item \textbf{currentLap} : Integer
-    \begin{itemize}
-        \item \textbf{Descripción: }Almacena la vuelta actual de la carrera.
-    \end{itemize}
+    currentLap        & Integer                      & Almacena la vuelta actual de la carrera.                                                                                                                                     \\
 
-    \item \textbf{MAX\_LAPS} : Integer 
-    \begin{itemize}
-        \item \textbf{Descripción: }Indica el número de vueltas que tiene la carrera.
-    \end{itemize}
-\end{itemize}
+    MAX\_LAPS         & Integer                      & Indica el número de vueltas que tiene la carrera.
+\end{longtblr}
+
+
+% \begin{itemize}
+%     \item \textbf{uiRef} : Panel
+%     \begin{itemize}
+%         \item \textbf{Descripción: }Referencia al panel con el contador de vueltas y el ranking.
+%     \end{itemize}
+
+%     \item \textbf{cars} : SportsCarPawn\_AI\verb|[]|
+%     \begin{itemize}
+%         \item \textbf{Descripción: }Almacena una referencia de todos los coches de la carrera. Se encuentran siempre ordenados, estando en posiciones menores los vehículos que mejor van.
+%     \end{itemize}
+
+%     \item \textbf{checkpoints} : Checkpoint\verb|[]|
+%     \begin{itemize}
+%         \item \textbf{Descripción: }Almacena todos los checkpoints que hay en la escena. Están ordenados de manera ascendente, de forma que los índices superiores indican checkpoints posteriores del circuito.
+%     \end{itemize}
+
+%     \item \textbf{currentLap} : Integer
+%     \begin{itemize}
+%         \item \textbf{Descripción: }Almacena la vuelta actual de la carrera.
+%     \end{itemize}
+
+%     \item \textbf{MAX\_LAPS} : Integer 
+%     \begin{itemize}
+%         \item \textbf{Descripción: }Indica el número de vueltas que tiene la carrera.
+%     \end{itemize}
+% \end{itemize}
 
 \subsection{Panel}
 \textbf{Descripción: }Interfaz de usuario en la que se muestra el contador de vueltas y el ranking.
 
-\bigskip
 
-\textbf{Atributos: }
-\begin{itemize}
-    \item \textbf{LAPS} : Text Widget
-    \begin{itemize}
-        \item \textbf{Descripción: }Es el texto que aparece en la propia interfaz de usuario.
-    \end{itemize}
 
-    \item \textbf{VerticalBox\_0} : Vertical Box
-    \begin{itemize}
-        \item \textbf{Descripción: }Marco donde se almacena cada celda de la clase Posicion con la información de cada piloto.
-    \end{itemize}
-    % \item cars
-\end{itemize}
+\begin{longtblr}[
+    label = none,
+    entry = none,
+    ]{
+    width = \linewidth,
+    colspec = {Q[18,m]Q[18,m]Q[35,m]},
+    row{1} = {Silver,c},
+    cell{2,3}{1,2} = {c},
+            hlines,
+            vlines,
+        }
+    \textbf{Variable} & \textbf{Tipo} & \textbf{Anotaciones}                                                                       \\
+
+    LAPS              & Text Widget   & Es el contador de vueltas que aparece en la interfaz de usuario.                           \\
+
+    VerticalBox\_0    & Vertical Box  & Marco donde se almacena cada celda de la clase Posicion con la información de cada piloto.
+\end{longtblr}
 
 \subsection{Posicion}
 \textbf{Descripción: }Cuadro básico que representa una celda en el ranking.
 
-\bigskip
 
-\textbf{Atributos: }
-\begin{itemize}
-    \item \textbf{Agresividad} : Sliding Bar
-    \begin{itemize}
-        \item \textbf{Descripción: }Barra deslizadora que indica la agresividad del conductor.
-    \end{itemize}
 
-    \item \textbf{Aguante} : Sliding Bar
-    \begin{itemize}
-        \item \textbf{Descripción: }Barra deslizadora que indica el aguante físico y mental del conductor.
-    \end{itemize}
+\begin{longtblr}[
+    label = none,
+    entry = none,
+    ]{
+    width = \linewidth,
+    colspec = {Q[18,m]Q[18,m]Q[50,m]},
+    row{1} = {Silver,c},
+    cell{2,3}{1,2} = {c},
+            hlines,
+            vlines,
+        }
+    \textbf{Variable} & \textbf{Tipo} & \textbf{Anotaciones}                                                   \\
+    Agresividad       & Sliding Bar   & Barra deslizadora que indica la agresividad del conductor.             \\
 
-    % \item TextBlock_47
-\end{itemize}
+    Aguante           & Sliding Bar   & Barra deslizadora que indica el aguante físico y mental del conductor.
+\end{longtblr}
 
 \subsection{ArrayOfCars}
 \textbf{Descripción: }Estructura utilizada para almacenar el número de coches que hay en un checkpoint concreto.
 
-\bigskip
 
-\textbf{Atributos: }
-\begin{itemize}
-    \item \textbf{cars} : SportsCarPawn\_AI\verb|[]|
-    \begin{itemize}
-        \item \textbf{Descripción: }Almacena todos los coches para un checkpoint dado.
-    \end{itemize}
-\end{itemize}
+\begin{longtblr}[
+    label = none,
+    entry = none,
+    ]{
+    width = \linewidth,
+    colspec = {Q[8,m]Q[15,m]Q[20,m]},
+    row{1} = {Silver,c},
+    cell{2,3}{1,2} = {c},
+            hlines,
+            vlines,
+        }
+    \textbf{Variable} & \textbf{Tipo}                & \textbf{Anotaciones}                               \\
+    cars              & SportsCarPawn\_AI\texttt{[]} & Almacena todos los coches para un checkpoint dado.
+\end{longtblr}
 
 \subsection{ArrayOfArrayOfCars}
 \textbf{Descripción: }Estructura que almacena en que vuelta y en que checkpoint se encuentra cada vehículo.
 
-\bigskip
 
-\textbf{Atributos: }
-\begin{itemize}
-    \item \textbf{laps} : Map$<$Integer, ArrayOfCars$>$
-    \begin{itemize}
-        \item \textbf{Descripción: }Almacena todos los coches y sus checkpoints que se encuentran en una vuelta dada.
-    \end{itemize}
-\end{itemize}
+
+\begin{longtblr}[
+    label = none,
+    entry = none,
+    ]{
+    width = \linewidth,
+    colspec = {Q[15,m]Q[18,m]Q[40,m]},
+    row{1} = {Silver,c},
+    cell{2,3}{1,2} = {c},
+            hlines,
+            vlines,
+        }
+    \textbf{Variable} & \textbf{Tipo}                 & \textbf{Anotaciones}                                                              \\
+    laps              & Map$<$Integer, ArrayOfCars$>$ & Almacena todos los coches y sus checkpoints que se encuentran en una vuelta dada.
+\end{longtblr}
 
 
 \subsection{PID}
 \textbf{Descripción: }Entidad encargada de implementar la lógica del PID, exponiendo funciones para su uso.
 
-\bigskip
 
-\textbf{Atributos: }
-\begin{itemize}
-    \item \textbf{Kp} : Float
-    \begin{itemize}
-        \item \textbf{Descripción: }Constante proporcional del PID.
-    \end{itemize}
-    
-    \item \textbf{Ki} : Float
-    \begin{itemize}
-        \item \textbf{Descripción: }Constante integral del PID.
-    \end{itemize}
-    
-    \item \textbf{Kd} : Float
-    \begin{itemize}
-        \item \textbf{Descripción: }Constante derivativa del PID.
-    \end{itemize}        
 
-    % \item minoutput, maxoutput, erroractualfuera
+\begin{longtblr}[
+    label = none,
+    entry = none,
+    ]{
+    width = \linewidth,
+    colspec = {Q[25,m]Q[18,m]Q[60,m]},
+    row{1} = {Silver,c},
+    cell{2-6}{1,2} = {c},
+            hlines,
+            vlines,
+        }
+    \textbf{Variable} & \textbf{Tipo} & \textbf{Anotaciones}                                                                        \\
+    Kp                & Float         & Constante proporcional del PID.                                                             \\
 
-    \item \textbf{errorPasado} : Float
-    \begin{itemize}
-        \item \textbf{Descripción: }Error en el instante anterior al actual. Necesario para implementar la componente integral.
-    \end{itemize}
+    Ki                & Float         & Constante integral del PID.                                                                 \\
 
-    \item \textbf{errorAcumulado} : Float
-    \begin{itemize}
-        \item \textbf{Descripción: }Error acumulado con el tiempo. Esta variable es utilizada por la componente integral.
-    \end{itemize}
-\end{itemize}
+    Kd                & Float         & Constante derivativa del PID.                                                               \\
+
+    errorPasado       & Float         & Error en el instante anterior al actual. Necesario para implementar la componente integral. \\
+
+    errorAcumulado    & Float         & Error acumulado con el tiempo. Esta variable es utilizada por la componente integral.
+\end{longtblr}
 
 \subsection{Checkpoint}
 \textbf{Descripción: }Entidad encargada de poner un checkpoint en el mundo, para poder realizar cálculos.
 
-\bigskip
 
-\textbf{Atributos: }
-\begin{itemize}
-    \item \textbf{id} : Integer
-    \begin{itemize}
-        \item \textbf{Descripción: }Identificador del checkpoint. Este valor debe ir creciendo en el mismo orden en el que los coches pasan los checkpoints en el circuito.
-    \end{itemize}
-    
-    \item \textbf{speed} : Float
-    \begin{itemize}
-        \item \textbf{Descripción: }Velocidad aconsejable a la que debe pasar el coche el tramo hasta el siguiente checkpoint.
-    \end{itemize}
 
-    % \item \textbf{apexType}
-\end{itemize}
+\begin{longtblr}[
+    label = none,
+    entry = none,
+    ]{
+    width = \linewidth,
+    colspec = {Q[18,m]Q[18,m]Q[60,m]},
+    row{1} = {Silver,c},
+    cell{2,3}{1,2} = {c},
+            hlines,
+            vlines,
+        }
+    \textbf{Variable} & \textbf{Tipo} & \textbf{Anotaciones}                                                                                                                    \\
+    id                & Integer       & Identificador del checkpoint. Este valor debe ir creciendo en el mismo orden en el que los coches pasan los checkpoints en el circuito. \\
+
+    speed             & Float         & Velocidad aconsejable a la que debe pasar el coche el tramo hasta el siguiente checkpoint.
+\end{longtblr}
 
 \subsection{SplinePath}
 \textbf{Descripción: }Entidad que almacena un spline.
@@ -400,67 +462,56 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
 \subsection{Genome}
 \textbf{Descripción: }Estructura de datos que almacena las constantes del PID de un coche, así como su identificador y \textit{fitness} para el algoritmo genético.
 
-\bigskip
 
-\textbf{Atributos: }
-\begin{itemize}
-    \item \textbf{Kp} : Float
-    \begin{itemize}
-        \item \textbf{Descripción: }Constante proporcional del PID.
-    \end{itemize}
-    
-    \item \textbf{Ki} : Float
-    \begin{itemize}
-        \item \textbf{Descripción: }Constante integral del PID.
-    \end{itemize}    
 
-    \item \textbf{Kd} : Float
-    \begin{itemize}
-        \item \textbf{Descripción: }Constante derivativa del PID.
-    \end{itemize}    
+\begin{longtblr}[
+    label = none,
+    entry = none,
+    ]{
+    width = \linewidth,
+    colspec = {Q[18,m]Q[18,m]Q[35,m]},
+    row{1} = {Silver,c},
+    cell{2-6}{1,2} = {c},
+            hlines,
+            vlines,
+        }
+    \textbf{Variable} & \textbf{Tipo} & \textbf{Anotaciones}                                                   \\
+    Kp                & Float         & Constante proporcional del PID.                                        \\
 
-    \item \textbf{fitness} : Float
-    \begin{itemize}
-        \item \textbf{Descripción: }Almacena la probabilidad de ser escogido para la siguiente generación.
-    \end{itemize}
+    Ki                & Float         & Constante integral del PID.                                            \\
 
-    \item \textbf{id} : Integer
-    \begin{itemize}
-        \item \textbf{Descripción: }Almacena el identificador del vehículo.
-    \end{itemize}
-\end{itemize}
+    Kd                & Float         & Constante derivativa del PID.                                          \\
+
+    fitness           & Float         & Almacena la probabilidad de ser escogido para la siguiente generación. \\
+
+    id                & Integer       & Almacena el identificador del vehículo.
+\end{longtblr}
 
 \subsection{TrainingStop}
 \textbf{Descripción: }Utilizado en el algoritmo genético. Marca el punto final de los coches.
 
-\bigskip
 
-\textbf{Atributos: }
-\begin{itemize}
-    \item \textbf{currentCars} : Integer
-    \begin{itemize}
-        \item \textbf{Descripción: }Almacena el número de vehículos que aún siguen en pie. Esto es debido a que aquellos coches que se chocan o se caen son eliminados.
-    \end{itemize}
 
-    \item \textbf{MAX\_GENOMES} : Integer
-    \begin{itemize}
-        \item \textbf{Descripción: }Indica el número de coches que se lanzan por generación.
-    \end{itemize}
+\begin{longtblr}[
+    label = none,
+    entry = none,
+    ]{
+    width = \linewidth,
+    colspec = {Q[15,m]Q[8,m]Q[20,m]},
+    row{1} = {Silver,c},
+    cell{2-6}{1,2} = {c},
+            hlines,
+            vlines,
+        }
+    \textbf{Variable}    & \textbf{Tipo}     & \textbf{Anotaciones}                                                                                                                \\
 
-    \item \textbf{values} : genome\verb|[]|
-    \begin{itemize}
-        \item \textbf{Descripción: }Almacena todas las constantes de los hijos de una generación.
-    \end{itemize}
+    currentCars          & Integer           & Almacena el número de vehículos que aún siguen en pie. Esto es debido a que aquellos coches que se chocan o se caen son eliminados. \\
 
-    \item \textbf{identificadores} : Integer
-    \begin{itemize}
-        \item \textbf{Descripción: }Contador para asignar el identificador a todos los coches.
-    \end{itemize}
+    MAX\_GENOMES         & Integer           & Indica el número de coches que se lanzan por generación.                                                                            \\
 
-    \item \textbf{probabilidadMutacion} : Float
-    \begin{itemize}
-        \item \textbf{Descripción: }Indica la probabilidad con la que un coche pueda llegar a tener una mutación.
-    \end{itemize}
+    values               & genome\texttt{[]} & Almacena todas las constantes de los hijos de una generación.                                                                       \\
 
-    % isEnabled (hay que eliminarlo en el proyecto final), prueba
-\end{itemize}
+    identificadores      & Integer           & Contador para asignar el identificador a todos los coches.                                                                          \\
+
+    probabilidadMutacion & Float             & Indica la probabilidad con la que un coche pueda llegar a tener una mutación.
+\end{longtblr}
