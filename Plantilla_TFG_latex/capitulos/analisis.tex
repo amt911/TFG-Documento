@@ -12,69 +12,6 @@ Cada Historia de Usuario se desarrollará en una tabla a continuación:
 
 % \section{Historias de Usuario divididas en subtareas}
 
-
-
-% \begin{table}[H]
-%     \begin{tabularx}{\textwidth}{| X | X | X |}
-%         \hline
-%         \multicolumn{1}{|l|}{\textbf{Identificador:} HU1} & \multicolumn{2}{l|}{Algoritmo de navegación.}
-%         \\ \hline
-%         \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Descripción:} Como usuario, quiero que el sistema simule la conducción de varios pilotos en una carrera de coches, incluyendo adelantamientos y sorteo de obstáculos.}
-%         \\ \hline
-%         \textbf{Estimación:} 5 & \textbf{Prioridad:} 1 & \textbf{Entrega:} 1
-%         \\ \hline
-%         \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Tareas:}
-%         \begin{itemize}
-%             \item Implementar el controlador del volante de los vehículos, de manera que sean capaces de seguir una ruta de forma suave.
-%             \item Implementar la malla de navegación.
-%             \item Implementar el algoritmo a partir de la malla.
-%             \item Implementar la lógica de los vehículos, de forma que sean capaces usar esta malla para tomar decisiones.
-%         \end{itemize}
-%         }
-%         \\ \hline
-%         \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Requisitos relacionados:} RF6, RNF4.}
-%         \\ \hline
-%         \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Pruebas de aceptación:}
-%         \begin{itemize}
-%             \item Los pilotos deben ser capaces de esquivar obstáculos en la pista.
-%             \item La simulación debe poder ejecutarse en un tiempo razonable, de manera que se pueda seguir la carrera en tiempo real.
-%             \item Los pilotos deben ser capaces de adelantar a otros que sean más lentos sin provocar accidentes.
-%         \end{itemize}
-%         }
-%         \\ \hline
-%         \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Observaciones:}}
-%         \\ \hline
-%     \end{tabularx}
-% \end{table}
-
-% \begin{table}[H]
-%     \begin{tabularx}{\textwidth}{| X | X | X |}
-%         \hline
-%         \multicolumn{1}{|l|}{\textbf{Identificador:} HU1} & \multicolumn{2}{l|}{lorem ipsum dolor sit amet.}
-%         \\ \hline
-%         \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Descripción:} lorem ipsum dolor sit amet.}
-%         \\ \hline
-%         \textbf{Estimación:} X & \textbf{Prioridad:} X & \textbf{Entrega:} X
-%         \\ \hline
-%         \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Tareas:}
-%         \begin{itemize}
-%             \item Roma no se hizo en un día.
-%         \end{itemize}
-%         }
-%         \\ \hline
-%         \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Requisitos relacionados:} RF6, RNF4.}
-%         \\ \hline
-%         \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Pruebas de aceptación:}
-%         \begin{itemize}
-%             \item Algo tangible.
-%         \end{itemize}
-%         }
-%         \\ \hline
-%         \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Observaciones:}}
-%         \\ \hline
-%     \end{tabularx}
-% \end{table}
-
 \begin{table}[H]
     \begin{tabularx}{\textwidth}{| X | X | X |}
         \hline
@@ -470,3 +407,62 @@ Cada Historia de Usuario se desarrollará en una tabla a continuación:
         \\ \hline
     \end{tabularx}
 \end{table}
+
+
+\begin{table}[H]
+    \begin{tabularx}{\textwidth}{| X | X | X |}
+        \hline
+        \multicolumn{1}{|l|}{\textbf{Identificador:} HU14} & \multicolumn{2}{l|}{Salida de la simulación en curso.}
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Descripción:} Como usuario, quiero salir de la simulación que hay en curso.}
+        \\ \hline
+        \textbf{Estimación:} 0,5 & \textbf{Prioridad:} 5 & \textbf{Entrega:} 8
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Tareas:}
+        \begin{itemize}
+            \item Incluir el botón en la interfaz.
+            \item Implementar la lógica relacionada con el botón para poder salir de la simulación.
+        \end{itemize}
+        }
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Requisitos relacionados:} RF10, RNF2.}
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Pruebas de aceptación:}
+        \begin{itemize}
+            \item Al pulsar el botón, debe salir al configurador de la simulación.
+        \end{itemize}
+        }
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Observaciones:}}
+        \\ \hline
+    \end{tabularx}
+\end{table}
+
+% \begin{table}[H]
+%     \begin{tabularx}{\textwidth}{| X | X | X |}
+%         \hline
+%         \multicolumn{1}{|l|}{\textbf{Identificador:} HU14} & \multicolumn{2}{l|}{Salida de la aplicación.}
+%         \\ \hline
+%         \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Descripción:} Como usuario, quiero salir de la aplicación.}
+%         \\ \hline
+%         \textbf{Estimación:} 0,5 & \textbf{Prioridad:} 5 & \textbf{Entrega:} 8
+%         \\ \hline
+%         \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Tareas:}
+%         \begin{itemize}
+%             \item Incluir el botón en la interfaz.
+%             \item Implementar la lógica relacionada con el botón para poder salir de la aplicación.
+%         \end{itemize}
+%         }
+%         \\ \hline
+%         \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Requisitos relacionados:} RNF2.}
+%         \\ \hline
+%         \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Pruebas de aceptación:}
+%         \begin{itemize}
+%             \item Al pulsar el botón, debe salir de la aplicación.
+%         \end{itemize}
+%         }
+%         \\ \hline
+%         \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Observaciones:}}
+%         \\ \hline
+%     \end{tabularx}
+% \end{table}
