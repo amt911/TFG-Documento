@@ -6,49 +6,6 @@ En este capítulo se abordarán las cuestiones de diseño la interfaz de usuario
 
 Cada cuestión anteriormente mencionada se dividirá en secciones a continuación:
 
-\section{Diseño de la Interfaz de Usuario}
-
-La interfaz de usuario del configurador de la simulación está dividida en dos secciones principales: a la izquierda se encuentra la sección para el número de vehículos y de pilotos, la disciplina y las opciones de importación y exportación de la configuración. A la derecha está la segunda sección, compuesta por las características de cada piloto y el botón para comenzar la simulación.
-
-\bigskip
-
-Durante la carrera, se mostrará un listado de posiciones de los pilotos y un contador de vueltas en la parte izquierda de la pantalla. Este listado permitirá visualizar y modificar el estado de cada piloto en tiempo real. La disposición de los elementos será similar a la de disciplinas como la Fórmula 1, donde el ranking de pilotos y el contador de vueltas aparecen a la izquierda, y en cada celda de posición aparecen las tres primeras letras del apellido. En este proyecto, he decidido añadir también la primera letra del nombre, en caso de que haya varios pilotos con el mismo apellido.
-
-\bigskip
-
-A continuación se encuentran algunos bocetos de ambas pantallas:
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{imagenes/pag1.png}
-    \caption{Interfaz del configurador antes de la carrera.}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{imagenes/pag2.png}
-    \caption{Interfaz de las opciones durante la carrera.}
-\end{figure}
-
-\section{Diagrama de navegación}
-
-La navegación por la interfaz de usuario en la aplicación es relativamente sencilla, al estar formada por dos pantallas: el configurador de simulación y la carrera en curso.
-
-\bigskip
-\newpage
-El diagrama de navegación de la aplicación se encuentra a continuación:
-
-% foto del diagrama de navegacion
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9\textwidth]{imagenes/nav.png}
-    \caption{Diagrama de navegación de la interfaz de usuario de la aplicación.}
-\end{figure}
-
-Como se puede observar en el diagrama de navegación, al pulsar el botón de ejecutar aparecerá la nueva pantalla para ejecutar la simulación y dar comienzo a la carrera.
-
-% Como se puede observar, la navegación por la aplicación es sencilla, al solo tener dos pantallas y un solo botón para ir a la siguiente. Si se pulsa sobre el botón de ejecutar en el configurador de la carrera, se procederá a cargar la simulación y dará comienzo la carrera.
-
 \section{Entidades y atributos}
 
 En esta sección se detallarán las distintas entidades que componen la aplicación, junto a los atributos necesarios para implementar la lógica. Cada entidad y sus atributos estarán en una subsección a continuación:
@@ -71,25 +28,26 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
 
     neighbors         & AStarNode\texttt{[]} & Almacena las celdas con las que colinda.                                                                                         \\
 
-    hasObstacle       & boolean              & Almacena si la celda actual está ocupada por un coche.                                                                           \\
+    hasObstacle       & boolean              & Si la celda actual está ocupada por un coche.                                                                           \\
 
-    isOptimal         & boolean              & Indica si la celda forma parte de la ruta óptima del circuito. Puede estar ocupada.                                              \\
+    isOptimal         & boolean              & Si la celda forma parte de la ruta óptima del circuito. Puede estar ocupada.                                              \\
 
-    isDelimiter       & boolean              & Indica si la celda forma parte de los límites de pista. Esta celda estará siempre ocupada y tendrá prioridad frente a las demás. \\
+    isDelimiter       & boolean              & Si la celda forma parte de los límites de pista. Esta celda estará siempre ocupada y tendrá prioridad frente a las demás. \\
 
-    isCheckpoint      & boolean              & Indica si la celda forma parte de un checkpoint. Esta celda estará siempre libre, con independencia de si hay un coche o no.
+    isCheckpoint      & boolean              & Si la celda forma parte de un checkpoint. Esta celda estará siempre libre, con independencia de si hay un coche o no.
 \end{longtblr}
 
 \newpage
 \subsection{AStarGrid}
 \textbf{Descripción: }Representa la matriz navegación utilizada para ejecutar A*.
 
+\tiny
 \begin{longtblr}[
     label = none,
     entry = none,
     ]{
     width = \linewidth,
-    colspec = {Q[18,m]Q[18,m]Q[40,m]},
+    colspec = {Q[9,m]Q[8,m]Q[40,m]},
     row{1} = {Silver,c},
     cell{2-5}{1,2} = {c},
     hlines,
@@ -97,26 +55,27 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
     }
     \textbf{Variable} & \textbf{Tipo}        & \textbf{Anotaciones}                                                                                                                                   \\
 
-    nodes             & AStarNode\texttt{[]} & Almacena todos los nodos que forman la malla de navegación. El primero es el de más arriba a la izquierda y el último es el de más abajo a la derecha. \\
+    nodes             & AStarNode\texttt{[]} & Referencia a los nodos que forman la malla de navegación. El primero el de la esquina superior izquierda y el último el de la esquina inferior derecha. \\
 
     gridSize          & Integer              & Cantidad de cubos que va a haber a lo largo y a lo ancho.                                                                                              \\
 
     nodeSize          & Integer              & Tamaño que tendrá la celda. Por defecto es 100.                                                                                                        \\
 
-    startingPosition  & Vector               & Posición por la que se debe comenzar a generar la malla. Esta coordenada representa la posición más a la izquierda y arriba de la malla.
+    startingPosition  & Vector               & Posición por la que se debe comenzar a generar la malla. Esta coordenada representa la esquina superior izquierda de la malla.
 \end{longtblr}
+\normalsize
 
 \subsection{PriorityQueue}
 \textbf{Descripción: }Representa una cola con prioridad ascendente, utilizada para A*.
 
 
-
+\tiny
 \begin{longtblr}[
     label = none,
     entry = none,
     ]{
     width = \linewidth,
-    colspec = {Q[12,m]Q[18,m]Q[35,m]},
+    colspec = {Q[6,m]Q[8,m]Q[35,m]},
     row{1} = {Silver,c},
     cell{2}{1,2} = {c},
     hlines,
@@ -125,17 +84,17 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
     \textbf{Variable} & \textbf{Tipo}           & \textbf{Anotaciones}                                                       \\
     queue             & QueueElement\texttt{[]} & Lista con todos los nodos visitados y sus costes. Se encuentran ordenados.
 \end{longtblr}
-
+\normalsize
 
 \subsection{QueueElement}
 \textbf{Descripción: }Estructura de datos que es utilizada por PriorityQueue para realizar los cálculos.
-
+\tiny
 \begin{longtblr}[
     label = none,
     entry = none,
     ]{
     width = \linewidth,
-    colspec = {Q[18,m]Q[18,m]Q[50,m]},
+    colspec = {Q[8,m]Q[8,m]Q[50,m]},
     row{1} = {Silver,c},
     cell{2,3}{1,2} = {c},
     hlines,
@@ -143,11 +102,11 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
     }
     \textbf{Variable} & \textbf{Tipo} & \textbf{Anotaciones}                                          \\
 
-    node              & AStarNode     & Representa el nodo que se va a insertar en la cola.           \\
+    node              & AStarNode     & Nodo que se va a insertar en la cola.           \\
 
-    cost              & Float         & Representa el coste total del nodo, incluyendo la heurística.
+    cost              & Float         & Coste total del nodo, incluyendo la heurística.
 \end{longtblr}
-
+\normalsize
 
 \subsection{AStarPathfinder}
 \textbf{Descripción: }Implementa el algoritmo A* para ser utilizado por los coches.
@@ -156,12 +115,13 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
 \subsection{SportsCarPawn\_AI}
 \textbf{Descripción: }Representa a los coches que compiten por el circuito.
 
+\tiny
 \begin{longtblr}[
     label = none,
     entry = none,
     ]{
     width = \linewidth,
-    colspec = {Q[20,m]Q[14,m]Q[20,m]},
+    colspec = {Q[7,m]Q[5,m]Q[21,m]},
     row{1} = {Silver,c},
     cell{2-33}{1} = {c},
     cell{2-33}{2} = {c},
@@ -191,33 +151,33 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
 
     currentLap          & Integer               &                                                                                                                \\
 
-    AGR\_MAX\_BR\_DIST  & Float                 & Indica la distancia máxima de frenada que se le puede substraer debido a la agresividad.                       \\
+    AGR\_MAX\_BR\-\_DIST  & Float                 & Distancia máxima de frenada que se le puede substraer debido a la agresividad.                       \\
 
-    AGR\_MAX\_SPD       & Float                 & Indica la velocidad extra que se le puede añadir debido a la agresividad.                                      \\
+    AGR\_MAX\_SPD       & Float                 & Velocidad extra que se le puede añadir debido a la agresividad.                                      \\
 
-    A\_MIN\_SPEED       & Float                 & Indica el decremento en la velocidad que sufre el piloto por el desgaste.                                      \\
+    A\_MIN\_SPEED       & Float                 & Decremento en la velocidad que sufre el piloto por el desgaste.                                      \\
 
     REVERSE\_TIME       & Float                 & Tiempo máximo en segundos que el vehículo da marcha atrás para recuperarse de un accidente.                    \\
 
     stuckTime           & Float                 & Tiempo que permanece atascado el vehículo (en segundos).                                                       \\
 
-    isReversing         & boolean               & Indica si el vehículo está dando marcha atrás.                                                                 \\
+    isReversing         & boolean               & Si el vehículo está dando marcha atrás.                                                                 \\
 
-    goSlowTimer         & Float                 & Indica la cantidad de segundo que el vehículo está yendo lento para volver a la pista después de un accidente. \\
+    goSlowTimer         & Float                 & Cantidad de segundos que el vehículo está yendo lento para volver a la pista después de un accidente. \\
 
-    GO\_SLOW\_TIME      & Float                 & Indica el número de segundos que debe ir lento para volver a pista.                                            \\
+    GO\_SLOW\_TIME      & Float                 & Número de segundos que debe ir lento para volver a pista.                                            \\
 
-    goSlowAfterCrash    & boolean               & Indica si el coche debe ir lento para volver a pista después de un accidente.                                  \\
+    goSlowAfterCrash    & boolean               & Si el coche debe ir lento para volver a pista después de un accidente.                                  \\
 
     reverseTime         & Float                 & Cantidad de segundos que lleva el coche dando marcha atrás.                                                    \\
 
-    currentOvertakeTime & Float                 & Cantidad de segundos que el vehículo lleva intentando un adelantamiento.                                       \\
+    currentOvertake\-Time & Float                 & Cantidad de segundos que el vehículo lleva intentando un adelantamiento.                                       \\
 
-    isOvertaking        & boolean               & Indica si el vehículo está intentando adelantar en el momento.                                                 \\
+    isOvertaking        & boolean               & Si el vehículo está intentando adelantar en el momento.                                                 \\
 
     OVERTAKE\_TIME      & Float                 & Tiempo máximo que debe intentar un adelantamiento.                                                             \\
 
-    Spline              & SplinePath            & Almacena la ruta actual calculada por el algoritmo de navegación.                                              \\
+    Spline              & SplinePath            & Ruta actual calculada por el algoritmo de navegación.                                              \\
 
     brakingG            & Float                 &                                                                                                                \\
 
@@ -229,20 +189,21 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
 
     marcadorRef         & Marcador              &                                                                                                                \\
 
-    pathfinderRef       & AStarPathfinder       &                                                                                                                \\
+    pathfinderRef       & AStar\-Pathfinder       &                                                                                                                \\
 
-    color               & Linear Color          & Representa el color del vehículo.
+    color               & Linear Color          & Color del vehículo.
 \end{longtblr}
-
+\normalsize
 \subsection{Marcador}
 \textbf{Descripción: }Entidad utilizada para generar la lista de posiciones y el contador de vueltas, así como la actualización de ambos.
 
+\tiny
 \begin{longtblr}[
     label = none,
     entry = none,
     ]{
     width = \linewidth,
-    colspec = {Q[10,m]Q[14,m]Q[20,m]},
+    colspec = {Q[4,m]Q[6,m]Q[20,m]},
     row{1} = {Silver,c},
     cell{2-6}{1,2} = {c},
             hlines,
@@ -251,26 +212,26 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
     \textbf{Variable} & \textbf{Tipo}                & \textbf{Anotaciones}                                                                                                                                                         \\
     uiRef             & Panel                        & Referencia al panel con el contador de vueltas y el ranking.                                                                                                                 \\
 
-    cars              & SportsCarPawn\_AI\texttt{[]} & Almacena una referencia de todos los coches de la carrera. Se encuentran siempre ordenados.                                                                                  \\
+    cars              & SportsCarPawn\_AI\texttt{[]} & Referencia de todos los coches de la carrera. Se encuentran siempre ordenados.                                                                                  \\
 
-    checkpoints       & Checkpoint\texttt{[]}        & Almacena todos los checkpoints que hay en la escena. Están ordenados de manera ascendente, de forma que los índices superiores indican checkpoints posteriores del circuito. \\
+    checkpoints       & Checkpoint\texttt{[]}        & Checkpoints que hay en la escena. Están ordenados de manera ascendente, de forma que los índices superiores indican checkpoints posteriores del circuito. \\
 
-    currentLap        & Integer                      & Almacena la vuelta actual de la carrera.                                                                                                                                     \\
+    currentLap        & Integer                      & Vuelta actual de la carrera.                                                                                                                                     \\
 
-    MAX\_LAPS         & Integer                      & Indica el número de vueltas que tiene la carrera.
+    MAX\_LAPS         & Integer                      & Número de vueltas que tiene la carrera.
 \end{longtblr}
-
+\normalsize
 
 \newpage
 \subsection{Panel}
 \textbf{Descripción: }Interfaz de usuario en la que se muestra el contador de vueltas y el ranking.
-
+\tiny
 \begin{longtblr}[
     label = none,
     entry = none,
     ]{
     width = \linewidth,
-    colspec = {Q[18,m]Q[18,m]Q[35,m]},
+    colspec = {Q[6,m]Q[6,m]Q[35,m]},
     row{1} = {Silver,c},
     cell{2,3}{1,2} = {c},
             hlines,
@@ -278,43 +239,44 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
         }
     \textbf{Variable} & \textbf{Tipo} & \textbf{Anotaciones}                                                                       \\
 
-    LAPS              & Text Widget   & Es el contador de vueltas que aparece en la interfaz de usuario.                           \\
+    LAPS              & Text   & Es el contador de vueltas que aparece en la interfaz de usuario.                           \\
 
-    VerticalBox\_0    & Vertical Box  & Marco donde se almacena cada celda de la clase Posicion con la información de cada piloto.
+    VerticalBox    & VerticalBox  & Marco donde se almacena cada celda de la clase Posicion con la información de cada piloto.
 \end{longtblr}
-
+\normalsize
 \subsection{Posicion}
 \textbf{Descripción: }Cuadro básico que representa una celda en el ranking.
 
 
-
+\tiny
 \begin{longtblr}[
     label = none,
     entry = none,
     ]{
     width = \linewidth,
-    colspec = {Q[18,m]Q[18,m]Q[50,m]},
+    colspec = {Q[8,m]Q[6,m]Q[50,m]},
     row{1} = {Silver,c},
     cell{2,3}{1,2} = {c},
             hlines,
             vlines,
         }
     \textbf{Variable} & \textbf{Tipo} & \textbf{Anotaciones}                                                   \\
-    Agresividad       & Sliding Bar   & Barra deslizadora que indica la agresividad del conductor.             \\
+    Agresividad       & Slider   & Barra deslizadora que indica la agresividad del conductor.             \\
 
-    Aguante           & Sliding Bar   & Barra deslizadora que indica el aguante físico y mental del conductor.
+    Aguante           & Slider   & Barra deslizadora que indica el aguante físico y mental del conductor.
 \end{longtblr}
+\normalsize
 
 \subsection{ArrayOfCars}
 \textbf{Descripción: }Estructura utilizada para almacenar el número de coches que hay en un checkpoint concreto.
 
-
+\tiny
 \begin{longtblr}[
     label = none,
     entry = none,
     ]{
     width = \linewidth,
-    colspec = {Q[8,m]Q[15,m]Q[20,m]},
+    colspec = {Q[5,m]Q[7,m]Q[20,m]},
     row{1} = {Silver,c},
     cell{2,3}{1,2} = {c},
             hlines,
@@ -323,20 +285,19 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
     \textbf{Variable} & \textbf{Tipo}                & \textbf{Anotaciones}                               \\
     cars              & SportsCarPawn\_AI\texttt{[]} & Almacena todos los coches para un checkpoint dado.
 \end{longtblr}
+\normalsize
 
-
-\newpage
 \subsection{ArrayOfArrayOfCars}
 \textbf{Descripción: }Estructura que almacena en que vuelta y en que checkpoint se encuentra cada vehículo.
 
 
-
+\tiny
 \begin{longtblr}[
     label = none,
     entry = none,
     ]{
     width = \linewidth,
-    colspec = {Q[15,m]Q[18,m]Q[40,m]},
+    colspec = {Q[5,m]Q[8,m]Q[40,m]},
     row{1} = {Silver,c},
     cell{2,3}{1,2} = {c},
             hlines,
@@ -345,19 +306,19 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
     \textbf{Variable} & \textbf{Tipo}                 & \textbf{Anotaciones}                                                              \\
     laps              & Map$<$Integer, ArrayOfCars$>$ & Almacena todos los coches y sus checkpoints que se encuentran en una vuelta dada.
 \end{longtblr}
-
+\normalsize
 
 \subsection{PID}
 \textbf{Descripción: }Entidad encargada de implementar la lógica del PID, exponiendo funciones para su uso.
 
 
-
+\tiny
 \begin{longtblr}[
     label = none,
     entry = none,
     ]{
     width = \linewidth,
-    colspec = {Q[25,m]Q[18,m]Q[60,m]},
+    colspec = {Q[14,m]Q[8,m]Q[60,m]},
     row{1} = {Silver,c},
     cell{2-6}{1,2} = {c},
             hlines,
@@ -374,18 +335,19 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
 
     errorAcumulado    & Float         & Error acumulado con el tiempo. Esta variable es utilizada por la componente integral.
 \end{longtblr}
+\normalsize
 
 \subsection{Checkpoint}
 \textbf{Descripción: }Entidad encargada de poner un checkpoint en el mundo, para poder realizar cálculos.
 
 
-
+\tiny
 \begin{longtblr}[
     label = none,
     entry = none,
     ]{
     width = \linewidth,
-    colspec = {Q[18,m]Q[18,m]Q[60,m]},
+    colspec = {Q[7,m]Q[5,m]Q[60,m]},
     row{1} = {Silver,c},
     cell{2,3}{1,2} = {c},
             hlines,
@@ -396,6 +358,7 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
 
     speed             & Float         & Velocidad aconsejable a la que debe pasar el coche el tramo hasta el siguiente checkpoint.
 \end{longtblr}
+\normalsize
 
 \subsection{SplinePath}
 \textbf{Descripción: }Entidad que almacena un spline.
@@ -407,13 +370,13 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
 \textbf{Descripción: }Estructura de datos que almacena las constantes del PID de un coche, así como su identificador y \textit{fitness} para el algoritmo genético.
 
 
-
+\tiny
 \begin{longtblr}[
     label = none,
     entry = none,
     ]{
     width = \linewidth,
-    colspec = {Q[18,m]Q[18,m]Q[35,m]},
+    colspec = {Q[8,m]Q[8,m]Q[35,m]},
     row{1} = {Silver,c},
     cell{2-6}{1,2} = {c},
             hlines,
@@ -426,22 +389,23 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
 
     Kd                & Float         & Constante derivativa del PID.                                          \\
 
-    fitness           & Float         & Almacena la probabilidad de ser escogido para la siguiente generación. \\
+    fitness           & Float         & Probabilidad de ser escogido para la siguiente generación. \\
 
-    id                & Integer       & Almacena el identificador del vehículo.
+    id                & Integer       & Identificador del vehículo.
 \end{longtblr}
+\normalsize
 
 \subsection{TrainingStop}
 \textbf{Descripción: }Utilizado en el algoritmo genético. Marca el punto final de los coches.
 
 
-
+\tiny
 \begin{longtblr}[
     label = none,
     entry = none,
     ]{
     width = \linewidth,
-    colspec = {Q[15,m]Q[8,m]Q[20,m]},
+    colspec = {Q[8,m]Q[4,m]Q[20,m]},
     row{1} = {Silver,c},
     cell{2-6}{1,2} = {c},
             hlines,
@@ -449,13 +413,62 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
         }
     \textbf{Variable}    & \textbf{Tipo}     & \textbf{Anotaciones}                                                                                                                \\
 
-    currentCars          & Integer           & Almacena el número de vehículos que aún siguen en pie. Esto es debido a que aquellos coches que se chocan o se caen son eliminados. \\
+    currentCars          & Integer           & Número de vehículos que aún siguen en pie. Esto es debido a que aquellos coches que se chocan o se caen son eliminados. \\
 
-    MAX\_GENOMES         & Integer           & Indica el número de coches que se lanzan por generación.                                                                            \\
+    MAX\_GENOMES         & Integer           & Número de coches que se lanzan por generación.                                                                            \\
 
-    values               & genome\texttt{[]} & Almacena todas las constantes de los hijos de una generación.                                                                       \\
+    values               & genome\texttt{[]} & Valores de las constantes de los hijos de una generación.                                                                       \\
 
     identificadores      & Integer           & Contador para asignar el identificador a todos los coches.                                                                          \\
 
-    probabilidadMutacion & Float             & Indica la probabilidad con la que un coche pueda llegar a tener una mutación.
+    probabilidadMutacion & Float             & Probabilidad con la que un coche pueda llegar a tener una mutación.
 \end{longtblr}
+\normalsize
+\section{Diagrama de clases}
+
+A continuación se muestra el diagrama de clases de la aplicación:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{imagenes/classDiagram.png}
+    \caption{Diagrama de clases de la aplicación.}
+\end{figure}
+
+\section{Diseño de la Interfaz de Usuario}
+
+
+La interfaz de usuario del configurador de la simulación (el prototipo se puede ver en la figura \ref{fig:protoconfig}) está dividida en dos secciones principales: a la izquierda se encuentra la sección para el número de vehículos y de pilotos, la disciplina y las opciones de importación y exportación de la configuración. A la derecha está la segunda sección, compuesta por las características de cada piloto y el botón para comenzar la simulación.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{imagenes/pag1.png}
+    \caption{Interfaz del configurador antes de la carrera.}
+\end{figure}
+
+Durante la carrera, se mostrará un listado de posiciones de los pilotos y un contador de vueltas (prototipo en la figura \ref{fig:protoranking}) en la parte izquierda de la pantalla. Este listado permitirá visualizar y modificar el estado de cada piloto en tiempo real. La disposición de los elementos será similar a la de disciplinas como la Fórmula 1, donde el ranking de pilotos y el contador de vueltas aparecen a la izquierda, y en cada celda de posición aparecen las tres primeras letras del apellido. En este proyecto, he decidido añadir también la primera letra del nombre, en caso de que haya varios pilotos con el mismo apellido.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{imagenes/pag2.png}
+    \caption{Interfaz de las opciones durante la carrera.}
+\end{figure}
+
+\section{Diagrama de navegación}
+
+La navegación por la interfaz de usuario en la aplicación es relativamente sencilla, al estar formada por dos pantallas: el configurador de simulación y la carrera en curso.
+
+\bigskip
+\newpage
+El diagrama de navegación de la aplicación se encuentra a continuación:
+
+% foto del diagrama de navegacion
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{imagenes/nav.png}
+    \caption{Diagrama de navegación de la interfaz de usuario de la aplicación.}
+\end{figure}
+
+Como se puede observar en el diagrama de navegación, al pulsar el botón de ejecutar aparecerá la nueva pantalla para ejecutar la simulación y dar comienzo a la carrera.
+
+% Como se puede observar, la navegación por la aplicación es sencilla, al solo tener dos pantallas y un solo botón para ir a la siguiente. Si se pulsa sobre el botón de ejecutar en el configurador de la carrera, se procederá a cargar la simulación y dará comienzo la carrera.

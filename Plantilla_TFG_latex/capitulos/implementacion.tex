@@ -4,24 +4,45 @@ Este capítulo tratará sobre las herramientas utilizadas para la implementació
 
 \section{Herramientas utilizadas}
 
-En el desarrollo del proyecto se utilizará \verb|git| para el control de versiones del proyecto y se almacenará en un repositorio de GitHub. 
+En el desarrollo del proyecto se utilizará \verb|git| para el control de versiones del proyecto.
+%  y se almacenará en un repositorio de GitHub. 
 
 \bigskip
 
-Para el modelado y texturizado de los distintos objetos de la aplicación se utilizará Blender\cite{blender}. Asimismo, para la creación y modificación de las texturas se utilizará GIMP\cite{gimp}.
+Para el modelado, texturizado de los distintos objetos de la aplicación y el \textit{rigging} de los vehículos se utilizará Blender\cite{blender}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{imagenes/blender-logo.png}
+    \caption{Logotipo de Blender\cite{blender-logo}.}
+    \label{fig:logoblender}
+\end{figure}
+
+Asimismo, para la creación y modificación de las texturas se utilizará GIMP\cite{gimp}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{imagenes/gimp-logo.png}
+    \caption{Logotipo de GIMP\cite{gimp}.}
+    \label{fig:logogimp}
+\end{figure}
 
 \bigskip
 
 % En cuanto a herramientas para la planificación, se hará uso de la herramienta \planApp para llevar un control de las Historias de Usuario que se realizan y pendientes en cada Sprint.
-En lo que respecta a herramientas de planificación, se utilizará \planApp para llevar un control de las historias de usuario realizadas y pendientes en cada sprint.
+En lo que respecta a herramientas de planificación, se utilizará \planApp para llevar un control de las historias de usuario realizadas y pendientes en cada sprint. Además, se utilizará el \textit{power-up} ``Card Priority Badge'' de ``Kryl Solutions'' para poder anotar la prioridad de cada historia de usuario. Asimismo, se hará uso del \textit{power-up} ``Agile Tools by Corrello'' para poder tener estimaciones en las historias de usuario.
 
 % foto de \planApp
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=\textwidth]{imagenes/trello.png}
+%     \caption{Tablero de ejemplo de Trello\cite{tablero-trello}.}
+% \end{figure}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{imagenes/trello.png}
-    \caption{Tablero de ejemplo de Trello\cite{tablero-trello}.}
+    \includegraphics[width=\textwidth]{imagenes/trello-mio.png}
+    \caption{Tablero utilizado para el proyecto.}
 \end{figure}
-
 \section{Algoritmos utilizados}
 
 Voy a dividir en subsecciones los diversos algoritmos que componen la simulación:
@@ -249,3 +270,252 @@ El aguante físico y mental va bajando a lo largo de la carrera de manera perió
 \bigskip
 
 Mientras que la agresividad aumenta a partir del tercer piloto (inclusive) y disminuye cuando se encuentra entre los dos primeros. La agresividad aumentará más rápido si el piloto se encuentra en posiciones peores del ranking. Sus efectos se traducen en una ganancia ligera de velocidad y frenadas tardías en las curvas.
+
+
+
+\section{Modelado y texturizado de la escena}
+
+% Para la creación del escenario final he utilizado dos programas, que detallaré en subsecciones a continuación:
+
+% \subsection{Blender}
+% Blender\cite{blender} es un programa dedicado al modelado, iluminación, animación y creación de objetos de código abierto. 
+
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=\textwidth]{imagenes/blender-ui.png}
+%     \caption{Interfaz de usuario de Blender\cite{blender-ui}.}
+%     \label{fig:blenderui}
+% \end{figure}
+
+% En mi caso, he utilizado Blender para crear los distintos modelos de la pista del circuito, para el \textit{rigging} de los vehículos, generación de texturas normales y mapeados UV. A continuación, dividiré en subsecciones los objetos generados, así como su proceso de creación: 
+
+% \subsubsection{Asfalto de la pista}
+
+% La trazada del circuito
+% \subsection{GIMP}
+
+Para la creación y preparación de los distintos modelos de la aplicación, he utilizado Blender\cite{blender} y GIMP\cite{gimp}. A continuación detallaré cada uno de los modelos, así como su proceso de creación.
+
+\subsection{Trazada de la carretera}
+
+El trazado de la carretera lo he realizado creando primero un spline en Unreal con la forma deseada. 
+
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=\textwidth]{imagenes/trazado.png}
+    \includegraphics[width=\textwidth]{example-image-a}
+    \caption{Trazado del circuito.}
+    \label{fig:trazado}
+\end{figure}
+
+Ahora es necesario incluir un modelo de carretera para que el spline pueda generarlo siguiendo la forma del trazado.
+
+\bigskip
+
+% rescribir
+En la vida real, hay secciones de los circuitos en los que es solo carretera, normalmente en las rectas, y otras secciones en las que se dispone de un piano, principalmente en las curvas. Por tanto, ha sido necesario crear 3 modelos distintos de pista: uno sin piano, otro con el piano a la izquierda y uno último con el piano a la derecha.
+
+\bigskip
+% rescribir
+Haciendo uso de Blender, he creado los 3 modelos distintos de pista. Las secciones están formadas por un cubo achatado, y para las versiones con piano, he extruido uno de los lados y he usado la herramienta \textit{Bevel} para suavizar las esquinas.
+
+% fotos de las 3 versiones
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=\textwidth]{imagenes/trazado.png}
+    \includegraphics[width=\textwidth]{example-image-a}
+    \caption{Sección recta de la curva.}
+    \label{fig:curvarecta}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=\textwidth]{imagenes/trazado.png}
+    \includegraphics[width=\textwidth]{example-image-a}
+    \caption{Sección con el piano a la izquierda.}
+    \label{fig:curvaL}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=\textwidth]{imagenes/trazado.png}
+    \includegraphics[width=\textwidth]{example-image-a}
+    \caption{Sección con el piano a la derecha.}
+    \label{fig:curvaR}
+\end{figure}
+
+Después, he utilizado la textura ``Asphalt 024 A''\cite{asphalt}, creada por Lennart Demes, y he modificado la componente difusa utilizando GIMP para poner una línea continua a ambos extremos, similar a los circuitos reales.
+
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=\textwidth]{imagenes/trazado.png}
+    \includegraphics[width=\textwidth]{example-image-a}
+    \caption{Textura de asfalto modificada.}
+    \label{fig:asfaltomod}
+\end{figure}
+
+Para texturizar el piano, he decidido crear la textura yo. Utilizando GIMP, he creado una textura difusa con un tamaño de 2048x2048 píxeles y he pintado una mitad de color blanco y la otra de color rojo. 
+
+
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=\textwidth]{imagenes/trazado.png}
+    \includegraphics[width=\textwidth]{example-image-a}
+    \caption{Textura utilizada para la componente difusa del piano.}
+    \label{fig:pianodiff}
+\end{figure}
+
+El resultado en Unreal no era del todo convincente, ya que los bordes tenían demasiada iluminación. Para solucionarlo, he creado una textura para la componente de oclusión ambiental, de forma que los bordes sean algo más oscuros que la parte central. 
+
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=\textwidth]{imagenes/trazado.png}
+    \includegraphics[width=\textwidth]{example-image-a}
+    \caption{Textura utilizada para la oclusión ambiental del piano.}
+    \label{fig:pianoao}
+\end{figure}
+
+Estas texturas no encajaban del todo bien, haciendo que las líneas blancas no estuviesen alineadas con los bordes y que la textura del piano no se repitiese varias veces en la sección. Utilizando Blender, he realizado un mapeado UV de los modelos, con el objetivo de que la asignación de las texturas se realice correctamente.
+
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=\textwidth]{imagenes/trazado.png}
+    \includegraphics[width=\textwidth]{example-image-a}
+    \caption{Mapeado UV para la sección de asfalto.}
+    \label{fig:uvasphalt}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=\textwidth]{imagenes/trazado.png}
+    \includegraphics[width=\textwidth]{example-image-a}
+    \caption{Mapeado UV para la sección de piano.}
+    \label{fig:uvkerb}
+\end{figure}
+
+Ahora sí se sitúan bien las texturas en el modelo. A continuación se encuentran las imágenes del resultado final en Unreal.
+
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=\textwidth]{imagenes/trazado.png}
+    \includegraphics[width=\textwidth]{example-image-a}
+    \caption{Sección de pista recta.}
+    \label{fig:curvafinal1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=\textwidth]{imagenes/trazado.png}
+    \includegraphics[width=\textwidth]{example-image-a}
+    \caption{Sección de pista con el piano a la derecha.}
+    \label{fig:curvafinal2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=\textwidth]{imagenes/trazado.png}
+    \includegraphics[width=\textwidth]{example-image-a}
+    \caption{Sección de pista con el piano a la izquierda.}
+    \label{fig:curvafinla3}
+\end{figure}
+
+\subsection{Preparación de los coches}
+
+% Como uno de los requisitos del proyecto es que fuera multidisciplinar, he decidido hacer dos categorías: GT y Formula.
+
+% \bigskip
+
+Debido a que modelar un vehículo requiere demasiado tiempo, he optado por utilizar el modelo ``Porsche 911 GT3''\cite{porsche} realizado por ``ChevroletSS'' y el modelo ``Mercedes F1 W14''\cite{f1} realizado por ``3dblenderlol''. Además, he eliminado toda clase de logotipos y marcas de los vehículos, para facilitar la exportación.
+
+\bigskip
+
+A continuación, es necesario preparar los modelos para que las ruedas se puedan mover en Unreal. Se debe realizar un \textit{rigging} de las ruedas; es decir, asignarle un conjunto de huesos, que actuarán como ejes para la rotación de las ruedas. Esta tarea la he realizado cargando los modelos y utilizando el plugin de Blender ``UE4 Vehicle Rigging Addon for Blender''\cite{blenderplugin}, creado por ``Continue Break''. El plugin permite realizar el \textit{rigging} de manera automática con tan solo indicarle el chasis del coche y sus ruedas.
+
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=\textwidth]{imagenes/trazado.png}
+    \includegraphics[width=\textwidth]{example-image-a}
+    \caption{\textit{Rigging} realizado en el Porsche 911.}
+    \label{fig:rigging911}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=\textwidth]{imagenes/trazado.png}
+    \includegraphics[width=\textwidth]{example-image-a}
+    \caption{\textit{Rigging} realizado en el coche de Fórmula 1.}
+    \label{fig:riggingf1}
+\end{figure}
+
+Así, ya se tendría realizado el \textit{rigging} de los vehículos. Ahora es necesario importarlos, crear sus animaciones y \textit{bounding boxes} para que funcione correctamente.
+
+\subsection{Barreras}
+
+% rescribir
+Es necesario establecer los límites del circuito mediante barreras similares a las utilizadas en los circuitos reales. Para ello, he decidido utilizar el modelo de valla ``3D Model Metal Fence''\cite{fence}, creado por ``Adrian Kulawik'', junto a un modelo de barrera creado por mí en Blender.
+
+\bigskip
+
+Debido a que quería simular que mi barrera está algo arrugada, como pasa en la vida real, he utilizado \textit{Sculpt Mode} para esculpir las diversas imperfecciones en un modelo de alta resolución. 
+
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=\textwidth]{imagenes/trazado.png}
+    \includegraphics[width=\textwidth]{example-image-a}
+    \caption{Barrera de alta resolución con imperfecciones.}
+    \label{fig:barreraHP}
+\end{figure}
+
+Como puede consumir demasiados recursos, he convertido las deformaciones geométricas en una textura normal utilizando Blender, de manera que se pueda poner sobre una versión simple de la barrera.
+
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=\textwidth]{imagenes/trazado.png}
+    \includegraphics[width=\textwidth]{example-image-a}
+    \caption{Textura normal generada para la versión con pocos polígonos.}
+    \label{fig:barreraLP}
+\end{figure}
+
+
+Y el modelo final es mi barrera, junto a la valla anteriormente mencionada.
+
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=\textwidth]{imagenes/trazado.png}
+    \includegraphics[width=\textwidth]{example-image-a}
+    \caption{Resultado final de la barrera en Unreal.}
+    \label{fig:barreraFinal}
+\end{figure}
+
+% rescribir
+Y para que rodee a todo el circuito, es necesario seguir un procedimiento similar al del trazado del circuito. Se debe utilizar un spline que siga la ruta que se desea limitar, una vez realizado, se debe asignar la barrera a cada sección para que siga el recorrido del spline.
+
+\subsection{Vegetación}
+
+La vegetación del circuito está compuesta por césped en el interior y exterior de las curvas y por árboles en el exterior y zonas intermedias del circuito. El modelo de césped utilizado ha sido ``temperate Vegetation: optimized Grass Library''\cite{grass}, creado por ``Project Nature'', y el de los árboles es ``Megascans Trees: European Black Alder (early access)''\cite{trees}, creado por ``Quixel Megascans''.
+
+\bigskip
+
+El resultado final es el siguiente:
+
+% fotos de cerca de arboles y cesped
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=\textwidth]{imagenes/trazado.png}
+    \includegraphics[width=\textwidth]{example-image-a}
+    \caption{Modelo de césped.}
+    \label{fig:cesped}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=\textwidth]{imagenes/trazado.png}
+    \includegraphics[width=\textwidth]{example-image-a}
+    \caption{Modelo de árboles.}
+    \label{fig:arboles}
+\end{figure}
+
+\subsection{Modelos y texturas adicionales}
+
+
