@@ -1,10 +1,35 @@
 \chapter{Diseño}
 
-En este capítulo se abordarán las cuestiones de diseño la interfaz de usuario, explicando de manera detallada cada elemento que la compone, junto a algunos bocetos. Además, se incluirá un diagrama de navegación para saber a qué pantallas lleva cada opción.
+En este capítulo se abordarán las cuestiones de diseño la interfaz de usuario, explicando de manera detallada cada elemento que la compone, junto a algunos bocetos. Además, se incluirá un diagrama de navegación para saber a qué pantallas lleva cada opción, una explicación de todas las entidades y atributos, junto a un diagrama de clases del sistema.
 
 \bigskip
 
 Cada cuestión anteriormente mencionada se dividirá en secciones a continuación:
+
+
+\section{Modificación del estado de los pilotos}
+El estado de los pilotos viene determinado por los siguientes parámetros:
+% El estado de los pilotos está compuesto por tres parámetros: experiencia, agresividad y estado físico y mental.
+
+\begin{itemize}
+    \item \textbf{Experiencia: }El valor se encuentra en el intervalo [0,1] y solo podrá ser modificado mediante el configurador. Determinará la velocidad con la que se reduce el aguante, lo que significa que para valores de experiencia más altos, el aguante disminuirá más lentamente. También influirá en la velocidad de acumulación y pérdida de agresividad, de modo que para valores más altos de experiencia, la agresividad aumentará más lentamente y disminuirá más rápidamente, ya que el piloto será capaz de controlar sus emociones.
+    
+    \item \textbf{Aguante físico y mental: }El valor se encuentra en el intervalo [0,1], donde 0 representa el mínimo aguante y 1 el mayor. Un valor elevado de aguante permite al piloto tener buen ritmo en las curvas, mientras que un valor bajo de aguante provoca una disminución en el ritmo; es decir, puede perder hasta un máximo de 20 km/h en las curvas. Cabe destacar que este valor disminuye periódicamente para todos los pilotos, y la velocidad de disminución puede variar en función de experiencia.
+    
+    \item \textbf{Agresividad: }El valor se encuentra en el intervalo [0,1], donde 0 indica una falta de agresividad y 1 representa el máximo nivel. Un valor alto de agresividad hace que el piloto frene más tarde al ingresar a las curvas y aumenta su ritmo en ellas hasta 10 km/h adicionales. La agresividad comienza a aumentar a partir de la tercera posición, y el ritmo de aumento se intensifica cuanto más bajo sea su puesto en la clasificación. Asimismo, la experiencia del piloto influye en la velocidad de aumento y pérdida de agresividad, siendo más lenta en su aumento y más rápida en su disminución cuanta mayor experiencia tenga.
+\end{itemize}
+
+% \bigskip
+
+% La experiencia determina la rapidez con la que un piloto se pone agresivo, de forma que si es más experimentado, tardará más en llegar al máximo de agresividad. También permitirá que tenga algo más de aguante físico, al tener más experiencia.
+
+% \bigskip
+
+% El aguante físico y mental va bajando a lo largo de la carrera de manera periódica. Sus efectos se traducen en una pérdida de velocidad punta.
+
+% \bigskip
+
+% Mientras que la agresividad aumenta a partir del tercer piloto (inclusive) y disminuye cuando se encuentra entre los dos primeros. La agresividad aumentará más rápido si el piloto se encuentra en posiciones peores del ranking. Sus efectos se traducen en una ganancia ligera de velocidad y frenadas tardías en las curvas.
 
 \section{Entidades y atributos}
 
@@ -13,12 +38,13 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
 \subsection{AStarNode}
 \textbf{Descripción: }Representa una celda de la matriz utilizada para ejecutar el algoritmo A*.
 
+\tiny
 \begin{longtblr}[
     label = none,
     entry = none,
     ]{
     width = \linewidth,
-    colspec = {Q[14,m]Q[14,m]Q[28,m]},
+    colspec = {Q[14,m]Q[14,m]Q[50,m]},
     row{1} = {Silver,c},
     cell{2-6}{1,2} = {c},
     hlines,
@@ -36,6 +62,7 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
 
     isCheckpoint      & boolean              & Si la celda forma parte de un checkpoint. Esta celda estará siempre libre, con independencia de si hay un coche o no.
 \end{longtblr}
+\normalsize
 
 \newpage
 \subsection{AStarGrid}
