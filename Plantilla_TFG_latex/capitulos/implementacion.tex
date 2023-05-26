@@ -43,6 +43,24 @@ En lo que respecta a herramientas de planificación, se utilizará \planApp para
     \includegraphics[width=\textwidth]{imagenes/trello-mio.png}
     \caption{Tablero utilizado para el proyecto.}
 \end{figure}
+
+
+
+\section{Glosario de términos de Unreal}
+\label{sec:terminosunreal}
+Esta sección es utilizada como una breve explicación de las palabras utilizadas referentes a Unreal Engine en este capítulo:
+
+\begin{itemize}
+    \item \textbf{Blueprint: }Forma visual de implementar lógica en el videojuego mediante el uso de nodos y aristas. Permiten programar sin necesidad de conocer la API en C++.
+    \item \textbf{Evento: }Acción o suceso que ocurre durante el juego y que puede desencadenar acciones o comportamiento. Los eventos pueden estar relacionados con el jugador, colisión entre objetos, etc.
+    \item \textbf{Actor: }Es un objeto del mundo que puede tener presencia física, implementar comportamiento específico y ser creados en tiempo de ejecución. A grandes rasgos son una clase que pueden tener mallas de polígonos almacenadas.
+    \item \textbf{Peón: }Tipo de actor que puede ser controlado directamente por el jugador. Por lo general, los peones representan personajes jugables en el juego.
+    \item \textbf{Event ActorBeginOverlap: }Evento utilizado cuando un actor se superpone con otro actor. Puede ser utilizado para realizar acciones en caso de colisión.
+    \item \textbf{Event ActorEndOverlap: }Evento que se activa cuando un actor deja de solaparse con otro. Puede ser utilizado para realizar acciones cuando se active el evento.
+    \item \textbf{Event Tick: }Evento que ocurre cada fotograma del videojuego y puede desencadenar acciones. Se utiliza para acciones que necesitan actualizaciones continuas, como la animación, el control del volante y los pedales o el seguimiento de otros objetos.
+    \item \textbf{Event Hit: }Evento que se activa cuando un objeto colisiona con otro objeto. Puede utilizarse para realizar acciones específicas cuando ocurre una colisión.
+\end{itemize}
+
 \section{Algoritmos utilizados}
 
 Voy a dividir en subsecciones los diversos algoritmos que componen la simulación:
@@ -93,63 +111,26 @@ La calibración del PID (Figura \ref{fig:pidbp}) se realiza modificando las cons
 
 \bigskip
 
-Dado que este método no me dio los resultados deseados, decidí implementar un algoritmo genético para obtener las constantes del controlador PID. Consiste en lanzar un conjunto de coches con valores positivos aleatorios para las constantes del PID, con el objetivo de que intenten llegar a la meta con el menor error posible (por error se sigue entendiendo como la distancia del punto más cercano a la ruta con el coche). Aquellos con menos error, tienen más posibilidades de ser seleccionados para generaciones futuras. Una vez obtenido el error, se calcula su inversa y se obtiene la probabilidad de ser elegido mediante el nuevo valor entre la suma de todos. Esto dará como resultado unas probabilidades que al ser sumadas darán 1 (100\%). 
+Dado que este método no me dio los resultados deseados, decidí implementar un algoritmo genético para obtener las constantes del controlador PID (implementación del controlador en Figura \ref{fig:pidbp}). Consiste en lanzar un conjunto de coches con valores positivos aleatorios para las constantes del PID, con el objetivo de que intenten llegar a la meta con el menor error posible (por error se sigue entendiendo como la distancia del punto más cercano a la ruta con el coche, véase Figura \ref{fig:errorpid}). Aquellos con menos error, tienen más posibilidades de ser seleccionados para generaciones futuras. Una vez obtenido el error, se calcula su inversa y se obtiene la probabilidad de ser elegido mediante el nuevo valor entre la suma de todos. Esto dará como resultado unas probabilidades que al ser sumadas darán 1 (100\%). 
 
 \bigskip
-
+% imagen de ejemplo de selección de ruleta
 La selección se realiza lanzando una ruleta\cite{enwiki:1141636554}, cuyos sectores son divididos en función de la probabilidad calculada anteriormente. La ruleta se debe lanzar tantas veces como padres se desea tener. Una vez que se han elegido los coches que van a ser padres, se emparejan y se mezclan sus constantes para obtener dos hijos de cada pareja. Después, una de las tres constantes del PID en algunos de los hijos puede ser mutada, con una probabilidad del 33\%, con un valor aleatorio de rango [-0.1,0.1] que se le añade al valor existente. Finalmente se sustituyen los coches no elegidos para la siguiente generación por los hijos con las constantes mezcladas y mutadas, manteniendo a los padres, y se vuelve a ejecutar de nuevo el algoritmo.
 
 \bigskip
 
 Utilizando este algoritmo, obtuve unos valores que funcionaban bien para el circuito. No obstante, tras ejecutarlo varias veces, me he dado cuenta de que la constante integral siempre tiende a 0. Para solucionarlo, he decidido obligarle a que tenga un valor mínimo de 0,01.
 
-% Queda por hablar de: adelantamientos, recuperacion despues de accidente, sistema de checkpoints, recuperacion de vuelco
-\subsection{Algoritmos de navegación}
+\subsection{Algoritmo de navegación}
 
 En cuanto al algoritmo de navegación, correspondiente a HU2, HU4 y HU5 e implementadas en los sprints 5 y 6, he utilizado A*\cite{enwiki:1152315016}, que es lanzado utilizando diversas reglas, y una componente reactiva. 
 
 \bigskip
 
-Para que el algoritmo A* pueda funcionar, es necesario discretizar el espacio de alguna forma, para que pueda ser ejecutado. Para ello, he decidido dividir el circuito en una malla de cubos de \cubeSize y con una cantidad de \gridSize cubos. Estos parámetros pueden ser modificados fácilmente, permitiendo albergar circuitos de mayor tamaño.
+% Para que el algoritmo A* pueda funcionar, es necesario discretizar el espacio de alguna forma, para que pueda ser ejecutado. Para ello, he decidido dividir el circuito en una malla de cubos de \cubeSize y con una cantidad de \gridSize cubos. Estos parámetros pueden ser modificados fácilmente, permitiendo albergar circuitos de mayor tamaño.
 
-\bigskip
 
-% Voy a dividir cada una de las partes que conforman el mapa en subsecciones:
-En las siguientes subsecciones se explicará en detalle cada componente que forma la malla:
-
-\subsubsection{Nodo}
-
-Para implementarlo, he creado un actor que representa un nodo. Además, posee las variables necesarias para saber si se encuentra un vehículo dentro de él, si es un delimitador de límites de pista, si es un checkpoint o si es una guía de ruta óptima. De esta forma se puede tener un control muy alto sobre los pesos de cada estado.
-
-\bigskip
-
-La actualización de un nodo de un estado a otro se realiza mediante el evento \textit{ActorBeginOverlap} y \textit{ActorEndOverlap}. Así se puede actualizar el mapa en tiempo real.
-
-\bigskip
-
-Cabe destacar que los nodos con estado checkpoint y delimitador no pueden ser cambiados de estado; es decir, el delimitador de pista siempre estará ocupado, dándole un coste mayor. Mientras que el checkpoint siempre estará libre, dándole un coste menor. Los checkpoints nunca reciben colisión para optimizar la velocidad del algoritmo A*, ya que si se tienen en cuenta puede llegar a tardar demasiado en encontrar la ruta.
-
-\bigskip
-
-El estado ruta óptima sirve para darle una ayuda a los coches, ya que si no se utilizase escogería rutas más rígidas. Este estado no prohíbe a los coches la posibilidad de elegir otra ruta para adelantar o volver a pista, solo es una guía.
-
-\bigskip
-
-La construcción del delimitador y de la ruta óptima la he realizado utilizando actores distintos, de manera que se activen los eventos anteriormente mencionados para que se ajusten.
-
-\bigskip
-
-Por último, cada nodo también almacena una referencia a sus nodos adyacentes, para que puedan ser utilizados por el algoritmo A*.
-
-\subsubsection{Malla de navegación}
-
-Para realizar la malla de navegación he utilizado un actor encargado de generar los nodos mencionados anteriormente en una malla de \gridSize. Como he dicho antes, estos valores pueden ser modificados, incluido el offset de donde comienza a generar nodos.
-
-\bigskip
-
-Este actor incluye los métodos necesarios para poder direccionar un nodo de la malla como una matriz (con filas y columnas), poder obtener su posición en coordenadas del mundo y poder convertir de coordenadas del mundo a coordenadas de matriz.
-
-\subsubsection{Algoritmo A*}
+% \subsubsection{Algoritmo A*}
 
 % rescribir
 A* es utilizado para obtener rutas en un grafo. Para ello, hace uso de una función heurística para estimar la distancia restante al nodo destino. A diferencia de otros algoritmos, como el de Dijkstra, A* es más rápido, gracias a la heurística, ya que puede descartar nodos que están más alejados del destino.
@@ -171,45 +152,106 @@ Otra mejora ha sido la de utilizar una cola con prioridad para la lista de abier
 Gracias a la cola con prioridad, la desventaja de la nueva versión de A* puede ser solucionada, al priorizarse la ruta más eficiente.
 
 
+% PONER EJEMPLOS DE RUTAS GENERADAS
+
+
 \subsubsection{Heurística}
 
-Debido a que un nodo puede moverse en 8 direcciones distintas, incluyendo las diagonales, es necesario utilizar una heurística acorde. Por tanto, he decidido utilizar la distancia Chebyshev\cite{enwiki:1149051498}, cuyos movimientos diagonales tienen el mismo coste que los demás. 
+% Debido a que un nodo puede moverse en 8 direcciones distintas, incluyendo las diagonales, es necesario utilizar una heurística acorde. Por tanto, he decidido utilizar la distancia Chebyshev\cite{enwiki:1149051498}, cuyos movimientos diagonales tienen el mismo coste que los demás. 
+
+% \bigskip
+
+% La configuración de los nodos prohíbe utilizar una heurística como la distancia Manhattan, ya que sobrestimaría la distancia al destino, haciendo que no sea correcto.
+
+La heurística elegida ha sido la distancia Manhattan, ya que el rango de movimiento en la malla es solamente vertical y horizontal.
+
+% \bigskip
+
+% Podría haber incluido como vecinos las diagonales, pero 
+
+% foto diagrama de la distancia manhattan
+
+
+
+\subsection{Generación de la malla de navegación}
+Para que A* funcione, es necesario discretizar el espacio y crear una estructura de datos que permita incluir todos los posibles estados para que los pilotos puedan tomar decisiones.
 
 \bigskip
 
-La configuración de los nodos prohíbe utilizar una heurística como la distancia Manhattan, ya que sobrestimaría la distancia al destino, haciendo que no sea correcto.
+% En cada subsección se hablará de cada componente que forma la malla de navegación:
+A continuación se da una explicación de cada uno de los elementos que forman la malla de navegación:
 
-\subsubsection{Cálculo de la ruta por los vehículos}
+\begin{itemize}
+    \item \textbf{Nodo: }Para implementarlo, he creado un actor (véase sección \ref{sec:terminosunreal}) que representa un nodo. Además, posee las variables necesarias para saber si se encuentra un vehículo dentro de él, si es un delimitador de límites de pista, si es un checkpoint o si es una guía de ruta óptima. De esta forma se puede tener un control muy alto sobre los pesos de cada estado.
+    
+    \bigskip
+    
+    La actualización de un nodo de un estado a otro se realiza mediante el evento \textit{ActorBeginOverlap} (véase sección \ref{sec:terminosunreal}) y \textit{ActorEndOverlap} (véase sección \ref{sec:terminosunreal}). Así se puede actualizar el mapa en tiempo real.
+    
+    \bigskip
+    
+    Cabe destacar que los nodos con estado checkpoint y delimitador no pueden ser cambiados de estado; es decir, el delimitador de pista siempre estará ocupado, dándole un coste mayor. Mientras que el checkpoint siempre estará libre, dándole un coste menor. Los checkpoints nunca reciben colisión para optimizar la velocidad del algoritmo A*, ya que si se tienen en cuenta puede llegar a tardar demasiado en encontrar la ruta.
+    
+    \bigskip
+    
+    El estado ruta óptima sirve para darle una ayuda a los coches, ya que si no se utilizase escogería rutas más rígidas. Este estado no prohíbe a los coches la posibilidad de elegir otra ruta para adelantar o volver a pista, solo es una guía.
+    
+    \bigskip
+    
+    La construcción del delimitador y de la ruta óptima la he realizado utilizando actores distintos, de manera que se activen los eventos anteriormente mencionados para que se ajusten.
+    
+    \bigskip
+    
+    Por último, cada nodo también almacena una referencia a sus nodos adyacentes, para que puedan ser utilizados por el algoritmo A*.
+
+    \item \textbf{Malla (conjunto de nodos): }Para realizar la malla de navegación he utilizado un actor encargado de generar los nodos mencionados anteriormente en una malla de \gridSize. Como he dicho antes, estos valores pueden ser modificados, incluido el offset de donde comienza a generar nodos.
+    
+    \bigskip
+    
+    Este actor incluye los métodos necesarios para poder direccionar un nodo de la malla como una matriz (con filas y columnas), poder obtener su posición en coordenadas del mundo y poder convertir de coordenadas del mundo a coordenadas de matriz.
+
+    % foto de la malla recreada en unreal
+\end{itemize}
+% \subsubsection{Nodo}
+% \subsubsection{Malla de navegación}
+
+
+
+\subsection{Cálculo de la ruta por los vehículos}
 
 Con todo lo anterior implementado el coche es capaz de obtener una ruta por el circuito. No obstante, sigue siendo demasiado costoso obtener una ruta demasiado larga, para luego tener que desecharla por un adelantamiento o un choque. Es por eso que he dividido el circuito en varios checkpoints de tamaño relativamente reducido, con el objetivo de que el cálculo de rutas sea más rápido.
 
 \bigskip
+% foto de los checkpoints
 
-Cuando la parte delantera del vehículo se solapa con un checkpoint, calcula la ruta utilizando A* hasta el siguiente checkpoint. La llamada al algoritmo devuelve un vector de puntos en coordenadas del mundo. El vehículo se encarga de filtrar los puntos que quedan fuera del checkpoint solapado, con el objetivo de que resulte en una ruta más limpia. Para ello, calcula el producto escalar entre el \textit{Forward Vector} del checkpoint y el vector formado por el checkpoint y el cubo, si resulta que es menor o igual que 0 se elimina, ya que indica que se encuentra detrás.
+% Cuando la parte delantera del vehículo se solapa con un checkpoint, calcula la ruta utilizando A* hasta el siguiente checkpoint. La llamada al algoritmo devuelve un vector de puntos en coordenadas del mundo. El vehículo se encarga de filtrar los puntos que quedan fuera del checkpoint solapado, con el objetivo de que resulte en una ruta más limpia. Para ello, calcula el producto escalar entre el \textit{Forward Vector} del checkpoint y el vector formado por el checkpoint y el cubo, si resulta que es menor o igual que 0 se elimina, ya que indica que se encuentra detrás.
+Cuando la parte delantera del vehículo se solapa con un checkpoint, calcula la ruta utilizando A* hasta el siguiente checkpoint. La llamada al algoritmo devuelve un vector de puntos en coordenadas del mundo. El vehículo se encarga de filtrar los puntos generados para que solo haya uno en cada checkpoint, ya que en otro caso puede generar problemas en el seguimiento de la ruta.
 
 \bigskip
 
-Con los puntos filtrados, el coche construye un spline y pinta los puntos en el suelo. Este spline será seguido gracias al controlador PID mencionado anteriormente. Cabe destacar que al ser la ruta discreta y el vehículo una componente física del mundo, el vehículo no siempre conseguirá seguirla siempre, pero le servirá como ``guía'' a la hora de tener que hacer giros y adelantamientos.
+Con los puntos filtrados, el coche construye un spline y pinta los puntos en el suelo. Este spline será seguido gracias al controlador PID (Figura \ref{fig:pidbp}) mencionado anteriormente. Cabe destacar que al ser la ruta discreta y el vehículo una componente física del mundo, el vehículo no siempre conseguirá seguirla siempre, pero le servirá como ``guía'' a la hora de tener que hacer giros y adelantamientos.
 
-\subsubsection{Lógica de adelantamiento de los vehículos}
+\subsection{Lógica de adelantamiento de los vehículos}
 
 Dado que el algoritmo A* funciona principalmente para mundos estáticos, es necesario actualizar la ruta si se realiza un cambio de posición en los vehículos. En este caso, para adelantar al contrincante.
 
 \bigskip
 
-La regla que sigue el vehículo es si se encuentra a una distancia del vehículo de adelante, ejecuta el algoritmo de navegación y espera unos pocos segundos para volverlo a ejecutar. Esta implementación me ha dado unos resultados razonables en tiempo y habilidad en los pilotos.
+La regla que sigue el vehículo es si se encuentra a una distancia del vehículo de adelante y tiene la suficiente diferencia de velocidad, ejecuta el algoritmo de navegación y espera unos pocos segundos para volverlo a ejecutar. Esta implementación me ha dado unos resultados razonables en tiempo y habilidad en los pilotos.
 
-\subsubsection{Recuperación después de un accidente}
+% quizas poner foto, pero creo que va a ser complicado
+
+\subsection{Recuperación después de un accidente}
 
 Si un coche se sale de pista primero se esperan unos segundos para comprobar que de verdad no se puede mover. Cuando se ha comprobado, se recorre un cierto tiempo marcha atrás con las ruedas rectas. Finalmente, ejecuta el A* para calcular una ruta de escapatoria y recorre lento dicha ruta por un breve instante de tiempo, hasta que finalmente recupera la velocidad que tenía.
 
-\subsubsection{Recuperación después del vuelco}
+\subsection{Recuperación después del vuelco}
 
 Puede darse el remoto caso de que un vehículo vuelque y no sea capaz de darse la vuelta. En este caso he decidido implementar una regla que comprueba si la rotación del coche es mayor de 90 grados en ambos sentidos, pone el coche de nuevo sobre sus cuatro ruedas.
 
 \subsection{Control de acelerador y freno}
 
-El control del acelerador y del freno en condiciones normales de carrera se implementa incluyendo en cada checkpoint la velocidad recomendada a la que debe ir el coche. El coche calcula la distancia a la que se encuentra del siguiente checkpoint y la distancia de frenado necesaria basándose en la velocidad y la desaceleración por el frenado (también se incluye la componente de agresividad, que se explicará más tarde).
+El control del acelerador y del freno en condiciones normales de carrera se implementa incluyendo en cada checkpoint (Figura ???) la velocidad recomendada a la que debe ir el coche. El coche calcula la distancia a la que se encuentra del siguiente checkpoint y la distancia de frenado necesaria basándose en la velocidad y la desaceleración por el frenado (también se incluye la componente de agresividad, que se explicará más tarde).
 
 \bigskip
 
@@ -248,6 +290,7 @@ En lo que se refiere al cálculo de las posiciones de cada piloto, correspondien
                                        & 3                                  & {[}c4]
     \end{tblr}
     \caption{Representación de la estructura de datos que almacena las posiciones de los pilotos durante la carrera.}
+    \label{fig:tablapos}
 \end{table}
 
 % Para saber cuando lanzar la actualización de la lista de posiciones, cada coche calcula si el que está por delante de él sigue así, en caso contrario lanza el evento de actualización.
