@@ -115,6 +115,13 @@ Dado que este método no me dio los resultados deseados, decidí implementar un 
 
 \bigskip
 % imagen de ejemplo de selección de ruleta
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{imagenes/ruleta.png}
+    \caption{Ilustración de la selección por ruleta}
+    \label{fig:ruleta}
+\end{figure}
+
 La selección se realiza lanzando una ruleta\cite{enwiki:1141636554}, cuyos sectores son divididos en función de la probabilidad calculada anteriormente. La ruleta se debe lanzar tantas veces como padres se desea tener. Una vez que se han elegido los coches que van a ser padres, se emparejan y se mezclan sus constantes para obtener dos hijos de cada pareja. Después, una de las tres constantes del PID en algunos de los hijos puede ser mutada, con una probabilidad del 33\%, con un valor aleatorio de rango [-0.1,0.1] que se le añade al valor existente. Finalmente se sustituyen los coches no elegidos para la siguiente generación por los hijos con las constantes mezcladas y mutadas, manteniendo a los padres, y se vuelve a ejecutar de nuevo el algoritmo.
 
 \bigskip
@@ -127,12 +134,6 @@ En cuanto al algoritmo de navegación, correspondiente a HU2, HU4 y HU5 e implem
 
 \bigskip
 
-% Para que el algoritmo A* pueda funcionar, es necesario discretizar el espacio de alguna forma, para que pueda ser ejecutado. Para ello, he decidido dividir el circuito en una malla de cubos de \cubeSize y con una cantidad de \gridSize cubos. Estos parámetros pueden ser modificados fácilmente, permitiendo albergar circuitos de mayor tamaño.
-
-
-% \subsubsection{Algoritmo A*}
-
-% rescribir
 A* es utilizado para obtener rutas en un grafo. Para ello, hace uso de una función heurística para estimar la distancia restante al nodo destino. A diferencia de otros algoritmos, como el de Dijkstra, A* es más rápido, gracias a la heurística, ya que puede descartar nodos que están más alejados del destino.
 
 \bigskip
@@ -153,7 +154,12 @@ Gracias a la cola con prioridad, la desventaja de la nueva versión de A* puede 
 
 
 % PONER EJEMPLOS DE RUTAS GENERADAS
-
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{imagenes/rutaAStar.png}
+    \caption{Ruta generada por un vehículo hasta el siguiente checkpoint.}
+    \label{fig:rutaastar}
+\end{figure}
 
 \subsubsection{Heurística}
 
@@ -165,12 +171,13 @@ Gracias a la cola con prioridad, la desventaja de la nueva versión de A* puede 
 
 La heurística elegida ha sido la distancia Manhattan, ya que el rango de movimiento en la malla es solamente vertical y horizontal.
 
-% \bigskip
-
-% Podría haber incluido como vecinos las diagonales, pero 
-
 % foto diagrama de la distancia manhattan
-
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{imagenes/Euclidean-and-Manhattan-distance-comparison-3235-Optimizations-The-first-optimization.png}
+    \caption{Esquema del funcionamiento de la distancia Manhattan\cite{gameai}.}
+    \label{fig:manhattan}
+\end{figure}
 
 
 \subsection{Generación de la malla de navegación}
@@ -198,19 +205,32 @@ A continuación se da una explicación de cada uno de los elementos que forman l
     
     \bigskip
     
-    La construcción del delimitador y de la ruta óptima la he realizado utilizando actores distintos, de manera que se activen los eventos anteriormente mencionados para que se ajusten.
+    La construcción del delimitador y de la ruta óptima la he realizado utilizando actores (véase sección \ref{sec:terminosunreal}) distintos, de manera que se activen los eventos anteriormente mencionados para que se ajusten.
     
     \bigskip
     
     Por último, cada nodo también almacena una referencia a sus nodos adyacentes, para que puedan ser utilizados por el algoritmo A*.
 
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.5\textwidth]{imagenes/nodo.png}
+        \caption{Representación de un nodo en Unreal Engine.}
+        \label{fig:nodo}
+    \end{figure}
+
     \item \textbf{Malla (conjunto de nodos): }Para realizar la malla de navegación he utilizado un actor encargado de generar los nodos mencionados anteriormente en una malla de \gridSize. Como he dicho antes, estos valores pueden ser modificados, incluido el offset de donde comienza a generar nodos.
     
     \bigskip
     
-    Este actor incluye los métodos necesarios para poder direccionar un nodo de la malla como una matriz (con filas y columnas), poder obtener su posición en coordenadas del mundo y poder convertir de coordenadas del mundo a coordenadas de matriz.
+    Este actor (véase sección \ref{sec:terminosunreal}) incluye los métodos necesarios para poder direccionar un nodo de la malla como una matriz (con filas y columnas), poder obtener su posición en coordenadas del mundo y poder convertir de coordenadas del mundo a coordenadas de matriz.
 
     % foto de la malla recreada en unreal
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.5\textwidth]{imagenes/malla.png}
+        \caption{Malla de navegación generada sobre el circuito. Los puntos rojos son muros, los verdes indicadores de ruta óptima y los azules el resto de la pista usable.}
+        \label{fig:mallanav}
+    \end{figure}
 \end{itemize}
 % \subsubsection{Nodo}
 % \subsubsection{Malla de navegación}
@@ -221,11 +241,17 @@ A continuación se da una explicación de cada uno de los elementos que forman l
 
 Con todo lo anterior implementado el coche es capaz de obtener una ruta por el circuito. No obstante, sigue siendo demasiado costoso obtener una ruta demasiado larga, para luego tener que desecharla por un adelantamiento o un choque. Es por eso que he dividido el circuito en varios checkpoints de tamaño relativamente reducido, con el objetivo de que el cálculo de rutas sea más rápido.
 
-\bigskip
+
 % foto de los checkpoints
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{imagenes/checkpoints.png}
+    \caption{Checkpoints utilizados a lo largo del circuito. Los checkpoints son las barreras de color blanco.}
+    \label{fig:checkpointunreal}
+\end{figure}
 
 % Cuando la parte delantera del vehículo se solapa con un checkpoint, calcula la ruta utilizando A* hasta el siguiente checkpoint. La llamada al algoritmo devuelve un vector de puntos en coordenadas del mundo. El vehículo se encarga de filtrar los puntos que quedan fuera del checkpoint solapado, con el objetivo de que resulte en una ruta más limpia. Para ello, calcula el producto escalar entre el \textit{Forward Vector} del checkpoint y el vector formado por el checkpoint y el cubo, si resulta que es menor o igual que 0 se elimina, ya que indica que se encuentra detrás.
-Cuando la parte delantera del vehículo se solapa con un checkpoint, calcula la ruta utilizando A* hasta el siguiente checkpoint. La llamada al algoritmo devuelve un vector de puntos en coordenadas del mundo. El vehículo se encarga de filtrar los puntos generados para que solo haya uno en cada checkpoint, ya que en otro caso puede generar problemas en el seguimiento de la ruta.
+Cuando la parte delantera del vehículo se solapa con un checkpoint, calcula la ruta utilizando A* hasta el siguiente. La llamada al algoritmo devuelve un vector de puntos en coordenadas del mundo. El vehículo se encarga de filtrar los puntos generados para que solo haya uno en cada checkpoint, ya que en otro caso puede generar problemas en el seguimiento de la ruta.
 
 \bigskip
 
@@ -240,6 +266,12 @@ Dado que el algoritmo A* funciona principalmente para mundos estáticos, es nece
 La regla que sigue el vehículo es si se encuentra a una distancia del vehículo de adelante y tiene la suficiente diferencia de velocidad, ejecuta el algoritmo de navegación y espera unos pocos segundos para volverlo a ejecutar. Esta implementación me ha dado unos resultados razonables en tiempo y habilidad en los pilotos.
 
 % quizas poner foto, pero creo que va a ser complicado
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{imagenes/overtake.png}
+    \caption{Cálculo de la ruta del coche verde para intentar adelantar al otro piloto.}
+    \label{fig:overtake}
+\end{figure}
 
 \subsection{Recuperación después de un accidente}
 
@@ -251,7 +283,7 @@ Puede darse el remoto caso de que un vehículo vuelque y no sea capaz de darse l
 
 \subsection{Control de acelerador y freno}
 
-El control del acelerador y del freno en condiciones normales de carrera se implementa incluyendo en cada checkpoint (Figura ???) la velocidad recomendada a la que debe ir el coche. El coche calcula la distancia a la que se encuentra del siguiente checkpoint y la distancia de frenado necesaria basándose en la velocidad y la desaceleración por el frenado (también se incluye la componente de agresividad, que se explicará más tarde).
+El control del acelerador y del freno en condiciones normales de carrera se implementa incluyendo en cada checkpoint (Figura \ref{fig:checkpointunreal} la velocidad recomendada a la que debe ir el coche. El coche calcula la distancia a la que se encuentra del siguiente checkpoint y la distancia de frenado necesaria basándose en la velocidad y la desaceleración por el frenado (también se incluye la componente de agresividad, que se explicará más tarde).
 
 \bigskip
 
@@ -260,9 +292,6 @@ Cabe destacar que esta velocidad es modificada por el estado del piloto, que se 
 \subsection{Algoritmo para las posiciones de los pilotos}
 
 En lo que se refiere al cálculo de las posiciones de cada piloto, correspondientes a HU7 y HU8 e implementadas en el sprint 7, he utilizado una estructura de datos algo más compleja. Los vehículos almacenan la vuelta en la que están y el checkpoint; es decir, el sector del circuito en el que se encuentran. Con la información anterior, he creado un array asociativo que almacene como clave la vuelta y como valor otro array asociativo, que a su vez tiene como clave el checkpoint y como valor un array con todos los vehículos que se encuentran en ese estado. Para mostrarlo, solo hace falta iterar primero por aquellas claves mayores, ya que son los que más vueltas y más lejos del circuito están.
-
-% foto de la estructura de datos
-% \usepackage{multirow}
 
 \begin{table}[H]
     \centering
