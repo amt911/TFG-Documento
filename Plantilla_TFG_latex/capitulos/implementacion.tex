@@ -49,7 +49,7 @@ Voy a dividir en subsecciones los diversos algoritmos que componen la simulació
 
 \subsection{Algoritmo para el giro del volante del coche}
 
-En el control del volante de los vehículos, correspondiente a HU3 y realizada en el sprint 4, se ha utilizado un controlador PID (\textit{Proportional, Integral} y \textit{Derivative}). Este controlador se utiliza para regular el error de un sistema de manera suave y evitando producir muchas desviaciones mediante el ajuste de tres constantes para la componente proporcional, integral y derivativa. Cabe destacar que la variable a la que el sistema debe llegar se llama SP (\textit{Set Point}) y el valor actual del sistema se denomina PV (\textit{Process Variable}). 
+En el control del volante de los vehículos, correspondiente a HU3 y realizada en el sprint 4, se ha utilizado un controlador PID (\textit{Proportional, Integral} y \textit{Derivative}). Este controlador se utiliza para regular el error de un sistema de manera suave, evitando producir muchas desviaciones mediante el ajuste de tres constantes, una para cada componente del controlador. Cabe destacar que la variable a la que el sistema debe llegar se llama SP (\textit{Set Point}) y el valor actual del sistema se denomina PV (\textit{Process Variable}). 
 
 % foto de una grafica de esas, quitar el bigskip si se encuentra alguna
 % \caption{Diferencias de respuestas de un control estandar frente al controlador PID.}
@@ -73,6 +73,7 @@ Para que el controlador funcione bien, es necesario modificar sus tres constante
 \centering
 \includegraphics[width=\textwidth]{imagenes/PID-BP.png}
 \caption{Implementación usando \textit{blueprints} del controlador PID.}
+\label{fig:pidbp}
 \end{figure}
 
 El rango de valores que pueden tener las variables dependen del sistema al que se aplique. No obstante, todos los valores son números reales positivos, incluyendo el 0, que deshabilita la componente.
@@ -81,14 +82,18 @@ El rango de valores que pueden tener las variables dependen del sistema al que s
 
 Cabe destacar que, en mi caso, el SP es el punto más cercano del coche a la ruta generada, y el error es la distancia del coche a dicho punto.
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{imagenes/errorPID.png}
+    \caption{Esquema donde se indica el cálculo de la distancia para el PID.}
+    \label{fig:errorpid}
+    \end{figure}
+
+La calibración del PID (Figura \ref{fig:pidbp}) se realiza modificando las constantes asociadas a cada componente. Existen diversos métodos como el de Ziegler-Nichols \cite{enwiki:1140258750}, que consiste en modificar solo la parte proporcional, dejando las demás a 0, hasta que el sistema comience a oscilar de manera estable, en ese momento se debe calcular la frecuencia a la que oscila y utilizando también el valor de la constante proporcional, se pueden obtener las demás mediante un cálculo matemático.
+
 \bigskip
 
-% rescribir la ultima parte ... y utilizando tambien el valor...
-La calibración del PID se realiza modificando las constantes asociadas a cada componente. Existen diversos métodos como el de Ziegler-Nichols \cite{enwiki:1140258750}, que consiste en modificar solo la parte proporcional, dejando las demás a 0, hasta que el sistema comience a oscilar de manera estable, en ese momento se debe calcular la frecuencia a la que oscila y utilizando también el valor de la constante proporcional, se pueden obtener las demás mediante un cálculo matemático.
-
-\bigskip
-
-Dado que este método no me dio los resultados deseados, decidí implementar un algoritmo genético para obtener las constantes del controlador PID. Consiste en lanzar un conjunto de coches con valores de las constantes del PID aleatorios positivos al principio, con el objetivo de que intenten llegar a la meta con el menor error posible (por error se sigue entendiendo como la distancia del punto más cercano a la ruta con el coche). Aquellos con menos error, tienen más posibilidades de ser seleccionados para generaciones futuras. Una vez obtenido el error, se calcula su inversa y se obtiene la probabilidad de ser elegido mediante el nuevo valor entre la suma de todos. Esto dará como resultado unas probabilidades que al ser sumadas darán 1 (100\%). 
+Dado que este método no me dio los resultados deseados, decidí implementar un algoritmo genético para obtener las constantes del controlador PID. Consiste en lanzar un conjunto de coches con valores positivos aleatorios para las constantes del PID, con el objetivo de que intenten llegar a la meta con el menor error posible (por error se sigue entendiendo como la distancia del punto más cercano a la ruta con el coche). Aquellos con menos error, tienen más posibilidades de ser seleccionados para generaciones futuras. Una vez obtenido el error, se calcula su inversa y se obtiene la probabilidad de ser elegido mediante el nuevo valor entre la suma de todos. Esto dará como resultado unas probabilidades que al ser sumadas darán 1 (100\%). 
 
 \bigskip
 
@@ -96,7 +101,7 @@ La selección se realiza lanzando una ruleta\cite{enwiki:1141636554}, cuyos sect
 
 \bigskip
 
-Utilizando este algoritmo, obtuve unos valores que funcionaban bien para el circuito. No obstante, tras ejecutar varias veces el algoritmo, me he dado cuenta de que la constante integral siempre tiende a 0. Para solucionarlo, he decidido obligarle a que tenga un valor mínimo de 0,01.
+Utilizando este algoritmo, obtuve unos valores que funcionaban bien para el circuito. No obstante, tras ejecutarlo varias veces, me he dado cuenta de que la constante integral siempre tiende a 0. Para solucionarlo, he decidido obligarle a que tenga un valor mínimo de 0,01.
 
 % Queda por hablar de: adelantamientos, recuperacion despues de accidente, sistema de checkpoints, recuperacion de vuelco
 \subsection{Algoritmos de navegación}

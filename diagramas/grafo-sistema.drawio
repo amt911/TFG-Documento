@@ -1,4 +1,4 @@
-<mxfile host="Electron" modified="2023-05-14T15:28:47.926Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.2.8 Chrome/112.0.5615.165 Electron/24.2.0 Safari/537.36" etag="Cb-4DNSJZ9Hlr8DKlvlU" version="21.2.8" type="device" pages="9">
+<mxfile host="Electron" modified="2023-05-26T12:16:02.015Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.2.8 Chrome/112.0.5615.165 Electron/24.2.0 Safari/537.36" etag="MwSXBIRF9WWMyJeUuw1O" version="21.2.8" type="device" pages="10">
   <diagram name="Grafo de relación" id="BGxzwk34acvmdzmgTSJW">
     <mxGraphModel dx="2060" dy="1182" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -1206,6 +1206,59 @@
         </mxCell>
         <mxCell id="t9RoJ7oQOVWE5sVN6mZm-49" value="" style="shape=stencil(lVfZctswDPwavWJ4A3xO0//ITJzaUzfOOO7194WqqhJBaTN+k0SsiGMBLof48H58ejsMwb3frpevh5+n59txiJ+GEE6vx8P1dNOnIT4O8eHlcj18uV6+vz5P729Po+X49O3yY/zDrwknJGEEBfd7+uAolr8fPk/m59PrytwXEmnsE+Wwbx8KcWzsvaOQ9wExEqcWkKgCj5InaXfQECpwKWuEbQiBqToAEMrtDjFT8fuAosttUlMkATuwp9gGnQN5BMi2DEXTClziSqm0ACbhfYAE6xInYgEAXeYGII4YFE6USq1LolGBGESo5hZQqcZ9QPXkawOokTxwSZeTAWTKCJBt+1SmhFyqM9X+A7QyoB9GAFtAAdTQ5dwB/rXUNkBsxylAUNBMWSygohjKzM1lCDhyKIg0U2e9RYWVi/UunwKF+6L2lDoAY/a5rhAZxeBncq65gSrnib0FRNBBGnTpdvA4rbXbwYPhqg0RowU4tEPZqLRHMchGWj2YZMv/VoCAAdzxOwG2rti8LjXuas4WUFCaNItdmgQVQjZcQseiFqL0XY1cyraDPuzqaI/qZbrt8TV3XS24hUo//MCpNfZc19UF99x9AD21nKEfz3piG6DqwXAj4x1i13ORAii16GRqSy24DqwnrwHowQdc4k4mqhiACijNp+BKbiB+q2TKnaCpSJTxLCPXkgkM/KJioC3cKMoAILMl3yj7QFpViZoYVFgyyFJSUdbuEAR23Kim27QGrT0gX8hWPfg8k2V79oktnAp8NCxl1kfLBQINPmepqjkDxOsGsYNyzJG3f4+AdG5WXos56jM/33QWcw98D32oDrAnkrN/d8CZNF8oVubo0tNnBpl3Ck/N0XywQ9RBkcBWhTh44ivFrO+o0e+8An9org/LbfvldD5Pl/X1ur2d66fpZh8f/wA=);lineShape=1;" parent="1" vertex="1">
           <mxGeometry x="862.9197258843919" y="44.2558639924689" width="31.76677613904576" height="311.9156367613907" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="ll0lEiwXOSrGDn-g95yI" name="Spline">
+    <mxGraphModel dx="687" dy="394" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="yFZ1uy9SX3Qqh4M1qOTz-1" value="" style="endArrow=none;dashed=1;html=1;rounded=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" edge="1" parent="1" source="yFZ1uy9SX3Qqh4M1qOTz-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="600" y="700" as="sourcePoint" />
+            <mxPoint x="600" y="370" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yFZ1uy9SX3Qqh4M1qOTz-2" value="Coche" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="460" y="440" width="60" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="yFZ1uy9SX3Qqh4M1qOTz-4" value="" style="endArrow=none;dashed=1;html=1;rounded=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" edge="1" parent="1" target="yFZ1uy9SX3Qqh4M1qOTz-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="600" y="610" as="sourcePoint" />
+            <mxPoint x="600" y="120" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yFZ1uy9SX3Qqh4M1qOTz-3" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="590" y="420" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="yFZ1uy9SX3Qqh4M1qOTz-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="yFZ1uy9SX3Qqh4M1qOTz-7" target="yFZ1uy9SX3Qqh4M1qOTz-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yFZ1uy9SX3Qqh4M1qOTz-7" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="480" y="420" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="yFZ1uy9SX3Qqh4M1qOTz-9" value="SP" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="610" y="415" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="yFZ1uy9SX3Qqh4M1qOTz-11" value="" style="verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;strokeWidth=1;shape=mxgraph.mockup.markup.curlyBrace;whiteSpace=wrap;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="490" y="394" width="110" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="yFZ1uy9SX3Qqh4M1qOTz-12" value="PV" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="450" y="415" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="yFZ1uy9SX3Qqh4M1qOTz-13" value="Distancia" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="510" y="364" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="yFZ1uy9SX3Qqh4M1qOTz-15" value="" style="endArrow=none;dashed=1;html=1;rounded=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="451" y="600" as="sourcePoint" />
+            <mxPoint x="491" y="600" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yFZ1uy9SX3Qqh4M1qOTz-16" value="Spline" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="491" y="585" width="40" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
