@@ -275,35 +275,16 @@ Mientras que la agresividad aumenta a partir del tercer piloto (inclusive) y dis
 
 \section{Modelado y texturizado de la escena}
 
-% Para la creación del escenario final he utilizado dos programas, que detallaré en subsecciones a continuación:
-
-% \subsection{Blender}
-% Blender\cite{blender} es un programa dedicado al modelado, iluminación, animación y creación de objetos de código abierto. 
-
-% \begin{figure}[H]
-%     \centering
-%     \includegraphics[width=\textwidth]{imagenes/blender-ui.png}
-%     \caption{Interfaz de usuario de Blender\cite{blender-ui}.}
-%     \label{fig:blenderui}
-% \end{figure}
-
-% En mi caso, he utilizado Blender para crear los distintos modelos de la pista del circuito, para el \textit{rigging} de los vehículos, generación de texturas normales y mapeados UV. A continuación, dividiré en subsecciones los objetos generados, así como su proceso de creación: 
-
-% \subsubsection{Asfalto de la pista}
-
-% La trazada del circuito
-% \subsection{GIMP}
-
 Para la creación y preparación de los distintos modelos de la aplicación, he utilizado Blender\cite{blender} y GIMP\cite{gimp}. A continuación detallaré cada uno de los modelos, así como su proceso de creación.
 
-\subsection{Trazada de la carretera}
+\subsection{Trazado del circuito}
 
 El trazado de la carretera lo he realizado creando primero un spline en Unreal con la forma deseada. 
 
 \begin{figure}[H]
     \centering
     % \includegraphics[width=\textwidth]{imagenes/trazado.png}
-    \includegraphics[width=\textwidth]{example-image-a}
+    \includegraphics[width=\textwidth]{imagenes/trazadoFinal.png}
     \caption{Trazado del circuito.}
     \label{fig:trazado}
 \end{figure}
@@ -312,46 +293,45 @@ Ahora es necesario incluir un modelo de carretera para que el spline pueda gener
 
 \bigskip
 
-% rescribir
-En la vida real, hay secciones de los circuitos en los que es solo carretera, normalmente en las rectas, y otras secciones en las que se dispone de un piano, principalmente en las curvas. Por tanto, ha sido necesario crear 3 modelos distintos de pista: uno sin piano, otro con el piano a la izquierda y uno último con el piano a la derecha.
+En la vida real, los circuitos suelen tener secciones donde la carretera es recta y otras secciones donde se incluyen pianos, especialmente en las curvas. Por lo tanto, ha sido necesario crear tres modelos distintos de pista: uno sin piano, otro con piano a la izquierda y otro con el piano a la derecha. De esta manera, se logra una representación más fiel y realista de las diferentes secciones del circuito.
 
 \bigskip
-% rescribir
-Haciendo uso de Blender, he creado los 3 modelos distintos de pista. Las secciones están formadas por un cubo achatado, y para las versiones con piano, he extruido uno de los lados y he usado la herramienta \textit{Bevel} para suavizar las esquinas.
+
+He utilizado Blender para generar los tres modelos de pista. Las secciones se construyeron a partir de un cubo achatado, y en las versiones con piano, se ha extruido uno de los lados y se ha aplicado un \textit{bevel} para suavizar las esquinas.
 
 % fotos de las 3 versiones
 \begin{figure}[H]
     \centering
-    % \includegraphics[width=\textwidth]{imagenes/trazado.png}
-    \includegraphics[width=\textwidth]{example-image-a}
-    \caption{Sección recta de la curva.}
-    \label{fig:curvarecta}
-\end{figure}
-
-
-\begin{figure}[H]
-    \centering
-    % \includegraphics[width=\textwidth]{imagenes/trazado.png}
-    \includegraphics[width=\textwidth]{example-image-a}
-    \caption{Sección con el piano a la izquierda.}
-    \label{fig:curvaL}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    % \includegraphics[width=\textwidth]{imagenes/trazado.png}
-    \includegraphics[width=\textwidth]{example-image-a}
-    \caption{Sección con el piano a la derecha.}
-    \label{fig:curvaR}
+    \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imagenes/pista/curva-recta.png}
+        \caption{Sección recta de la curva.}
+        \label{fig:curvarecta}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imagenes/pista/curva.png}
+        \caption{Sección con el piano a la izquierda.}
+        \label{fig:curvaL}
+    \end{subfigure}
+    \par\bigskip
+    \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imagenes/pista/curva-inverted.png}
+        \caption{Sección con el piano a la derecha.}
+        \label{fig:curvaR}
+    \end{subfigure}
+    \caption{Modelos de pista utilizados.}
+    \label{fig:curvasmodelos}
 \end{figure}
 
 Después, he utilizado la textura ``Asphalt 024 A''\cite{asphalt}, creada por Lennart Demes, y he modificado la componente difusa utilizando GIMP para poner una línea continua a ambos extremos, similar a los circuitos reales.
 
 \begin{figure}[H]
     \centering
-    % \includegraphics[width=\textwidth]{imagenes/trazado.png}
-    \includegraphics[width=\textwidth]{example-image-a}
-    \caption{Textura de asfalto modificada.}
+    \includegraphics[width=0.4\textwidth,cframe=black 0.5pt 0pt]{imagenes/pista/Asphalt024A_2K_Color.png}
+    \caption{Textura de asfalto modificada. Enmarcado para diferenciar con el color de la página.}
     \label{fig:asfaltomod}
 \end{figure}
 
@@ -360,8 +340,7 @@ Para texturizar el piano, he decidido crear la textura yo. Utilizando GIMP, he c
 
 \begin{figure}[H]
     \centering
-    % \includegraphics[width=\textwidth]{imagenes/trazado.png}
-    \includegraphics[width=\textwidth]{example-image-a}
+    \includegraphics[width=0.4\textwidth]{imagenes/pista/kerb-dirty2.png}
     \caption{Textura utilizada para la componente difusa del piano.}
     \label{fig:pianodiff}
 \end{figure}
@@ -370,9 +349,8 @@ El resultado en Unreal no era del todo convincente, ya que los bordes tenían de
 
 \begin{figure}[H]
     \centering
-    % \includegraphics[width=\textwidth]{imagenes/trazado.png}
-    \includegraphics[width=\textwidth]{example-image-a}
-    \caption{Textura utilizada para la oclusión ambiental del piano.}
+    \includegraphics[width=0.4\textwidth,cframe=black 0.5pt 0pt]{imagenes/pista/kerb-dirty2-AO.png}
+    \caption{Textura utilizada para la oclusión ambiental del piano. Enmarcado para diferenciar del fondo de la página.}
     \label{fig:pianoao}
 \end{figure}
 
@@ -380,16 +358,14 @@ Estas texturas no encajaban del todo bien, haciendo que las líneas blancas no e
 
 \begin{figure}[H]
     \centering
-    % \includegraphics[width=\textwidth]{imagenes/trazado.png}
-    \includegraphics[width=\textwidth]{example-image-a}
+    \includegraphics[width=0.6\textwidth]{imagenes/pista/uv-straight.png}
     \caption{Mapeado UV para la sección de asfalto.}
     \label{fig:uvasphalt}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    % \includegraphics[width=\textwidth]{imagenes/trazado.png}
-    \includegraphics[width=\textwidth]{example-image-a}
+    \includegraphics[width=\textwidth]{imagenes/pista/uv-kerb.png}
     \caption{Mapeado UV para la sección de piano.}
     \label{fig:uvkerb}
 \end{figure}
@@ -398,33 +374,31 @@ Ahora sí se sitúan bien las texturas en el modelo. A continuación se encuentr
 
 \begin{figure}[H]
     \centering
-    % \includegraphics[width=\textwidth]{imagenes/trazado.png}
-    \includegraphics[width=\textwidth]{example-image-a}
-    \caption{Sección de pista recta.}
-    \label{fig:curvafinal1}
-\end{figure}
+    \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imagenes/pista/track-final.png}
+        \caption{Sección de pista con el piano a la derecha.}
+        \label{fig:curvafinal2}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imagenes/pista/track-final-inverted.png}
+        \caption{Sección de pista con el piano a la izquierda.}
+        \label{fig:curvafinla3}
+    \end{subfigure}
+    \par\bigskip
+    \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imagenes/pista/track-straight-final.png}
+        \caption{Sección de pista recta.}
+        \label{fig:curvafinal1}
+    \end{subfigure}
 
-\begin{figure}[H]
-    \centering
-    % \includegraphics[width=\textwidth]{imagenes/trazado.png}
-    \includegraphics[width=\textwidth]{example-image-a}
-    \caption{Sección de pista con el piano a la derecha.}
-    \label{fig:curvafinal2}
+    \caption{Secciones de pista finales en Unreal.}
+    \label{fig:seccionespista}
 \end{figure}
-
-\begin{figure}[H]
-    \centering
-    % \includegraphics[width=\textwidth]{imagenes/trazado.png}
-    \includegraphics[width=\textwidth]{example-image-a}
-    \caption{Sección de pista con el piano a la izquierda.}
-    \label{fig:curvafinla3}
-\end{figure}
-
 \subsection{Preparación de los coches}
-
-% Como uno de los requisitos del proyecto es que fuera multidisciplinar, he decidido hacer dos categorías: GT y Formula.
-
-% \bigskip
 
 Debido a que modelar un vehículo requiere demasiado tiempo, he optado por utilizar el modelo ``Porsche 911 GT3''\cite{porsche} realizado por ``ChevroletSS'' y el modelo ``Mercedes F1 W14''\cite{f1} realizado por ``3dblenderlol''. Además, he eliminado toda clase de logotipos y marcas de los vehículos, para facilitar la exportación.
 
@@ -435,7 +409,7 @@ A continuación, es necesario preparar los modelos para que las ruedas se puedan
 \begin{figure}[H]
     \centering
     % \includegraphics[width=\textwidth]{imagenes/trazado.png}
-    \includegraphics[width=\textwidth]{example-image-a}
+    \includegraphics[width=\textwidth]{imagenes/rigging/911-rigging.png}
     \caption{\textit{Rigging} realizado en el Porsche 911.}
     \label{fig:rigging911}
 \end{figure}
@@ -443,7 +417,7 @@ A continuación, es necesario preparar los modelos para que las ruedas se puedan
 \begin{figure}[H]
     \centering
     % \includegraphics[width=\textwidth]{imagenes/trazado.png}
-    \includegraphics[width=\textwidth]{example-image-a}
+    \includegraphics[width=\textwidth]{imagenes/rigging/f1-rigging.png}
     \caption{\textit{Rigging} realizado en el coche de Fórmula 1.}
     \label{fig:riggingf1}
 \end{figure}
@@ -461,8 +435,7 @@ Debido a que quería simular que mi barrera está algo arrugada, como pasa en la
 
 \begin{figure}[H]
     \centering
-    % \includegraphics[width=\textwidth]{imagenes/trazado.png}
-    \includegraphics[width=\textwidth]{example-image-a}
+    \includegraphics[width=0.6\textwidth]{imagenes/barrier/barrierHP.png}
     \caption{Barrera de alta resolución con imperfecciones.}
     \label{fig:barreraHP}
 \end{figure}
@@ -471,25 +444,22 @@ Como puede consumir demasiados recursos, he convertido las deformaciones geomét
 
 \begin{figure}[H]
     \centering
-    % \includegraphics[width=\textwidth]{imagenes/trazado.png}
-    \includegraphics[width=\textwidth]{example-image-a}
+    \includegraphics[width=0.6\textwidth]{imagenes/barrier/barrierNormal.png}
     \caption{Textura normal generada para la versión con pocos polígonos.}
     \label{fig:barreraLP}
 \end{figure}
 
 
-Y el modelo final es mi barrera, junto a la valla anteriormente mencionada.
+Y el modelo final es mi barrera, junto a la valla anteriormente mencionada encima.
 
 \begin{figure}[H]
     \centering
-    % \includegraphics[width=\textwidth]{imagenes/trazado.png}
-    \includegraphics[width=\textwidth]{example-image-a}
+    \includegraphics[width=0.6\textwidth]{imagenes/barrier/barrierfence.png}
     \caption{Resultado final de la barrera en Unreal.}
     \label{fig:barreraFinal}
 \end{figure}
 
-% rescribir
-Y para que rodee a todo el circuito, es necesario seguir un procedimiento similar al del trazado del circuito. Se debe utilizar un spline que siga la ruta que se desea limitar, una vez realizado, se debe asignar la barrera a cada sección para que siga el recorrido del spline.
+Para que la barrera rodee todo el circuito, se sigue un procedimiento similar al del trazado. Se utiliza un spline que marca el recorrido y, luego, se asigna una barrera a cada sección del spline.
 
 \subsection{Vegetación}
 
@@ -502,20 +472,47 @@ El resultado final es el siguiente:
 % fotos de cerca de arboles y cesped
 \begin{figure}[H]
     \centering
-    % \includegraphics[width=\textwidth]{imagenes/trazado.png}
-    \includegraphics[width=\textwidth]{example-image-a}
+    \includegraphics[width=\textwidth]{imagenes/cesped.png}
     \caption{Modelo de césped.}
     \label{fig:cesped}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    % \includegraphics[width=\textwidth]{imagenes/trazado.png}
-    \includegraphics[width=\textwidth]{example-image-a}
+    \includegraphics[width=\textwidth]{imagenes/arboles.png}
     \caption{Modelo de árboles.}
     \label{fig:arboles}
 \end{figure}
 
 \subsection{Modelos y texturas adicionales}
 
+% rescribir
+Adicionalmente, se ha utilizado la textura de césped ``Ground 037''\cite{grasstexture}, creada por ``Lennart Demes'', para las zonas en las que se puso el modelo tridimensional de césped (modelo 3D en figura \ref{fig:cesped}), con el objetivo de dar más realismo a distancias más alejadas, donde el modelo tridimensional no se aprecia.
 
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=\textwidth]{imagenes/trazado.png}
+    \includegraphics[width=0.5\textwidth]{imagenes/Ground037_1K_Color.png}
+    \caption{Componente difusa de la textura de césped utilizada.}
+    \label{fig:grasstexture}
+\end{figure}
+
+Además, se ha hecho uso de la textura ``Coast Sand Rocks 02''\cite{coastsand}, creada por ``Rob Tuytel'', para el suelo del exterior del circuito, donde se encuentran los árboles (modelo 3D en figura \ref{fig:arboles}).
+
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=\textwidth]{imagenes/trazado.png}
+    \includegraphics[width=0.5\textwidth]{imagenes/coast_sand_rocks_02_diff_4k.png}
+    \caption{Componente difusa de la textura del suelo.}
+    \label{fig:coastsand}
+\end{figure}
+
+Por último, se ha utilizado el modelo ``Grand stand 3d model''\cite{grandstand}, creado por ``VT Studios'', para incluir algunas gradas en los alrededores del circuito.
+
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=\textwidth]{imagenes/trazado.png}
+    \includegraphics[width=\textwidth]{imagenes/grandstand.png}
+    \caption{Modelo de las gradas utilizadas.}
+    \label{fig:grandstand}
+\end{figure}
