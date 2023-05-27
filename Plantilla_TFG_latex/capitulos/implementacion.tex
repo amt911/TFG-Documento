@@ -107,7 +107,7 @@ Cabe destacar que, en mi caso, el SP es el punto más cercano del coche a la rut
     \label{fig:errorpid}
     \end{figure}
 
-La calibración del PID (Figura \ref{fig:pidbp}) se realiza modificando las constantes asociadas a cada componente. Existen diversos métodos como el de Ziegler-Nichols \cite{enwiki:1140258750}, que consiste en modificar solo la parte proporcional, dejando las demás a 0, hasta que el sistema comience a oscilar de manera estable, en ese momento se debe calcular la frecuencia a la que oscila y utilizando también el valor de la constante proporcional, se pueden obtener las demás mediante un cálculo matemático.
+La calibración del PID (Figura \ref{fig:pidbp}) se realiza modificando las constantes asociadas a cada componente. Existen diversos métodos como el de Ziegler-Nichols \cite{10.1115/1.4019264}, que consiste en modificar solo la parte proporcional, dejando las demás a 0, hasta que el sistema comience a oscilar de manera estable, en ese momento se debe calcular la frecuencia a la que oscila y utilizando también el valor de la constante proporcional, se pueden obtener las demás mediante un cálculo matemático.
 
 \bigskip
 
@@ -122,7 +122,7 @@ Dado que este método no me dio los resultados deseados, decidí implementar un 
     \label{fig:ruleta}
 \end{figure}
 
-La selección se realiza lanzando una ruleta\cite{enwiki:1141636554}, cuyos sectores son divididos en función de la probabilidad calculada anteriormente. La ruleta se debe lanzar tantas veces como padres se desea tener. Una vez que se han elegido los coches que van a ser padres, se emparejan y se mezclan sus constantes para obtener dos hijos de cada pareja. Después, una de las tres constantes del PID en algunos de los hijos puede ser mutada, con una probabilidad del 33\%, con un valor aleatorio de rango [-0.1,0.1] que se le añade al valor existente. Finalmente se sustituyen los coches no elegidos para la siguiente generación por los hijos con las constantes mezcladas y mutadas, manteniendo a los padres, y se vuelve a ejecutar de nuevo el algoritmo.
+La selección se realiza lanzando una ruleta\cite{gaperformance}, cuyos sectores son divididos en función de la probabilidad calculada anteriormente. La ruleta se debe lanzar tantas veces como padres se desea tener. Una vez que se han elegido los coches que van a ser padres, se emparejan y se mezclan sus constantes para obtener dos hijos de cada pareja. Después, una de las tres constantes del PID en algunos de los hijos puede ser mutada, con una probabilidad del 33\%, con un valor aleatorio de rango [-0.1,0.1] que se le añade al valor existente. Finalmente se sustituyen los coches no elegidos para la siguiente generación por los hijos con las constantes mezcladas y mutadas, manteniendo a los padres, y se vuelve a ejecutar de nuevo el algoritmo.
 
 \bigskip
 
@@ -130,7 +130,7 @@ Utilizando este algoritmo, obtuve unos valores que funcionaban bien para el circ
 
 \subsection{Algoritmo de navegación}
 
-En cuanto al algoritmo de navegación, correspondiente a HU2, HU4 y HU5 e implementadas en los sprints 5 y 6, he utilizado A*\cite{enwiki:1152315016}, que es lanzado utilizando diversas reglas, y una componente reactiva. 
+En cuanto al algoritmo de navegación, correspondiente a HU2, HU4 y HU5 e implementadas en los sprints 5 y 6, he utilizado A*\cite{4082128}, que es lanzado utilizando diversas reglas, y una componente reactiva. 
 
 \bigskip
 
