@@ -63,9 +63,11 @@ El \textit{Product Backlog} con las Historias de Usuario, ordenadas por priorida
         \hline
         HU11 & Como usuario, quiero cargar la configuración de una carrera almacenada en un archivo. & 4 & 2 \\
         \hline
-        HU12 & Como usuario, quiero pausar y reanudar la simulación en curso. & 5 & 0,5 \\
+        HU12 & Como usuario, quiero pausar y reanudar la simulación en curso. & 4 & 0,5 \\
         \hline
-        HU13 & Como usuario, quiero modificar la velocidad de la simulación. & 5 & 0,5 \\
+        HU13 & Como usuario, quiero modificar la velocidad de la simulación. & 4 & 0,5 \\
+        \hline
+        HU14 & Como usuario, quiero salir de la simulación que hay en curso. & 4 & 0.5 \\
         \hline
     \end{tabularx}
 \end{table}
@@ -174,7 +176,7 @@ La implementación de la aplicación final se dividirá en \sprintNro sprints. A
 \begin{itemize}
     \item Explicación: En este último sprint se pretende implementar el contador de vueltas de la carrera, la lógica para la exportación e importación de ficheros de configuración al simulador, el botón de pausa y el botón de velocidad de simulación.
     \item Temporización: Del 29 de mayo hasta el 11 de junio.
-    \item Historias de Usuario abordadas: HU9, HU10, HU11, HU12, HU13.
+    \item Historias de Usuario abordadas: HU9, HU10, HU11, HU12, HU13, HU14.
 \end{itemize}
 
 
@@ -225,7 +227,7 @@ El diagrama de Gantt general de todos los Sprints es:
 % \end{center}
 
 \begin{adjustbox}{angle=90}
-    \resizebox{0.93\textheight}{!}{
+    \resizebox{0.88\textheight}{!}{
         \begin{ganttchart}[
                 hgrid,
                 vgrid,
@@ -255,10 +257,10 @@ El diagrama de Gantt general de todos los Sprints es:
             \ganttnewline[thick, black]
 
             \ganttgroup{Sprint 7}{2023-05-15}{2023-05-28} \\
-            \ganttbar{HU6}{2023-05-15}{2023-05-17} \\
-            \ganttbar{HU7}{2023-05-18}{2023-05-19}
-            \ganttbar{}{2023-05-22}{2023-05-22} \\
-            \ganttbar{HU8}{2023-05-23}{2023-05-26}
+            \ganttbar{HU8}{2023-05-15}{2023-05-18} \\
+            \ganttbar{HU7}{2023-05-19}{2023-05-19}
+            \ganttbar{}{2023-05-22}{2023-05-23} \\
+            \ganttbar{HU6}{2023-05-24}{2023-05-26}
 
 
             \ganttnewline[thick, black]
@@ -269,70 +271,8 @@ El diagrama de Gantt general de todos los Sprints es:
             \ganttbar{}{2023-06-05}{2023-06-05} \\
             \ganttbar{HU11}{2023-06-06}{2023-06-08} \\
             \ganttbar{HU12}{2023-06-09}{2023-06-09} \\
-            \ganttbar{HU13}{2023-06-09}{2023-06-09}
+            \ganttbar{HU13}{2023-06-09}{2023-06-09} \\
+            \ganttbar{HU14}{2023-06-09}{2023-06-09}                     
         \end{ganttchart}
     }
 \end{adjustbox}
-
-% \newpage
-
-% Los diagramas de Gantt de cada Sprint los voy a dividir en distintas subsecciones a continuación:
-
-% \subsection{Sprint 1}
-
-% \begin{center}
-%     \resizebox{0.6\textwidth}{!}{
-%         \begin{ganttchart}[
-%                 hgrid,
-%                 vgrid,
-%                 x unit=6mm,
-%                 time slot format=isodate,
-%             ]{2023-04-24}{2023-05-07}
-%             % \gantttitle{Diagrama de Gantt general}{1}
-%             \gantttitlecalendar{month=name, day, week, weekday=letter} \\
-%             \ganttbar{HU1}{2023-04-24}{2023-04-28}
-%             \ganttbar{}{2023-05-01}{2023-05-03} \\
-%             \ganttbar{HU2}{2023-05-04}{2023-05-05}
-%         \end{ganttchart}
-%     }
-% \end{center}
-
-% \subsection{Sprint 2}
-
-% \begin{center}
-%     \resizebox{0.6\textwidth}{!}{
-%         \begin{ganttchart}[
-%                 hgrid,
-%                 vgrid,
-%                 x unit=6mm,
-%                 time slot format=isodate,
-%             ]{2023-05-08}{2023-05-21}
-%             % \gantttitle{Diagrama de Gantt general}{1}
-%             \gantttitlecalendar{month=name, day, week, weekday=letter} \\
-%             \ganttbar{HU3}{2023-05-08}{2023-05-11} \\
-%             \ganttbar{HU4}{2023-05-12}{2023-05-12}
-%             \ganttbar{}{2023-05-15}{2023-05-17} \\
-%             \ganttbar{HU5}{2023-05-18}{2023-05-19}
-%         \end{ganttchart}
-%     }
-% \end{center}
-
-% \subsection{Sprint 3}
-
-% \begin{center}
-%     \resizebox{0.6\textwidth}{!}{
-%         \begin{ganttchart}[
-%                 hgrid,
-%                 vgrid,
-%                 x unit=6mm,
-%                 time slot format=isodate,
-%             ]{2023-05-22}{2023-06-04}
-%             % \gantttitle{Diagrama de Gantt general}{1}
-%             \gantttitlecalendar{month=name, day, week, weekday=letter} \\
-%             \ganttbar{HU6}{2023-05-22}{2023-05-25} \\
-%             \ganttbar{HU7}{2023-05-29}{2023-06-01} \\
-%             \ganttbar{HU8}{2023-05-26}{2023-05-26} \\
-%             \ganttbar{HU9}{2023-06-02}{2023-06-02}
-%         \end{ganttchart}
-%     }
-% \end{center}

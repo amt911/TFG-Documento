@@ -1,12 +1,13 @@
 \documentclass[a4paper,11pt]{book}
 %\documentclass[a4paper,twoside,11pt,titlepage]{book}
-\usepackage{listings}
+\usepackage{listings, subcaption}
 \usepackage[utf8]{inputenc}
 \usepackage[spanish]{babel}
 \usepackage{float}
 \usepackage{tabularx}
 \renewcommand\tabularxcolumn[1]{m{#1}}
 \usepackage{amsmath}
+\usepackage[export]{adjustbox}
 
 
 \usepackage{mwe}     % para poner imagenes dummy
@@ -63,7 +64,7 @@
 % ********************************************************************
 % Re-usable information
 % ********************************************************************
-\newcommand{\myTitle}{Título del proyecto\xspace}
+\newcommand{\myTitle}{Simulador de carreras de coches en Unreal Engine\xspace}
 \newcommand{\myDegree}{Grado en Ingeniería Informática\xspace}
 \newcommand{\myName}{Andrés Merlo Trujillo\xspace}
 \newcommand{\myProf}{Luis López Escudero\xspace}
@@ -83,7 +84,7 @@ Telecomunicación\xspace}
 \newcommand{\totalSprints}{8\xspace}
 \newcommand{\sprintLength}{2 semanas\xspace}
 \newcommand{\actualSprintLength}{10 días\xspace}
-\newcommand{\projectph}{38 PH\xspace}
+\newcommand{\projectph}{38,5 PH\xspace}
 % \newcommand{\finalAlg}{\textbf{PONER AQUÍ EL ALGORITMO DE NAVEGACIÓN}\xspace}
 \newcommand{\finalAlg}{A*\xspace}
 \newcommand{\planApp}{Trello\cite{trello}\xspace}
@@ -228,6 +229,8 @@ pdfproducer = {pdflatex}
 %\mainmatter
 % \setlength{\parskip}{5pt}
 
+% ################################ MIS CAPITULOS ################################
+
 \input{capitulos/introduccion}
 
 \input{capitulos/requisitos}
@@ -239,6 +242,8 @@ pdfproducer = {pdflatex}
 \input{capitulos/diseno}
 
 \input{capitulos/implementacion}
+
+% ################################ FIN MIS CAPITULOS ################################
 %\input{capitulos/01_Introduccion}
 %
 %\input{capitulos/02_EspecificacionRequisitos}
