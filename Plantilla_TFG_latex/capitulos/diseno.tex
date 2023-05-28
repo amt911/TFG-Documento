@@ -451,6 +451,9 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
     probabilidadMutacion & Float             & Probabilidad con la que un coche pueda llegar a tener una mutación.
 \end{longtblr}
 \normalsize
+
+\newpage
+
 \section{Diagrama de clases}
 
 A continuación se muestra el diagrama de clases de la aplicación:
@@ -461,14 +464,15 @@ A continuación se muestra el diagrama de clases de la aplicación:
     \caption{Diagrama de clases de la aplicación.}
 \end{figure}
 
-\section{Diseño de la Interfaz de Usuario}
+\newpage
 
+\section{Diseño de la Interfaz de Usuario}
 
 La interfaz de usuario del configurador de la simulación (el prototipo se puede ver en la figura \ref{fig:protoconfig}) está dividida en dos secciones principales: a la izquierda se encuentra la sección para el número de vehículos y de pilotos, la disciplina y las opciones de importación y exportación de la configuración. A la derecha está la segunda sección, compuesta por las características de cada piloto y el botón para comenzar la simulación.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{imagenes/pag1.png}
+    \includegraphics[width=0.7\textwidth]{imagenes/pag1.png}
     \caption{Interfaz del configurador antes de la carrera.}
 \end{figure}
 
@@ -477,7 +481,7 @@ Durante la carrera, se mostrará un listado de posiciones de los pilotos y un co
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{imagenes/pag2.png}
+    \includegraphics[width=0.7\textwidth]{imagenes/pag2.png}
     \caption{Interfaz de las opciones durante la carrera.}
 \end{figure}
 
@@ -486,7 +490,7 @@ Durante la carrera, se mostrará un listado de posiciones de los pilotos y un co
 La navegación por la interfaz de usuario en la aplicación es relativamente sencilla, al estar formada por dos pantallas: el configurador de simulación y la carrera en curso.
 
 \bigskip
-\newpage
+
 El diagrama de navegación de la aplicación se encuentra a continuación:
 
 % foto del diagrama de navegacion
@@ -496,6 +500,4 @@ El diagrama de navegación de la aplicación se encuentra a continuación:
     \caption{Diagrama de navegación de la interfaz de usuario de la aplicación.}
 \end{figure}
 
-Como se puede observar en el diagrama de navegación, al pulsar el botón de ejecutar aparecerá la nueva pantalla para ejecutar la simulación y dar comienzo a la carrera.
-
-% Como se puede observar, la navegación por la aplicación es sencilla, al solo tener dos pantallas y un solo botón para ir a la siguiente. Si se pulsa sobre el botón de ejecutar en el configurador de la carrera, se procederá a cargar la simulación y dará comienzo la carrera.
+Como se puede observar en el diagrama de navegación, al pulsar el botón de ejecutar aparecerá la nueva pantalla para ejecutar la simulación y dar comienzo a la carrera. Asimismo, si se pulsa el botón con el símbolo ``X'', se cerrará la simulación en curso y aparecerá de nuevo el configurador.

@@ -44,7 +44,7 @@ En lo que respecta a herramientas de planificación, se utilizará \planApp para
     \caption{Tablero utilizado para el proyecto.}
 \end{figure}
 
-
+\newpage
 
 \section{Glosario de términos de Unreal}
 \label{sec:terminosunreal}
@@ -52,7 +52,7 @@ Esta sección es utilizada como una breve explicación de las palabras utilizada
 
 \begin{itemize}
     \item \textbf{Blueprint: }Forma visual de implementar lógica en el videojuego mediante el uso de nodos y aristas. Permiten programar sin necesidad de conocer la API en C++.
-    \item \textbf{Evento: }Acción o suceso que ocurre durante el juego y que puede desencadenar acciones o comportamiento. Los eventos pueden estar relacionados con el jugador, colisión entre objetos, etc.
+    \item \textbf{Evento (Event): }Acción o suceso que ocurre durante el juego y que puede desencadenar acciones o comportamiento. Los eventos pueden estar relacionados con el jugador, colisión entre objetos, etc.
     \item \textbf{Actor: }Es un objeto del mundo que puede tener presencia física, implementar comportamiento específico y ser creados en tiempo de ejecución. A grandes rasgos son una clase que pueden tener mallas de polígonos almacenadas.
     \item \textbf{Peón: }Tipo de actor que puede ser controlado directamente por el jugador. Por lo general, los peones representan personajes jugables en el juego.
     \item \textbf{Event ActorBeginOverlap: }Evento utilizado cuando un actor se superpone con otro actor. Puede ser utilizado para realizar acciones en caso de colisión.
@@ -60,6 +60,8 @@ Esta sección es utilizada como una breve explicación de las palabras utilizada
     \item \textbf{Event Tick: }Evento que ocurre cada fotograma del videojuego y puede desencadenar acciones. Se utiliza para acciones que necesitan actualizaciones continuas, como la animación, el control del volante y los pedales o el seguimiento de otros objetos.
     \item \textbf{Event Hit: }Evento que se activa cuando un objeto colisiona con otro objeto. Puede utilizarse para realizar acciones específicas cuando ocurre una colisión.
 \end{itemize}
+
+\newpage
 
 \section{Algoritmos utilizados}
 
@@ -69,8 +71,6 @@ Voy a dividir en subsecciones los diversos algoritmos que componen la simulació
 
 En el control del volante de los vehículos, correspondiente a HU3 y realizada en el sprint 4, se ha utilizado un controlador PID (\textit{Proportional, Integral} y \textit{Derivative}). Este controlador se utiliza para regular el error de un sistema de manera suave, evitando producir muchas desviaciones mediante el ajuste de tres constantes, una para cada componente del controlador. Cabe destacar que la variable a la que el sistema debe llegar se llama SP (\textit{Set Point}) y el valor actual del sistema se denomina PV (\textit{Process Variable}). 
 
-% foto de una grafica de esas, quitar el bigskip si se encuentra alguna
-% \caption{Diferencias de respuestas de un control estandar frente al controlador PID.}
 \bigskip
 
 Para que el controlador funcione bien, es necesario modificar sus tres constantes: 
@@ -89,7 +89,7 @@ Para que el controlador funcione bien, es necesario modificar sus tres constante
 % foto de la constante
 \begin{figure}[H]
 \centering
-\includegraphics[width=\textwidth]{imagenes/PID-BP.png}
+\includegraphics[width=0.83\textwidth]{imagenes/PID-BP.png}
 \caption{Implementación usando \textit{blueprints} del controlador PID.}
 \label{fig:pidbp}
 \end{figure}
@@ -102,7 +102,7 @@ Cabe destacar que, en mi caso, el SP es el punto más cercano del coche a la rut
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{imagenes/errorPID.png}
+    \includegraphics[width=0.4\textwidth]{imagenes/errorPID.png}
     \caption{Esquema donde se indica el cálculo de la distancia para el PID.}
     \label{fig:errorpid}
     \end{figure}
@@ -117,7 +117,7 @@ Dado que este método no me dio los resultados deseados, decidí implementar un 
 % imagen de ejemplo de selección de ruleta
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{imagenes/ruleta.png}
+    \includegraphics[width=0.4\textwidth]{imagenes/ruleta.png}
     \caption{Ilustración de la selección por ruleta}
     \label{fig:ruleta}
 \end{figure}
@@ -127,6 +127,8 @@ La selección se realiza lanzando una ruleta\cite{gaperformance}, cuyos sectores
 \bigskip
 
 Utilizando este algoritmo, obtuve unos valores que funcionaban bien para el circuito. No obstante, tras ejecutarlo varias veces, me he dado cuenta de que la constante integral siempre tiende a 0. Para solucionarlo, he decidido obligarle a que tenga un valor mínimo de 0,01.
+
+\newpage
 
 \subsection{Algoritmo de navegación}
 
@@ -156,10 +158,11 @@ Gracias a la cola con prioridad, la desventaja de la nueva versión de A* puede 
 % PONER EJEMPLOS DE RUTAS GENERADAS
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{imagenes/rutaAStar.png}
+    \includegraphics[width=0.7\textwidth]{imagenes/rutaAStar.png}
     \caption{Ruta generada por un vehículo hasta el siguiente checkpoint.}
     \label{fig:rutaastar}
 \end{figure}
+
 
 \subsubsection{Heurística}
 
@@ -174,7 +177,7 @@ La heurística elegida ha sido la distancia Manhattan, ya que el rango de movimi
 % foto diagrama de la distancia manhattan
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{imagenes/Euclidean-and-Manhattan-distance-comparison-3235-Optimizations-The-first-optimization.png}
+    \includegraphics[width=0.7\textwidth]{imagenes/Euclidean-and-Manhattan-distance-comparison-3235-Optimizations-The-first-optimization.png}
     \caption{Esquema del funcionamiento de la distancia Manhattan\cite{gameai}.}
     \label{fig:manhattan}
 \end{figure}
@@ -227,7 +230,7 @@ A continuación se da una explicación de cada uno de los elementos que forman l
     % foto de la malla recreada en unreal
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.5\textwidth]{imagenes/malla.png}
+        \includegraphics[width=0.6\textwidth]{imagenes/malla.png}
         \caption{Malla de navegación generada sobre el circuito. Los puntos rojos son muros, los verdes indicadores de ruta óptima y los azules el resto de la pista usable.}
         \label{fig:mallanav}
     \end{figure}
@@ -235,7 +238,7 @@ A continuación se da una explicación de cada uno de los elementos que forman l
 % \subsubsection{Nodo}
 % \subsubsection{Malla de navegación}
 
-
+\newpage
 
 \subsection{Cálculo de la ruta por los vehículos}
 
@@ -245,17 +248,18 @@ Con todo lo anterior implementado el coche es capaz de obtener una ruta por el c
 % foto de los checkpoints
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{imagenes/checkpoints.png}
+    \includegraphics[width=0.6\textwidth]{imagenes/checkpoints.png}
     \caption{Checkpoints utilizados a lo largo del circuito. Los checkpoints son las barreras de color blanco.}
     \label{fig:checkpointunreal}
 \end{figure}
 
-% Cuando la parte delantera del vehículo se solapa con un checkpoint, calcula la ruta utilizando A* hasta el siguiente checkpoint. La llamada al algoritmo devuelve un vector de puntos en coordenadas del mundo. El vehículo se encarga de filtrar los puntos que quedan fuera del checkpoint solapado, con el objetivo de que resulte en una ruta más limpia. Para ello, calcula el producto escalar entre el \textit{Forward Vector} del checkpoint y el vector formado por el checkpoint y el cubo, si resulta que es menor o igual que 0 se elimina, ya que indica que se encuentra detrás.
 Cuando la parte delantera del vehículo se solapa con un checkpoint, calcula la ruta utilizando A* hasta el siguiente. La llamada al algoritmo devuelve un vector de puntos en coordenadas del mundo. El vehículo se encarga de filtrar los puntos generados para que solo haya uno en cada checkpoint, ya que en otro caso puede generar problemas en el seguimiento de la ruta.
 
 \bigskip
 
 Con los puntos filtrados, el coche construye un spline y pinta los puntos en el suelo. Este spline será seguido gracias al controlador PID (Figura \ref{fig:pidbp}) mencionado anteriormente. Cabe destacar que al ser la ruta discreta y el vehículo una componente física del mundo, el vehículo no siempre conseguirá seguirla siempre, pero le servirá como ``guía'' a la hora de tener que hacer giros y adelantamientos.
+
+\newpage
 
 \subsection{Lógica de adelantamiento de los vehículos}
 
@@ -268,7 +272,7 @@ La regla que sigue el vehículo es si se encuentra a una distancia del vehículo
 % quizas poner foto, pero creo que va a ser complicado
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{imagenes/overtake.png}
+    \includegraphics[width=0.6\textwidth]{imagenes/overtake.png}
     \caption{Cálculo de la ruta del coche verde para intentar adelantar al otro piloto.}
     \label{fig:overtake}
 \end{figure}
@@ -283,7 +287,7 @@ Puede darse el remoto caso de que un vehículo vuelque y no sea capaz de darse l
 
 \subsection{Control de acelerador y freno}
 
-El control del acelerador y del freno en condiciones normales de carrera se implementa incluyendo en cada checkpoint (Figura \ref{fig:checkpointunreal} la velocidad recomendada a la que debe ir el coche. El coche calcula la distancia a la que se encuentra del siguiente checkpoint y la distancia de frenado necesaria basándose en la velocidad y la desaceleración por el frenado (también se incluye la componente de agresividad, que se explicará más tarde).
+El control del acelerador y del freno en condiciones normales de carrera se implementa incluyendo en cada checkpoint (Figura \ref{fig:checkpointunreal}) la velocidad recomendada a la que debe ir el coche. El coche calcula la distancia a la que se encuentra del siguiente checkpoint y la distancia de frenado necesaria basándose en la velocidad y la desaceleración por el frenado (también se incluye la componente de agresividad, que se explicará más tarde).
 
 \bigskip
 
@@ -291,7 +295,7 @@ Cabe destacar que esta velocidad es modificada por el estado del piloto, que se 
 
 \subsection{Algoritmo para las posiciones de los pilotos}
 
-En lo que se refiere al cálculo de las posiciones de cada piloto, correspondientes a HU7 y HU8 e implementadas en el sprint 7, he utilizado una estructura de datos algo más compleja. Los vehículos almacenan la vuelta en la que están y el checkpoint; es decir, el sector del circuito en el que se encuentran. Con la información anterior, he creado un array asociativo que almacene como clave la vuelta y como valor otro array asociativo, que a su vez tiene como clave el checkpoint y como valor un array con todos los vehículos que se encuentran en ese estado. Para mostrarlo, solo hace falta iterar primero por aquellas claves mayores, ya que son los que más vueltas y más lejos del circuito están.
+En lo que se refiere al cálculo de las posiciones de cada piloto, correspondientes a HU7 y HU8 e implementadas en el sprint 7, he utilizado una estructura de datos algo más compleja. Los vehículos almacenan la vuelta en la que están y el checkpoint (Figura \ref{fig:checkpointunreal}); es decir, el sector del circuito en el que se encuentran. Con la información anterior, he creado un array asociativo que almacene como clave la vuelta y como valor otro array asociativo, que a su vez tiene como clave el checkpoint y como valor un array con todos los vehículos que se encuentran en ese estado. Para mostrarlo, solo hace falta iterar primero por aquellas claves mayores, ya que son los que más vueltas y más lejos del circuito están.
 
 \begin{table}[H]
     \centering
@@ -331,43 +335,22 @@ Para saber cuando lanzar la actualización de la lista de posiciones, cada coche
 
 En cuanto a la actualización del contador de vueltas, correspondiente a HU9 y realizado en el sprint 8, he hecho que todos los coches cuando acaben una vuelta intenten actualizarlo, en caso de que la vuelta actual sea mayor o igual, no se actualiza. De esta forma, es más fácil llevar un control más preciso de las vueltas.
 
-% \subsection{Estado de los pilotos}
-
-% El estado de los pilotos está compuesto por tres parámetros: experiencia, agresividad y estado físico y mental.
-
-% \bigskip
-
-% La experiencia determina la rapidez con la que un piloto se pone agresivo, de forma que si es más experimentado, tardará más en llegar al máximo de agresividad. También permitirá que tenga algo más de aguante físico, al tener más experiencia.
-
-% \bigskip
-
-% El aguante físico y mental va bajando a lo largo de la carrera de manera periódica. Sus efectos se traducen en una pérdida de velocidad punta.
-
-% \bigskip
-
-% Mientras que la agresividad aumenta a partir del tercer piloto (inclusive) y disminuye cuando se encuentra entre los dos primeros. La agresividad aumentará más rápido si el piloto se encuentra en posiciones peores del ranking. Sus efectos se traducen en una ganancia ligera de velocidad y frenadas tardías en las curvas.
-
-
 
 \section{Modelado y texturizado de la escena}
 
-Para la creación y preparación de los distintos modelos de la aplicación, he utilizado Blender\cite{blender} y GIMP\cite{gimp}. A continuación detallaré cada uno de los modelos, así como su proceso de creación.
+Para la creación, preparación y modificación de los distintos modelos y texturas de la aplicación, he utilizado Blender\cite{blender} y GIMP\cite{gimp}. A continuación detallaré cada uno de los modelos y texturas, así como su proceso de creación.
 
 \subsection{Trazado del circuito}
 
-El trazado de la carretera lo he realizado creando primero un spline en Unreal con la forma deseada. 
-
+El trazado de la carretera lo he realizado creando primero un spline en Unreal con la forma deseada. A continuación, se debe incluir un modelo de carretera para que el spline pueda generarlo siguiendo la forma del trazado.
 \begin{figure}[H]
     \centering
     % \includegraphics[width=\textwidth]{imagenes/trazado.png}
-    \includegraphics[width=\textwidth]{imagenes/trazadoFinal.png}
-    \caption{Trazado del circuito.}
+    \includegraphics[width=0.7\textwidth]{imagenes/trazadoFinal.png}
+    \caption{Trazado del circuito final.}
     \label{fig:trazado}
 \end{figure}
 
-Ahora es necesario incluir un modelo de carretera para que el spline pueda generarlo siguiendo la forma del trazado.
-
-\bigskip
 
 En la vida real, los circuitos suelen tener secciones donde la carretera es recta y otras secciones donde se incluyen pianos, especialmente en las curvas. Por lo tanto, ha sido necesario crear tres modelos distintos de pista: uno sin piano, otro con piano a la izquierda y otro con el piano a la derecha. De esta manera, se logra una representación más fiel y realista de las diferentes secciones del circuito.
 
@@ -434,14 +417,14 @@ Estas texturas no encajaban del todo bien, haciendo que las líneas blancas no e
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{imagenes/pista/uv-straight.png}
+    \includegraphics[width=0.4\textwidth]{imagenes/pista/uv-straight.png}
     \caption{Mapeado UV para la sección de asfalto.}
     \label{fig:uvasphalt}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{imagenes/pista/uv-kerb.png}
+    \includegraphics[width=0.8\textwidth]{imagenes/pista/uv-kerb.png}
     \caption{Mapeado UV para la sección de piano.}
     \label{fig:uvkerb}
 \end{figure}
@@ -474,6 +457,9 @@ Ahora sí se sitúan bien las texturas en el modelo. A continuación se encuentr
     \caption{Secciones de pista finales en Unreal.}
     \label{fig:seccionespista}
 \end{figure}
+
+\newpage
+
 \subsection{Preparación de los coches}
 
 Debido a que modelar un vehículo requiere demasiado tiempo, he optado por utilizar el modelo ``Porsche 911 GT3''\cite{porsche} realizado por ``ChevroletSS'' y el modelo ``Mercedes F1 W14''\cite{f1} realizado por ``3dblenderlol''. Además, he eliminado toda clase de logotipos y marcas de los vehículos, para facilitar la exportación.
@@ -484,25 +470,29 @@ A continuación, es necesario preparar los modelos para que las ruedas se puedan
 
 \begin{figure}[H]
     \centering
-    % \includegraphics[width=\textwidth]{imagenes/trazado.png}
+\begin{subfigure}[t]{0.48\textwidth}
+    \centering
     \includegraphics[width=\textwidth]{imagenes/rigging/911-rigging.png}
     \caption{\textit{Rigging} realizado en el Porsche 911.}
     \label{fig:rigging911}
-\end{figure}
-
-\begin{figure}[H]
+\end{subfigure}
+\hfill
+\begin{subfigure}[t]{0.48\textwidth}
     \centering
     % \includegraphics[width=\textwidth]{imagenes/trazado.png}
     \includegraphics[width=\textwidth]{imagenes/rigging/f1-rigging.png}
     \caption{\textit{Rigging} realizado en el coche de Fórmula 1.}
     \label{fig:riggingf1}
+\end{subfigure}
+\caption{\textit{Rigging} de los vehículos.}
 \end{figure}
 
 Así, ya se tendría realizado el \textit{rigging} de los vehículos. Ahora es necesario importarlos, crear sus animaciones y \textit{bounding boxes} para que funcione correctamente.
 
+\newpage
+
 \subsection{Barreras}
 
-% rescribir
 Es necesario establecer los límites del circuito mediante barreras similares a las utilizadas en los circuitos reales. Para ello, he decidido utilizar el modelo de valla ``3D Model Metal Fence''\cite{fence}, creado por ``Adrian Kulawik'', junto a un modelo de barrera creado por mí en Blender.
 
 \bigskip
@@ -511,7 +501,7 @@ Debido a que quería simular que mi barrera está algo arrugada, como pasa en la
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{imagenes/barrier/barrierHP.png}
+    \includegraphics[width=0.4\textwidth]{imagenes/barrier/barrierHP.png}
     \caption{Barrera de alta resolución con imperfecciones.}
     \label{fig:barreraHP}
 \end{figure}
@@ -520,7 +510,7 @@ Como puede consumir demasiados recursos, he convertido las deformaciones geomét
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{imagenes/barrier/barrierNormal.png}
+    \includegraphics[width=0.4\textwidth]{imagenes/barrier/barrierNormal.png}
     \caption{Textura normal generada para la versión con pocos polígonos.}
     \label{fig:barreraLP}
 \end{figure}
@@ -530,12 +520,14 @@ Y el modelo final es mi barrera, junto a la valla anteriormente mencionada encim
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{imagenes/barrier/barrierfence.png}
+    \includegraphics[width=0.4\textwidth]{imagenes/barrier/barrierfence.png}
     \caption{Resultado final de la barrera en Unreal.}
     \label{fig:barreraFinal}
 \end{figure}
 
 Para que la barrera rodee todo el circuito, se sigue un procedimiento similar al del trazado. Se utiliza un spline que marca el recorrido y, luego, se asigna una barrera a cada sección del spline.
+
+\newpage
 
 \subsection{Vegetación}
 
@@ -548,14 +540,14 @@ El resultado final es el siguiente:
 % fotos de cerca de arboles y cesped
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{imagenes/cesped.png}
+    \includegraphics[width=0.9\textwidth]{imagenes/cesped.png}
     \caption{Modelo de césped.}
     \label{fig:cesped}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{imagenes/arboles.png}
+    \includegraphics[width=0.9\textwidth]{imagenes/arboles.png}
     \caption{Modelo de árboles.}
     \label{fig:arboles}
 \end{figure}
@@ -568,7 +560,7 @@ Adicionalmente, se ha utilizado la textura de césped ``Ground 037''\cite{grasst
 \begin{figure}[H]
     \centering
     % \includegraphics[width=\textwidth]{imagenes/trazado.png}
-    \includegraphics[width=0.5\textwidth]{imagenes/Ground037_1K_Color.png}
+    \includegraphics[width=0.4\textwidth]{imagenes/Ground037_1K_Color.png}
     \caption{Componente difusa de la textura de césped utilizada.}
     \label{fig:grasstexture}
 \end{figure}
@@ -578,7 +570,7 @@ Además, se ha hecho uso de la textura ``Coast Sand Rocks 02''\cite{coastsand}, 
 \begin{figure}[H]
     \centering
     % \includegraphics[width=\textwidth]{imagenes/trazado.png}
-    \includegraphics[width=0.5\textwidth]{imagenes/coast_sand_rocks_02_diff_4k.png}
+    \includegraphics[width=0.4\textwidth]{imagenes/coast_sand_rocks_02_diff_4k.png}
     \caption{Componente difusa de la textura del suelo.}
     \label{fig:coastsand}
 \end{figure}
