@@ -107,7 +107,7 @@ Cabe destacar que, en mi caso, el SP es el punto más cercano del coche a la rut
     \label{fig:errorpid}
     \end{figure}
 
-La calibración del PID (Figura \ref{fig:pidbp}) se realiza modificando las constantes asociadas a cada componente. Existen diversos métodos como el de Ziegler-Nichols \cite{10.1115/1.4019264}, que consiste en modificar solo la parte proporcional, dejando las demás a 0, hasta que el sistema comience a oscilar de manera estable, en ese momento se debe calcular la frecuencia a la que oscila y utilizando también el valor de la constante proporcional, se pueden obtener las demás mediante un cálculo matemático.
+La calibración del PID se realiza modificando las constantes asociadas a cada componente. Existen diversos métodos como el de Ziegler-Nichols \cite{10.1115/1.4019264}, que consiste en modificar solo la parte proporcional, dejando las demás a 0, hasta que el sistema comience a oscilar de manera estable, en ese momento se debe calcular la frecuencia a la que oscila y utilizando también el valor de la constante proporcional, se pueden obtener las demás mediante un cálculo matemático.
 
 \bigskip
 
@@ -196,7 +196,7 @@ A continuación se da una explicación de cada uno de los elementos que forman l
     
     \bigskip
     
-    La actualización de un nodo de un estado a otro se realiza mediante el evento \textit{ActorBeginOverlap} (véase sección \ref{sec:terminosunreal}) y \textit{ActorEndOverlap} (véase sección \ref{sec:terminosunreal}). Así se puede actualizar el mapa en tiempo real.
+    La actualización de un nodo de un estado a otro se realiza mediante el evento \textit{ActorBeginOverlap} y \textit{ActorEndOverlap} (véase sección \ref{sec:terminosunreal}). Así se puede actualizar el mapa en tiempo real.
     
     \bigskip
     
@@ -208,7 +208,7 @@ A continuación se da una explicación de cada uno de los elementos que forman l
     
     \bigskip
     
-    La construcción del delimitador y de la ruta óptima la he realizado utilizando actores (véase sección \ref{sec:terminosunreal}) distintos, de manera que se activen los eventos anteriormente mencionados para que se ajusten.
+    La construcción del delimitador y de la ruta óptima la he realizado utilizando actores distintos, de manera que se activen los eventos anteriormente mencionados para que se ajusten.
     
     \bigskip
     
@@ -225,7 +225,7 @@ A continuación se da una explicación de cada uno de los elementos que forman l
     
     \bigskip
     
-    Este actor (véase sección \ref{sec:terminosunreal}) incluye los métodos necesarios para poder direccionar un nodo de la malla como una matriz (con filas y columnas), poder obtener su posición en coordenadas del mundo y poder convertir de coordenadas del mundo a coordenadas de matriz.
+    Este actor incluye los métodos necesarios para poder direccionar un nodo de la malla como una matriz (con filas y columnas), poder obtener su posición en coordenadas del mundo y poder convertir de coordenadas del mundo a coordenadas de matriz.
 
     % foto de la malla recreada en unreal
     \begin{figure}[H]
@@ -295,7 +295,7 @@ Cabe destacar que esta velocidad es modificada por el estado del piloto, que se 
 
 \subsection{Algoritmo para las posiciones de los pilotos}
 
-En lo que se refiere al cálculo de las posiciones de cada piloto, correspondientes a HU7 y HU8 e implementadas en el sprint 7, he utilizado una estructura de datos algo más compleja. Los vehículos almacenan la vuelta en la que están y el checkpoint (Figura \ref{fig:checkpointunreal}); es decir, el sector del circuito en el que se encuentran. Con la información anterior, he creado un array asociativo que almacene como clave la vuelta y como valor otro array asociativo, que a su vez tiene como clave el checkpoint y como valor un array con todos los vehículos que se encuentran en ese estado. Para mostrarlo, solo hace falta iterar primero por aquellas claves mayores, ya que son los que más vueltas y más lejos del circuito están.
+En lo que se refiere al cálculo de las posiciones de cada piloto, correspondientes a HU7 y HU8 e implementadas en el sprint 7, he utilizado una estructura de datos algo más compleja. Los vehículos almacenan la vuelta en la que están y el checkpoint; es decir, el sector del circuito en el que se encuentran. Con la información anterior, he creado un array asociativo que almacene como clave la vuelta y como valor otro array asociativo, que a su vez tiene como clave el checkpoint y como valor un array con todos los vehículos que se encuentran en ese estado. Para mostrarlo, solo hace falta iterar primero por aquellas claves mayores, ya que son los que más vueltas y más lejos del circuito están.
 
 \begin{table}[H]
     \centering
