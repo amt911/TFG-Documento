@@ -181,8 +181,8 @@ Una primera implementación fue utilizando un array ordenado de manera decrecien
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{imagenes/converted/rutaAStar.jpg}
-    \caption{Representación de la cola con prioridad.}
+    \includegraphics[width=0.5\textwidth]{imagenes/PQSeq.png}
+    \caption{Representación de la cola con prioridad secuencial.}
     \label{fig:seqpq}
 \end{figure}
 
@@ -202,8 +202,8 @@ La implementación se realiza mediante un array, de manera que el padre se encue
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{imagenes/converted/rutaAStar.jpg}
-    \caption{Representación de la cola con prioridad.}
+    \includegraphics[width=0.7\textwidth]{imagenes/minheap.png}
+    \caption{Representación de la cola con prioridad utilizando \textit{Min-Heap}.}
     \label{fig:minheaparray}
 \end{figure}
 
@@ -261,8 +261,8 @@ A continuación se da una explicación de cada uno de los elementos que forman l
 
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.5\textwidth]{imagenes/converted/nodo.jpg}
-        \caption{Representación de un nodo en Unreal Engine.}
+        \includegraphics[width=0.5\textwidth]{imagenes/nodesCropped.png}
+        \caption{Visualización de varios nodos en el mapa. Cada nodo es representado por cuatro cuadrados (es la representación de un cubo de Unreal).}
         \label{fig:nodo}
     \end{figure}
 
@@ -345,7 +345,7 @@ Para ello, he hecho uso de los \textit{Line Trace} (véase sección \ref{sec:ter
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{example-image-a}
+    \includegraphics[width=0.4\textwidth]{imagenes/raycast.png}
     \caption{Esquema del trazado de rayos.}
     \label{fig:esqlinetrace}
 \end{figure}
@@ -657,7 +657,7 @@ Para evitar el efecto \textit{tiling}, he interpolado el color de la textura en 
 \begin{figure}[H]
     \centering
     % \includegraphics[width=\textwidth]{imagenes/trazado.jpg}
-    \includegraphics[width=0.4\textwidth]{example-image-a}
+    \includegraphics[width=0.4\textwidth]{imagenes/cespedTextFinal.png}
     \caption{Resultado final del césped en Unreal.}
     \label{fig:grassfinal}
 \end{figure}
@@ -671,7 +671,7 @@ Para la zona de los alrededores del circuito, he utilizado la textura ``Coast Sa
 	\begin{subfigure}[t]{0.48\textwidth}
 	    \centering
         \includegraphics[width=\textwidth]{imagenes/converted/coast_sand_rocks_02_diff_4k.jpg}
-        \caption{Componente difusa de la textura del suelo.}
+        \caption{Componente difusa de la textura tierra y hierba del suelo.}
         \label{fig:coastsand}
     \end{subfigure}
     \hfill 
@@ -679,12 +679,22 @@ Para la zona de los alrededores del circuito, he utilizado la textura ``Coast Sa
     %\hspace{10px} %si se quiere poner una medida personalizada
 	\begin{subfigure}[t]{0.48\textwidth}
 	    \centering
-        \includegraphics[width=\textwidth]{imagenes/converted/coast_sand_rocks_02_diff_4k.jpg}
-        \caption{Componente difusa de la textura del suelo.}
+        \includegraphics[width=\textwidth]{imagenes/Ground066_2K_Color.png}
+        \caption{Componente difusa de la textura de tierra del suelo.}
         \label{fig:ground066}
     \end{subfigure}    
     \caption{Texturas utilizadas para el suelo exterior.}
     \label{fig:exterior}
+\end{figure}
+
+En la figura \ref{fig:sueloFinal} se puede observar el resultado final:
+
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=\textwidth]{imagenes/trazado.jpg}
+    \includegraphics[width=0.5\textwidth]{imagenes/sueloTextFinal.png}
+    \caption{Representación final del suelo.}
+    \label{fig:sueloFinal}
 \end{figure}
 
 Por último, se ha utilizado el modelo ``Grand stand 3d model''\cite{grandstand}, creado por ``VT Studios'', para incluir algunas gradas en los alrededores del circuito.
