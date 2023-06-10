@@ -194,7 +194,7 @@ Esta implementación me ha servido para seguir desarrollando el proyecto, pero e
 
 \bigskip
 
-El \textit{Min-Heap} se representa como un árbol cuya raiz es el valor más pequeño de todos y de él cuelgan dos hijos con valores más grandes, de los que a su vez pueden colgar otros dos. Cabe destacar que esta estructura de datos tiene como propiedad que cada subárbol sigue manteniendo la propiedad de \textit{Min-Heap}. 
+El \textit{Min-Heap} se representa como un árbol cuya raíz es el valor más pequeño de todos y de él cuelgan dos hijos con valores más grandes, de los que a su vez pueden colgar otros dos. Cabe destacar que esta estructura de datos tiene como propiedad que cada subárbol sigue manteniendo la propiedad de \textit{Min-Heap}. 
 
 \bigskip
 
@@ -262,7 +262,7 @@ A continuación se da una explicación de cada uno de los elementos que forman l
     \begin{figure}[H]
         \centering
         \includegraphics[width=0.5\textwidth]{imagenes/nodesCropped.png}
-        \caption{Visualización de varios nodos en el mapa. Cada nodo es representado por cuatro cuadrados (es la representación de un cubo de Unreal).}
+        \caption{Visualización de varios nodos en el mapa. Cada nodo es representado por cuatro cuadrados (es la representación de un cubo en Unreal).}
         \label{fig:nodo}
     \end{figure}
 
@@ -276,12 +276,10 @@ A continuación se da una explicación de cada uno de los elementos que forman l
     \begin{figure}[H]
         \centering
         \includegraphics[width=0.6\textwidth]{imagenes/converted/malla.jpg}
-        \caption{Malla de navegación generada sobre el circuito. Los puntos rojos son muros, los verdes indicadores de ruta óptima y los azules el resto de la pista usable.}
+        \caption{Malla de navegación generada sobre el circuito. Los puntos rojos son muros, los verdes indicadores de ruta óptima y los azules el resto de la pista utilizable.}
         \label{fig:mallanav}
     \end{figure}
 \end{itemize}
-% \subsubsection{Nodo}
-% \subsubsection{Malla de navegación}
 
 \newpage
 
@@ -408,13 +406,20 @@ Para saber cuando lanzar la actualización de la lista de posiciones, cada coche
 
 En cuanto a la actualización del contador de vueltas, correspondiente a HU9 y realizado en el sprint 8, he hecho que todos los coches cuando acaben una vuelta intenten actualizarlo, en caso de que la vuelta actual sea mayor o igual, no se actualiza. De esta forma, es más fácil llevar un control más preciso de las vueltas.
 
+\subsection{Resultados de la simulación}
+
+% Cuando el último coche pasa por línea de meta, aparece una tabla con los resultados de la carrera. La implementación de esta funcionalidad la he hecho comenzando con un array de los vehículos vacío, y conforme llegan a la meta se van introduciendo en dicho array, de forma que cuando llegue el último aparezca la tabla con las mismas posiciones que las que hay en el array.
+
+Cuando el último coche cruza la línea de meta, aparece una tabla con los resultados de la carrera. La implementación de esta funcionalidad la he hecho comenzando con un array vacío para almacenar los vehículos a medida que llegan a la meta. Al llegar el último vehículo, se genera la tabla con las posiciones correspondientes al array.
+
+
 \subsection{Importación y exportación de la configuración}
 
-En la importación y exportación de la configuración, he deseado que el usuario sea capaz de elegir la ubicación del archivo y la ruta de guardado, respectivamente. Para ello, he utilizado el plugin ``File System Library''\cite{plugin-dialog}, creado por Lambda Works, para poder abrir las ventanas de diálogo de Windows mediante \textit{blueprints}.
+En la importación y exportación de la configuración, correspondiente a HU10 y HU11 y realizadas en el sprint 8, he deseado que el usuario sea capaz de elegir la ubicación del archivo y la ruta de guardado, respectivamente. Para ello, he utilizado el plugin ``File System Library''\cite{plugin-dialog}, creado por Lambda Works, para poder abrir las ventanas de diálogo de Windows mediante \textit{blueprints}.
 
 \bigskip
 
-El formato del archivo generado es un JSON en el que se encuentran los atributos como, el número de vueltas, y cada uno de los coches con sus capacidades.
+El formato del archivo generado es un JSON en el que se encuentran los atributos como: el número de vueltas, y cada uno de los coches con sus capacidades.
 
 \bigskip
 
@@ -479,7 +484,7 @@ Después, he utilizado la textura ``Asphalt 024 A''\cite{asphalt}, creada por Le
     \label{fig:asfaltomod}
 \end{figure}
 
-Para texturizar el piano, he decidido crear la textura yo. Utilizando GIMP, he creado una textura difusa con un tamaño de 2048x2048 píxeles y he pintado una mitad de color blanco y la otra de color rojo. 
+Para texturizar el piano, he decidido crear la textura yo mismo. Utilizando GIMP, he creado una textura difusa con un tamaño de 2048x2048 píxeles y he pintado una mitad de color blanco y la otra de color rojo. 
 
 
 \begin{figure}[H]
@@ -514,7 +519,7 @@ Estas texturas no encajaban del todo bien, haciendo que las líneas blancas no e
     \label{fig:uvkerb}
 \end{figure}
 
-Ahora sí se sitúan bien las texturas en el modelo. A continuación se encuentran las imágenes del resultado final en Unreal.
+Ahora sí se sitúan bien las texturas en el modelo. En la figura \ref{fig:seccionespista} se encuentra el resultado final en Unreal.
 
 \begin{figure}[H]
     \centering
@@ -551,7 +556,7 @@ Debido a que modelar un vehículo requiere demasiado tiempo, he optado por utili
 
 \bigskip
 
-A continuación, es necesario preparar los modelos para que las ruedas se puedan mover en Unreal. Se debe realizar un \textit{rigging} de las ruedas; es decir, asignarle un conjunto de huesos, que actuarán como ejes para la rotación de las ruedas. Esta tarea la he realizado cargando los modelos y utilizando el plugin de Blender ``UE4 Vehicle Rigging Addon for Blender''\cite{blenderplugin}, creado por ``Continue Break''. El plugin permite realizar el \textit{rigging} de manera automática con tan solo indicarle el chasis del coche y sus ruedas.
+A continuación, es necesario preparar los modelos para que las ruedas se puedan mover en Unreal. Se debe realizar un \textit{rigging} de las ruedas; es decir, asignarle un conjunto de huesos, que actuarán como ejes para la rotación de las mismas. Esta tarea la he realizado cargando los modelos y utilizando el plugin de Blender ``UE4 Vehicle Rigging Addon for Blender''\cite{blenderplugin}, creado por ``Continue Break''. El plugin permite realizar el \textit{rigging} de manera automática con tan solo indicarle el chasis del coche y sus ruedas.
 
 \begin{figure}[H]
     \centering
@@ -616,7 +621,7 @@ Para que la barrera rodee todo el circuito, se sigue un procedimiento similar al
 
 \subsection{Vegetación}
 
-La vegetación del circuito está compuesta por césped en el interior y exterior de las curvas y por árboles en el exterior y zonas intermedias del circuito. El modelo de césped utilizado ha sido ``temperate Vegetation: optimized Grass Library''\cite{grass}, creado por ``Project Nature'', y el de los árboles es ``Megascans Trees: European Black Alder (early access)''\cite{trees}, creado por ``Quixel Megascans''.
+La vegetación del circuito está compuesta por césped en las curvas y por árboles en el exterior y zonas intermedias del circuito. El modelo de césped utilizado ha sido ``temperate Vegetation: optimized Grass Library''\cite{grass}, creado por ``Project Nature'', y el de los árboles es ``Megascans Trees: European Black Alder (early access)''\cite{trees}, creado por ``Quixel Megascans''.
 
 \bigskip
 
@@ -640,7 +645,7 @@ El resultado final es el siguiente:
 \subsection{Modelos y texturas adicionales}
 
 % rescribir
-He utilizado la textura de césped ``Ground 037''\cite{grasstexture}, creada por ``Lennart Demes'', para las zonas en las que se puso el modelo tridimensional de césped (modelo 3D en figura \ref{fig:cesped}), con el objetivo de dar más realismo a distancias más alejadas, donde el modelo tridimensional no se aprecia. 
+He utilizado la textura de césped ``Ground 037''\cite{grasstexture}, creada por ``Lennart Demes'', para las zonas en las que se puso el modelo tridimensional de césped (modelo 3D en figura \ref{fig:cesped}), con el objetivo de dar más realismo en distancias más lejanas, donde el modelo tridimensional no se aprecia. 
 
 \bigskip
 
@@ -662,7 +667,7 @@ Para evitar el efecto \textit{tiling}, he interpolado el color de la textura en 
     \label{fig:grassfinal}
 \end{figure}
 
-Para la zona de los alrededores del circuito, he utilizado la textura ``Coast Sand Rocks 02''\cite{coastsand}, creada por ``Rob Tuytel'', aplicándole el mismo tratamiento que al césped. Los resultados de utilizar solo esta textura no eran del todo convincentes, por lo que he decidido mezclarla con la textura ``Ground 066''\cite{ground066}, creada por ``Lennart Demes''. De esta forma he obtenido un buen resultado, sin apreciarse \textit{tiling}. En la figura \ref{fig:exterior} se pueden ver las texturas utilizadas.
+Para la zona de los alrededores del circuito, he utilizado la textura ``Coast Sand Rocks 02''\cite{coastsand}, creada por ``Rob Tuytel'', aplicándole el mismo tratamiento que al césped. Los resultados de utilizar solo esta textura no eran del todo convincentes, por lo que he decidido mezclarla con la textura ``Ground 066''\cite{ground066}, creada por ``Lennart Demes''. De esta forma he obtenido un buen resultado, sin apreciarse \textit{tiling}. En la figura \ref{fig:exterior} se pueden ver las texturas utilizadas y en la figura \ref{fig:sueloFinal} el resultado final:.
 
 % Además, se ha hecho uso de la textura ``Coast Sand Rocks 02''\cite{coastsand}, creada por ``Rob Tuytel'', para el suelo del exterior del circuito, donde se encuentran los árboles (modelo 3D en figura \ref{fig:arboles}).
 
@@ -686,8 +691,6 @@ Para la zona de los alrededores del circuito, he utilizado la textura ``Coast Sa
     \caption{Texturas utilizadas para el suelo exterior.}
     \label{fig:exterior}
 \end{figure}
-
-En la figura \ref{fig:sueloFinal} se puede observar el resultado final:
 
 \begin{figure}[H]
     \centering
