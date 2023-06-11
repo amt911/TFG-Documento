@@ -478,13 +478,26 @@ He utilizado Blender para generar los tres modelos de pista. Las secciones se co
     \label{fig:curvasmodelos}
 \end{figure}
 
-Después, he utilizado la textura ``Asphalt 024 A''\cite{asphalt}, creada por Lennart Demes, y he modificado la componente difusa utilizando GIMP para poner una línea continua a ambos extremos, similar a los circuitos reales.
+Después, he utilizado la textura ``Asphalt 024 A''\cite{asphalt}, creada por Lennart Demes, y he modificado la componente difusa utilizando GIMP para poner una línea continua a ambos extremos, similar a los circuitos reales. Adicionalmente, he modificado la textura con las dos líneas para añadirle una sección con la línea de meta. En la figura \ref{fig:asfaltoTextura} se pueden observar ambas texturas.
 
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=0.4\textwidth,cframe=black 0.5pt 0pt]{imagenes/converted/pista/Asphalt024A_2K_Color.jpg}
-    \caption{Textura de asfalto modificada. Enmarcado para diferenciar con el color de la página.}
-    \label{fig:asfaltomod}
+    \centering 
+	\begin{subfigure}[t]{0.48\textwidth}
+	    \centering
+        \includegraphics[width=\textwidth,cframe=black 0.5pt 0pt]{imagenes/converted/pista/Asphalt024A_2K_Color.jpg}
+        \caption{Textura de asfalto modificada.}
+        \label{fig:asfaltomod}
+    \end{subfigure}
+    \hfill 
+    %\par\bigskip %si se desea dejar un margen entre la imagen de arriba y de abajo. SOLO SE PUEDE USAR HFILL O ESTE
+    %\hspace{10px} %si se quiere poner una medida personalizada
+	\begin{subfigure}[t]{0.48\textwidth}
+	    \centering
+	    \includegraphics[width=\textwidth,cframe=black 0.5pt 0pt]{imagenes/converted/pista/Asphalt024A_2K_Color_FinishLineFinal.jpg}
+        \caption{Textura de asfalto con la línea de meta.}
+    \end{subfigure}    
+    \caption{Texturas de asfalto utilizadas en la aplicación. Se han enmarcado para poder separar las imágenes del fondo de la página.}
+    \label{fig:asfaltoTextura}
 \end{figure}
 
 Para texturizar el piano, he decidido crear la textura yo mismo. Utilizando GIMP, he creado una textura difusa con un tamaño de 2048x2048 píxeles y he pintado una mitad de color blanco y la otra de color rojo. 
