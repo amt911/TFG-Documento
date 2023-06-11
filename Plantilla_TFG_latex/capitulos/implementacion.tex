@@ -170,10 +170,11 @@ En la figura \ref{fig:rutaastar} se pueden observar unos cubos rojos, que repres
 \end{figure}
 
 
-\subsubsection{\textcolor{red}{Cola con prioridad}}
+% \subsubsection{\textcolor{red}{Cola con prioridad}}
+\subsubsection{Cola con prioridad}
 \label{sec:priorityqueue}
 
-Dado que Unreal Engine no implementa una cola con prioridad para los \textit{blueprints}, ha sido necesario implementarlo  para poder utilizarlo en el algoritmo de navegación.
+Dado que Unreal Engine no cuenta una cola con prioridad para los \textit{blueprints}, ha sido necesario implementarlo para poder utilizarlo en el algoritmo de navegación.
 
 \bigskip
 
@@ -198,7 +199,7 @@ El \textit{Min-Heap} se representa como un árbol cuya raíz es el valor más pe
 
 \bigskip
 
-La implementación se realiza mediante un array, de manera que el padre se encuentra en la posición, el hijo a la izquierda en la posición $2 \cdot i + 1$ y el hijo a la derecha en la posición $2 \cdot i + 2$. En la figura \ref{fig:minheaparray} se puede ver un ejemplo de array, junto con la representación en forma de árbol.
+La implementación se realiza mediante un array, de manera que el padre se encuentra en la posición, el hijo a la izquierda en la posición $2 \cdot i + 1$ y el hijo a la derecha en la posición $2 \cdot i + 2$. En la figura \ref{fig:minheaparray} se puede ver un ejemplo de \textit{Min-Heap}, junto con su representación en un array.
 
 \begin{figure}[H]
     \centering
@@ -261,7 +262,7 @@ A continuación se da una explicación de cada uno de los elementos que forman l
 
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.5\textwidth]{imagenes/nodesCropped.png}
+        \includegraphics[width=0.5\textwidth]{imagenes/converted/nodesCropped.jpg}
         \caption{Visualización de varios nodos en el mapa. Cada nodo es representado por cuatro cuadrados (es la representación de un cubo en Unreal).}
         \label{fig:nodo}
     \end{figure}
@@ -304,7 +305,9 @@ Con los puntos filtrados, el coche construye un spline y pinta los puntos en el 
 
 \newpage
 
-\subsection{\textcolor{red}{Lógica de adelantamiento de los vehículos}}
+% \subsection{\textcolor{red}{Lógica de adelantamiento de los vehículos}}
+\subsection{Lógica de adelantamiento de los vehículos}
+
 
 Dado que el algoritmo A* funciona principalmente para mundos estáticos, es necesario actualizar la ruta si se realiza un cambio de posición en los vehículos. En este caso, para adelantar al contrincante.
 
@@ -662,7 +665,7 @@ Para evitar el efecto \textit{tiling}, he interpolado el color de la textura en 
 \begin{figure}[H]
     \centering
     % \includegraphics[width=\textwidth]{imagenes/trazado.jpg}
-    \includegraphics[width=0.4\textwidth]{imagenes/cespedTextFinal.png}
+    \includegraphics[width=0.4\textwidth]{imagenes/converted/cespedTextFinal}
     \caption{Resultado final del césped en Unreal.}
     \label{fig:grassfinal}
 \end{figure}
@@ -695,7 +698,7 @@ Para la zona de los alrededores del circuito, he utilizado la textura ``Coast Sa
 \begin{figure}[H]
     \centering
     % \includegraphics[width=\textwidth]{imagenes/trazado.jpg}
-    \includegraphics[width=0.5\textwidth]{imagenes/sueloTextFinal.png}
+    \includegraphics[width=0.5\textwidth]{imagenes/converted/sueloTextFinal}
     \caption{Representación final del suelo.}
     \label{fig:sueloFinal}
 \end{figure}
