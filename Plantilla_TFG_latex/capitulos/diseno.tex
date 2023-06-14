@@ -6,30 +6,27 @@ En este capítulo se abordarán las cuestiones de diseño la interfaz de usuario
 
 Cada cuestión anteriormente mencionada se dividirá en secciones a continuación:
 
-
 \section{Modificación del estado de los pilotos}
 El estado de los pilotos viene determinado por los siguientes parámetros:
-% El estado de los pilotos está compuesto por tres parámetros: experiencia, agresividad y estado físico y mental.
 
 \begin{itemize}
-    \item \textbf{Experiencia: }El valor se encuentra en el intervalo [0,1] y solo podrá ser modificado mediante el configurador. Determinará la velocidad con la que se reduce el aguante, lo que significa que para valores de experiencia más altos, el aguante disminuirá más lentamente. También influirá en la velocidad de acumulación y pérdida de agresividad, de modo que para valores más altos de experiencia, la agresividad aumentará más lentamente y disminuirá más rápidamente, ya que el piloto será capaz de controlar sus emociones.
+    \item \textbf{Experiencia: }El valor se encuentra en el intervalo [0,1] y solo podrá ser modificado mediante el configurador. Determinará la velocidad con la que se reduce el aguante, lo que significa que para valores de experiencia más altos, el aguante disminuirá más lentamente. También influirá en la velocidad de acumulación y pérdida (Sección \ref{sec:componente-estado}) de agresividad, de modo que para valores más altos de experiencia, la agresividad aumentará más lentamente y disminuirá más rápidamente.
     
-    \item \textbf{Aguante físico y mental: }El valor se encuentra en el intervalo [0,1], donde 0 representa el mínimo aguante y 1 el mayor. Un valor elevado de aguante permite al piloto tener buen ritmo en las curvas, mientras que un valor bajo de aguante provoca una disminución en el ritmo; es decir, puede perder hasta un máximo de 20 km/h en las curvas. Cabe destacar que este valor disminuye periódicamente para todos los pilotos, y la velocidad de disminución puede variar en función de experiencia.
+    \item \textbf{Aguante físico y mental: }El valor se encuentra en el intervalo [0,1], donde 0 representa el mínimo aguante y 1 el mayor. Todos los pilotos comenzarán con el valor máximo, que es 1. Un valor elevado de aguante permite al piloto tener buen ritmo en las curvas (Sección \ref{sec:componente-estado}), mientras que un valor bajo de aguante provoca una disminución en el ritmo; es decir, puede perder hasta un máximo de 20 km/h en las curvas. Cabe destacar que este valor disminuye periódicamente para todos los pilotos, y la velocidad de pérdida puede variar en función de la experiencia.
     
-    \item \textbf{Agresividad: }El valor se encuentra en el intervalo [0,1], donde 0 indica una falta de agresividad y 1 representa el máximo nivel. Un valor alto de agresividad hace que el piloto frene más tarde al ingresar a las curvas y aumenta su ritmo en ellas hasta 10 km/h adicionales. La agresividad comienza a aumentar a partir de la tercera posición, y el ritmo de aumento se intensifica cuanto más bajo sea su puesto en la clasificación. Asimismo, la experiencia del piloto influye en la velocidad de aumento y pérdida de agresividad, siendo más lenta en su aumento y más rápida en su disminución cuanta mayor experiencia tenga.
+    \item \textbf{Agresividad: }El valor se encuentra en el intervalo [0,1], donde 0 indica una falta de agresividad y 1 representa el máximo nivel. Todos los pilotos comenzarán con un valor nulo de agresividad. Un valor alto de agresividad hace que el piloto frene (Sección \ref{sec:componente-estado}) más tarde al ingresar a las curvas y aumenta su ritmo en ellas hasta 10 km/h adicionales. La agresividad comienza a aumentar a partir de la tercera posición, y la velocidad de acumulación se intensifica cuanto más bajo sea su puesto en la clasificación. Asimismo, la experiencia del piloto influye en la velocidad de aumento y pérdida de agresividad, siendo más lenta su subida y más rápida su bajada cuanta mayor experiencia tenga.
 \end{itemize}
 
-% \bigskip
+\section{Componentes modificadas por el estado de los pilotos}
+\label{sec:componente-estado}
 
-% La experiencia determina la rapidez con la que un piloto se pone agresivo, de forma que si es más experimentado, tardará más en llegar al máximo de agresividad. También permitirá que tenga algo más de aguante físico, al tener más experiencia.
+La modificación del estado de los pilotos producirá un cambio en los siguientes aspectos del piloto:
 
-% \bigskip
-
-% El aguante físico y mental va bajando a lo largo de la carrera de manera periódica. Sus efectos se traducen en una pérdida de velocidad punta.
-
-% \bigskip
-
-% Mientras que la agresividad aumenta a partir del tercer piloto (inclusive) y disminuye cuando se encuentra entre los dos primeros. La agresividad aumentará más rápido si el piloto se encuentra en posiciones peores del ranking. Sus efectos se traducen en una ganancia ligera de velocidad y frenadas tardías en las curvas.
+\begin{itemize}
+    \item \textbf{Velocidad de acumulación/aumento y pérdida: }Referente al ritmo en el que la variable mencionada sube o baja; es decir, cuanta cantidad se le debe aumentar o reducir a la variable.
+    \item \textbf{Ritmo en curva: }Velocidad máxima a la que el piloto puede ir en cada una de las curvas del circuito.
+    \item \textbf{Frenada más pronto/tarde: }Distancia a partir de la cual el piloto comienza a frenar. Si frena más tarde, implica una reducción en la distancia de frenado, mientras que si frena más pronto, su distancia aumentará.
+\end{itemize}
 
 \section{Entidades y atributos}
 
@@ -64,7 +61,6 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
 \end{longtblr}
 \normalsize
 
-\newpage
 \subsection{AStarGrid}
 \textbf{Descripción: }Representa la matriz navegación utilizada para ejecutar A*.
 
@@ -249,7 +245,6 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
 \end{longtblr}
 \normalsize
 
-\newpage
 \subsection{Panel}
 \textbf{Descripción: }Interfaz de usuario en la que se muestra el contador de vueltas y el ranking.
 \tiny
@@ -452,19 +447,42 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
 \end{longtblr}
 \normalsize
 
-\newpage
 
 \section{Diagrama de clases}
 
-A continuación se muestra el diagrama de clases de la aplicación:
+% A continuación se muestra el diagrama de clases de la aplicación. Se ha fragmentado el diagrama para mejorar su legibilidad. Los recuadros de color rojo indican las distintas secciones en los que se ha separado:
+
+A continuación se muestra el diagrama de clases de la aplicación. Se ha dividido el diagrama en secciones para mejorar su legibilidad. Las secciones están representadas por recuadros de color rojo en el diagrama completo:
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{imagenes/classDiagram.png}
+    \includegraphics[width=\textwidth]{imagenes/classDiagramSections.png}
     \caption{Diagrama de clases de la aplicación.}
 \end{figure}
 
-\newpage
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{imagenes/classDiagram1.png}
+    \caption{Primera sección del diagrama de clases.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{imagenes/classDiagram2.png}
+    \caption{Segunda sección del diagrama de clases.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{imagenes/classDiagram3.png}
+    \caption{Tercera sección del diagrama de clases.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{imagenes/classDiagram4.png}
+    \caption{Cuarta sección del diagrama de clases.}
+\end{figure}
 
 \section{Diseño de la Interfaz de Usuario}
 

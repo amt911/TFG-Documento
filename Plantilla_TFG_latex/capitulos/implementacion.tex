@@ -59,6 +59,7 @@ Esta sección es utilizada como una breve explicación de las palabras utilizada
     \item \textbf{Event ActorEndOverlap: }Evento que se activa cuando un actor deja de solaparse con otro. Puede ser utilizado para realizar acciones cuando se active el evento.
     \item \textbf{Event Tick: }Evento que ocurre cada fotograma del videojuego y puede desencadenar acciones. Se utiliza para acciones que necesitan actualizaciones continuas, como la animación, el control del volante y los pedales o el seguimiento de otros objetos.
     \item \textbf{Event Hit: }Evento que se activa cuando un objeto colisiona con otro objeto. Puede utilizarse para realizar acciones específicas cuando ocurre una colisión.
+    \item \textbf{Line Trace: }Técnica utilizada para determinar si hay algún objeto colisionando con una línea recta que se traza desde un origen hasta un destino. A esta técnica se le llama también \textit{raycasting}.
 \end{itemize}
 
 \newpage
@@ -107,7 +108,7 @@ Cabe destacar que, en mi caso, el SP es el punto más cercano del coche a la rut
     \label{fig:errorpid}
     \end{figure}
 
-La calibración del PID (Figura \ref{fig:pidbp}) se realiza modificando las constantes asociadas a cada componente. Existen diversos métodos como el de Ziegler-Nichols \cite{10.1115/1.4019264}, que consiste en modificar solo la parte proporcional, dejando las demás a 0, hasta que el sistema comience a oscilar de manera estable, en ese momento se debe calcular la frecuencia a la que oscila y utilizando también el valor de la constante proporcional, se pueden obtener las demás mediante un cálculo matemático.
+La calibración del PID se realiza modificando las constantes asociadas a cada componente. Existen diversos métodos como el de Ziegler-Nichols \cite{10.1115/1.4019264}, que consiste en modificar solo la parte proporcional, dejando las demás a 0, hasta que el sistema comience a oscilar de manera estable, en ese momento se debe calcular la frecuencia a la que oscila y utilizando también el valor de la constante proporcional, se pueden obtener las demás mediante un cálculo matemático.
 
 \bigskip
 
@@ -142,18 +143,23 @@ A* es utilizado para obtener rutas en un grafo. Para ello, hace uso de una funci
 
 El algoritmo se encarga de visitar todos los nodos vecinos, calculando el coste de llegar desde el origen y el coste para llegar al destino mediante la heurística, en caso de encontrar una ruta mejor de un nodo ya existente en la lista de abiertos, se elimina el anterior y se introduce el nuevo. Este proceso se repite hasta que se llega al destino o, en mi caso, llega a un límite de iteraciones.
 
+% \bigskip
+
+% Dado que la implementación convencional de A*, haciendo uso de una lista de abiertos para los nodos por visitar y otra de cerrados para los nodos ya visitados, me daba muchos problemas de rendimiento. He decidido mejorarlo eliminando la lista de cerrados y la comprobación de la existencia de una ruta mejor para un nodo que ya se encuentre en la lista de abiertos\cite{a-star}. Esta modificación tiene como desventaja que un mismo nodo puede estar varias veces en la lista de abiertos, pero suele dar mejores resultados\cite{Chen2007PriorityQA}.
+
+
+
+% \bigskip
+
+% Otra mejora ha sido la de utilizar una cola con prioridad para la lista de abiertos, de manera que siempre se encuentre al final (el primero para salir) aquel con menor coste.
+
+% \bigskip
+
+% Gracias a la cola con prioridad \ref{sec:priorityqueue}, la desventaja de la nueva versión de A* puede ser solucionada, al priorizarse la ruta más eficiente.
+
 \bigskip
 
-Dado que la implementación convencional de A*, haciendo uso de una lista de abiertos para los nodos por visitar y otra de cerrados para los nodos ya visitados, me daba muchos problemas de rendimiento. He decidido mejorarlo eliminando la lista de cerrados y la comprobación de la existencia de una ruta mejor para un nodo que ya se encuentre en la lista de abiertos\cite{a-star}. Esta modificación tiene como desventaja que un mismo nodo puede estar varias veces en la lista de abiertos, pero suele dar mejores resultados\cite{Chen2007PriorityQA}.
-
-\bigskip
-
-Otra mejora ha sido la de utilizar una cola con prioridad para la lista de abiertos, de manera que siempre se encuentre al final (el primero para salir) aquel con menor coste.
-
-\bigskip
-
-Gracias a la cola con prioridad, la desventaja de la nueva versión de A* puede ser solucionada, al priorizarse la ruta más eficiente.
-
+En la figura \ref{fig:rutaastar} se pueden observar unos cubos rojos, que representan la ruta generada por el algoritmo de navegación desde el checkpoint (véase Figura \ref{fig:checkpointunreal}) de la derecha hasta el de la izquierda.
 
 % PONER EJEMPLOS DE RUTAS GENERADAS
 \begin{figure}[H]
@@ -163,6 +169,46 @@ Gracias a la cola con prioridad, la desventaja de la nueva versión de A* puede 
     \label{fig:rutaastar}
 \end{figure}
 
+
+% \subsubsection{\textcolor{red}{Cola con prioridad}}
+\subsubsection{Cola con prioridad}
+\label{sec:priorityqueue}
+
+Dado que Unreal Engine no cuenta una cola con prioridad para los \textit{blueprints}, ha sido necesario implementarlo para poder utilizarlo en el algoritmo de navegación.
+
+\bigskip
+
+Una primera implementación fue utilizando un array ordenado de manera decreciente, de manera que el último elemento sea el más pequeño y el primero es el más grande. En la figura \ref{fig:seqpq} se puede ver la representación de esta implementación:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{imagenes/PQSeq.png}
+    \caption{Representación de la cola con prioridad secuencial.}
+    \label{fig:seqpq}
+\end{figure}
+
+La inserción se realiza pasando por cada uno de los elementos hasta encontrar su posición. Por tanto, esta operación se realiza en $O(n)$, y la eliminación en $O(1)$. Al final, debido al uso continuado de estas dos operaciones, la complejidad real es más cercana a $O(n)$.
+
+\bigskip
+
+Esta implementación me ha servido para seguir desarrollando el proyecto, pero era demasiado lento con varios vehículos. Finalmente, he decidido implementar un \textit{Binary Heap}, más concretamente un \textit{Min-Heap.}
+
+\bigskip
+
+El \textit{Min-Heap} se representa como un árbol cuya raíz es el valor más pequeño de todos y de él cuelgan dos hijos con valores más grandes, de los que a su vez pueden colgar otros dos. Cabe destacar que esta estructura de datos tiene como propiedad que cada subárbol sigue manteniendo la propiedad de \textit{Min-Heap}. 
+
+\bigskip
+
+La implementación se realiza mediante un array, de manera que el padre se encuentra en la posición, el hijo a la izquierda en la posición $2 \cdot i + 1$ y el hijo a la derecha en la posición $2 \cdot i + 2$. En la figura \ref{fig:minheaparray} se puede ver un ejemplo de \textit{Min-Heap}, junto con su representación en un array.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{imagenes/minheap.png}
+    \caption{Representación de la cola con prioridad utilizando \textit{Min-Heap}.}
+    \label{fig:minheaparray}
+\end{figure}
+
+Gracias a esta representación, he conseguido que los vehículos tarden menos en calcular la ruta, dado que las operaciones tienen de complejidad $O(\log n)$.
 
 \subsubsection{Heurística}
 
@@ -192,11 +238,11 @@ Para que A* funcione, es necesario discretizar el espacio y crear una estructura
 A continuación se da una explicación de cada uno de los elementos que forman la malla de navegación:
 
 \begin{itemize}
-    \item \textbf{Nodo: }Para implementarlo, he creado un actor (véase sección \ref{sec:terminosunreal}) que representa un nodo. Además, posee las variables necesarias para saber si se encuentra un vehículo dentro de él, si es un delimitador de límites de pista, si es un checkpoint o si es una guía de ruta óptima. De esta forma se puede tener un control muy alto sobre los pesos de cada estado.
+    \item \textbf{Nodo: }Para implementarlo, he creado un actor (véase sección \ref{sec:terminosunreal}) que representa un nodo. Además, posee las variables necesarias para saber si se encuentra un vehículo dentro de él, si es un delimitador de límites de pista, si es un checkpoint o si es una guía de ruta óptima. De esta forma se puede tener un control muy alto sobre los pesos de cada estado. Además, cada nodo almacena una referencia a sus nodos adyacentes, para que puedan ser utilizados por el algoritmo A*.
     
     \bigskip
     
-    La actualización de un nodo de un estado a otro se realiza mediante el evento \textit{ActorBeginOverlap} (véase sección \ref{sec:terminosunreal}) y \textit{ActorEndOverlap} (véase sección \ref{sec:terminosunreal}). Así se puede actualizar el mapa en tiempo real.
+    La actualización de un nodo de un estado a otro se realiza mediante el evento \textit{ActorBeginOverlap} y \textit{ActorEndOverlap} (véase sección \ref{sec:terminosunreal}). Así se puede actualizar el mapa en tiempo real.
     
     \bigskip
     
@@ -208,16 +254,16 @@ A continuación se da una explicación de cada uno de los elementos que forman l
     
     \bigskip
     
-    La construcción del delimitador y de la ruta óptima la he realizado utilizando actores (véase sección \ref{sec:terminosunreal}) distintos, de manera que se activen los eventos anteriormente mencionados para que se ajusten.
-    
+    La construcción del delimitador y de la ruta óptima la he realizado utilizando actores distintos, de manera que se activen los eventos anteriormente mencionados para que se ajusten.
+
     \bigskip
-    
-    Por último, cada nodo también almacena una referencia a sus nodos adyacentes, para que puedan ser utilizados por el algoritmo A*.
+
+    En la figura \ref{fig:nodo} se puede ver la representación de un nodo en el mapa. Asimismo, se puede observar como los nodos tienen cierta altura en el eje Z (mundo Z-Up), aun siendo utilizado para calcular una ruta en dos dimensiones. Esto se debe a que los vehículos deben solaparlos (con los eventos mencionados anteriormente) para poder actualizar cada nodo con el estado correcto.
 
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.5\textwidth]{imagenes/converted/nodo.jpg}
-        \caption{Representación de un nodo en Unreal Engine.}
+        \includegraphics[width=0.5\textwidth]{imagenes/converted/nodesCropped.jpg}
+        \caption{Visualización de varios nodos en el mapa. Cada nodo es representado por cuatro cuadrados (es la representación de un cubo en Unreal).}
         \label{fig:nodo}
     \end{figure}
 
@@ -225,18 +271,16 @@ A continuación se da una explicación de cada uno de los elementos que forman l
     
     \bigskip
     
-    Este actor (véase sección \ref{sec:terminosunreal}) incluye los métodos necesarios para poder direccionar un nodo de la malla como una matriz (con filas y columnas), poder obtener su posición en coordenadas del mundo y poder convertir de coordenadas del mundo a coordenadas de matriz.
+    Este actor incluye los métodos necesarios para poder direccionar un nodo de la malla como una matriz (con filas y columnas), poder obtener su posición en coordenadas del mundo y poder convertir de coordenadas del mundo a coordenadas de matriz.
 
     % foto de la malla recreada en unreal
     \begin{figure}[H]
         \centering
         \includegraphics[width=0.6\textwidth]{imagenes/converted/malla.jpg}
-        \caption{Malla de navegación generada sobre el circuito. Los puntos rojos son muros, los verdes indicadores de ruta óptima y los azules el resto de la pista usable.}
+        \caption{Malla de navegación generada sobre el circuito. Los puntos rojos son muros, los verdes indicadores de ruta óptima y los azules el resto de la pista utilizable.}
         \label{fig:mallanav}
     \end{figure}
 \end{itemize}
-% \subsubsection{Nodo}
-% \subsubsection{Malla de navegación}
 
 \newpage
 
@@ -261,13 +305,19 @@ Con los puntos filtrados, el coche construye un spline y pinta los puntos en el 
 
 \newpage
 
+% \subsection{\textcolor{red}{Lógica de adelantamiento de los vehículos}}
 \subsection{Lógica de adelantamiento de los vehículos}
+
 
 Dado que el algoritmo A* funciona principalmente para mundos estáticos, es necesario actualizar la ruta si se realiza un cambio de posición en los vehículos. En este caso, para adelantar al contrincante.
 
 \bigskip
 
 La regla que sigue el vehículo es si se encuentra a una distancia del vehículo de adelante y tiene la suficiente diferencia de velocidad, ejecuta el algoritmo de navegación y espera unos pocos segundos para volverlo a ejecutar. Esta implementación me ha dado unos resultados razonables en tiempo y habilidad en los pilotos.
+
+\bigskip
+
+En la figura \ref{fig:overtake} se puede ver como se han dado las condiciones necesarias en el coche verde y ha recalculado la ruta para intentar adelantar al coche rojo.
 
 % quizas poner foto, pero creo que va a ser complicado
 \begin{figure}[H]
@@ -285,6 +335,30 @@ Si un coche se sale de pista primero se esperan unos segundos para comprobar que
 
 Puede darse el remoto caso de que un vehículo vuelque y no sea capaz de darse la vuelta. En este caso he decidido implementar una regla que comprueba si la rotación del coche es mayor de 90 grados en ambos sentidos, pone el coche de nuevo sobre sus cuatro ruedas.
 
+\subsection{Frenada anticipativa para evitar colisión}
+\label{sec:frenada}
+
+Dado que mucha de las veces los vehículos calculan rutas casi idénticas, puede darse el caso de que el vehículo de atrás provoque un accidente con el de delante. Es por eso que es necesario implementar una forma para que los vehículos de detrás frenen.
+
+\bigskip
+
+Para ello, he hecho uso de los \textit{Line Trace} (véase sección \ref{sec:terminosunreal}) para poder trazar un rayo hacia adelante y comprobar si hay un coche cerca. En la figura \ref{fig:esqlinetrace} aparece un boceto de como funciona:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{imagenes/raycast.png}
+    \caption{Esquema del trazado de rayos.}
+    \label{fig:esqlinetrace}
+\end{figure}
+
+\bigskip
+
+Además, para evitar que frenen demasiado lejos, he hecho que la distancia de los rayos dependa de la velocidad del propio vehículo, de forma que a más velocidad, más lejos trazará el rayo.
+
+\subsection{Rebufo de los vehículos}
+
+Para dar algo más de realismo a la simulación, he implementado un sistema de rebufo básico. La implementación es similar a la de la sección \ref{sec:frenada}, utilizando \textit{Line Trace} para detectar si algún vehículo está delante, en caso afirmativo, se le aplica un impulso adicional al vehículo, de manera que tenga más aceleración de la normal.
+
 \subsection{Control de acelerador y freno}
 
 El control del acelerador y del freno en condiciones normales de carrera se implementa incluyendo en cada checkpoint (Figura \ref{fig:checkpointunreal}) la velocidad recomendada a la que debe ir el coche. El coche calcula la distancia a la que se encuentra del siguiente checkpoint y la distancia de frenado necesaria basándose en la velocidad y la desaceleración por el frenado (también se incluye la componente de agresividad, que se explicará más tarde).
@@ -295,7 +369,7 @@ Cabe destacar que esta velocidad es modificada por el estado del piloto, que se 
 
 \subsection{Algoritmo para las posiciones de los pilotos}
 
-En lo que se refiere al cálculo de las posiciones de cada piloto, correspondientes a HU7 y HU8 e implementadas en el sprint 7, he utilizado una estructura de datos algo más compleja. Los vehículos almacenan la vuelta en la que están y el checkpoint (Figura \ref{fig:checkpointunreal}); es decir, el sector del circuito en el que se encuentran. Con la información anterior, he creado un array asociativo que almacene como clave la vuelta y como valor otro array asociativo, que a su vez tiene como clave el checkpoint y como valor un array con todos los vehículos que se encuentran en ese estado. Para mostrarlo, solo hace falta iterar primero por aquellas claves mayores, ya que son los que más vueltas y más lejos del circuito están.
+En lo que se refiere al cálculo de las posiciones de cada piloto, correspondientes a HU7 y HU8 e implementadas en el sprint 7, he utilizado una estructura de datos algo más compleja. Los vehículos almacenan la vuelta en la que están y el checkpoint; es decir, el sector del circuito en el que se encuentran. Con la información anterior, he creado un array asociativo que almacene como clave la vuelta y como valor otro array asociativo, que a su vez tiene como clave el checkpoint y como valor un array con todos los vehículos que se encuentran en ese estado. Para mostrarlo, solo hace falta iterar primero por aquellas claves mayores, ya que son los que más vueltas y más lejos del circuito están.
 
 \begin{table}[H]
     \centering
@@ -334,6 +408,26 @@ Para saber cuando lanzar la actualización de la lista de posiciones, cada coche
 \subsection{Contador de vueltas}
 
 En cuanto a la actualización del contador de vueltas, correspondiente a HU9 y realizado en el sprint 8, he hecho que todos los coches cuando acaben una vuelta intenten actualizarlo, en caso de que la vuelta actual sea mayor o igual, no se actualiza. De esta forma, es más fácil llevar un control más preciso de las vueltas.
+
+\subsection{Resultados de la simulación}
+
+% Cuando el último coche pasa por línea de meta, aparece una tabla con los resultados de la carrera. La implementación de esta funcionalidad la he hecho comenzando con un array de los vehículos vacío, y conforme llegan a la meta se van introduciendo en dicho array, de forma que cuando llegue el último aparezca la tabla con las mismas posiciones que las que hay en el array.
+
+Cuando el último coche cruza la línea de meta, aparece una tabla con los resultados de la carrera. La implementación de esta funcionalidad la he hecho comenzando con un array vacío para almacenar los vehículos a medida que llegan a la meta. Al llegar el último vehículo, se genera la tabla con las posiciones correspondientes al array.
+
+
+\subsection{Importación y exportación de la configuración}
+
+En la importación y exportación de la configuración, correspondiente a HU10 y HU11 y realizadas en el sprint 8, he deseado que el usuario sea capaz de elegir la ubicación del archivo y la ruta de guardado, respectivamente. Para ello, he implementado una clase denominada ``FileDialogHandler'', que hace uso de los métodos de Unreal Engine ``OpenFileDialog'' y ``SaveFileDialog''
+% Para ello, he utilizado el plugin ``File System Library''\cite{plugin-dialog}, creado por Lambda Works, para poder abrir las ventanas de diálogo de Windows mediante \textit{blueprints}.
+
+\bigskip
+
+El formato del archivo generado es un JSON en el que se encuentran los atributos como: el número de vueltas, y cada uno de los coches con sus capacidades.
+
+\bigskip
+
+Para poder cargar y guardar los archivos, he utilizado el plugin ``JSON Blueprint Utilities'' de Epic Games, que viene por defecto en Unreal Engine 5, pero deshabilitado.
 
 
 \section{Modelado y texturizado de la escena}
@@ -385,16 +479,29 @@ He utilizado Blender para generar los tres modelos de pista. Las secciones se co
     \label{fig:curvasmodelos}
 \end{figure}
 
-Después, he utilizado la textura ``Asphalt 024 A''\cite{asphalt}, creada por Lennart Demes, y he modificado la componente difusa utilizando GIMP para poner una línea continua a ambos extremos, similar a los circuitos reales.
+Después, he utilizado la textura ``Asphalt 024 A''\cite{asphalt}, creada por Lennart Demes, y he modificado la componente difusa utilizando GIMP para poner una línea continua a ambos extremos, similar a los circuitos reales. Adicionalmente, he modificado la textura con las dos líneas para añadirle una sección con la línea de meta. En la figura \ref{fig:asfaltoTextura} se pueden observar ambas texturas.
 
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=0.4\textwidth,cframe=black 0.5pt 0pt]{imagenes/converted/pista/Asphalt024A_2K_Color.jpg}
-    \caption{Textura de asfalto modificada. Enmarcado para diferenciar con el color de la página.}
-    \label{fig:asfaltomod}
+    \centering 
+	\begin{subfigure}[t]{0.48\textwidth}
+	    \centering
+        \includegraphics[width=0.98\textwidth,cframe=black 0.5pt 0pt]{imagenes/converted/pista/Asphalt024A_2K_Color.jpg}
+        \caption{Textura de asfalto modificada.}
+        \label{fig:asfaltomod}
+    \end{subfigure}
+    \hfill 
+    %\par\bigskip %si se desea dejar un margen entre la imagen de arriba y de abajo. SOLO SE PUEDE USAR HFILL O ESTE
+    %\hspace{10px} %si se quiere poner una medida personalizada
+	\begin{subfigure}[t]{0.48\textwidth}
+	    \centering
+	    \includegraphics[width=0.98\textwidth,cframe=black 0.5pt 0pt]{imagenes/converted/pista/Asphalt024A_2K_Color_FinishLineFinal.jpg}
+        \caption{Textura de asfalto con la línea de meta.}
+    \end{subfigure}    
+    \caption{Texturas de asfalto utilizadas en la aplicación. Se han enmarcado para poder separar las imágenes del fondo de la página.}
+    \label{fig:asfaltoTextura}
 \end{figure}
 
-Para texturizar el piano, he decidido crear la textura yo. Utilizando GIMP, he creado una textura difusa con un tamaño de 2048x2048 píxeles y he pintado una mitad de color blanco y la otra de color rojo. 
+Para texturizar el piano, he decidido crear la textura yo mismo. Utilizando GIMP, he creado una textura difusa con un tamaño de 2048x2048 píxeles y he pintado una mitad de color blanco y la otra de color rojo. 
 
 
 \begin{figure}[H]
@@ -429,7 +536,7 @@ Estas texturas no encajaban del todo bien, haciendo que las líneas blancas no e
     \label{fig:uvkerb}
 \end{figure}
 
-Ahora sí se sitúan bien las texturas en el modelo. A continuación se encuentran las imágenes del resultado final en Unreal.
+Ahora sí se sitúan bien las texturas en el modelo. En la figura \ref{fig:seccionespista} se encuentra el resultado final en Unreal.
 
 \begin{figure}[H]
     \centering
@@ -444,7 +551,7 @@ Ahora sí se sitúan bien las texturas en el modelo. A continuación se encuentr
         \centering
         \includegraphics[width=\textwidth]{imagenes/converted/pista/track-final-inverted.jpg}
         \caption{Sección de pista con el piano a la izquierda.}
-        \label{fig:curvafinla3}
+        \label{fig:curvafinal3}
     \end{subfigure}
     \par\bigskip
     \begin{subfigure}[t]{0.48\textwidth}
@@ -452,6 +559,13 @@ Ahora sí se sitúan bien las texturas en el modelo. A continuación se encuentr
         \includegraphics[width=\textwidth]{imagenes/converted/pista/track-straight-final.jpg}
         \caption{Sección de pista recta.}
         \label{fig:curvafinal1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imagenes/converted/pista/track-finish-line-final.jpg}
+        \caption{Sección de pista recta con la línea de meta.}
+        \label{fig:curvafinishlinefinal}
     \end{subfigure}
 
     \caption{Secciones de pista finales en Unreal.}
@@ -466,7 +580,7 @@ Debido a que modelar un vehículo requiere demasiado tiempo, he optado por utili
 
 \bigskip
 
-A continuación, es necesario preparar los modelos para que las ruedas se puedan mover en Unreal. Se debe realizar un \textit{rigging} de las ruedas; es decir, asignarle un conjunto de huesos, que actuarán como ejes para la rotación de las ruedas. Esta tarea la he realizado cargando los modelos y utilizando el plugin de Blender ``UE4 Vehicle Rigging Addon for Blender''\cite{blenderplugin}, creado por ``Continue Break''. El plugin permite realizar el \textit{rigging} de manera automática con tan solo indicarle el chasis del coche y sus ruedas.
+A continuación, es necesario preparar los modelos para que las ruedas se puedan mover en Unreal. Se debe realizar un \textit{rigging} de las ruedas; es decir, asignarle un conjunto de huesos, que actuarán como ejes para la rotación de las mismas. Esta tarea la he realizado cargando los modelos y utilizando el plugin de Blender ``UE4 Vehicle Rigging Addon for Blender''\cite{blenderplugin}, creado por ``Continue Break''. El plugin permite realizar el \textit{rigging} de manera automática con tan solo indicarle el chasis del coche y sus ruedas.
 
 \begin{figure}[H]
     \centering
@@ -531,7 +645,7 @@ Para que la barrera rodee todo el circuito, se sigue un procedimiento similar al
 
 \subsection{Vegetación}
 
-La vegetación del circuito está compuesta por césped en el interior y exterior de las curvas y por árboles en el exterior y zonas intermedias del circuito. El modelo de césped utilizado ha sido ``temperate Vegetation: optimized Grass Library''\cite{grass}, creado por ``Project Nature'', y el de los árboles es ``Megascans Trees: European Black Alder (early access)''\cite{trees}, creado por ``Quixel Megascans''.
+La vegetación del circuito está compuesta por césped en las curvas y por árboles en el exterior y zonas intermedias del circuito. El modelo de césped utilizado ha sido ``temperate Vegetation: optimized Grass Library''\cite{grass}, creado por ``Project Nature'', y el de los árboles es ``Megascans Trees: European Black Alder (early access)''\cite{trees}, creado por ``Quixel Megascans''.
 
 \bigskip
 
@@ -555,7 +669,11 @@ El resultado final es el siguiente:
 \subsection{Modelos y texturas adicionales}
 
 % rescribir
-Adicionalmente, se ha utilizado la textura de césped ``Ground 037''\cite{grasstexture}, creada por ``Lennart Demes'', para las zonas en las que se puso el modelo tridimensional de césped (modelo 3D en figura \ref{fig:cesped}), con el objetivo de dar más realismo a distancias más alejadas, donde el modelo tridimensional no se aprecia.
+He utilizado la textura de césped ``Ground 037''\cite{grasstexture}, creada por ``Lennart Demes'', para las zonas en las que se puso el modelo tridimensional de césped (modelo 3D en figura \ref{fig:cesped}), con el objetivo de dar más realismo en distancias más lejanas, donde el modelo tridimensional no se aprecia. 
+
+\bigskip
+
+Para evitar el efecto \textit{tiling}, he interpolado el color de la textura en dos tonos ligeramente diferentes mediante un patrón de variación. Además, he utilizado otro patrón de variación para incluir zonas oscuras en el césped. En la figura \ref{fig:grasstexture} se puede ver la textura utilizada y en la figura \ref{fig:grassfinal} el resultado final.
 
 \begin{figure}[H]
     \centering
@@ -565,14 +683,45 @@ Adicionalmente, se ha utilizado la textura de césped ``Ground 037''\cite{grasst
     \label{fig:grasstexture}
 \end{figure}
 
-Además, se ha hecho uso de la textura ``Coast Sand Rocks 02''\cite{coastsand}, creada por ``Rob Tuytel'', para el suelo del exterior del circuito, donde se encuentran los árboles (modelo 3D en figura \ref{fig:arboles}).
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=\textwidth]{imagenes/trazado.jpg}
+    \includegraphics[width=0.4\textwidth]{imagenes/converted/cespedTextFinal}
+    \caption{Resultado final del césped en Unreal.}
+    \label{fig:grassfinal}
+\end{figure}
+
+Para la zona de los alrededores del circuito, he utilizado la textura ``Coast Sand Rocks 02''\cite{coastsand}, creada por ``Rob Tuytel'', aplicándole el mismo tratamiento que al césped. Los resultados de utilizar solo esta textura no eran del todo convincentes, por lo que he decidido mezclarla con la textura ``Ground 066''\cite{ground066}, creada por ``Lennart Demes''. De esta forma he obtenido un buen resultado, sin apreciarse \textit{tiling}. En la figura \ref{fig:exterior} se pueden ver las texturas utilizadas y en la figura \ref{fig:sueloFinal} el resultado final:.
+
+% Además, se ha hecho uso de la textura ``Coast Sand Rocks 02''\cite{coastsand}, creada por ``Rob Tuytel'', para el suelo del exterior del circuito, donde se encuentran los árboles (modelo 3D en figura \ref{fig:arboles}).
+
+\begin{figure}[H]
+    \centering 
+	\begin{subfigure}[t]{0.48\textwidth}
+	    \centering
+        \includegraphics[width=\textwidth]{imagenes/converted/coast_sand_rocks_02_diff_4k.jpg}
+        \caption{Componente difusa de la textura tierra y hierba del suelo.}
+        \label{fig:coastsand}
+    \end{subfigure}
+    \hfill 
+    %\par\bigskip %si se desea dejar un margen entre la imagen de arriba y de abajo. SOLO SE PUEDE USAR HFILL O ESTE
+    %\hspace{10px} %si se quiere poner una medida personalizada
+	\begin{subfigure}[t]{0.48\textwidth}
+	    \centering
+        \includegraphics[width=\textwidth]{imagenes/Ground066_2K_Color.png}
+        \caption{Componente difusa de la textura de tierra del suelo.}
+        \label{fig:ground066}
+    \end{subfigure}    
+    \caption{Texturas utilizadas para el suelo exterior.}
+    \label{fig:exterior}
+\end{figure}
 
 \begin{figure}[H]
     \centering
     % \includegraphics[width=\textwidth]{imagenes/trazado.jpg}
-    \includegraphics[width=0.4\textwidth]{imagenes/converted/coast_sand_rocks_02_diff_4k.jpg}
-    \caption{Componente difusa de la textura del suelo.}
-    \label{fig:coastsand}
+    \includegraphics[width=0.5\textwidth]{imagenes/converted/sueloTextFinal}
+    \caption{Representación final del suelo.}
+    \label{fig:sueloFinal}
 \end{figure}
 
 Por último, se ha utilizado el modelo ``Grand stand 3d model''\cite{grandstand}, creado por ``VT Studios'', para incluir algunas gradas en los alrededores del circuito.
