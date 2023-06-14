@@ -1,8 +1,3 @@
-% DUDAS
-% PUSE EXPLICACION GENERAL, PERO NO SE EXACTAMENTE QUE ES
-% esto son datos cambiantes, puedo poner algo inicial, pero seguramente haya que modificarlo al final
-% no se ni siquiera el numero de sprints que va a haber!! (tendria que tener una velocidad de equipo)
-% En el siguiente capitulo es cuando se hace la division en tareas, no entiendo si hayq ue poner otro diagrama de gantt especifico en el capitulo anterior
 \chapter{Planificación}
 
 \section{Introducción}
@@ -12,7 +7,6 @@ Se pretende adaptar una metodología ágil para el desarrollo del proyecto, más
 \bigskip
 
 Al ser solo una persona desarrollando el proyecto, es imposible seguir algunas fases del marco de trabajo, como los \textit{Daily Meetings}. No obstante, todos los artefactos se pueden generar.
-%  y el proyecto puede ser dividido en Sprints.
 
 \bigskip
 
@@ -21,7 +15,6 @@ Otros aspectos de Scrum que se van a aplicar son: la utilización de sprints par
 \bigskip
 
 Además, se van a utilizar herramientas que no son estrictamente de metodologías ágiles, como el diagrama de Gantt, para mostrar de una manera más visual la temporización de las distintas tareas a realizar.
-% para planificar la cantidad de tiempo que se piensa dedicar a cada sprint o Historia de Usuario, dependiendo del nivel de detalle. 
 
 \bigskip
 
@@ -76,6 +69,14 @@ El \textit{Product Backlog} con las Historias de Usuario, ordenadas por priorida
         HU13 & Como usuario, quiero modificar la velocidad de la simulación. & 4 & 0,5 \\
         
         HU14 & Como usuario, quiero salir de la simulación que hay en curso. & 4 & 0.5 \\
+        
+        HU15 & Como usuario, quiero que los vehículos puedan utilizar el rebufo del vehículo de delante. & 4 & 2 \\
+
+        HU16 & Como usuario, quiero cambiar entre distintas cámaras disponibles. & 4 & 3 \\
+
+        HU17 & Como usuario, quiero visualizar la ruta generada por los vehículos, de manera opcional. & 4 & 2 \\
+
+        HU18 & Como usuario, quiero visualizar los puntos de control del circuito, de manera opcional. & 4 & 1 \\
   \end{longtblr}
 \normalsize
 
@@ -180,11 +181,24 @@ La implementación de la aplicación final se dividirá en \sprintNro sprints. A
 \subsection{Sprint 8}
 
 \begin{itemize}
-    \item Explicación: En este último sprint se pretende implementar el contador de vueltas de la carrera, la lógica para la exportación e importación de ficheros de configuración al simulador, el botón de pausa, el de salir de la simulación y el botón para cambiar la velocidad de simulación.
+    \item Explicación: Se añadirá la nueva funcionalidad a la documentación, así como se arreglarán los diversos fallos que tenga.
+    
+    Además, se pretende implementar el contador de vueltas de la carrera, la lógica para la exportación e importación de ficheros de configuración al simulador, el botón de pausa, el de salir de la simulación y el botón para cambiar la velocidad de simulación.
+
     \item Temporización: Del 29 de mayo hasta el 11 de junio.
     \item Historias de Usuario abordadas: HU9, HU10, HU11, HU12, HU13, HU14.
 \end{itemize}
 
+\subsection{Sprint 9}
+
+\begin{itemize}
+    \item Explicación: Se pretende añadir la nueva funcionalidad desarrollada en este sprint y se corregirán los posibles fallos encontrados.
+    
+    En la aplicación se incluirá botones para la visualización de los checkpoints y las rutas generadas, así como el rebufo entre vehículos y el cambio entre distintas cámaras.
+
+    \item Temporización: Del 12 de junio hasta el 25 de junio.
+    \item Historias de Usuario abordadas: HU15, HU16, HU17, HU18.
+\end{itemize}
 
 % \begin{itemize}
 %     \item Explicación: 
@@ -233,7 +247,7 @@ El diagrama de Gantt general de todos los Sprints es:
 % \end{center}
 
 \begin{adjustbox}{angle=90}
-    \resizebox{0.88\textheight}{!}{
+    \resizebox{0.87\textheight}{!}{
         \begin{ganttchart}[
                 hgrid,
                 vgrid,
@@ -242,10 +256,10 @@ El diagrama de Gantt general de todos los Sprints es:
                 bar/.append style={fill=orange!25},
                 group/.append style={fill=teal, draw=black},
                 title/.style={fill=teal!15, draw=black},
-            ]{2023-04-17}{2023-06-11}
+            ]{2023-04-17}{2023-06-25}
             % \gantttitle{Diagrama de Gantt general}{1}
             \gantttitlecalendar{month=name, day, week, weekday=letter} \\
-            \ganttbar{Documentación}{2023-04-17}{2023-06-11}
+            \ganttbar{Documentación}{2023-04-17}{2023-06-25}
             
             \ganttnewline[thick, black]
 
@@ -278,7 +292,16 @@ El diagrama de Gantt general de todos los Sprints es:
             \ganttbar{HU11}{2023-06-06}{2023-06-08} \\
             \ganttbar{HU12}{2023-06-09}{2023-06-09} \\
             \ganttbar{HU13}{2023-06-09}{2023-06-09} \\
-            \ganttbar{HU14}{2023-06-09}{2023-06-09}                     
+            \ganttbar{HU14}{2023-06-09}{2023-06-09}   
+            
+            \ganttnewline[thick, black]
+
+            \ganttgroup{Sprint 9}{2023-06-12}{2023-06-25} \\
+            \ganttbar{HU17}{2023-06-12}{2023-06-13} \\
+            \ganttbar{HU18}{2023-06-14}{2023-06-14} \\
+            \ganttbar{HU15}{2023-06-15}{2023-06-16}
+            \ganttbar{}{2023-06-19}{2023-06-19} \\
+            \ganttbar{HU16}{2023-06-20}{2023-06-23}
         \end{ganttchart}
     }
 \end{adjustbox}
