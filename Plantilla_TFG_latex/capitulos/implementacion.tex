@@ -69,6 +69,7 @@ Esta sección es utilizada como una breve explicación de las palabras utilizada
 Voy a dividir en subsecciones los diversos algoritmos que componen la simulación:
 
 \subsection{Algoritmo para el giro del volante del coche}
+\label{sec:pid-sec}
 
 En el control del volante de los vehículos, correspondiente a HU3 y realizada en el sprint 4, se ha utilizado un controlador PID (\textit{Proportional, Integral} y \textit{Derivative}). Este controlador se utiliza para regular el error de un sistema de manera suave, evitando producir muchas desviaciones mediante el ajuste de tres constantes, una para cada componente del controlador. Cabe destacar que la variable a la que el sistema debe llegar se llama SP (\textit{Set Point}) y el valor actual del sistema se denomina PV (\textit{Process Variable}). 
 
@@ -142,20 +143,6 @@ A* es utilizado para obtener rutas en un grafo. Para ello, hace uso de una funci
 \bigskip
 
 El algoritmo se encarga de visitar todos los nodos vecinos, calculando el coste de llegar desde el origen y el coste para llegar al destino mediante la heurística, en caso de encontrar una ruta mejor de un nodo ya existente en la lista de abiertos, se elimina el anterior y se introduce el nuevo. Este proceso se repite hasta que se llega al destino o, en mi caso, llega a un límite de iteraciones.
-
-% \bigskip
-
-% Dado que la implementación convencional de A*, haciendo uso de una lista de abiertos para los nodos por visitar y otra de cerrados para los nodos ya visitados, me daba muchos problemas de rendimiento. He decidido mejorarlo eliminando la lista de cerrados y la comprobación de la existencia de una ruta mejor para un nodo que ya se encuentre en la lista de abiertos\cite{a-star}. Esta modificación tiene como desventaja que un mismo nodo puede estar varias veces en la lista de abiertos, pero suele dar mejores resultados\cite{Chen2007PriorityQA}.
-
-
-
-% \bigskip
-
-% Otra mejora ha sido la de utilizar una cola con prioridad para la lista de abiertos, de manera que siempre se encuentre al final (el primero para salir) aquel con menor coste.
-
-% \bigskip
-
-% Gracias a la cola con prioridad \ref{sec:priorityqueue}, la desventaja de la nueva versión de A* puede ser solucionada, al priorizarse la ruta más eficiente.
 
 \bigskip
 

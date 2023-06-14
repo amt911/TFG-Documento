@@ -486,7 +486,13 @@ A continuación se muestra el diagrama de clases de la aplicación. Se ha dividi
 
 \section{Diseño de la Interfaz de Usuario}
 
-La interfaz de usuario del configurador de la simulación (el prototipo se puede ver en la figura \ref{fig:protoconfig}) está dividida en dos secciones principales: a la izquierda se encuentra la sección para el número de vehículos y de pilotos, la disciplina y las opciones de importación y exportación de la configuración. A la derecha está la segunda sección, compuesta por las características de cada piloto y el botón para comenzar la simulación.
+Los prototipos de las interfaces de usuario mencionadas a continuación se encuentran en la sección \ref{sec:proto-ui}.
+
+\bigskip
+
+La interfaz de usuario del configurador de la simulación
+% (el prototipo se puede ver en la figura \ref{fig:protoconfig}) 
+está dividida en dos secciones principales: a la izquierda se encuentra la sección para el número de vehículos y de pilotos, la disciplina y las opciones de importación y exportación de la configuración. A la derecha está la segunda sección, compuesta por las características de cada piloto, un menú desplegable para ejecutar el algoritmo genético y el botón para comenzar la simulación.
 
 \begin{figure}[H]
     \centering
@@ -494,7 +500,9 @@ La interfaz de usuario del configurador de la simulación (el prototipo se puede
     \caption{Interfaz del configurador antes de la carrera.}
 \end{figure}
 
-Durante la carrera, se mostrará un listado de posiciones de los pilotos y un contador de vueltas (prototipo en la figura \ref{fig:protoranking}) en la parte izquierda de la pantalla. Este listado permitirá visualizar y modificar el estado de cada piloto en tiempo real. La disposición de los elementos será similar a la de disciplinas como la Fórmula 1, donde el ranking de pilotos y el contador de vueltas aparecen a la izquierda, y en cada celda de posición aparecen las tres primeras letras del apellido. En este proyecto, he decidido añadir también la primera letra del nombre, en caso de que haya varios pilotos con el mismo apellido.
+Durante la carrera, se mostrará un listado de posiciones de los pilotos y un contador de vueltas 
+% (prototipo en la figura \ref{fig:protoranking}) 
+en la parte izquierda de la pantalla. Este listado permitirá visualizar y modificar el estado de cada piloto en tiempo real. La disposición de los elementos será similar a la de disciplinas como la Fórmula 1, donde el ranking de pilotos y el contador de vueltas aparecen a la izquierda, y en cada celda de posición aparecen las tres primeras letras del apellido. En este proyecto, he decidido añadir también la primera letra del nombre, en caso de que haya varios pilotos con el mismo apellido. Además, aparecerá a la derecha un menú desplegable con las opciones de visualización de ruta y de los checkpoints.
 
 
 \begin{figure}[H]
@@ -503,19 +511,37 @@ Durante la carrera, se mostrará un listado de posiciones de los pilotos y un co
     \caption{Interfaz de las opciones durante la carrera.}
 \end{figure}
 
+Al finalizar la carrera, aparecerá un listado de posiciones con los nombres de los pilotos, así como un botón para salir de la simulación al configurador de carrera.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{imagenes/pantallafinal.png}
+    \caption{Interfaz de los resultados al salir de la carrera.}
+\end{figure}
+
+Por último, la interfaz del algoritmo genético está compuesta por una tabla con los 10 mejores valores para las constantes del PID (implementación y explicación en la sección \ref{sec:pid-sec}) y un botón para cerrar la ejecución del algoritmo genético y volver al configurador de carreras.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{imagenes/ga.png}
+    \caption{Interfaz de la ejecución del algoritmo genético.}
+\end{figure}
+
 \section{Diagrama de navegación}
 
-La navegación por la interfaz de usuario en la aplicación es relativamente sencilla, al estar formada por dos pantallas: el configurador de simulación y la carrera en curso.
+% La navegación por la interfaz de usuario en la aplicación es relativamente sencilla, al estar formada por dos pantallas: el configurador de simulación y la carrera en curso.
 
-\bigskip
+% \bigskip
 
-El diagrama de navegación de la aplicación se encuentra a continuación:
+El diagrama de navegación de la aplicación es el siguiente:
 
 % foto del diagrama de navegacion
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{imagenes/nav.png}
+    \includegraphics[width=\textwidth]{imagenes/nav.png}
     \caption{Diagrama de navegación de la interfaz de usuario de la aplicación.}
 \end{figure}
 
-Como se puede observar en el diagrama de navegación, al pulsar el botón de ejecutar aparecerá la nueva pantalla para ejecutar la simulación y dar comienzo a la carrera. Asimismo, si se pulsa el botón con el símbolo ``X'', se cerrará la simulación en curso y aparecerá de nuevo el configurador.
+Como se puede observar, desde el configurador hay dos posibles pantallas siguientes: la carrera y el algoritmo genético. Si se pulsa sobre el botón de ejecutar, dará comienzo a la carrera, y al terminar aparecerá automáticamente la siguiente pantalla con las posiciones finales de los pilotos. En esta pantalla solo es posible elegir la opción de volver al configurador. Por último, en la ejecución del algoritmo genético y durante la carrera, antes de que acabe, se podrá pulsar el botón con el símbolo ``X'' para salir de nuevo al configurador.
+
+% Como se puede observar en el diagrama de navegación, al pulsar el botón de ejecutar aparecerá la nueva pantalla para ejecutar la simulación y dar comienzo a la carrera. Asimismo, si se pulsa el botón con el símbolo ``X'', se cerrará la simulación en curso y aparecerá de nuevo el configurador.
