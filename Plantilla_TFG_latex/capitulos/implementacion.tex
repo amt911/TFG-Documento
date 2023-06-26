@@ -89,12 +89,19 @@ Para que el controlador funcione bien, es necesario modificar sus tres constante
 \bigskip
 
 % foto de la constante
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.83\textwidth]{imagenes/converted/PID-BP.jpg}
-\caption{Implementación usando \textit{blueprints} del controlador PID.}
-\label{fig:pidbp}
-\end{figure}
+% \begin{figure}[H]
+% \centering
+% \includegraphics[width=0.83\textwidth]{imagenes/converted/PID-BP.jpg}
+% \caption{Implementación usando \textit{blueprints} del controlador PID.}
+% \label{fig:pidbp}
+% \end{figure}
+
+\lstinputlisting[language=C++, caption={Implementación en C++ del controlador PID}, label={fig:pidbp}]{snippets/PID.cpp}
+
+% \begin{lstlisting}[language=C++, caption={Implementación en C++ del controlador PID}]
+% asdasdasd
+% \end{lstlisting}
+
 
 El rango de valores que pueden tener las variables dependen del sistema al que se aplique. No obstante, todos los valores son números reales positivos, incluyendo el 0, que deshabilita la componente.
 

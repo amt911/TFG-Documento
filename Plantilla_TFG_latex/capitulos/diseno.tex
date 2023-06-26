@@ -46,7 +46,7 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
     entry = none,
     ]{
     width = \linewidth,
-    colspec = {Q[14,m]Q[14,m]Q[50,m]},
+    colspec = {Q[15,m]Q[18,m]Q[50,m]},
     row{1} = {Silver,c},
     cell{2-8}{1,2} = {c},
     hlines,
@@ -54,8 +54,8 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
     }
     \textbf{Variable} & \textbf{Tipo}        & \textbf{Anotaciones}                                                                                                             \\
 
-    cube & UStaticMeshComponent* & Cubo que se utilizará como nodo \\
-    defaultSceneRoot & USceneComponent* & Nodo raíz de donde colgará el cubo. \\
+    cube & UStatic\-Mesh\-Component* & Cubo que se utilizará como nodo \\
+    defaultSceneRoot & UScene\-Component* & Nodo raíz de donde colgará el cubo. \\
 
     neighbors         & TArray\-$<$AAStarNodeCPP*$>$ & Almacena las celdas con las que colinda.                                                                                         \\
 
@@ -84,9 +84,9 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
     hlines,
     vlines,
     }
-    \textbf{Variable} & \textbf{Tipo}        & \textbf{Anotaciones} 
+    \textbf{Variable} & \textbf{Tipo}        & \textbf{Anotaciones} \\
     fil & int & Fila de la matriz. \\
-    col & int & Columna de la matriz.                                                                                                                                  \\
+    col & int & Columna de la matriz.
 \end{longtblr}
 \normalsize
 
@@ -100,7 +100,7 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
     entry = none,
     ]{
     width = \linewidth,
-    colspec = {Q[9,m]Q[8,m]Q[40,m]},
+    colspec = {Q[12,m]Q[15,m]Q[40,m]},
     row{1} = {Silver,c},
     cell{2-6}{1,2} = {c},
     hlines,
@@ -121,14 +121,14 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
 \normalsize
 
 \subsection{FQueueElementCPP}
-\textbf{Descripción: }Estructura de datos que es utilizada por ``UPriorityQueueCPP'' para realizar los cálculos.
+\textbf{Descripción: }Estructura de datos utilizada por ``UPriorityQueueCPP'' para realizar los cálculos.
 \tiny
 \begin{longtblr}[
     label = none,
     entry = none,
     ]{
     width = \linewidth,
-    colspec = {Q[8,m]Q[8,m]Q[50,m]},
+    colspec = {Q[8,m]Q[15,m]Q[50,m]},
     row{1} = {Silver,c},
     cell{2,3}{1,2} = {c},
     hlines,
@@ -152,7 +152,7 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
     entry = none,
     ]{
     width = \linewidth,
-    colspec = {Q[6,m]Q[8,m]Q[35,m]},
+    colspec = {Q[6,m]Q[14,m]Q[35,m]},
     row{1} = {Silver,c},
     cell{2}{1,2} = {c},
     hlines,
@@ -180,7 +180,7 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
     entry = none,
     ]{
     width = \linewidth,
-    colspec = {Q[7,m]Q[5,m]Q[21,m]},
+    colspec = {Q[6,m]Q[6,m]Q[21,m]},
     row{1} = {Silver,c},
     cell{2-100}{1} = {c},
     cell{2-100}{2} = {c},
@@ -300,7 +300,7 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
 \textbf{Descripción: }Enumerado con todas las disciplinas que hay en la aplicación.
 
 \subsection{VariablesCoche}
-\textbf{Descripción: }Estructura que almacena toda la información de un vehículo que debe ser creado en la simulación.
+\textbf{Descripción: }Estructura que almacena la información de un piloto que debe ser creado en la simulación.
 
 \tiny
 \begin{longtblr}[
@@ -308,7 +308,7 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
     entry = none,
     ]{
     width = \linewidth,
-    colspec = {Q[4,m]Q[6,m]Q[20,m]},
+    colspec = {Q[4,m]Q[4,m]Q[20,m]},
     row{1} = {Silver,c},
     cell{2-100}{1,2} = {c},
             hlines,
@@ -338,7 +338,7 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
     entry = none,
     ]{
     width = \linewidth,
-    colspec = {Q[4,m]Q[6,m]Q[20,m]},
+    colspec = {Q[5,m]Q[6,m]Q[20,m]},
     row{1} = {Silver,c},
     cell{2-100}{1,2} = {c},
             hlines,
@@ -373,7 +373,7 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
 
     cube & Static\-Mesh\-Component & Malla que representa el cubo. \\
 
-    DefaultSceneRoot & Scene\-Component & Raíz donde cuelga el cubo. \\
+    Default\-Scene\-Root & Scene\-Component & Raíz donde cuelga el cubo. \\
 
     color & LinearColor & Color del cubo. \\
 
@@ -390,7 +390,7 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
     entry = none,
     ]{
     width = \linewidth,
-    colspec = {Q[4,m]Q[6,m]Q[20,m]},
+    colspec = {Q[6,m]Q[5,m]Q[20,m]},
     row{1} = {Silver,c},
     cell{2-100}{1,2} = {c},
             hlines,
@@ -423,7 +423,7 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
     entry = none,
     ]{
     width = \linewidth,
-    colspec = {Q[4,m]Q[6,m]Q[20,m]},
+    colspec = {Q[4,m]Q[3,m]Q[20,m]},
     row{1} = {Silver,c},
     cell{2-60}{1,2} = {c},
             hlines,
@@ -454,7 +454,7 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
     entry = none,
     ]{
     width = \linewidth,
-    colspec = {Q[4,m]Q[6,m]Q[20,m]},
+    colspec = {Q[5,m]Q[7,m]Q[20,m]},
     row{1} = {Silver,c},
     cell{2-60}{1,2} = {c},
             hlines,
@@ -486,7 +486,7 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
 
     ScrollPilotos & ScrollBox & Ventana donde se insertan los ``PanelPiloto'' para configurarlos. \\
 
-    lastNumCochesValue & Integer & Último valor elegido del número de coches. \\
+    last\-Num\-Coches\-Value & Integer & Último valor elegido del número de coches. \\
 
     file\-Dialog\-Handler\-Ref & UFile\-Dialog\-Handler & Manejador de las ventanas de diálogo del sistema operativo.
 \end{longtblr}
@@ -502,7 +502,7 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
     entry = none,
     ]{
     width = \linewidth,
-    colspec = {Q[4,m]Q[6,m]Q[20,m]},
+    colspec = {Q[6,m]Q[7,m]Q[20,m]},
     row{1} = {Silver,c},
     cell{2-60}{1,2} = {c},
             hlines,
@@ -534,7 +534,7 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
     entry = none,
     ]{
     width = \linewidth,
-    colspec = {Q[6,m]Q[6,m]Q[35,m]},
+    colspec = {Q[7,m]Q[7,m]Q[35,m]},
     row{1} = {Silver,c},
     cell{2-100}{1,2} = {c},
             hlines,
@@ -592,9 +592,9 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
     entry = none,
     ]{
     width = \linewidth,
-    colspec = {Q[8,m]Q[6,m]Q[50,m]},
+    colspec = {Q[11,m]Q[12,m]Q[50,m]},
     row{1} = {Silver,c},
-    cell{2,3}{1,2} = {c},
+    cell{2-33}{1,2} = {c},
             hlines,
             vlines,
         }
@@ -620,7 +620,7 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
     entry = none,
     ]{
     width = \linewidth,
-    colspec = {Q[8,m]Q[6,m]Q[50,m]},
+    colspec = {Q[14,m]Q[6,m]Q[50,m]},
     row{1} = {Silver,c},
     cell{2,3}{1,2} = {c},
             hlines,
@@ -643,7 +643,7 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
     entry = none,
     ]{
     width = \linewidth,
-    colspec = {Q[5,m]Q[7,m]Q[20,m]},
+    colspec = {Q[3,m]Q[7,m]Q[20,m]},
     row{1} = {Silver,c},
     cell{2,3}{1,2} = {c},
             hlines,
@@ -739,7 +739,7 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
     entry = none,
     ]{
     width = \linewidth,
-    colspec = {Q[7,m]Q[5,m]Q[60,m]},
+    colspec = {Q[20,m]Q[25,m]Q[60,m]},
     row{1} = {Silver,c},
     cell{2-100}{1,2} = {c},
             hlines,
@@ -766,7 +766,7 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
     entry = none,
     ]{
     width = \linewidth,
-    colspec = {Q[7,m]Q[5,m]Q[60,m]},
+    colspec = {Q[18,m]Q[15,m]Q[60,m]},
     row{1} = {Silver,c},
     cell{2-100}{1,2} = {c},
             hlines,
@@ -775,7 +775,7 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
     \textbf{Variable} & \textbf{Tipo} & \textbf{Anotaciones}                                                                                                                    \\
     cube & Static\-Mesh\-Component & Cubo utilizado para representar el lanzador de eventos. \\
 
-    DefaultSceneRoot & Scene\-Component & Raíz de donde cuelga el cubo. \\
+    Default\-Scene\-Root & Scene\-Component & Raíz de donde cuelga el cubo. \\
 
     speed & Float & Velocidad a la que debe ir el coche en la siguiente sección. \\
 
@@ -795,7 +795,7 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
     entry = none,
     ]{
     width = \linewidth,
-    colspec = {Q[8,m]Q[8,m]Q[35,m]},
+    colspec = {Q[5,m]Q[5,m]Q[35,m]},
     row{1} = {Silver,c},
     cell{2-6}{1,2} = {c},
             hlines,
@@ -824,7 +824,7 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
     entry = none,
     ]{
     width = \linewidth,
-    colspec = {Q[8,m]Q[4,m]Q[20,m]},
+    colspec = {Q[7,m]Q[7,m]Q[20,m]},
     row{1} = {Silver,c},
     cell{2-60}{1,2} = {c},
             hlines,
@@ -865,7 +865,7 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
     entry = none,
     ]{
     width = \linewidth,
-    colspec = {Q[8,m]Q[4,m]Q[20,m]},
+    colspec = {Q[8,m]Q[8,m]Q[20,m]},
     row{1} = {Silver,c},
     cell{2-100}{1,2} = {c},
             hlines,
@@ -913,7 +913,7 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
     entry = none,
     ]{
     width = \linewidth,
-    colspec = {Q[8,m]Q[4,m]Q[20,m]},
+    colspec = {Q[3,m]Q[2,m]Q[20,m]},
     row{1} = {Silver,c},
     cell{2-100}{1,2} = {c},
             hlines,
@@ -925,7 +925,7 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
 \end{longtblr}
 \normalsize
 
-\subsection{GeneticAlgorithTable}
+\subsection{GeneticAlgorithmTable}
 \textbf{Descripción: }Tabla donde se muestran los valores de la generación anterior durante la ejecución del algoritmo genético.
 
 \tiny
@@ -934,7 +934,7 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
     entry = none,
     ]{
     width = \linewidth,
-    colspec = {Q[8,m]Q[4,m]Q[20,m]},
+    colspec = {Q[4,m]Q[4,m]Q[20,m]},
     row{1} = {Silver,c},
     cell{2-100}{1,2} = {c},
             hlines,
@@ -960,29 +960,52 @@ A continuación se muestra el diagrama de clases de la aplicación. Se ha dividi
     \caption{Diagrama de clases de la aplicación.}
 \end{figure}
 
+
+En la figura \ref{fig:class1} se puede observar la clase padre de los coches de la simulación, así como la herencia de los coches hijo, correspondientes a ambas disciplinas.
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{imagenes/classDiagram1.png}
     \caption{Primera sección del diagrama de clases.}
+    \label{fig:class1}
 \end{figure}
+
+
+En la figura \ref{fig:class2}, aparece la clase padre de los coches del algoritmo genético, así como sus hijos. Además, se muestran las clases del controlador PID y el spline para las rutas, utilizados por los coches del algoritmo genético y los de la simulación. Por último, aparece el nivel del algoritmo genético, así como el bloque de meta ``TrainingStop'', el cambiador de spline ``ChangeSpline'', el objeto que crea la interfaz de usuario, la interfaz y la estructura utilizada para ejecutar el algoritmo.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{imagenes/classDiagram2.png}
     \caption{Segunda sección del diagrama de clases.}
+    \label{fig:class2}
 \end{figure}
+
+En la figura \ref{fig:class3}, aparecen las clases relacionadas con la interfaz del configurador y el panel con las posiciones y la vuelta durante la carrera. También aparece la clase que gestiona las ventanas de diálogo y la instancia del juego ``VariablesMenu'' para pasar variables entre niveles.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{imagenes/classDiagram3.png}
     \caption{Tercera sección del diagrama de clases.}
+    \label{fig:class3}
 \end{figure}
+
+En la figura \ref{fig:class4} se muestra la clase del nivel del circuito ``RacingLevel'', el nivel del configurador ``MenuLevel'', los puntos de generación de los coches en la parrilla, el gestor de la cámara para mantener el foco siempre, con independencia de la relación de aspecto, y los checkpoints.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{imagenes/classDiagram4.png}
     \caption{Cuarta sección del diagrama de clases.}
+    \label{fig:class4}
 \end{figure}
+
+En esta última figura \ref{fig:class5}, aparecen las clases referentes al algoritmo de navegación, así como los nodos y los indicadores de límite de pista y ruta óptima. También aparece la clase generadora de la malla de navegación, el visualizador de rutas y la interfaz para la pantalla final al acabar la carrera.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{imagenes/classDiagram5.png}
+    \caption{Quinta sección del diagrama de clases.}
+    \label{fig:class5}
+\end{figure}
+
 
 \section{Diseño de la Interfaz de Usuario}
 
