@@ -88,20 +88,13 @@ Para que el controlador funcione bien, es necesario modificar sus tres constante
 
 \bigskip
 
-% foto de la constante
-% \begin{figure}[H]
-% \centering
-% \includegraphics[width=0.83\textwidth]{imagenes/converted/PID-BP.jpg}
-% \caption{Implementación usando \textit{blueprints} del controlador PID.}
-% \label{fig:pidbp}
-% \end{figure}
+% \lstinputlisting[language={[Visual]C++}, caption={Implementación en C++ del controlador PID}, label={lst:pidcpp}]{snippets/PID.cpp}
 
-\lstinputlisting[language=C++, caption={Implementación en C++ del controlador PID}, label={fig:pidbp}]{snippets/PID.cpp}
-
-% \begin{lstlisting}[language=C++, caption={Implementación en C++ del controlador PID}]
-% asdasdasd
-% \end{lstlisting}
-
+\begin{listing}[H]
+    \caption{Implementación en C++ del controlador PID}
+    \inputminted[fontsize=\scriptsize, linenos, bgcolor=LightGray, frame=lines, framesep=3mm, baselinestretch=1.2]{C++}{snippets/PID.cpp}
+    \label{lst:pidcpp}
+\end{listing}
 
 El rango de valores que pueden tener las variables dependen del sistema al que se aplique. No obstante, todos los valores son números reales positivos, incluyendo el 0, que deshabilita la componente.
 
@@ -120,7 +113,7 @@ La calibración del PID se realiza modificando las constantes asociadas a cada c
 
 \bigskip
 
-Dado que este método no me dio los resultados deseados, decidí implementar un algoritmo genético para obtener las constantes del controlador PID (implementación del controlador en Figura \ref{fig:pidbp}). Consiste en lanzar un conjunto de coches con valores positivos aleatorios para las constantes del PID, con el objetivo de que intenten llegar a la meta con el menor error posible (por error se sigue entendiendo como la distancia del punto más cercano a la ruta con el coche, véase Figura \ref{fig:errorpid}). Aquellos con menos error, tienen más posibilidades de ser seleccionados para generaciones futuras. Una vez obtenido el error, se calcula su inversa y se obtiene la probabilidad de ser elegido mediante el nuevo valor entre la suma de todos. Esto dará como resultado unas probabilidades que al ser sumadas darán 1 (100\%). 
+Dado que este método no me dio los resultados deseados, decidí implementar un algoritmo genético para obtener las constantes del controlador PID (implementación del controlador en Listing \ref{lst:pidcpp}). Consiste en lanzar un conjunto de coches con valores positivos aleatorios para las constantes del PID, con el objetivo de que intenten llegar a la meta con el menor error posible (por error se sigue entendiendo como la distancia del punto más cercano a la ruta con el coche, véase Figura \ref{fig:errorpid}). Aquellos con menos error, tienen más posibilidades de ser seleccionados para generaciones futuras. Una vez obtenido el error, se calcula su inversa y se obtiene la probabilidad de ser elegido mediante el nuevo valor entre la suma de todos. Esto dará como resultado unas probabilidades que al ser sumadas darán 1 (100\%). 
 
 \bigskip
 % imagen de ejemplo de selección de ruleta
@@ -137,7 +130,6 @@ La selección se realiza lanzando una ruleta\cite{gaperformance}, cuyos sectores
 
 Utilizando este algoritmo, obtuve unos valores que funcionaban bien para el circuito. No obstante, tras ejecutarlo varias veces, me he dado cuenta de que la constante integral siempre tiende a 0. Para solucionarlo, he decidido obligarle a que tenga un valor mínimo de 0,01.
 
-\newpage
 
 \subsection{Algoritmo de navegación}
 
@@ -169,45 +161,6 @@ Realicé una primera implementación del algoritmo A* utilizando \textit{bluepri
 \bigskip
 
 Finalmente opté por implementarlo en C++, utilizando como cola con prioridad el \textit{Binary Heap} que implementan los arrays (TArray) de Unreal. Esta versión ha conseguido que no se produzcan más paradas en la simulación, de manera que ahora pueden correr más de dos coches al mismo tiempo.
-
-% \subsubsection{Cola con prioridad}
-% \label{sec:priorityqueue}
-
-% Dado que Unreal Engine no cuenta una cola con prioridad para los \textit{blueprints}, ha sido necesario implementarlo para poder utilizarlo en el algoritmo de navegación.
-
-% \bigskip
-
-% Una primera implementación fue utilizando un array ordenado de manera decreciente, de manera que el último elemento sea el más pequeño y el primero es el más grande. En la figura \ref{fig:seqpq} se puede ver la representación de esta implementación:
-
-% \begin{figure}[H]
-%     \centering
-%     \includegraphics[width=0.5\textwidth]{imagenes/PQSeq.png}
-%     \caption{Representación de la cola con prioridad secuencial.}
-%     \label{fig:seqpq}
-% \end{figure}
-
-% La inserción se realiza pasando por cada uno de los elementos hasta encontrar su posición. Por tanto, esta operación se realiza en $O(n)$, y la eliminación en $O(1)$. Al final, debido al uso continuado de estas dos operaciones, la complejidad real es más cercana a $O(n)$.
-
-% \bigskip
-
-% Esta implementación me ha servido para seguir desarrollando el proyecto, pero era demasiado lento con varios vehículos. Finalmente, he decidido implementar un \textit{Binary Heap}, más concretamente un \textit{Min-Heap.}
-
-% \bigskip
-
-% El \textit{Min-Heap} se representa como un árbol cuya raíz es el valor más pequeño de todos y de él cuelgan dos hijos con valores más grandes, de los que a su vez pueden colgar otros dos. Cabe destacar que esta estructura de datos tiene como propiedad que cada subárbol sigue manteniendo la propiedad de \textit{Min-Heap}. 
-
-% \bigskip
-
-% La implementación se realiza mediante un array, de manera que el padre se encuentra en la posición, el hijo a la izquierda en la posición $2 \cdot i + 1$ y el hijo a la derecha en la posición $2 \cdot i + 2$. En la figura \ref{fig:minheaparray} se puede ver un ejemplo de \textit{Min-Heap}, junto con su representación en un array.
-
-% \begin{figure}[H]
-%     \centering
-%     \includegraphics[width=0.7\textwidth]{imagenes/minheap.png}
-%     \caption{Representación de la cola con prioridad utilizando \textit{Min-Heap}.}
-%     \label{fig:minheaparray}
-% \end{figure}
-
-% Gracias a esta representación, he conseguido que los vehículos tarden menos en calcular la ruta, dado que las operaciones tienen de complejidad $O(\log n)$.
 
 \subsubsection{Heurística}
 
@@ -281,7 +234,6 @@ A continuación se da una explicación de cada uno de los elementos que forman l
     \end{figure}
 \end{itemize}
 
-\newpage
 
 \subsection{Cálculo de la ruta por los vehículos}
 
@@ -300,7 +252,7 @@ Cuando la parte delantera del vehículo se solapa con un checkpoint, calcula la 
 
 \bigskip
 
-Con los puntos filtrados, el coche construye un spline y pinta los puntos en el suelo. Este spline será seguido gracias al controlador PID (Figura \ref{fig:pidbp}) mencionado anteriormente. Cabe destacar que al ser la ruta discreta y el vehículo una componente física del mundo, el vehículo no siempre conseguirá seguirla siempre, pero le servirá como ``guía'' a la hora de tener que hacer giros y adelantamientos.
+Con los puntos filtrados, el coche construye un spline y pinta los puntos en el suelo. Este spline será seguido gracias al controlador PID (Listing \ref{lst:pidcpp}) mencionado anteriormente. Cabe destacar que al ser la ruta discreta y el vehículo una componente física del mundo, el vehículo no siempre conseguirá seguirla siempre, pero le servirá como ``guía'' a la hora de tener que hacer giros y adelantamientos.
 
 \newpage
 
@@ -346,14 +298,18 @@ Para ello, he hecho uso de los \textit{Line Trace} (véase sección \ref{sec:ter
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.4\textwidth]{imagenes/converted/raycast.jpg}
+    \includegraphics[width=0.3\textwidth]{imagenes/converted/raycast.jpg}
     \caption{Esquema del trazado de rayos.}
     \label{fig:esqlinetrace}
 \end{figure}
 
 \bigskip
 
-Además, para evitar que frenen demasiado lejos, he hecho que la distancia de los rayos dependa de la velocidad del propio vehículo, de forma que a más velocidad, más lejos trazará el rayo.
+Además, para evitar colisiones entre vehículos, he calculado la distancia de los rayos en función de la velocidad, de forma que a mayor velocidad, mayor distancia del rayo. También he tenido en cuenta el nivel de agresividad y si el vehículo se encuentra al final de una recta, ya que existe el riesgo de colisionar con el vehículo de delante que frena antes y puede tener menor velocidad al no estar agresivo.
+
+\bigskip
+
+Los resultados obtenidos para niveles de agresividad altos son buenos, ya que en la mayoría de las ocasiones logra frenar a tiempo. Sin embargo, en algunas situaciones, se produce una colisión, lo cual simula el riesgo asumido por un piloto agresivo.
 
 % HERE: PONER FOTO DEL CODIGO PARA FRENAR
 
@@ -376,6 +332,8 @@ Cabe destacar que esta velocidad es modificada por el estado del piloto, explica
 En lo que se refiere al cálculo de las posiciones de cada piloto, correspondientes a HU7 y HU8 e implementadas en el sprint 7, he utilizado una estructura de datos algo más compleja. Los vehículos almacenan la vuelta en la que están y el checkpoint; es decir, el sector del circuito en el que se encuentran. Con la información anterior, he creado un array asociativo que almacene como clave la vuelta y como valor otro array asociativo, que a su vez tiene como clave el checkpoint y como valor un array con todos los vehículos que se encuentran en ese estado. Para mostrarlo, solo hace falta iterar primero por aquellas claves mayores, ya que son los que más vueltas y más lejos del circuito están.
 
 \begin{table}[H]
+    \caption{Representación de la estructura de datos que almacena las posiciones de los pilotos durante la carrera.}
+    \footnotesize
     \centering
     \begin{tblr}{
         cells = {c},
@@ -400,7 +358,7 @@ En lo que se refiere al cálculo de las posiciones de cada piloto, correspondien
         i                              & \textbf{Clave (checkpoint actual)} & \textbf{Valor} \\
                                        & 3                                  & {[}c4]
     \end{tblr}
-    \caption{Representación de la estructura de datos que almacena las posiciones de los pilotos durante la carrera.}
+    \normalsize
     \label{fig:tablapos}
 \end{table}
 

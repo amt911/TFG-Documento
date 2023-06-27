@@ -33,6 +33,8 @@ La modificación del estado del piloto producirá un cambio, de manera indirecta
 
 Cabe destacar que estas componentes son modificadas como consecuencia directa de alguna de las componentes de la sección \ref{sec:mod-estado-piloto}, por lo que es imposible modificarlas de manera directa por el usuario.
 
+\newpage
+
 \section{Entidades y atributos}
 
 En esta sección se detallarán las distintas entidades que componen la aplicación, junto a los atributos necesarios para implementar la lógica. Cada entidad y sus atributos estarán en una subsección a continuación:
@@ -654,6 +656,8 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
 \end{longtblr}
 \normalsize
 
+\newpage
+
 \subsection{ArrayOfArrayOfCars}
 \textbf{Descripción: }Estructura que almacena en que vuelta y en que checkpoint se encuentra cada vehículo.
 
@@ -856,6 +860,8 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
 \end{longtblr}
 \normalsize
 
+\newpage
+
 \subsection{SportsCar\_Pawn\_GA}
 \textbf{Descripción: }Coche utilizado para ejecutar el algoritmo genético.
 
@@ -948,6 +954,8 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
 \end{longtblr}
 \normalsize
 
+\newpage
+
 \section{Diagrama de clases}
 
 % A continuación se muestra el diagrama de clases de la aplicación. Se ha fragmentado el diagrama para mejorar su legibilidad. Los recuadros de color rojo indican las distintas secciones en los que se ha separado:
@@ -1019,7 +1027,7 @@ está dividida en dos secciones principales: a la izquierda se encuentra la secc
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{imagenes/pag1.png}
+    \includegraphics[width=\textwidth]{imagenes/pag1.png}
     \caption{Interfaz del configurador antes de la carrera.}
 \end{figure}
 
@@ -1030,7 +1038,7 @@ en la parte izquierda de la pantalla. Este listado permitirá visualizar y modif
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{imagenes/pag2.png}
+    \includegraphics[width=\textwidth]{imagenes/pag2.png}
     \caption{Interfaz de las opciones durante la carrera.}
     \label{fig:boc-ui-race}
 \end{figure}
@@ -1039,18 +1047,22 @@ Al finalizar la carrera, aparecerá un listado de posiciones con los nombres de 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{imagenes/pantallafinal.png}
+    \includegraphics[width=\textwidth]{imagenes/pantallafinal.png}
     \caption{Interfaz de los resultados al salir de la carrera.}
     \label{fig:resultados-sim}
 \end{figure}
+
+\newpage
 
 Por último, la interfaz del algoritmo genético está compuesta por una tabla con los 10 mejores valores para las constantes del PID (implementación y explicación en la sección \ref{sec:pid-sec}) y un botón para cerrar la ejecución del algoritmo genético y volver al configurador de carreras.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{imagenes/ga.png}
+    \includegraphics[width=\textwidth]{imagenes/ga.png}
     \caption{Interfaz de la ejecución del algoritmo genético.}
 \end{figure}
+
+\newpage
 
 \section{Diagrama de navegación}
 
@@ -1067,6 +1079,14 @@ El diagrama de navegación de la aplicación es el siguiente:
     \caption{Diagrama de navegación de la interfaz de usuario de la aplicación.}
 \end{figure}
 
-Como se puede observar, desde el configurador hay dos posibles pantallas siguientes: la carrera y el algoritmo genético. Si se pulsa sobre el botón de ejecutar, dará comienzo a la carrera, y al terminar aparecerá automáticamente la siguiente pantalla con las posiciones finales de los pilotos. En esta pantalla solo es posible elegir la opción de volver al configurador. Por último, en la ejecución del algoritmo genético y durante la carrera, antes de que acabe, se podrá pulsar el botón con el símbolo ``X'' para salir de nuevo al configurador.
+Como se puede observar, desde el configurador hay dos posibles pantallas siguientes: la carrera y el algoritmo genético. Si se pulsa sobre el botón de ejecutar, dará comienzo a la carrera, y al terminar aparecerá automáticamente la siguiente pantalla con las posiciones finales de los pilotos. En esta pantalla solo es posible elegir la opción de volver al configurador. 
+
+\bigskip
+
+En la ejecución del algoritmo genético y durante la carrera, antes de que acabe, se podrá pulsar el botón con el símbolo ``X'' para salir de nuevo al configurador.
+
+\bigskip
+
+Por último, cuando todos los coches cruzan la línea de meta, aparecerá una pantalla con los resultados y un botón que si se pulsa lleva de nuevo al configurador.
 
 % Como se puede observar en el diagrama de navegación, al pulsar el botón de ejecutar aparecerá la nueva pantalla para ejecutar la simulación y dar comienzo a la carrera. Asimismo, si se pulsa el botón con el símbolo ``X'', se cerrará la simulación en curso y aparecerá de nuevo el configurador.

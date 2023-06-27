@@ -1,6 +1,12 @@
 \documentclass[a4paper,11pt]{book}
 %\documentclass[a4paper,twoside,11pt,titlepage]{book}
-\usepackage{listings, subcaption}
+\usepackage{subcaption}
+% \usepackage[final]{listings}     % COMENTAR ESTE CUANDO SE QUITE DRAFT
+% \usepackage{listings}
+
+\usepackage[labelfont=bf]{caption}
+
+\usepackage{minted}
 \usepackage[utf8]{inputenc}
 \usepackage[spanish]{babel}
 \usepackage{float}
@@ -31,6 +37,7 @@
 \usepackage{xcolor}      % PARA PONER COLOR AL TEXTO
 \definecolor{Silver}{rgb}{0.752,0.752,0.752}
 \definecolor{Alto}{rgb}{0.874,0.874,0.874}
+\definecolor{LightGray}{gray}{0.9}
 
 \usepackage{xspace}
 
@@ -115,9 +122,6 @@ pdfproducer = {pdflatex}
 %\usepackage[style=long, cols=2,border=plain,toc=true,number=none]{glossary}
 % \makeglossary
 
-% Definición de comandos que me son tiles:
-%\renewcommand{\indexname}{Índice alfabético}
-%\renewcommand{\glossaryname}{Glosario}
 
 \pagestyle{fancy}
 \fancyhf{}
@@ -141,57 +145,62 @@ pdfproducer = {pdflatex}
 \definecolor{gray45}{gray}{.45}
 \definecolor{gray30}{gray}{.94}
 
-\lstset{ frame=Ltb,
-     framerule=0.5pt,
-     aboveskip=0.5cm,
-     framextopmargin=3pt,
-     framexbottommargin=3pt,
-     framexleftmargin=0.1cm,
-     framesep=0pt,
-     rulesep=.4pt,
-     backgroundcolor=\color{gray97},
-     rulesepcolor=\color{black},
-     %
-     stringstyle=\ttfamily,
-     showstringspaces = false,
-     basicstyle=\scriptsize\ttfamily,
-     commentstyle=\color{gray45},
-     keywordstyle=\bfseries,
-     %
-     numbers=left,
-     numbersep=6pt,
-     numberstyle=\tiny,
-     numberfirstline = false,
-     breaklines=true,
-   }
- 
-% minimizar fragmentado de listados
-\lstnewenvironment{listing}[1][]
-   {\lstset{#1}\pagebreak[0]}{\pagebreak[0]}
 
-\lstdefinestyle{CodigoC}
-   {
-	basicstyle=\scriptsize,
-	frame=single,
-	language=C,
-	numbers=left
-   }
-\lstdefinestyle{CodigoC++}
-   {
-	basicstyle=\small,
-	frame=single,
-	backgroundcolor=\color{gray30},
-	language=C++,
-	numbers=left
-   }
+% ///////////////////////// OLD CODE /////////////////////////
+
+% \lstset{ frame=Ltb,
+%      framerule=0.5pt,
+%      aboveskip=0.5cm,
+%      framextopmargin=3pt,
+%      framexbottommargin=3pt,
+%      framexleftmargin=0.1cm,
+%      framesep=0pt,
+%      rulesep=.4pt,
+%      backgroundcolor=\color{gray97},
+%      rulesepcolor=\color{black},
+%      %
+%      stringstyle=\ttfamily,
+%      showstringspaces = false,
+%      basicstyle=\scriptsize\ttfamily,
+%      commentstyle=\color{gray45},
+%      keywordstyle=\bfseries,
+%      %
+%      numbers=left,
+%      numbersep=6pt,
+%      numberstyle=\tiny,
+%      numberfirstline = false,
+%      breaklines=true,
+%    }
+ 
+% % minimizar fragmentado de listados
+% \lstnewenvironment{listing}[1][]
+%    {\lstset{#1}\pagebreak[0]}{\pagebreak[0]}
+
+% \lstdefinestyle{CodigoC}
+%    {
+% 	basicstyle=\scriptsize,
+% 	frame=single,
+% 	language=C,
+% 	numbers=left
+%    }
+% \lstdefinestyle{CodigoC++}
+%    {
+% 	basicstyle=\small,
+% 	frame=single,
+% 	backgroundcolor=\color{gray30},
+% 	language=C++,
+% 	numbers=left
+%    }
 
  
-\lstdefinestyle{Consola}
-   {basicstyle=\scriptsize\bf\ttfamily,
-    backgroundcolor=\color{gray30},
-    frame=single,
-    numbers=none
-   }
+% \lstdefinestyle{Consola}
+%    {basicstyle=\scriptsize\bf\ttfamily,
+%     backgroundcolor=\color{gray30},
+%     frame=single,
+%     numbers=none
+%    }
+
+% ///////////////////////// OLD CODE /////////////////////////
 
 \newcommand{\bigrule}{\titlerule[0.5mm]}
 
