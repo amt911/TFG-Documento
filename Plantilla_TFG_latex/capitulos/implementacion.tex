@@ -156,7 +156,7 @@ En la figura \ref{fig:rutaastar} se pueden observar unos cubos rojos, que repres
 \end{figure}
 
 
-Realicé una primera implementación del algoritmo A* utilizando \textit{blueprints}. Sin embargo, había casos en los que el programa se quedaba congelado unos segundos hasta encontrar la ruta. La solución fue implementar en \textit{blueprints} una cola con prioridad utilizando un \textit{Binary Heap}. Esta versión provocó una gran mejora en el tiempo de ejecución, pero para carreras con más de dos coches, el tiempo de ejecución seguía siendo demasiado grande, haciendo que el programa se quedase parado unas décimas de segundo.
+Realicé una primera implementación del algoritmo A* utilizando \textit{blueprints}. Sin embargo, había casos en los que el programa se quedaba congelado unos segundos hasta encontrar la ruta. La solución fue implementar en \textit{blueprints} una cola con prioridad utilizando un \textit{Binary Heap}, en vez de utilizar un algoritmo secuencial para la ordenación de los elementos. Esta versión provocó una gran mejora en el tiempo de ejecución, pero para carreras con más de dos coches, el tiempo de ejecución seguía siendo demasiado grande, haciendo que el programa se quedase parado unas décimas de segundo.
 
 \bigskip
 
@@ -422,7 +422,7 @@ En las figuras \ref{fig:cenital}, \ref{fig:frontal} y \ref{fig:cam-estaticas} se
     \label{fig:cam-estaticas}
 \end{figure}
 
-Para realizar el seguimiento con cámaras estáticas, he reutilizado el actor (glosario en la sección \ref{sec:terminosunreal}) ``SplinePath'', utilizada para crear las rutas del algoritmo A*, para crear un spline, cuyos puntos son las posiciones que puede tener la cámara. Después, he creado el actor ``CameraFollower'', que tiene una referencia a todos los vehículos, de forma que elige cada cierto tiempo uno al azar y calcula el punto del spline más cercano al coche. Finalmente, mueve la cámara a dicho punto y la rota para que apunte en cada momento al coche.
+Para realizar el seguimiento con cámaras estáticas, he reutilizado el actor (glosario en la sección \ref{sec:terminosunreal}) ``SplinePath'', utilizado en la creación de rutas del algoritmo A*. Mediante este actor, he creado un spline cuyos puntos son las posiciones que puede tener la cámara. Después, he creado el actor ``CameraFollower'', que tiene una referencia a todos los vehículos, de forma que elige cada cierto tiempo uno al azar y calcula el punto del spline más cercano al coche. Finalmente, mueve la cámara a dicho punto y la rota para que apunte en cada momento al coche.
 
 \bigskip
 
