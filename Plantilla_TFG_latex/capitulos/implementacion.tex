@@ -69,6 +69,7 @@ Esta sección es utilizada como una breve explicación de las palabras utilizada
 Voy a dividir en subsecciones los diversos algoritmos que componen la simulación:
 
 \subsection{Algoritmo para el giro del volante del coche}
+\label{sec:pid-sec}
 
 En el control del volante de los vehículos, correspondiente a HU3 y realizada en el sprint 4, se ha utilizado un controlador PID (\textit{Proportional, Integral} y \textit{Derivative}). Este controlador se utiliza para regular el error de un sistema de manera suave, evitando producir muchas desviaciones mediante el ajuste de tres constantes, una para cada componente del controlador. Cabe destacar que la variable a la que el sistema debe llegar se llama SP (\textit{Set Point}) y el valor actual del sistema se denomina PV (\textit{Process Variable}). 
 
@@ -87,13 +88,13 @@ Para que el controlador funcione bien, es necesario modificar sus tres constante
 
 \bigskip
 
-% foto de la constante
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.83\textwidth]{imagenes/converted/PID-BP.jpg}
-\caption{Implementación usando \textit{blueprints} del controlador PID.}
-\label{fig:pidbp}
-\end{figure}
+% \lstinputlisting[language={[Visual]C++}, caption={Implementación en C++ del controlador PID}, label={lst:pidcpp}]{snippets/PID.cpp}
+
+\begin{listing}[H]
+    \caption{Implementación en C++ del controlador PID}
+    \inputminted[fontsize=\scriptsize, linenos, bgcolor=LightGray, frame=lines, framesep=3mm, baselinestretch=1.2]{C++}{snippets/PID.cpp}
+    \label{lst:pidcpp}
+\end{listing}
 
 El rango de valores que pueden tener las variables dependen del sistema al que se aplique. No obstante, todos los valores son números reales positivos, incluyendo el 0, que deshabilita la componente.
 
@@ -112,7 +113,7 @@ La calibración del PID se realiza modificando las constantes asociadas a cada c
 
 \bigskip
 
-Dado que este método no me dio los resultados deseados, decidí implementar un algoritmo genético para obtener las constantes del controlador PID (implementación del controlador en Figura \ref{fig:pidbp}). Consiste en lanzar un conjunto de coches con valores positivos aleatorios para las constantes del PID, con el objetivo de que intenten llegar a la meta con el menor error posible (por error se sigue entendiendo como la distancia del punto más cercano a la ruta con el coche, véase Figura \ref{fig:errorpid}). Aquellos con menos error, tienen más posibilidades de ser seleccionados para generaciones futuras. Una vez obtenido el error, se calcula su inversa y se obtiene la probabilidad de ser elegido mediante el nuevo valor entre la suma de todos. Esto dará como resultado unas probabilidades que al ser sumadas darán 1 (100\%). 
+Dado que este método no me dio los resultados deseados, decidí implementar un algoritmo genético para obtener las constantes del controlador PID (implementación del controlador en Listing \ref{lst:pidcpp}). Consiste en lanzar un conjunto de coches con valores positivos aleatorios para las constantes del PID, con el objetivo de que intenten llegar a la meta con el menor error posible (por error se sigue entendiendo como la distancia del punto más cercano a la ruta con el coche, véase Figura \ref{fig:errorpid}). Aquellos con menos error, tienen más posibilidades de ser seleccionados para generaciones futuras. Una vez obtenido el error, se calcula su inversa y se obtiene la probabilidad de ser elegido mediante el nuevo valor entre la suma de todos. Esto dará como resultado unas probabilidades que al ser sumadas darán 1 (100\%). 
 
 \bigskip
 % imagen de ejemplo de selección de ruleta
@@ -129,7 +130,6 @@ La selección se realiza lanzando una ruleta\cite{gaperformance}, cuyos sectores
 
 Utilizando este algoritmo, obtuve unos valores que funcionaban bien para el circuito. No obstante, tras ejecutarlo varias veces, me he dado cuenta de que la constante integral siempre tiende a 0. Para solucionarlo, he decidido obligarle a que tenga un valor mínimo de 0,01.
 
-\newpage
 
 \subsection{Algoritmo de navegación}
 
@@ -142,20 +142,6 @@ A* es utilizado para obtener rutas en un grafo. Para ello, hace uso de una funci
 \bigskip
 
 El algoritmo se encarga de visitar todos los nodos vecinos, calculando el coste de llegar desde el origen y el coste para llegar al destino mediante la heurística, en caso de encontrar una ruta mejor de un nodo ya existente en la lista de abiertos, se elimina el anterior y se introduce el nuevo. Este proceso se repite hasta que se llega al destino o, en mi caso, llega a un límite de iteraciones.
-
-% \bigskip
-
-% Dado que la implementación convencional de A*, haciendo uso de una lista de abiertos para los nodos por visitar y otra de cerrados para los nodos ya visitados, me daba muchos problemas de rendimiento. He decidido mejorarlo eliminando la lista de cerrados y la comprobación de la existencia de una ruta mejor para un nodo que ya se encuentre en la lista de abiertos\cite{a-star}. Esta modificación tiene como desventaja que un mismo nodo puede estar varias veces en la lista de abiertos, pero suele dar mejores resultados\cite{Chen2007PriorityQA}.
-
-
-
-% \bigskip
-
-% Otra mejora ha sido la de utilizar una cola con prioridad para la lista de abiertos, de manera que siempre se encuentre al final (el primero para salir) aquel con menor coste.
-
-% \bigskip
-
-% Gracias a la cola con prioridad \ref{sec:priorityqueue}, la desventaja de la nueva versión de A* puede ser solucionada, al priorizarse la ruta más eficiente.
 
 \bigskip
 
@@ -170,45 +156,11 @@ En la figura \ref{fig:rutaastar} se pueden observar unos cubos rojos, que repres
 \end{figure}
 
 
-% \subsubsection{\textcolor{red}{Cola con prioridad}}
-\subsubsection{Cola con prioridad}
-\label{sec:priorityqueue}
-
-Dado que Unreal Engine no cuenta una cola con prioridad para los \textit{blueprints}, ha sido necesario implementarlo para poder utilizarlo en el algoritmo de navegación.
+Realicé una primera implementación del algoritmo A* utilizando \textit{blueprints}. Sin embargo, había casos en los que el programa se quedaba congelado unos segundos hasta encontrar la ruta. La solución fue implementar en \textit{blueprints} una cola con prioridad utilizando un \textit{Binary Heap}. Esta versión provocó una gran mejora en el tiempo de ejecución, pero para carreras con más de dos coches, el tiempo de ejecución seguía siendo demasiado grande, haciendo que el programa se quedase parado unas décimas de segundo.
 
 \bigskip
 
-Una primera implementación fue utilizando un array ordenado de manera decreciente, de manera que el último elemento sea el más pequeño y el primero es el más grande. En la figura \ref{fig:seqpq} se puede ver la representación de esta implementación:
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\textwidth]{imagenes/PQSeq.png}
-    \caption{Representación de la cola con prioridad secuencial.}
-    \label{fig:seqpq}
-\end{figure}
-
-La inserción se realiza pasando por cada uno de los elementos hasta encontrar su posición. Por tanto, esta operación se realiza en $O(n)$, y la eliminación en $O(1)$. Al final, debido al uso continuado de estas dos operaciones, la complejidad real es más cercana a $O(n)$.
-
-\bigskip
-
-Esta implementación me ha servido para seguir desarrollando el proyecto, pero era demasiado lento con varios vehículos. Finalmente, he decidido implementar un \textit{Binary Heap}, más concretamente un \textit{Min-Heap.}
-
-\bigskip
-
-El \textit{Min-Heap} se representa como un árbol cuya raíz es el valor más pequeño de todos y de él cuelgan dos hijos con valores más grandes, de los que a su vez pueden colgar otros dos. Cabe destacar que esta estructura de datos tiene como propiedad que cada subárbol sigue manteniendo la propiedad de \textit{Min-Heap}. 
-
-\bigskip
-
-La implementación se realiza mediante un array, de manera que el padre se encuentra en la posición, el hijo a la izquierda en la posición $2 \cdot i + 1$ y el hijo a la derecha en la posición $2 \cdot i + 2$. En la figura \ref{fig:minheaparray} se puede ver un ejemplo de \textit{Min-Heap}, junto con su representación en un array.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\textwidth]{imagenes/minheap.png}
-    \caption{Representación de la cola con prioridad utilizando \textit{Min-Heap}.}
-    \label{fig:minheaparray}
-\end{figure}
-
-Gracias a esta representación, he conseguido que los vehículos tarden menos en calcular la ruta, dado que las operaciones tienen de complejidad $O(\log n)$.
+Finalmente opté por implementarlo en C++, utilizando como cola con prioridad el \textit{Binary Heap} que implementan los arrays (TArray) de Unreal. Esta versión ha conseguido que no se produzcan más paradas en la simulación, de manera que ahora pueden correr más de dos coches al mismo tiempo.
 
 \subsubsection{Heurística}
 
@@ -263,7 +215,7 @@ A continuación se da una explicación de cada uno de los elementos que forman l
     \begin{figure}[H]
         \centering
         \includegraphics[width=0.5\textwidth]{imagenes/converted/nodesCropped.jpg}
-        \caption{Visualización de varios nodos en el mapa. Cada nodo es representado por cuatro cuadrados (es la representación de un cubo en Unreal).}
+        \caption{Visualización de varios nodos en el mapa. Cada nodo es representado por cuatro cuadrados. Se han resaltado en color amarillo cuatro nodos.}
         \label{fig:nodo}
     \end{figure}
 
@@ -282,7 +234,6 @@ A continuación se da una explicación de cada uno de los elementos que forman l
     \end{figure}
 \end{itemize}
 
-\newpage
 
 \subsection{Cálculo de la ruta por los vehículos}
 
@@ -293,7 +244,7 @@ Con todo lo anterior implementado el coche es capaz de obtener una ruta por el c
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{imagenes/converted/checkpoints.jpg}
-    \caption{Checkpoints utilizados a lo largo del circuito. Los checkpoints son las barreras de color blanco.}
+    \caption{Checkpoints utilizados a lo largo del circuito. Los checkpoints son las líneas de color blanco. Además, hay otra en la línea de meta.}
     \label{fig:checkpointunreal}
 \end{figure}
 
@@ -301,11 +252,10 @@ Cuando la parte delantera del vehículo se solapa con un checkpoint, calcula la 
 
 \bigskip
 
-Con los puntos filtrados, el coche construye un spline y pinta los puntos en el suelo. Este spline será seguido gracias al controlador PID (Figura \ref{fig:pidbp}) mencionado anteriormente. Cabe destacar que al ser la ruta discreta y el vehículo una componente física del mundo, el vehículo no siempre conseguirá seguirla siempre, pero le servirá como ``guía'' a la hora de tener que hacer giros y adelantamientos.
+Con los puntos filtrados, el coche construye un spline y pinta los puntos en el suelo. Este spline será seguido gracias al controlador PID (Listing \ref{lst:pidcpp}) mencionado anteriormente. Cabe destacar que al ser la ruta discreta y el vehículo una componente física del mundo, el vehículo no siempre conseguirá seguirla siempre, pero le servirá como ``guía'' a la hora de tener que hacer giros y adelantamientos.
 
 \newpage
 
-% \subsection{\textcolor{red}{Lógica de adelantamiento de los vehículos}}
 \subsection{Lógica de adelantamiento de los vehículos}
 
 
@@ -335,6 +285,8 @@ Si un coche se sale de pista primero se esperan unos segundos para comprobar que
 
 Puede darse el remoto caso de que un vehículo vuelque y no sea capaz de darse la vuelta. En este caso he decidido implementar una regla que comprueba si la rotación del coche es mayor de 90 grados en ambos sentidos, pone el coche de nuevo sobre sus cuatro ruedas.
 
+% HERE: PONER FOTO DEL CODIGO PARA DAR LA VUELTA
+
 \subsection{Frenada anticipativa para evitar colisión}
 \label{sec:frenada}
 
@@ -346,14 +298,20 @@ Para ello, he hecho uso de los \textit{Line Trace} (véase sección \ref{sec:ter
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.4\textwidth]{imagenes/raycast.png}
+    \includegraphics[width=0.3\textwidth]{imagenes/converted/raycast.jpg}
     \caption{Esquema del trazado de rayos.}
     \label{fig:esqlinetrace}
 \end{figure}
 
 \bigskip
 
-Además, para evitar que frenen demasiado lejos, he hecho que la distancia de los rayos dependa de la velocidad del propio vehículo, de forma que a más velocidad, más lejos trazará el rayo.
+Además, para evitar colisiones entre vehículos, he calculado la distancia de los rayos en función de la velocidad, de forma que a mayor velocidad, mayor distancia del rayo. También he tenido en cuenta el nivel de agresividad y si el vehículo se encuentra al final de una recta, ya que existe el riesgo de colisionar con el vehículo de delante que frena antes y puede tener menor velocidad al no estar agresivo.
+
+\bigskip
+
+Los resultados obtenidos para niveles de agresividad altos son buenos, ya que en la mayoría de las ocasiones logra frenar a tiempo. Sin embargo, en algunas situaciones, se produce una colisión, lo cual simula el riesgo asumido por un piloto agresivo.
+
+% HERE: PONER FOTO DEL CODIGO PARA FRENAR
 
 \subsection{Rebufo de los vehículos}
 
@@ -361,17 +319,21 @@ Para dar algo más de realismo a la simulación, he implementado un sistema de r
 
 \subsection{Control de acelerador y freno}
 
-El control del acelerador y del freno en condiciones normales de carrera se implementa incluyendo en cada checkpoint (Figura \ref{fig:checkpointunreal}) la velocidad recomendada a la que debe ir el coche. El coche calcula la distancia a la que se encuentra del siguiente checkpoint y la distancia de frenado necesaria basándose en la velocidad y la desaceleración por el frenado (también se incluye la componente de agresividad, que se explicará más tarde).
+El control del acelerador y del freno en condiciones normales de carrera se implementa incluyendo en cada checkpoint (Figura \ref{fig:checkpointunreal}) la velocidad recomendada a la que debe ir el coche. El coche calcula la distancia a la que se encuentra del siguiente checkpoint y la distancia de frenado necesaria basándose en la velocidad y la desaceleración por el frenado (también se incluye la componente de agresividad).
 
 \bigskip
 
-Cabe destacar que esta velocidad es modificada por el estado del piloto, que se explicará en secciones posteriores.
+Cabe destacar que esta velocidad es modificada por el estado del piloto, explicado en la sección \ref{sec:mod-estado-piloto}.
+
+% HERE: AÑADIR FOTO DEL CODIGO QUE AUMENTA EL IMPULSO
 
 \subsection{Algoritmo para las posiciones de los pilotos}
 
 En lo que se refiere al cálculo de las posiciones de cada piloto, correspondientes a HU7 y HU8 e implementadas en el sprint 7, he utilizado una estructura de datos algo más compleja. Los vehículos almacenan la vuelta en la que están y el checkpoint; es decir, el sector del circuito en el que se encuentran. Con la información anterior, he creado un array asociativo que almacene como clave la vuelta y como valor otro array asociativo, que a su vez tiene como clave el checkpoint y como valor un array con todos los vehículos que se encuentran en ese estado. Para mostrarlo, solo hace falta iterar primero por aquellas claves mayores, ya que son los que más vueltas y más lejos del circuito están.
 
 \begin{table}[H]
+    \caption{Representación de la estructura de datos que almacena las posiciones de los pilotos durante la carrera.}
+    \footnotesize
     \centering
     \begin{tblr}{
         cells = {c},
@@ -396,7 +358,7 @@ En lo que se refiere al cálculo de las posiciones de cada piloto, correspondien
         i                              & \textbf{Clave (checkpoint actual)} & \textbf{Valor} \\
                                        & 3                                  & {[}c4]
     \end{tblr}
-    \caption{Representación de la estructura de datos que almacena las posiciones de los pilotos durante la carrera.}
+    \normalsize
     \label{fig:tablapos}
 \end{table}
 
@@ -411,15 +373,16 @@ En cuanto a la actualización del contador de vueltas, correspondiente a HU9 y r
 
 \subsection{Resultados de la simulación}
 
-% Cuando el último coche pasa por línea de meta, aparece una tabla con los resultados de la carrera. La implementación de esta funcionalidad la he hecho comenzando con un array de los vehículos vacío, y conforme llegan a la meta se van introduciendo en dicho array, de forma que cuando llegue el último aparezca la tabla con las mismas posiciones que las que hay en el array.
-
-Cuando el último coche cruza la línea de meta, aparece una tabla con los resultados de la carrera. La implementación de esta funcionalidad la he hecho comenzando con un array vacío para almacenar los vehículos a medida que llegan a la meta. Al llegar el último vehículo, se genera la tabla con las posiciones correspondientes al array.
+Cuando el último coche cruza la línea de meta, aparece una tabla con los resultados de la carrera. La implementación de esta funcionalidad la he hecho comenzando con un array vacío para almacenar los vehículos a medida que llegan a la meta. Al llegar el último vehículo, se genera la tabla con las posiciones correspondientes al array. En la figura \ref{fig:resultados-sim} se encuentra el boceto de la interfaz.
 
 
 \subsection{Importación y exportación de la configuración}
 
-En la importación y exportación de la configuración, correspondiente a HU10 y HU11 y realizadas en el sprint 8, he deseado que el usuario sea capaz de elegir la ubicación del archivo y la ruta de guardado, respectivamente. Para ello, he implementado una clase denominada ``FileDialogHandler'', que hace uso de los métodos de Unreal Engine ``OpenFileDialog'' y ``SaveFileDialog''
-% Para ello, he utilizado el plugin ``File System Library''\cite{plugin-dialog}, creado por Lambda Works, para poder abrir las ventanas de diálogo de Windows mediante \textit{blueprints}.
+En la importación y exportación de la configuración, correspondiente a HU10 y HU11 y realizadas en el sprint 8, he deseado que el usuario sea capaz de elegir la ubicación del archivo y la ruta de guardado, respectivamente. 
+
+\bigskip
+
+Unreal implementa los métodos ``OpenFileDialog'' y ``SaveFileDialog'' para abrir el cuadro de diálogo de Windows, pero solo están disponibles en las versiones de desarrollo, produciendo un error fatal cuando se utiliza en la aplicación compilada para ser distribuida, ya que el módulo con los métodos no se incluye. Para evitar que ocurra el error, he incluido todo el código de ambos métodos en una clase de C++ denominada ``FileDialogHandler'', con los métodos ``abrirArchivo'' y ``guardarArchivo'', de forma que se pueda utilizar en versiones de producción de la aplicación.
 
 \bigskip
 
@@ -429,6 +392,86 @@ El formato del archivo generado es un JSON en el que se encuentran los atributos
 
 Para poder cargar y guardar los archivos, he utilizado el plugin ``JSON Blueprint Utilities'' de Epic Games, que viene por defecto en Unreal Engine 5, pero deshabilitado.
 
+\subsection{Cambio entre distintas cámaras}
+
+La funcionalidad de cambiar la cámara, correspondiente a HU16 y desarrollada en el sprint 9, permite visualizar la carrera entre tres tipos de perspectivas diferentes: cenital, frontal de un vehículo concreto y cámaras estáticas a lo largo del circuito, similar a como funciona en las carreras reales. El boceto de la interfaz con los botones aparece en la figura \ref{fig:boc-ui-race}.
+
+\bigskip
+
+El cambio se puede realizar pulsando sobre los botones con el símbolo de la cámara. Los botones que se encuentran a la derecha del nombre y apellidos del piloto corresponden a los frontales. Mientras que el botón de la derecha permite iterar entre las perspectivas cenitales y la de cámaras estáticas.
+
+\bigskip
+
+En las figuras \ref{fig:cenital}, \ref{fig:frontal} y \ref{fig:cam-estaticas} se muestran ejemplos de las diferentes perspectivas:
+
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{imagenes/camera/cam-top.jpg}
+    \caption{Perspectiva cenital.}
+    \label{fig:cenital}
+\end{figure}
+
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{imagenes/camera/cam-frontal.jpg}
+    \caption{Perspectiva frontal del vehículo.}
+    \label{fig:frontal}
+\end{figure}
+
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{imagenes/camera/cam-pers.jpg}
+    \caption{Perspectiva de diversas cámaras.}
+    \label{fig:cam-estaticas}
+\end{figure}
+
+Para realizar el seguimiento con cámaras estáticas, he reutilizado el actor (glosario en la sección \ref{sec:terminosunreal}) ``SplinePath'', utilizada para crear las rutas del algoritmo A*, para crear un spline, cuyos puntos son las posiciones que puede tener la cámara. Después, he creado el actor ``CameraFollower'', que tiene una referencia a todos los vehículos, de forma que elige cada cierto tiempo uno al azar y calcula el punto del spline más cercano al coche. Finalmente, mueve la cámara a dicho punto y la rota para que apunte en cada momento al coche.
+
+\bigskip
+
+En las figuras \ref{fig:bp-cam1} y \ref{fig:bp-cam2} se encuentra la implementación de la obtención del punto del spline y el movimiento de la cámara al objetivo, respectivamente:
+
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{imagenes/blueprints/CameraFollower.getCameraPosition.png}
+    \caption{Implementación de la obtención del punto del spline.}
+    \label{fig:bp-cam1}
+\end{figure}
+
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{imagenes/blueprints/CameraFollower.moveCamera.png}
+    \caption{Implementación del posicionamiento de la cámara.}
+    \label{fig:bp-cam2}
+\end{figure}
+
+\subsubsection{Enmarcado del objetivo}
+
+Debido al amplio rango de relaciones de aspecto con las que la aplicación puede trabajar, es posible que el objetivo sea enmarcado demasiado lejos o incluso se llegue a cortar. Para solucionarlo, es necesario ajustar los valores del FOV \textit{(Field Of View)} para que siempre se mantenga enmarcado. La modificación del FOV se realiza mediante una función lineal basada en los valores de FOV más coherentes para las relaciones de aspecto 1:1 y 21:9 y un ajuste manual de las constantes de la función. 
+
+\bigskip
+
+La función final es: $f(x) = 34.5865 \cdot x + 26.4135$, donde $x$ representa la relación de aspecto en formato numérico (diviendo ambos valores). Además, la he encapsulado en la clase ``CameraHandler'', para que los coches también puedan utilizar sus métodos.
+
+\subsection{Cálculo de la zona de frenado}
+
+Los coches necesitan saber en qué instante frenar para poder tomar las curvas sin salirse de pista. Con este fin, deben conocer la distancia al siguiente checkpoint donde deben comenzar a frenar.
+
+\bigskip
+
+He calculado la distancia de frenado utilizando la fórmula del MRUA (Movimiento Rectilíneo Uniformemente Acelerado) y despejando la distancia.
+
+\bigskip
+
+Partiendo de las fórmulas siguientes: 
+
+$d = d_0 + v_0 \cdot t + \frac{1}{2} \cdot a \cdot t$
+
+$v = v_0 + a \cdot t$
+
+\bigskip
+
+Al despejar la variable $t$ en la segunda fórmula y sustituirla en la primera, se procede a simplificar la expresión obteniendo: $ d = \frac{v^2-v_0^2}{2 \cdot a} $, donde $a$ es la deceleración, $v$ la velocidad a la que se quiere llegar y $v_0$ la velocidad actual.
+
+\bigskip
+
+Cabe destacar que la deceleración la he obtenido mediante el uso de otros vehículos con las mismas características que los utilizados en las carreras, pero con la capacidad de ser controlados con el teclado. Después, he calculado el valor G de la deceleración, el cual, al multiplicarlo por la gravedad, resulta en el valor final.
+% de forma que multiplicado por la gravedad obtenga el valor final.
 
 \section{Modelado y texturizado de la escena}
 
@@ -439,7 +482,6 @@ Para la creación, preparación y modificación de los distintos modelos y textu
 El trazado de la carretera lo he realizado creando primero un spline en Unreal con la forma deseada. A continuación, se debe incluir un modelo de carretera para que el spline pueda generarlo siguiendo la forma del trazado.
 \begin{figure}[H]
     \centering
-    % \includegraphics[width=\textwidth]{imagenes/converted/trazado.jpg}
     \includegraphics[width=0.7\textwidth]{imagenes/converted/trazadoFinal.jpg}
     \caption{Trazado del circuito final.}
     \label{fig:trazado}
@@ -708,7 +750,7 @@ Para la zona de los alrededores del circuito, he utilizado la textura ``Coast Sa
     %\hspace{10px} %si se quiere poner una medida personalizada
 	\begin{subfigure}[t]{0.48\textwidth}
 	    \centering
-        \includegraphics[width=\textwidth]{imagenes/Ground066_2K_Color.png}
+        \includegraphics[width=\textwidth]{imagenes/converted/Ground066_2K_Color.jpg}
         \caption{Componente difusa de la textura de tierra del suelo.}
         \label{fig:ground066}
     \end{subfigure}    

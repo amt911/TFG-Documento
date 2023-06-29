@@ -1,17 +1,3 @@
-% DUDAS
-% LAS REFERENCIAS DEBERIAN IR EN LAS REFERENCIAS DEL DOCUMENTO EN GENERAL
-% LA CALIDAD DEL DOCUMENTO ES PESIMA
-% LOS REQUISITOS DE INFORMACION SON NO FUNCIONALES
-% HE REPETIDO DEMASIADAS VECES LO QUE HACE MI SIMULADOR
-% EN LA MAYORIA DE LAS SECCIONES HE RELLENADO MAS BIEN POCO
-% ME PARECEN POCOS REQUISITOS EN GENERAL, PERO NO SE ME OCURREN MAS
-
-% DUDAS TUTORIA
-%no se si poner aqui lo de la pagina web. tipo, que no hay suficientes opciones software para el publico general.
-
-
-% TODO
-% PONER QUE NOS REFERIMOS A SOFTWARE, SISTEMA Y ESO A LO MISMO
 \chapter{Especificación de requisitos}
 
 \section{Introducción}
@@ -158,11 +144,14 @@ También se asume que el sistema operativo instalado es Windows en sus versiones
     \item \textbf{RF3.- Modificación del estado de los pilotos durante la carrera:} El sistema permitirá modificar el estado de los pilotos en tiempo real.
     \item \textbf{RF4.- Actualización de la velocidad de simulación:} El sistema permitirá actualizar la velocidad entre varias opciones predefinidas.
     \item \textbf{RF5.- Pausado y reanudado de la simulación:} El sistema permitirá pausar y reanudar la simulación que está en curso.
-    \item \textbf{RF6.- Características del simulador:} El sistema debe simular la conducción de varios pilotos en una carrera de coches, como adelantamientos y sorteo de obstáculos, entre otros. Los pilotos tendrán un conjunto de condiciones que variarán durante la carrera y que afectarán a su rendimiento.
+    \item \textbf{RF6.- Características del simulador:} El sistema debe simular la conducción de varios pilotos en una carrera de coches, como adelantamientos, sorteo de obstáculos y rebufo, entre otros. Los pilotos tendrán un conjunto de condiciones que variarán durante la carrera y que afectarán a su rendimiento.
     \item \textbf{RF7.- Exportación de la configuración de la simulación:} El sistema permitirá almacenar la configuración de la carrera en un fichero para su posterior importación.
     \item \textbf{RF8.- Importación de la configuración de la simulación:} El sistema permitirá importar la configuración de la simulación.
     \item \textbf{RF9.- Visualización de la vuelta actual:} El sistema deberá realizar el cálculo y la visualización de la vuelta actual.
     \item \textbf{RF10.- Salida de la simulación en curso: }El sistema permitirá salir de la simulación que haya en ejecución al configurador.
+    \item \textbf{RF11.- Visualización de las rutas generadas por los pilotos: }El sistema permitirá la visualización de la ruta generada por los pilotos durante la carrera.
+    \item \textbf{RF12.- Visualización de los checkpoints en el circuito: }El sistema permitirá la visualización de los checkpoints en el circuito durante la simulación.
+    \item \textbf{RF13.- Cambio de cámara durante la simulación: }El sistema permitirá cambiar la cámara durante la carrera, permitiendo observar a distintos pilotos.
 \end{itemize}
 
 
@@ -190,16 +179,8 @@ También se asume que el sistema operativo instalado es Windows en sus versiones
 \subsubsection{Requisitos de información del sistema}
 
 \begin{itemize}
-    \item \textbf{RI1.- Datos de los pilotos:} Nombre, nacionalidad, aguante mental y físico, agresividad y experiencia.
-    % \begin{itemize}
-    %     \item Nombre
-    %     \item Nacionalidad
-    %     \item Aguante mental
-    %     \item Aguante físico
-    %     \item Agresividad
-    %     \item Experiencia
-    % \end{itemize}
-    \item \textbf{RI2.- Datos del simulador:} Velocidad de simulación, hora actual, número de vueltas, vuelta actual y número de vehículos.
+    \item \textbf{RI1.- Datos de los pilotos:} Nombre, aguante mental y físico, agresividad, experiencia y color del coche.
+    \item \textbf{RI2.- Datos del simulador:} Velocidad de simulación, número de vueltas, vuelta actual y número de vehículos.
 \end{itemize}
 
 \subsubsection{Aspectos legales}
@@ -207,17 +188,25 @@ También se asume que el sistema operativo instalado es Windows en sus versiones
 La simulación no va a guardar ningún tipo de dato privado ni asociable a un individuo, haciendo que todos los datos sean anónimos. Por tanto, no es necesario seguir ningún tipo de tratamiento especial con la información insertada en la aplicación.
 
 \subsubsection{Interfaz de usuario}
+\label{sec:proto-ui}
 
-La interfaz de usuario que se utilizará para configurar los parámetros previos a la carrera estará compuesta por varias secciones para ajustar distintos parámetros de la simulación. Además, habrá otra ventana para modificar algunas características de los pilotos y dos botones para importar y exportar la configuración.
+
+La interfaz de usuario que se utilizará para configurar los parámetros previos a la carrera estará compuesta por varias secciones para ajustar distintos parámetros de la simulación. Además, habrá otra ventana para modificar algunas características de los pilotos y dos botones para importar y exportar la configuración. Por último, habrá una sección dedicada al entrenamiento del algoritmo genético, con la posibilidad de elegir ambas disciplinas. El boceto de la interfaz se encuentra en la figura \ref{fig:protoconfig}.
 
 \bigskip
 
-Durante la carrera, la interfaz de usuario tendrá un aspecto similar al de las carreras reales, con un contador de vueltas y la posición de los pilotos a la izquierda. Asimismo, se podrá pulsar sobre un piloto para ver y modificar su estado en tiempo real.
+Durante la carrera, la interfaz de usuario tendrá un aspecto similar al de las carreras reales, con un contador de vueltas y la posición de los pilotos a la izquierda. Asimismo, se podrá pulsar sobre un piloto para ver y modificar su estado en tiempo real. En la figura \ref{fig:protoranking} se puede ver el boceto de la interfaz.
 
-\newpage
+\bigskip
 
-Los bocetos de dichas interfaces son las siguientes:
-% La estructura que tendrá la interfaz de usuario es la siguiente:
+Al acabar la carrera, aparecerá una pantalla con una tabla de las posiciones finales de los pilotos, así como un botón para poder salir al configurador de la carrera. En la figura \ref{fig:protopantallafinal} aparece un boceto de dicha interfaz.
+
+\bigskip
+
+Durante la ejecución del algoritmo genético, aparece una interfaz con los 10 mejores valores para el controlador PID (implementación y explicación en la sección \ref{sec:pid-sec}), así como un botón para salir de nuevo al configurador. En la figura \ref{fig:proto-ga} aparece el boceto de la interfaz.
+
+% Los bocetos de dichas interfaces son las siguientes:
+A continuación se muestran los bocetos de las interfaces mencionadas
 
 \begin{figure}[H]
     \centering
@@ -231,4 +220,18 @@ Los bocetos de dichas interfaces son las siguientes:
     \includegraphics[width=\textwidth]{imagenes/pag2-proto.png}
     \caption{Prototipo de la interfaz de las opciones durante la carrera.}
     \label{fig:protoranking}
+ \end{figure}
+
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{imagenes/proto-pantallafinal.png}
+    \caption{Prototipo de la interfaz con los resultados de la carrera.}
+    \label{fig:protopantallafinal}
+ \end{figure}
+
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{imagenes/proto-ga.png}
+    \caption{Prototipo de la interfaz para la ejecución del algoritmo genético.}
+    \label{fig:proto-ga}
  \end{figure}

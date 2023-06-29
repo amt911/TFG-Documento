@@ -437,3 +437,121 @@ Cada Historia de Usuario se desarrollará en una tabla a continuación:
         \\ \hline
     \end{tabularx}
 \end{table}
+
+
+\begin{table}[H]
+    \begin{tabularx}{\textwidth}{| X | X | X |}
+        \hline
+        \multicolumn{1}{|l|}{\textbf{Identificador:} HU15} & \multicolumn{2}{l|}{Utilización del rebufo.}
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Descripción:} Como usuario, quiero que los vehículos puedan utilizar el rebufo del vehículo de delante.}
+        \\ \hline
+        \textbf{Estimación:} 2 & \textbf{Prioridad:} 4 & \textbf{Entrega:} 9
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Tareas:}
+        \begin{itemize}
+            \item Implementar la lógica para detectar cuando un vehículo se encuentra detrás de otro.
+        \end{itemize}
+        }
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Requisitos relacionados:} RF6.}
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Pruebas de aceptación:}
+        \begin{itemize}
+            \item Al encontrarse el vehículo de detrás en zona de rebufo, deberá aumentar su aceleración.
+        \end{itemize}
+        }
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Observaciones:}}
+        \\ \hline
+    \end{tabularx}
+\end{table}
+
+\begin{table}[H]
+    \begin{tabularx}{\textwidth}{| X | X | X |}
+        \hline
+        \multicolumn{1}{|l|}{\textbf{Identificador:} HU16} & \multicolumn{2}{l|}{Cambio de la cámara.}
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Descripción:} Como usuario, quiero cambiar entre distintas cámaras disponibles.}
+        \\ \hline
+        \textbf{Estimación:} 3 & \textbf{Prioridad:} 4 & \textbf{Entrega:} 9
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Tareas:}
+        \begin{itemize}
+            \item Implementar la lógica para cambiar entre las distintas cámaras.
+            \item Implementar los botones de la interfaz de usuario para poder cambiar de cámara.
+        \end{itemize}
+        }
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Requisitos relacionados:} RF13.}
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Pruebas de aceptación:}
+        \begin{itemize}
+            \item Al pulsar el botón para cambiar de cámara, la visualización deberá cambiar de manera acorde.
+        \end{itemize}
+        }
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Observaciones:}}
+        \\ \hline
+    \end{tabularx}
+\end{table}
+
+\begin{table}[H]
+    \begin{tabularx}{\textwidth}{| X | X | X |}
+        \hline
+        \multicolumn{1}{|l|}{\textbf{Identificador:} HU17} & \multicolumn{2}{l|}{Visualización de las rutas.}
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Descripción:} Como usuario, quiero visualizar la ruta generada por los vehículos, de manera opcional.}
+        \\ \hline
+        \textbf{Estimación:} 2 & \textbf{Prioridad:} 4 & \textbf{Entrega:} 9
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Tareas:}
+        \begin{itemize}
+            \item Implementar la lógica para generar cada uno de los cubos que compone la ruta de los coches.
+            \item Implementar la funcionalidad de la interfaz de usuario para poder ocultar y mostrar la visualización de la ruta.
+        \end{itemize}
+        }
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Requisitos relacionados:} RF11.}
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Pruebas de aceptación:}
+        \begin{itemize}
+            \item Al estar el botón pulsado, la ruta de todos los coches deberá aparecer.
+            \item Si el botón no está pulsado, la ruta de todos los coches no debe aparecer en el circuito.
+        \end{itemize}
+        }
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Observaciones:}}
+        \\ \hline
+    \end{tabularx}
+\end{table}
+
+
+\begin{table}[H]
+    \begin{tabularx}{\textwidth}{| X | X | X |}
+        \hline
+        \multicolumn{1}{|l|}{\textbf{Identificador:} HU18} & \multicolumn{2}{l|}{Visualización de los puntos de control.}
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Descripción:} Como usuario, quiero visualizar los puntos de control del circuito, de manera opcional.}
+        \\ \hline
+        \textbf{Estimación:} 2 & \textbf{Prioridad:} 4 & \textbf{Entrega:} 9
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Tareas:}
+        \begin{itemize}
+            \item Implementar la lógica en la interfaz para mostrar y ocultar los puntos de control.
+        \end{itemize}
+        }
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Requisitos relacionados:} RF12.}
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Pruebas de aceptación:}
+        \begin{itemize}
+            \item Al estar el botón pulsado, los puntos de control deberán aparecer.
+            \item Si el botón no está pulsado, los puntos de control no debe aparecer en el circuito.
+        \end{itemize}
+        }
+        \\ \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax\linewidth=\hsize}X|}{\textbf{Observaciones:}}
+        \\ \hline
+    \end{tabularx}
+\end{table}
