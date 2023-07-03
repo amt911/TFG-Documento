@@ -246,11 +246,11 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
 
     currentOvertake\-Time & Float                 & Cantidad de segundos que el vehículo lleva intentando un adelantamiento.                                       \\
     
-    OVERTAKE\-\_TIME      & Float                 & Tiempo máximo que debe intentar un adelantamiento.                                                             \\
+    MAX\-\_OVER\-TAKE\-\_TIME      & Float                 & Tiempo máximo que debe intentar un adelantamiento.                                                             \\
 
     isOvertaking        & boolean               & Si el vehículo está intentando adelantar en el momento.                                                 \\
 
-    REVERSE\_TIME       & Float                 & Tiempo máximo en segundos que el vehículo da marcha atrás para recuperarse de un accidente.                    \\
+    MAX\-\_REVERSE\-\_TIME       & Float                 & Tiempo máximo en segundos que el vehículo da marcha atrás para recuperarse de un accidente.                    \\
 
     stuckTime           & Float                 & Tiempo que permanece atascado el vehículo (en segundos).                                                       \\
 
@@ -260,7 +260,7 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
 
     goSlowAfterCrash    & boolean               & Si el coche debe ir lento para volver a pista después de un accidente.                                  \\
 
-    GO\-\_SLOW\-\_TIME      & Float                 & Número de segundos que debe ir lento para volver a pista.                                            \\
+    MAX\-\_SLOW\-\_TIME      & Float                 & Número de segundos que debe ir lento para volver a pista.                                            \\
 
     reverseTime         & Float                 & Cantidad de segundos que lleva el coche dando marcha atrás.                                                    \\
 
@@ -1014,6 +1014,7 @@ En esta última figura \ref{fig:class5}, aparecen las clases referentes al algor
     \label{fig:class5}
 \end{figure}
 
+\newpage
 
 \section{Diseño de la Interfaz de Usuario}
 
@@ -1021,9 +1022,7 @@ Los prototipos de las interfaces de usuario mencionadas a continuación se encue
 
 \bigskip
 
-La interfaz de usuario del configurador de la simulación
-% (el prototipo se puede ver en la figura \ref{fig:protoconfig}) 
-está dividida en dos secciones principales: a la izquierda se encuentra la sección para el número de vehículos y de pilotos, la disciplina y las opciones de importación y exportación de la configuración. A la derecha está la segunda sección, compuesta por las características de cada piloto, un menú desplegable para ejecutar el algoritmo genético y el botón para comenzar la simulación.
+La interfaz de usuario del configurador de la simulación está dividida en dos secciones principales: a la izquierda se encuentra la sección para el número de vehículos y de pilotos, la disciplina y las opciones de importación y exportación de la configuración. A la derecha está la segunda sección, compuesta por las características de cada piloto, un menú desplegable para ejecutar el algoritmo genético y el botón para comenzar la simulación.
 
 \begin{figure}[H]
     \centering
@@ -1031,9 +1030,7 @@ está dividida en dos secciones principales: a la izquierda se encuentra la secc
     \caption{Interfaz del configurador antes de la carrera.}
 \end{figure}
 
-Durante la carrera, se mostrará un listado de posiciones de los pilotos y un contador de vueltas 
-% (prototipo en la figura \ref{fig:protoranking}) 
-en la parte izquierda de la pantalla. Este listado permitirá visualizar y modificar el estado de cada piloto en tiempo real. La disposición de los elementos será similar a la de disciplinas como la Fórmula 1, donde el ranking de pilotos y el contador de vueltas aparecen a la izquierda, y en cada celda de posición aparecen las tres primeras letras del apellido. En este proyecto, he decidido añadir también la primera letra del nombre, en caso de que haya varios pilotos con el mismo apellido. Además, aparecerá a la derecha un menú desplegable con las opciones de visualización de ruta y de los checkpoints.
+Durante la carrera, se mostrará un listado de posiciones de los pilotos y un contador de vueltas en la parte izquierda de la pantalla. Este listado permitirá visualizar y modificar el estado de cada piloto en tiempo real. La disposición de los elementos será similar a la de disciplinas como la Fórmula 1, donde el ranking de pilotos y el contador de vueltas aparecen a la izquierda, y en cada celda de posición aparecen las tres primeras letras del apellido. En este proyecto, he decidido añadir también la primera letra del nombre, en caso de que haya varios pilotos con el mismo apellido. Además, aparecerá a la derecha un menú desplegable con las opciones de visualización de ruta y de los checkpoints.
 
 
 \begin{figure}[H]

@@ -175,7 +175,7 @@ La heurística elegida ha sido la distancia Manhattan, ya que el rango de movimi
 % foto diagrama de la distancia manhattan
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{imagenes/converted/Euclidean-and-Manhattan-distance-comparison-3235-Optimizations-The-first-optimization.jpg}
+    \includegraphics[width=0.7\textwidth]{imagenes/Euclidean-and-Manhattan-distance-comparison-3235-Optimizations-The-first-optimization.png}
     \caption{Esquema del funcionamiento de la distancia Manhattan\cite{gameai}.}
     \label{fig:manhattan}
 \end{figure}
@@ -263,7 +263,7 @@ Dado que el algoritmo A* funciona principalmente para mundos estáticos, es nece
 
 \bigskip
 
-La regla que sigue el vehículo es si se encuentra a una distancia del vehículo de adelante y tiene la suficiente diferencia de velocidad, ejecuta el algoritmo de navegación y espera unos pocos segundos para volverlo a ejecutar. Esta implementación me ha dado unos resultados razonables en tiempo y habilidad en los pilotos.
+La regla que sigue el vehículo es si se encuentra a una distancia del vehículo de delante, tiene la suficiente diferencia de velocidad, y el vehículo a adelantar se encuentra en el mismo checkpoint o el siguiente. En caso afirmativo, ejecuta el algoritmo de navegación y espera unos pocos segundos para volverlo a ejecutar. Esta implementación me ha dado unos resultados razonables en tiempo y habilidad en los pilotos.
 
 \bigskip
 
@@ -272,7 +272,7 @@ En la figura \ref{fig:overtake} se puede ver como se han dado las condiciones ne
 % quizas poner foto, pero creo que va a ser complicado
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{imagenes/converted/overtake.jpg}
+    \includegraphics[width=\textwidth]{imagenes/converted/overtake.jpg}
     \caption{Cálculo de la ruta del coche verde para intentar adelantar al otro piloto.}
     \label{fig:overtake}
 \end{figure}
@@ -280,6 +280,8 @@ En la figura \ref{fig:overtake} se puede ver como se han dado las condiciones ne
 \subsection{Recuperación después de un accidente}
 
 Si un coche se sale de pista primero se esperan unos segundos para comprobar que de verdad no se puede mover. Cuando se ha comprobado, se recorre un cierto tiempo marcha atrás con las ruedas rectas. Finalmente, ejecuta el A* para calcular una ruta de escapatoria y recorre lento dicha ruta por un breve instante de tiempo, hasta que finalmente recupera la velocidad que tenía.
+
+\newpage
 
 \subsection{Recuperación después del vuelco}
 
@@ -405,18 +407,21 @@ El cambio se puede realizar pulsando sobre los botones con el símbolo de la cá
 En las figuras \ref{fig:cenital}, \ref{fig:frontal} y \ref{fig:cam-estaticas} se muestran ejemplos de las diferentes perspectivas:
 
 \begin{figure}[H]
+    \centering
     \includegraphics[width=\textwidth]{imagenes/camera/cam-top.jpg}
     \caption{Perspectiva cenital.}
     \label{fig:cenital}
 \end{figure}
 
 \begin{figure}[H]
+    \centering
     \includegraphics[width=\textwidth]{imagenes/camera/cam-frontal.jpg}
     \caption{Perspectiva frontal del vehículo.}
     \label{fig:frontal}
 \end{figure}
 
 \begin{figure}[H]
+    \centering
     \includegraphics[width=\textwidth]{imagenes/camera/cam-pers.jpg}
     \caption{Perspectiva de diversas cámaras.}
     \label{fig:cam-estaticas}
@@ -429,12 +434,14 @@ Para realizar el seguimiento con cámaras estáticas, he reutilizado el actor (g
 En las figuras \ref{fig:bp-cam1} y \ref{fig:bp-cam2} se encuentra la implementación de la obtención del punto del spline y el movimiento de la cámara al objetivo, respectivamente:
 
 \begin{figure}[H]
+    \centering
     \includegraphics[width=\textwidth]{imagenes/blueprints/CameraFollower.getCameraPosition.png}
     \caption{Implementación de la obtención del punto del spline.}
     \label{fig:bp-cam1}
 \end{figure}
 
 \begin{figure}[H]
+    \centering
     \includegraphics[width=\textwidth]{imagenes/blueprints/CameraFollower.moveCamera.png}
     \caption{Implementación del posicionamiento de la cámara.}
     \label{fig:bp-cam2}
@@ -473,9 +480,11 @@ Al despejar la variable $t$ en la segunda fórmula y sustituirla en la primera, 
 Cabe destacar que la deceleración la he obtenido mediante el uso de otros vehículos con las mismas características que los utilizados en las carreras, pero con la capacidad de ser controlados con el teclado. Después, he calculado el valor G de la deceleración, el cual, al multiplicarlo por la gravedad, resulta en el valor final.
 % de forma que multiplicado por la gravedad obtenga el valor final.
 
+\newpage
+
 \section{Modelado y texturizado de la escena}
 
-Para la creación, preparación y modificación de los distintos modelos y texturas de la aplicación, he utilizado Blender\cite{blender} y GIMP\cite{gimp}. A continuación detallaré cada uno de los modelos y texturas, así como su proceso de creación.
+Para la creación, preparación y modificación de los distintos modelos y texturas de la aplicación, he utilizado Blender\cite{blender} y GIMP\cite{gimp}. A continuación detallaré cada uno de los modelos y texturas, así como su proceso de generación.
 
 \subsection{Trazado del circuito}
 
@@ -527,7 +536,7 @@ Después, he utilizado la textura ``Asphalt 024 A''\cite{asphalt}, creada por Le
     \centering 
 	\begin{subfigure}[t]{0.48\textwidth}
 	    \centering
-        \includegraphics[width=0.98\textwidth,cframe=black 0.5pt 0pt]{imagenes/converted/pista/Asphalt024A_2K_Color.jpg}
+        \includegraphics[width=0.9\textwidth,cframe=black 1pt 0pt]{imagenes/converted/pista/Asphalt024A_2K_Color.jpg}
         \caption{Textura de asfalto modificada.}
         \label{fig:asfaltomod}
     \end{subfigure}
@@ -536,7 +545,7 @@ Después, he utilizado la textura ``Asphalt 024 A''\cite{asphalt}, creada por Le
     %\hspace{10px} %si se quiere poner una medida personalizada
 	\begin{subfigure}[t]{0.48\textwidth}
 	    \centering
-	    \includegraphics[width=0.98\textwidth,cframe=black 0.5pt 0pt]{imagenes/converted/pista/Asphalt024A_2K_Color_FinishLineFinal.jpg}
+	    \includegraphics[width=0.9\textwidth,cframe=black 1pt 0pt]{imagenes/converted/pista/Asphalt024A_2K_Color_FinishLineFinal.jpg}
         \caption{Textura de asfalto con la línea de meta.}
     \end{subfigure}    
     \caption{Texturas de asfalto utilizadas en la aplicación. Se han enmarcado para poder separar las imágenes del fondo de la página.}
@@ -566,14 +575,14 @@ Estas texturas no encajaban del todo bien, haciendo que las líneas blancas no e
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.4\textwidth]{imagenes/converted/pista/uv-straight.jpg}
+    \includegraphics[width=0.7\textwidth]{imagenes/converted/pista/uv-straight.jpg}
     \caption{Mapeado UV para la sección de asfalto.}
     \label{fig:uvasphalt}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{imagenes/converted/pista/uv-kerb.jpg}
+    \includegraphics[width=\textwidth]{imagenes/converted/pista/uv-kerb.jpg}
     \caption{Mapeado UV para la sección de piano.}
     \label{fig:uvkerb}
 \end{figure}
@@ -657,7 +666,7 @@ Debido a que quería simular que mi barrera está algo arrugada, como pasa en la
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.4\textwidth]{imagenes/converted/barrier/barrierHP.jpg}
+    \includegraphics[width=0.45\textwidth]{imagenes/converted/barrier/barrierHP.jpg}
     \caption{Barrera de alta resolución con imperfecciones.}
     \label{fig:barreraHP}
 \end{figure}
@@ -666,7 +675,7 @@ Como puede consumir demasiados recursos, he convertido las deformaciones geomét
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.4\textwidth]{imagenes/converted/barrier/barrierNormal.jpg}
+    \includegraphics[width=0.45\textwidth]{imagenes/converted/barrier/barrierNormal.jpg}
     \caption{Textura normal generada para la versión con pocos polígonos.}
     \label{fig:barreraLP}
 \end{figure}
@@ -676,7 +685,7 @@ Y el modelo final es mi barrera, junto a la valla anteriormente mencionada encim
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.4\textwidth]{imagenes/converted/barrier/barrierfence.jpg}
+    \includegraphics[width=0.6\textwidth]{imagenes/converted/barrier/barrierfence.jpg}
     \caption{Resultado final de la barrera en Unreal.}
     \label{fig:barreraFinal}
 \end{figure}
