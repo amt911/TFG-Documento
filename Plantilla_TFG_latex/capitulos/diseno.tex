@@ -39,7 +39,7 @@ Cabe destacar que estas componentes son modificadas como consecuencia directa de
 
 En esta sección se detallarán las distintas entidades que componen la aplicación, junto a los atributos necesarios para implementar la lógica. Cada entidad y sus atributos estarán en una subsección a continuación:
 
-\subsection{AAStarNodeCPP}
+\subsection{ANodeCPP}
 \textbf{Descripción: }Representa una celda de la matriz utilizada para ejecutar el algoritmo A*.
 
 \tiny
@@ -48,7 +48,7 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
     entry = none,
     ]{
     width = \linewidth,
-    colspec = {Q[15,m]Q[18,m]Q[50,m]},
+    colspec = {Q[15,m]Q[17,m]Q[50,m]},
     row{1} = {Silver,c},
     cell{2-8}{1,2} = {c},
     hlines,
@@ -59,7 +59,7 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
     cube & UStatic\-Mesh\-Component* & Cubo que se utilizará como nodo \\
     defaultSceneRoot & UScene\-Component* & Nodo raíz de donde colgará el cubo. \\
 
-    neighbors         & TArray\-$<$AAStarNodeCPP*$>$ & Almacena las celdas con las que colinda.                                                                                         \\
+    neighbors         & TArray\-$<$ANodeCPP*$>$ & Almacena las celdas con las que colinda.                                                                                         \\
 
     hasObstacle       & bool              & Si la celda actual está ocupada por un coche.                                                                           \\
 
@@ -80,7 +80,7 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
     entry = none,
     ]{
     width = \linewidth,
-    colspec = {Q[9,m]Q[8,m]Q[40,m]},
+    colspec = {Q[6,m]Q[6,m]Q[40,m]},
     row{1} = {Silver,c},
     cell{2-3}{1,2} = {c},
     hlines,
@@ -102,7 +102,7 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
     entry = none,
     ]{
     width = \linewidth,
-    colspec = {Q[12,m]Q[15,m]Q[40,m]},
+    colspec = {Q[11,m]Q[11,m]Q[40,m]},
     row{1} = {Silver,c},
     cell{2-6}{1,2} = {c},
     hlines,
@@ -110,9 +110,9 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
     }
     \textbf{Variable} & \textbf{Tipo}        & \textbf{Anotaciones}                                                                                                                                   \\
 
-    nodeClass & TSubclassOf\-$<$AAStarNodeCPP*$>$ & Referencia a la clase que se utilizará como nodo. Necesario para utilizar clases implementadas en blueprints, pero derivadas de una clase de C++.  \\
+    nodeClass & TSubclassOf\-$<$ANodeCPP*$>$ & Referencia a la clase que se utilizará como nodo. Necesario para utilizar clases implementadas en blueprints, pero derivadas de una clase de C++.  \\
 
-    nodes             & TArray\-$<$AAStarNodeCPP*$>$ & Referencia a los nodos que forman la malla de navegación. El primero el de la esquina superior izquierda y el último el de la esquina inferior derecha. \\
+    nodes             & TArray\-$<$ANodeCPP*$>$ & Referencia a los nodos que forman la malla de navegación. El primero el de la esquina superior izquierda y el último el de la esquina inferior derecha. \\
 
     GRID\_SIZE          & int              & Cantidad de cubos que va a haber a lo largo y a lo ancho. Por defecto es 250. \\
 
@@ -130,7 +130,7 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
     entry = none,
     ]{
     width = \linewidth,
-    colspec = {Q[8,m]Q[15,m]Q[50,m]},
+    colspec = {Q[8,m]Q[10,m]Q[50,m]},
     row{1} = {Silver,c},
     cell{2,3}{1,2} = {c},
     hlines,
@@ -138,7 +138,7 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
     }
     \textbf{Variable} & \textbf{Tipo} & \textbf{Anotaciones}                                          \\
 
-    node              & AAStarNodeCPP*     & Nodo que se va a insertar en la cola.           \\
+    node              & ANodeCPP*     & Nodo que se va a insertar en la cola.           \\
 
     cost              & float         & Coste total del nodo, incluyendo la heurística.
 \end{longtblr}
@@ -248,17 +248,17 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
     
     MAX\-\_OVER\-TAKE\-\_TIME      & Float                 & Tiempo máximo que debe intentar un adelantamiento.                                                             \\
 
-    isOvertaking        & boolean               & Si el vehículo está intentando adelantar en el momento.                                                 \\
+    isOvertaking        & Boolean               & Si el vehículo está intentando adelantar en el momento.                                                 \\
 
     MAX\-\_REVERSE\-\_TIME       & Float                 & Tiempo máximo en segundos que el vehículo da marcha atrás para recuperarse de un accidente.                    \\
 
     stuckTime           & Float                 & Tiempo que permanece atascado el vehículo (en segundos).                                                       \\
 
-    isReversing         & boolean               & Si el vehículo está dando marcha atrás.                                                                 \\
+    isReversing         & Boolean               & Si el vehículo está dando marcha atrás.                                                                 \\
 
     goSlowTimer         & Float                 & Cantidad de segundos que el vehículo está yendo lento para volver a la pista después de un accidente. \\
 
-    goSlowAfterCrash    & boolean               & Si el coche debe ir lento para volver a pista después de un accidente.                                  \\
+    goSlowAfterCrash    & Boolean               & Si el coche debe ir lento para volver a pista después de un accidente.                                  \\
 
     MAX\-\_SLOW\-\_TIME      & Float                 & Número de segundos que debe ir lento para volver a pista.                                            \\
 
@@ -276,7 +276,7 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
 
     lastSplinePosition & Vector & Posición sobre la ruta generada en el instante anterior. \\
 
-    isDeviating & Boolean & Indica si el vehículo se está desviando de la ruta. \\
+    % isDeviating & Boolean & Indica si el vehículo se está desviando de la ruta. \\
 
     pathfinderRef       & UAStar\-Pathfinder\-CPP       & Instancia del algoritmo de navegación. \\
 
