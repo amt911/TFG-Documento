@@ -200,8 +200,11 @@ En cuanto a algoritmos de navegación para los vehículos, los más destacados s
 
    \item \textbf{Algoritmo A* (A Estrella)}: Algoritmo de búsqueda de caminos en grafos que se utiliza para encontrar la ruta óptima. Utiliza una función heurística para guiar la búsqueda hacia la solución más eficiente y es más rápido en tiempo de ejecución que otros algoritmos similares, como el de Dijkstra.
    
-   Si se desea aplicar este algoritmo al proyecto, es necesario discretizar el espacio, lo que puede provocar una pérdida de precisión. Además, puede resultar más costoso que otras alternativas anteriormente mencionadas.
-   % Además, se debería aplicar periódicamente en todos los vehículos de la simulación, lo que puede ser computacionalmente costoso. %arreglar esta argumentacion
+   Si se desea aplicar este algoritmo al proyecto, es necesario discretizar el espacio, lo que puede provocar una pérdida de precisión. Además, puede resultar más costoso que otras alternativas anteriormente mencionadas, al poder ser necesario recalcular la ruta.
 
-   No obstante, una ventaja significativa del algoritmo es que se puede incluir el estado del piloto en la función heurística, lo que facilita su integración en el simulador. También se puede aplicar una función de suavizado a la trayectoria resultante para mejorar su precisión. Dado que el proyecto no se centra en la eficiencia computacional, A* podría ser considerado como una opción viable para la navegación por el circuito.
+   No obstante, es un algoritmo de navegación ampliamente utilizado en la industria de los videojuegos, permitiendo realizar modificaciones a la heurística y a la malla de navegación para que se adapte lo máximo posible a las condiciones del proyecto.
+
+   Por tanto, A* podría ser considerado como una opción viable para la navegación por el circuito.
+
+   % No obstante, una ventaja significativa del algoritmo es que se puede incluir el estado del piloto en la función heurística, lo que facilita su integración en el simulador. También se puede aplicar una función de suavizado a la trayectoria resultante para mejorar su precisión. Dado que el proyecto no se centra en la eficiencia computacional, A* podría ser considerado como una opción viable para la navegación por el circuito.
 \end{itemize}

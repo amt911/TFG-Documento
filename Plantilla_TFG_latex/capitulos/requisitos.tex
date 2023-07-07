@@ -3,21 +3,19 @@
 \section{Introducción}
 
 \subsection{Propósito}
-%mejorar
 El objetivo de esta especificación es definir de manera clara, concisa y precisa las funciones y restricciones que tendrá la aplicación que se desea desarrollar. Al ser un trabajo individual, irá dirigido principalmente a mí, que haré de equipo de desarrollo.
 
 \subsection{Alcance}
 %rescribir subsection entera
-El proyecto será conocido de ahora en adelante como ``\myTitle''. Por lo tanto, al hacer referencia a ``proyecto'', ``software'', ``simulador'', ``aplicación'' y ``aplicación gráfica'', me referiré a lo mismo.
+El proyecto será conocido de ahora en adelante como ``\myTitle''. Por lo tanto, al hacer referencia a ``proyecto'', ``software'', ``simulador'', ``aplicación'', ``sistema'' y ``aplicación gráfica'', me referiré a lo mismo.
 
 \bigskip
 
-% repes: carrera
 Este sistema se encargará de simular carreras de coches, donde los pilotos tendrán distintas características que variarán dependiendo de las condiciones de la carrera e influirán en su desempeño. El usuario podrá modificar el estado de cada piloto en tiempo real, observando como estos afectan al comportamiento del vehículo.
 
 \bigskip
 
-Además, el software permitirá modificar una serie de ajustes antes de simular la carrera, de acuerdo a las preferencias del usuario. Algunos parámetros son: el número de vehículos, las aptitudes de cada piloto, el tipo de coche y la velocidad máxima. De esta manera, se podrán crear carreras personalizadas de acuerdo a las necesidades del usuario.
+Además, el software permitirá modificar una serie de ajustes antes de simular la carrera, de acuerdo a las preferencias del usuario. Algunos parámetros son: el número de vehículos, el nombre y las aptitudes de cada piloto y el tipo de coche. De esta manera, se podrán crear carreras personalizadas de acuerdo a las necesidades del usuario.
 
 \newpage
 
@@ -28,10 +26,10 @@ Además, el software permitirá modificar una serie de ajustes antes de simular 
         \begin{itemize}
             \item \textbf{Usuario: }Persona que utiliza el sistema con el objetivo de obtener los resultados de la carrera personalizada.
             \item \textbf{Simulación: }Se refiere a la ejecución de una carrera en la aplicación.
-            \item \textbf{Piloto: }Conductor de un vehículo en la simulación. Será 
-            \item \textbf{Aguante mental y físico: }Condiciones que tiene un piloto durante la carrera y que son modificadas durante la simulación, pudiendo afectar a su conducción.
+            \item \textbf{Piloto: }Conductor de un vehículo en la simulación.
+            \item \textbf{Aguante físico y mental: }Condiciones que tiene un piloto durante la carrera y que son modificadas durante la simulación, pudiendo afectar a su conducción.
             \item \textbf{Agresividad: }Factor que afectará al piloto durante la carrera, haciendo que si sube cometa más errores.
-            \item \textbf{Experiencia: }Parámetro del piloto que no varía durante la carrera y que indica la habilidad que tiene para tomar decisiones.
+            \item \textbf{Experiencia: }Parámetro del piloto que no varía durante la carrera y que indica la habilidad que tiene para mantener su estado.
         \end{itemize}
     \item \textbf{Siglas: }
     \begin{itemize}
@@ -39,18 +37,8 @@ Además, el software permitirá modificar una serie de ajustes antes de simular 
     \end{itemize}
 \end{itemize}
 
-% \subsection{Referencias}
-
-% Los siguientes documentos y enlaces se han consultado para crear este capítulo:
-
-% \begin{itemize}
-%     \item Ingeniería del Software. Ejercicio en clase, unidad 3: Requerimientos del Software. LSI (UGR). \url{https://lsi2.ugr.es/~mvega/docis/aluwork/colectivo/Ejercicio%20en%20clase%20version%202}
-%     \item fusm calidad del software. \url{https://sites.google.com/site/fusmcalidaddelsoftware/proyecto/g-informe-de-especificacion-de-requerimientos/3-requisitos-especificos/3-5-atributos-del-sistema}
-% \end{itemize}
-
 \subsection{Visión general}
-% rescribir
-Este capítulo constará de tres secciones: %Introducción, descripción global, y requisitos específicos. 
+Este capítulo constará de tres secciones:
 
 \bigskip
 
@@ -58,13 +46,14 @@ En esta primera sección se muestra la introducción y la visión general de la 
 
 \bigskip
 
-En la sección 2 se proporcionará una descripción general del sistema a construir, con el fin de conocer las funciones principales, datos requeridos, restricciones y otros aspectos relevantes. 
+En la sección \ref{sec:req-des-gen} se proporcionará una descripción general del sistema a construir, con el fin de conocer las funciones principales, datos requeridos, restricciones y otros aspectos relevantes. 
 
 \bigskip
 
-En la sección 3 se definen detalladamente los requisitos que debe cumplir el sistema en el momento de su desarrollo.
+En la sección \ref{sec:req-especificos} se definen detalladamente los requisitos que debe cumplir el sistema en el momento de su desarrollo, así como un boceto de las distintas pantallas que componen la interfaz.
 
 \section{Descripción general}
+\label{sec:req-des-gen}
 \subsection{Perspectiva del producto}
 
 \begin{figure}[H]
@@ -134,9 +123,9 @@ Este sistema funciona de forma independiente, por lo que no es necesario comunic
 
 También se asume que el sistema operativo instalado es Windows en sus versiones 10 u 11.
 
-\subsection{Requisitos específicos}
-
-\subsubsection{Requisitos funcionales}
+\section{Requisitos específicos}
+\label{sec:req-especificos}
+\subsection{Requisitos funcionales}
 
 \begin{itemize}
     \item \textbf{RF1.- Modificación de parámetros antes de la carrera:} El sistema debe permitir modificar los parámetros antes de ejecutar la simulación.
@@ -155,39 +144,39 @@ También se asume que el sistema operativo instalado es Windows en sus versiones
 \end{itemize}
 
 
-\subsubsection{Requisitos de soporte}
+\subsection{Requisitos de soporte}
 
 \begin{itemize}
     % \item RNF1.- El sistema debe ser ejecutado en un entorno Windows 10 o Windows 11.
     \item \textbf{RNF1.-} El sistema se ejecutará en los sistemas operativos Windows 10 y Windows 11.
 \end{itemize}
 
-\subsubsection{Requisitos de usabilidad}
+\subsection{Requisitos de usabilidad}
 
 \begin{itemize}
     \item \textbf{RNF2.-} La interfaz deberá ser fácil de usar e intuitiva para los usuarios, de manera que puedan navegar por la misma sin demasiada dificultad.
     \item \textbf{RNF3.-} El tamaño del texto y el estilo de fuente deben ser adecuados para facilitar su lectura.
 \end{itemize}
 
-\subsubsection{Requisitos de rendimiento}
+\subsection{Requisitos de rendimiento}
 
 \begin{itemize}
     \item \textbf{RNF4.-} El sistema deberá tardar, como máximo, 50 milisegundos (unos 20 FPS) en ejecutar cada paso de la simulación.
     \item \textbf{RNF5.-} El cambio manual del estado de un piloto debe ser reflejado en la simulación en menos de 10 segundos.
 \end{itemize}
 
-\subsubsection{Requisitos de información del sistema}
+\subsection{Requisitos de información del sistema}
 
 \begin{itemize}
     \item \textbf{RI1.- Datos de los pilotos:} Nombre, aguante mental y físico, agresividad, experiencia y color del coche.
     \item \textbf{RI2.- Datos del simulador:} Velocidad de simulación, número de vueltas, vuelta actual y número de vehículos.
 \end{itemize}
 
-\subsubsection{Aspectos legales}
+\subsection{Aspectos legales}
 
 La simulación no va a guardar ningún tipo de dato privado ni asociable a un individuo, haciendo que todos los datos sean anónimos. Por tanto, no es necesario seguir ningún tipo de tratamiento especial con la información insertada en la aplicación.
 
-\subsubsection{Interfaz de usuario}
+\subsection{Interfaz de usuario}
 \label{sec:proto-ui}
 
 

@@ -70,13 +70,15 @@ El \textit{Product Backlog} con las Historias de Usuario, ordenadas por priorida
         
         HU14 & Como usuario, quiero salir de la simulación que hay en curso. & 4 & 0.5 \\
         
-        HU15 & Como usuario, quiero que los vehículos puedan utilizar el rebufo del vehículo de delante. & 4 & 2 \\
+        HU15 & Como usuario, quiero que los vehículos puedan frenar para esquivar posibles colisiones. & 4 & 2 \\
 
-        HU16 & Como usuario, quiero cambiar entre distintas cámaras disponibles. & 4 & 3 \\
+        HU16 & Como usuario, quiero que los vehículos puedan utilizar el rebufo del vehículo de delante. & 4 & 1 \\
 
-        HU17 & Como usuario, quiero visualizar la ruta generada por los vehículos, de manera opcional. & 4 & 2 \\
+        HU17 & Como usuario, quiero cambiar entre distintas cámaras disponibles. & 4 & 3 \\
 
-        HU18 & Como usuario, quiero visualizar los puntos de control del circuito, de manera opcional. & 4 & 1 \\
+        HU18 & Como usuario, quiero visualizar la ruta generada por los vehículos, de manera opcional. & 4 & 2 \\
+
+        HU19 & Como usuario, quiero visualizar los puntos de control del circuito, de manera opcional. & 4 & 0.5 \\
   \end{longtblr}
 \normalsize
 
@@ -193,10 +195,10 @@ La implementación de la aplicación final se dividirá en \sprintNro sprints. A
 \begin{itemize}
     \item \textbf{Explicación:} En la documentación se pretende añadir la nueva funcionalidad desarrollada en este sprint y se corregirán los posibles fallos encontrados.
     
-    En la aplicación se incluirá botones para la visualización de los checkpoints y las rutas generadas, así como el rebufo entre vehículos y el cambio entre distintas cámaras.
+    En la aplicación se incluirá botones para la visualización de los checkpoints y las rutas generadas, así como el rebufo entre vehículos, la frenada anticipiativa para evitar colisiones y el cambio entre distintas cámaras.
 
     \item \textbf{Temporización:} Del 12 de junio hasta el 25 de junio.
-    \item \textbf{Historias de Usuario abordadas:} HU15, HU16, HU17, HU18.
+    \item \textbf{Historias de Usuario abordadas:} HU15, HU16, HU17, HU18, HU19.
 \end{itemize}
 
 % \begin{itemize}
@@ -296,11 +298,11 @@ El diagrama de Gantt general de todos los Sprints es:
             \ganttnewline[thick, black]
 
             \ganttgroup{Sprint 9}{2023-06-12}{2023-06-25} \\
-            \ganttbar{HU17}{2023-06-12}{2023-06-13} \\
-            \ganttbar{HU18}{2023-06-14}{2023-06-14} \\
-            \ganttbar{HU15}{2023-06-15}{2023-06-16}
-            \ganttbar{}{2023-06-19}{2023-06-19} \\
-            \ganttbar{HU16}{2023-06-20}{2023-06-23}
+            \ganttbar{HU17}{2023-06-12}{2023-06-15} \\
+            \ganttbar{HU16}{2023-06-16}{2023-06-16} \\
+            \ganttbar{HU15}{2023-06-19}{2023-06-20} \\
+            \ganttbar{HU18}{2023-06-21}{2023-06-23} \\
+            \ganttbar{HU19}{2023-06-23}{2023-06-23}
         \end{ganttchart}
     }
 \end{adjustbox}
