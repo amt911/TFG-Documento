@@ -133,7 +133,7 @@ Utilizando este algoritmo, obtuve unos valores que funcionaban bien para el circ
 
 \subsection{Algoritmo de navegación}
 
-En cuanto al algoritmo de navegación, correspondiente a HU2, HU4 y HU5 e implementadas en los sprints 5 y 6, he utilizado A*\cite{4082128}, que es lanzado utilizando diversas reglas, y una componente reactiva. 
+En cuanto al algoritmo de navegación, correspondiente a HU2 e implementado en el sprint 5, he utilizado A*\cite{4082128}, que es lanzado utilizando diversas reglas, y una componente reactiva. 
 
 \bigskip
 
@@ -258,12 +258,19 @@ Con los puntos filtrados, el coche construye un spline y pinta los puntos en el 
 
 \subsection{Lógica de adelantamiento de los vehículos}
 
-
-Dado que el algoritmo A* funciona principalmente para mundos estáticos, es necesario actualizar la ruta si se realiza un cambio de posición en los vehículos. En este caso, para adelantar al contrincante.
+Dado que los vehículos pueden tener ritmos distintos, los más veloces deben encontrar la forma de adelantar a los más lentos. Esta funcionalidad, correspondiente a HU4 e implementada en el sprint 6, permite realizar maniobras de adelantamiento para superar a los pilotos más lentos.
 
 \bigskip
 
-La regla que sigue el vehículo es si se encuentra a una distancia del vehículo de delante, tiene la suficiente diferencia de velocidad, y el vehículo a adelantar se encuentra en el mismo checkpoint o el siguiente. En caso afirmativo, ejecuta el algoritmo de navegación y espera unos pocos segundos para volverlo a ejecutar. Esta implementación me ha dado unos resultados razonables en tiempo y habilidad en los pilotos.
+Las condiciones para que se lance el algoritmo son:
+
+\begin{enumerate}
+    \item El vehículo se encuentra cerca del de delante.
+    \item El vehículo tiene más velocidad que el de delante.
+    \item El vehículo a adelantar se encuentra en el mismo checkpoint o el siguiente.
+\end{enumerate}
+
+En caso de cumplirse todas las condiciones, se lanzará periódicamente el algoritmo de navegación, hasta que el piloto haya sido adelantado.
 
 \bigskip
 
@@ -279,9 +286,12 @@ En la figura \ref{fig:overtake} se puede ver como se han dado las condiciones ne
 
 \subsection{Recuperación después de un accidente}
 
-Si un coche se sale de pista primero se esperan unos segundos para comprobar que de verdad no se puede mover. Cuando se ha comprobado, se recorre un cierto tiempo marcha atrás con las ruedas rectas. Finalmente, ejecuta el A* para calcular una ruta de escapatoria y recorre lento dicha ruta por un breve instante de tiempo, hasta que finalmente recupera la velocidad que tenía.
+Durante la carrera, existe la posibilidad de que los vehículos colisionen y queden atascados. Para abordar esta situación, se ha implementado un algoritmo de recuperación, correspondiente a HU5 y realizado en el sprint 6. 
 
-\newpage
+\bigskip
+
+El algoritmo comprueba si un coche lleva un intervalo tiempo sin moverse. En caso afirmativo, echa marcha atrás durante unos segundos. Posteriormente, ejecuta el algoritmo de navegación para calcular una nueva ruta y lo recorre lentamente durante otro periodo de tiempo. Una vez trascurrido el tiempo, el piloto continua con la conducción normal en el circuito.
+
 
 \subsection{Recuperación después del vuelco}
 
@@ -292,7 +302,7 @@ Puede darse el remoto caso de que un vehículo vuelque y no sea capaz de darse l
 \subsection{Frenada anticipativa para evitar colisión}
 \label{sec:frenada}
 
-Dado que mucha de las veces los vehículos calculan rutas casi idénticas, puede darse el caso de que el vehículo de atrás provoque un accidente con el de delante. Es por eso que es necesario implementar una forma para que los vehículos de detrás frenen.
+Dado que mucha de las veces los vehículos calculan rutas casi idénticas, puede darse el caso de que el vehículo de atrás provoque un accidente con el de delante. Es por eso que es necesario implementar una forma para que los vehículos de detrás frenen. Esta funcionalidad corresponde a HU15 y se ha implementado en el sprint 9.
 
 \bigskip
 
@@ -300,7 +310,7 @@ Para ello, he hecho uso de los \textit{Line Trace} (véase sección \ref{sec:ter
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.3\textwidth]{imagenes/converted/raycast.jpg}
+    \includegraphics[width=0.25\textwidth]{imagenes/converted/raycast.jpg}
     \caption{Esquema del trazado de rayos.}
     \label{fig:esqlinetrace}
 \end{figure}
