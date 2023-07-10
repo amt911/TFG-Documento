@@ -40,7 +40,7 @@ En lo que respecta a herramientas de planificación, se utilizará \planApp para
 % \end{figure}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{imagenes/converted/trello-mio.jpg}
+    \includegraphics[width=\textwidth]{imagenes/trello-mio-reduced.png}
     \caption{Tablero utilizado para el proyecto.}
 \end{figure}
 
@@ -133,7 +133,7 @@ Utilizando este algoritmo, obtuve unos valores que funcionaban bien para el circ
 
 \subsection{Algoritmo de navegación}
 
-En cuanto al algoritmo de navegación, correspondiente a HU2, HU4 y HU5 e implementadas en los sprints 5 y 6, he utilizado A*\cite{4082128}, que es lanzado utilizando diversas reglas, y una componente reactiva. 
+En cuanto al algoritmo de navegación, correspondiente a HU2 e implementado en el sprint 5, he utilizado A*\cite{4082128}, que es lanzado utilizando diversas reglas, y una componente reactiva. 
 
 \bigskip
 
@@ -156,7 +156,7 @@ En la figura \ref{fig:rutaastar} se pueden observar unos cubos rojos, que repres
 \end{figure}
 
 
-Realicé una primera implementación del algoritmo A* utilizando \textit{blueprints}. Sin embargo, había casos en los que el programa se quedaba congelado unos segundos hasta encontrar la ruta. La solución fue implementar en \textit{blueprints} una cola con prioridad utilizando un \textit{Binary Heap}. Esta versión provocó una gran mejora en el tiempo de ejecución, pero para carreras con más de dos coches, el tiempo de ejecución seguía siendo demasiado grande, haciendo que el programa se quedase parado unas décimas de segundo.
+Realicé una primera implementación del algoritmo A* utilizando \textit{blueprints}. Sin embargo, había casos en los que el programa se quedaba congelado unos segundos hasta encontrar la ruta. La solución fue implementar en \textit{blueprints} una cola con prioridad utilizando un \textit{Binary Heap}, en vez de utilizar un algoritmo secuencial para la ordenación de los elementos. Esta versión provocó una gran mejora en el tiempo de ejecución, pero para carreras con más de dos coches, el tiempo de ejecución seguía siendo demasiado grande, haciendo que el programa se quedase parado unas décimas de segundo.
 
 \bigskip
 
@@ -175,7 +175,7 @@ La heurística elegida ha sido la distancia Manhattan, ya que el rango de movimi
 % foto diagrama de la distancia manhattan
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{imagenes/converted/Euclidean-and-Manhattan-distance-comparison-3235-Optimizations-The-first-optimization.jpg}
+    \includegraphics[width=0.7\textwidth]{imagenes/Euclidean-and-Manhattan-distance-comparison-3235-Optimizations-The-first-optimization.png}
     \caption{Esquema del funcionamiento de la distancia Manhattan\cite{gameai}.}
     \label{fig:manhattan}
 \end{figure}
@@ -215,7 +215,7 @@ A continuación se da una explicación de cada uno de los elementos que forman l
     \begin{figure}[H]
         \centering
         \includegraphics[width=0.5\textwidth]{imagenes/converted/nodesCropped.jpg}
-        \caption{Visualización de varios nodos en el mapa. Cada nodo es representado por cuatro cuadrados. Se han resaltado en color amarillo cuatro nodos.}
+        \caption{Visualización de varios nodos en el mapa. Cada nodo es representado por ocho triángulos. Se han resaltado en color amarillo cuatro nodos.}
         \label{fig:nodo}
     \end{figure}
 
@@ -258,12 +258,19 @@ Con los puntos filtrados, el coche construye un spline y pinta los puntos en el 
 
 \subsection{Lógica de adelantamiento de los vehículos}
 
-
-Dado que el algoritmo A* funciona principalmente para mundos estáticos, es necesario actualizar la ruta si se realiza un cambio de posición en los vehículos. En este caso, para adelantar al contrincante.
+Dado que los vehículos pueden tener ritmos distintos, los más veloces deben encontrar la forma de adelantar a los más lentos. Esta funcionalidad, correspondiente a HU4 e implementada en el sprint 6, permite realizar maniobras de adelantamiento para superar a los pilotos más lentos.
 
 \bigskip
 
-La regla que sigue el vehículo es si se encuentra a una distancia del vehículo de adelante y tiene la suficiente diferencia de velocidad, ejecuta el algoritmo de navegación y espera unos pocos segundos para volverlo a ejecutar. Esta implementación me ha dado unos resultados razonables en tiempo y habilidad en los pilotos.
+Las condiciones para que se lance el algoritmo son:
+
+\begin{enumerate}
+    \item El vehículo se encuentra cerca del de delante.
+    \item El vehículo tiene más velocidad que el de delante.
+    \item El vehículo a adelantar se encuentra en el mismo checkpoint o el siguiente.
+\end{enumerate}
+
+En caso de cumplirse todas las condiciones, se lanzará periódicamente el algoritmo de navegación, hasta que el piloto haya sido adelantado.
 
 \bigskip
 
@@ -272,14 +279,19 @@ En la figura \ref{fig:overtake} se puede ver como se han dado las condiciones ne
 % quizas poner foto, pero creo que va a ser complicado
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{imagenes/converted/overtake.jpg}
+    \includegraphics[width=\textwidth]{imagenes/converted/overtake.jpg}
     \caption{Cálculo de la ruta del coche verde para intentar adelantar al otro piloto.}
     \label{fig:overtake}
 \end{figure}
 
 \subsection{Recuperación después de un accidente}
 
-Si un coche se sale de pista primero se esperan unos segundos para comprobar que de verdad no se puede mover. Cuando se ha comprobado, se recorre un cierto tiempo marcha atrás con las ruedas rectas. Finalmente, ejecuta el A* para calcular una ruta de escapatoria y recorre lento dicha ruta por un breve instante de tiempo, hasta que finalmente recupera la velocidad que tenía.
+Durante la carrera, existe la posibilidad de que los vehículos colisionen y queden atascados. Para abordar esta situación, se ha implementado un algoritmo de recuperación, correspondiente a HU5 y realizado en el sprint 6. 
+
+\bigskip
+
+El algoritmo comprueba si un coche lleva un intervalo tiempo sin moverse. En caso afirmativo, echa marcha atrás durante unos segundos. Posteriormente, ejecuta el algoritmo de navegación para calcular una nueva ruta y lo recorre lentamente durante otro periodo de tiempo. Una vez trascurrido el tiempo, el piloto continua con la conducción normal en el circuito.
+
 
 \subsection{Recuperación después del vuelco}
 
@@ -290,7 +302,7 @@ Puede darse el remoto caso de que un vehículo vuelque y no sea capaz de darse l
 \subsection{Frenada anticipativa para evitar colisión}
 \label{sec:frenada}
 
-Dado que mucha de las veces los vehículos calculan rutas casi idénticas, puede darse el caso de que el vehículo de atrás provoque un accidente con el de delante. Es por eso que es necesario implementar una forma para que los vehículos de detrás frenen.
+Dado que mucha de las veces los vehículos calculan rutas casi idénticas, puede darse el caso de que el vehículo de atrás provoque un accidente con el de delante. Es por eso que es necesario implementar una forma para que los vehículos de detrás frenen. Esta funcionalidad corresponde a HU15 y se ha implementado en el sprint 9.
 
 \bigskip
 
@@ -298,7 +310,7 @@ Para ello, he hecho uso de los \textit{Line Trace} (véase sección \ref{sec:ter
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.3\textwidth]{imagenes/converted/raycast.jpg}
+    \includegraphics[width=0.25\textwidth]{imagenes/converted/raycast.jpg}
     \caption{Esquema del trazado de rayos.}
     \label{fig:esqlinetrace}
 \end{figure}
@@ -394,7 +406,7 @@ Para poder cargar y guardar los archivos, he utilizado el plugin ``JSON Blueprin
 
 \subsection{Cambio entre distintas cámaras}
 
-La funcionalidad de cambiar la cámara, correspondiente a HU16 y desarrollada en el sprint 9, permite visualizar la carrera entre tres tipos de perspectivas diferentes: cenital, frontal de un vehículo concreto y cámaras estáticas a lo largo del circuito, similar a como funciona en las carreras reales. El boceto de la interfaz con los botones aparece en la figura \ref{fig:boc-ui-race}.
+La funcionalidad de cambiar la cámara, correspondiente a HU17 y desarrollada en el sprint 9, permite visualizar la carrera entre tres tipos de perspectivas diferentes: cenital, frontal de un vehículo concreto y cámaras estáticas a lo largo del circuito, similar a como funciona en las carreras reales. El boceto de la interfaz con los botones aparece en la figura \ref{fig:boc-ui-race}.
 
 \bigskip
 
@@ -405,36 +417,41 @@ El cambio se puede realizar pulsando sobre los botones con el símbolo de la cá
 En las figuras \ref{fig:cenital}, \ref{fig:frontal} y \ref{fig:cam-estaticas} se muestran ejemplos de las diferentes perspectivas:
 
 \begin{figure}[H]
+    \centering
     \includegraphics[width=\textwidth]{imagenes/camera/cam-top.jpg}
     \caption{Perspectiva cenital.}
     \label{fig:cenital}
 \end{figure}
 
 \begin{figure}[H]
+    \centering
     \includegraphics[width=\textwidth]{imagenes/camera/cam-frontal.jpg}
     \caption{Perspectiva frontal del vehículo.}
     \label{fig:frontal}
 \end{figure}
 
 \begin{figure}[H]
+    \centering
     \includegraphics[width=\textwidth]{imagenes/camera/cam-pers.jpg}
     \caption{Perspectiva de diversas cámaras.}
     \label{fig:cam-estaticas}
 \end{figure}
 
-Para realizar el seguimiento con cámaras estáticas, he reutilizado el actor (glosario en la sección \ref{sec:terminosunreal}) ``SplinePath'', utilizada para crear las rutas del algoritmo A*, para crear un spline, cuyos puntos son las posiciones que puede tener la cámara. Después, he creado el actor ``CameraFollower'', que tiene una referencia a todos los vehículos, de forma que elige cada cierto tiempo uno al azar y calcula el punto del spline más cercano al coche. Finalmente, mueve la cámara a dicho punto y la rota para que apunte en cada momento al coche.
+Para realizar el seguimiento con cámaras estáticas, he reutilizado el actor (glosario en la sección \ref{sec:terminosunreal}) ``SplinePath'', utilizado en la creación de rutas del algoritmo A*. Mediante este actor, he creado un spline cuyos puntos son las posiciones que puede tener la cámara. Después, he creado el actor ``CameraFollower'', que tiene una referencia a todos los vehículos, de forma que elige cada cierto tiempo uno al azar y calcula el punto del spline más cercano al coche. Finalmente, mueve la cámara a dicho punto y la rota para que apunte en cada momento al coche.
 
 \bigskip
 
 En las figuras \ref{fig:bp-cam1} y \ref{fig:bp-cam2} se encuentra la implementación de la obtención del punto del spline y el movimiento de la cámara al objetivo, respectivamente:
 
 \begin{figure}[H]
+    \centering
     \includegraphics[width=\textwidth]{imagenes/blueprints/CameraFollower.getCameraPosition.png}
     \caption{Implementación de la obtención del punto del spline.}
     \label{fig:bp-cam1}
 \end{figure}
 
 \begin{figure}[H]
+    \centering
     \includegraphics[width=\textwidth]{imagenes/blueprints/CameraFollower.moveCamera.png}
     \caption{Implementación del posicionamiento de la cámara.}
     \label{fig:bp-cam2}
@@ -473,9 +490,11 @@ Al despejar la variable $t$ en la segunda fórmula y sustituirla en la primera, 
 Cabe destacar que la deceleración la he obtenido mediante el uso de otros vehículos con las mismas características que los utilizados en las carreras, pero con la capacidad de ser controlados con el teclado. Después, he calculado el valor G de la deceleración, el cual, al multiplicarlo por la gravedad, resulta en el valor final.
 % de forma que multiplicado por la gravedad obtenga el valor final.
 
+\newpage
+
 \section{Modelado y texturizado de la escena}
 
-Para la creación, preparación y modificación de los distintos modelos y texturas de la aplicación, he utilizado Blender\cite{blender} y GIMP\cite{gimp}. A continuación detallaré cada uno de los modelos y texturas, así como su proceso de creación.
+Para la creación, preparación y modificación de los distintos modelos y texturas de la aplicación, he utilizado Blender\cite{blender} y GIMP\cite{gimp}. A continuación detallaré cada uno de los modelos y texturas, así como su proceso de generación.
 
 \subsection{Trazado del circuito}
 
@@ -527,7 +546,7 @@ Después, he utilizado la textura ``Asphalt 024 A''\cite{asphalt}, creada por Le
     \centering 
 	\begin{subfigure}[t]{0.48\textwidth}
 	    \centering
-        \includegraphics[width=0.98\textwidth,cframe=black 0.5pt 0pt]{imagenes/converted/pista/Asphalt024A_2K_Color.jpg}
+        \includegraphics[width=0.9\textwidth,cframe=black 1pt 0pt]{imagenes/converted/pista/Asphalt024A_2K_Color.jpg}
         \caption{Textura de asfalto modificada.}
         \label{fig:asfaltomod}
     \end{subfigure}
@@ -536,7 +555,7 @@ Después, he utilizado la textura ``Asphalt 024 A''\cite{asphalt}, creada por Le
     %\hspace{10px} %si se quiere poner una medida personalizada
 	\begin{subfigure}[t]{0.48\textwidth}
 	    \centering
-	    \includegraphics[width=0.98\textwidth,cframe=black 0.5pt 0pt]{imagenes/converted/pista/Asphalt024A_2K_Color_FinishLineFinal.jpg}
+	    \includegraphics[width=0.9\textwidth,cframe=black 1pt 0pt]{imagenes/converted/pista/Asphalt024A_2K_Color_FinishLineFinal.jpg}
         \caption{Textura de asfalto con la línea de meta.}
     \end{subfigure}    
     \caption{Texturas de asfalto utilizadas en la aplicación. Se han enmarcado para poder separar las imágenes del fondo de la página.}
@@ -566,14 +585,14 @@ Estas texturas no encajaban del todo bien, haciendo que las líneas blancas no e
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.4\textwidth]{imagenes/converted/pista/uv-straight.jpg}
+    \includegraphics[width=0.7\textwidth]{imagenes/converted/pista/uv-straight.jpg}
     \caption{Mapeado UV para la sección de asfalto.}
     \label{fig:uvasphalt}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{imagenes/converted/pista/uv-kerb.jpg}
+    \includegraphics[width=\textwidth]{imagenes/converted/pista/uv-kerb.jpg}
     \caption{Mapeado UV para la sección de piano.}
     \label{fig:uvkerb}
 \end{figure}
@@ -657,7 +676,7 @@ Debido a que quería simular que mi barrera está algo arrugada, como pasa en la
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.4\textwidth]{imagenes/converted/barrier/barrierHP.jpg}
+    \includegraphics[width=0.45\textwidth]{imagenes/converted/barrier/barrierHP.jpg}
     \caption{Barrera de alta resolución con imperfecciones.}
     \label{fig:barreraHP}
 \end{figure}
@@ -666,7 +685,7 @@ Como puede consumir demasiados recursos, he convertido las deformaciones geomét
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.4\textwidth]{imagenes/converted/barrier/barrierNormal.jpg}
+    \includegraphics[width=0.45\textwidth]{imagenes/converted/barrier/barrierNormal.jpg}
     \caption{Textura normal generada para la versión con pocos polígonos.}
     \label{fig:barreraLP}
 \end{figure}
@@ -676,7 +695,7 @@ Y el modelo final es mi barrera, junto a la valla anteriormente mencionada encim
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.4\textwidth]{imagenes/converted/barrier/barrierfence.jpg}
+    \includegraphics[width=0.6\textwidth]{imagenes/converted/barrier/barrierfence.jpg}
     \caption{Resultado final de la barrera en Unreal.}
     \label{fig:barreraFinal}
 \end{figure}

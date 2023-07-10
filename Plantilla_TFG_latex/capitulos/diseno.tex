@@ -39,7 +39,7 @@ Cabe destacar que estas componentes son modificadas como consecuencia directa de
 
 En esta sección se detallarán las distintas entidades que componen la aplicación, junto a los atributos necesarios para implementar la lógica. Cada entidad y sus atributos estarán en una subsección a continuación:
 
-\subsection{AAStarNodeCPP}
+\subsection{ANodeCPP}
 \textbf{Descripción: }Representa una celda de la matriz utilizada para ejecutar el algoritmo A*.
 
 \tiny
@@ -48,7 +48,7 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
     entry = none,
     ]{
     width = \linewidth,
-    colspec = {Q[15,m]Q[18,m]Q[50,m]},
+    colspec = {Q[15,m]Q[17,m]Q[50,m]},
     row{1} = {Silver,c},
     cell{2-8}{1,2} = {c},
     hlines,
@@ -59,7 +59,7 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
     cube & UStatic\-Mesh\-Component* & Cubo que se utilizará como nodo \\
     defaultSceneRoot & UScene\-Component* & Nodo raíz de donde colgará el cubo. \\
 
-    neighbors         & TArray\-$<$AAStarNodeCPP*$>$ & Almacena las celdas con las que colinda.                                                                                         \\
+    neighbors         & TArray\-$<$ANodeCPP*$>$ & Almacena las celdas con las que colinda.                                                                                         \\
 
     hasObstacle       & bool              & Si la celda actual está ocupada por un coche.                                                                           \\
 
@@ -80,7 +80,7 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
     entry = none,
     ]{
     width = \linewidth,
-    colspec = {Q[9,m]Q[8,m]Q[40,m]},
+    colspec = {Q[6,m]Q[6,m]Q[40,m]},
     row{1} = {Silver,c},
     cell{2-3}{1,2} = {c},
     hlines,
@@ -102,7 +102,7 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
     entry = none,
     ]{
     width = \linewidth,
-    colspec = {Q[12,m]Q[15,m]Q[40,m]},
+    colspec = {Q[11,m]Q[11,m]Q[40,m]},
     row{1} = {Silver,c},
     cell{2-6}{1,2} = {c},
     hlines,
@@ -110,9 +110,9 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
     }
     \textbf{Variable} & \textbf{Tipo}        & \textbf{Anotaciones}                                                                                                                                   \\
 
-    nodeClass & TSubclassOf\-$<$AAStarNodeCPP*$>$ & Referencia a la clase que se utilizará como nodo. Necesario para utilizar clases implementadas en blueprints, pero derivadas de una clase de C++.  \\
+    nodeClass & TSubclassOf\-$<$ANodeCPP*$>$ & Referencia a la clase que se utilizará como nodo. Necesario para utilizar clases implementadas en blueprints, pero derivadas de una clase de C++.  \\
 
-    nodes             & TArray\-$<$AAStarNodeCPP*$>$ & Referencia a los nodos que forman la malla de navegación. El primero el de la esquina superior izquierda y el último el de la esquina inferior derecha. \\
+    nodes             & TArray\-$<$ANodeCPP*$>$ & Referencia a los nodos que forman la malla de navegación. El primero el de la esquina superior izquierda y el último el de la esquina inferior derecha. \\
 
     GRID\_SIZE          & int              & Cantidad de cubos que va a haber a lo largo y a lo ancho. Por defecto es 250. \\
 
@@ -130,7 +130,7 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
     entry = none,
     ]{
     width = \linewidth,
-    colspec = {Q[8,m]Q[15,m]Q[50,m]},
+    colspec = {Q[8,m]Q[10,m]Q[50,m]},
     row{1} = {Silver,c},
     cell{2,3}{1,2} = {c},
     hlines,
@@ -138,7 +138,7 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
     }
     \textbf{Variable} & \textbf{Tipo} & \textbf{Anotaciones}                                          \\
 
-    node              & AAStarNodeCPP*     & Nodo que se va a insertar en la cola.           \\
+    node              & ANodeCPP*     & Nodo que se va a insertar en la cola.           \\
 
     cost              & float         & Coste total del nodo, incluyendo la heurística.
 \end{longtblr}
@@ -246,21 +246,21 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
 
     currentOvertake\-Time & Float                 & Cantidad de segundos que el vehículo lleva intentando un adelantamiento.                                       \\
     
-    OVERTAKE\-\_TIME      & Float                 & Tiempo máximo que debe intentar un adelantamiento.                                                             \\
+    MAX\-\_OVER\-TAKE\-\_TIME      & Float                 & Tiempo máximo que debe intentar un adelantamiento.                                                             \\
 
-    isOvertaking        & boolean               & Si el vehículo está intentando adelantar en el momento.                                                 \\
+    isOvertaking        & Boolean               & Si el vehículo está intentando adelantar en el momento.                                                 \\
 
-    REVERSE\_TIME       & Float                 & Tiempo máximo en segundos que el vehículo da marcha atrás para recuperarse de un accidente.                    \\
+    MAX\-\_REVERSE\-\_TIME       & Float                 & Tiempo máximo en segundos que el vehículo da marcha atrás para recuperarse de un accidente.                    \\
 
     stuckTime           & Float                 & Tiempo que permanece atascado el vehículo (en segundos).                                                       \\
 
-    isReversing         & boolean               & Si el vehículo está dando marcha atrás.                                                                 \\
+    isReversing         & Boolean               & Si el vehículo está dando marcha atrás.                                                                 \\
 
     goSlowTimer         & Float                 & Cantidad de segundos que el vehículo está yendo lento para volver a la pista después de un accidente. \\
 
-    goSlowAfterCrash    & boolean               & Si el coche debe ir lento para volver a pista después de un accidente.                                  \\
+    goSlowAfterCrash    & Boolean               & Si el coche debe ir lento para volver a pista después de un accidente.                                  \\
 
-    GO\-\_SLOW\-\_TIME      & Float                 & Número de segundos que debe ir lento para volver a pista.                                            \\
+    MAX\-\_SLOW\-\_TIME      & Float                 & Número de segundos que debe ir lento para volver a pista.                                            \\
 
     reverseTime         & Float                 & Cantidad de segundos que lleva el coche dando marcha atrás.                                                    \\
 
@@ -276,7 +276,7 @@ En esta sección se detallarán las distintas entidades que componen la aplicaci
 
     lastSplinePosition & Vector & Posición sobre la ruta generada en el instante anterior. \\
 
-    isDeviating & Boolean & Indica si el vehículo se está desviando de la ruta. \\
+    % isDeviating & Boolean & Indica si el vehículo se está desviando de la ruta. \\
 
     pathfinderRef       & UAStar\-Pathfinder\-CPP       & Instancia del algoritmo de navegación. \\
 
@@ -964,7 +964,7 @@ A continuación se muestra el diagrama de clases de la aplicación. Se ha dividi
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{imagenes/classDiagramSections.png}
+    \includegraphics[width=\textwidth]{imagenes/classDiagramSections-reduced.png}
     \caption{Diagrama de clases de la aplicación.}
 \end{figure}
 
@@ -1014,6 +1014,7 @@ En esta última figura \ref{fig:class5}, aparecen las clases referentes al algor
     \label{fig:class5}
 \end{figure}
 
+\newpage
 
 \section{Diseño de la Interfaz de Usuario}
 
@@ -1021,9 +1022,7 @@ Los prototipos de las interfaces de usuario mencionadas a continuación se encue
 
 \bigskip
 
-La interfaz de usuario del configurador de la simulación
-% (el prototipo se puede ver en la figura \ref{fig:protoconfig}) 
-está dividida en dos secciones principales: a la izquierda se encuentra la sección para el número de vehículos y de pilotos, la disciplina y las opciones de importación y exportación de la configuración. A la derecha está la segunda sección, compuesta por las características de cada piloto, un menú desplegable para ejecutar el algoritmo genético y el botón para comenzar la simulación.
+La interfaz de usuario del configurador de la simulación está dividida en dos secciones principales: a la izquierda se encuentra la sección para el número de vehículos y de pilotos, la disciplina y las opciones de importación y exportación de la configuración. A la derecha está la segunda sección, compuesta por las características de cada piloto, un menú desplegable para ejecutar el algoritmo genético y el botón para comenzar la simulación.
 
 \begin{figure}[H]
     \centering
@@ -1031,9 +1030,7 @@ está dividida en dos secciones principales: a la izquierda se encuentra la secc
     \caption{Interfaz del configurador antes de la carrera.}
 \end{figure}
 
-Durante la carrera, se mostrará un listado de posiciones de los pilotos y un contador de vueltas 
-% (prototipo en la figura \ref{fig:protoranking}) 
-en la parte izquierda de la pantalla. Este listado permitirá visualizar y modificar el estado de cada piloto en tiempo real. La disposición de los elementos será similar a la de disciplinas como la Fórmula 1, donde el ranking de pilotos y el contador de vueltas aparecen a la izquierda, y en cada celda de posición aparecen las tres primeras letras del apellido. En este proyecto, he decidido añadir también la primera letra del nombre, en caso de que haya varios pilotos con el mismo apellido. Además, aparecerá a la derecha un menú desplegable con las opciones de visualización de ruta y de los checkpoints.
+Durante la carrera, se mostrará un listado de posiciones de los pilotos y un contador de vueltas en la parte izquierda de la pantalla. Este listado permitirá visualizar y modificar el estado de cada piloto en tiempo real. La disposición de los elementos será similar a la de disciplinas como la Fórmula 1, donde el ranking de pilotos y el contador de vueltas aparecen a la izquierda, y en cada celda de posición aparecen las tres primeras letras del apellido. En este proyecto, he decidido añadir también la primera letra del nombre, en caso de que haya varios pilotos con el mismo apellido. Además, aparecerá a la derecha un menú desplegable con las opciones de visualización de ruta y de los checkpoints.
 
 
 \begin{figure}[H]
